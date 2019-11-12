@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="role">
+            <h2><span jhiTranslate="taskuniteApp.role.detail.title">Role</span> {{role.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="taskuniteApp.role.name">Name</span></dt>
+                <dd>
+                    <span>{{role.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskuniteApp.role.status">Status</span></dt>
+                <dd>
+                    <span>{{role.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskuniteApp.role.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{role.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskuniteApp.role.updatedAt">Updated At</span></dt>
+                <dd>
+                    <span>{{role.updatedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskuniteApp.role.deletedAt">Deleted At</span></dt>
+                <dd>
+                    <span>{{role.deletedAt}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/role', role.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{
+  "taskuniteApp": {
+    "tasker": {
+      "home": {
+        "title": "Taskers",
+        "createLabel": "Thêm mới một Tasker",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Tasker",
+        "notFound": "No Taskers found"
+      },
+      "created": "Một Tasker mới được tạo với định danh {{ param }}",
+      "updated": "Một Tasker cập nhật với định danh {{ param }}",
+      "deleted": "Một Tasker đã xóa với định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Tasker {{ id }}?"
+      },
+      "detail": {
+        "title": "Tasker"
+      },
+      "level": "Level",
+      "pricePerHour": "Price Per Hour",
+      "status": "Status",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "deletedAt": "Deleted At",
+      "user": "User",
+      "adress": "Adress",
+      "workingAddresses": "Working Addresses",
+      "tasks": "Tasks",
+      "taskCategories": "Task Categories"
+    }
+  }
+}
