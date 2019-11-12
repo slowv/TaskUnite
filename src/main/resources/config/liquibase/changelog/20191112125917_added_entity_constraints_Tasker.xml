@@ -14,12 +14,6 @@
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
 
-        <addForeignKeyConstraint baseColumnNames="adress_id"
-                                 baseTableName="tasker"
-                                 constraintName="fk_tasker_adress_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="address"/>
-
         <addForeignKeyConstraint baseColumnNames="tasker_id"
                                  baseTableName="tasker_task_categories"
                                  constraintName="fk_tasker_task_categories_tasker_id"

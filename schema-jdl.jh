@@ -157,7 +157,6 @@ relationship ManyToOne {
  */
 relationship OneToOne {    
     Tasker{user} to User{tasker}
-    Tasker{adress} to Address{tasker}
     Master{user} to User{master}
     Address{user} to User{address}
 }

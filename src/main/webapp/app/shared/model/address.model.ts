@@ -8,7 +8,6 @@ export interface IAddress {
   updatedAt?: Moment;
   deletedAt?: Moment;
   userId?: number;
-  taskerId?: number;
   dictrictId?: number;
   taskerId?: number;
 }
@@ -22,7 +21,6 @@ export class Address implements IAddress {
     public updatedAt?: Moment,
     public deletedAt?: Moment,
     public userId?: number,
-    public taskerId?: number,
     public dictrictId?: number,
     public taskerId?: number
   ) {}

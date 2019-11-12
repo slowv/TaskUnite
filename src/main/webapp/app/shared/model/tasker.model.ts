@@ -12,7 +12,6 @@ export interface ITasker {
   updatedAt?: Moment;
   deletedAt?: Moment;
   userId?: number;
-  adressId?: number;
   workingAddresses?: IAddress[];
   tasks?: ITask[];
   taskCategories?: ITaskCategory[];
@@ -28,7 +27,6 @@ export class Tasker implements ITasker {
     public updatedAt?: Moment,
     public deletedAt?: Moment,
     public userId?: number,
-    public adressId?: number,
     public workingAddresses?: IAddress[],
     public tasks?: ITask[],
     public taskCategories?: ITaskCategory[]

@@ -5,6 +5,7 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
@@ -12,10 +13,10 @@ import { IAddress, Address } from 'app/shared/model/address.model';
 import { AddressService } from './address.service';
 import { IUser } from 'app/core/user/user.model';
 import { UserService } from 'app/core/user/user.service';
-import { ITasker } from 'app/shared/model/tasker.model';
-import { TaskerService } from 'app/entities/tasker/tasker.service';
 import { IDistrict } from 'app/shared/model/district.model';
 import { DistrictService } from 'app/entities/district/district.service';
+import { ITasker } from 'app/shared/model/tasker.model';
+import { TaskerService } from 'app/entities/tasker/tasker.service';
 
 @Component({
   selector: 'jhi-address-update',
@@ -26,9 +27,9 @@ export class AddressUpdateComponent implements OnInit {
 
   users: IUser[];
 
-  taskers: ITasker[];
-
   districts: IDistrict[];
+
+  taskers: ITasker[];
 
   editForm = this.fb.group({
     id: [],
@@ -46,8 +47,8 @@ export class AddressUpdateComponent implements OnInit {
     protected jhiAlertService: JhiAlertService,
     protected addressService: AddressService,
     protected userService: UserService,
-    protected taskerService: TaskerService,
     protected districtService: DistrictService,
+    protected taskerService: TaskerService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -59,13 +60,25 @@ export class AddressUpdateComponent implements OnInit {
     });
     this.userService
       .query()
-      .subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body), (res: HttpErrorResponse) => this.onError(res.message));
-    this.taskerService
-      .query()
-      .subscribe((res: HttpResponse<ITasker[]>) => (this.taskers = res.body), (res: HttpErrorResponse) => this.onError(res.message));
+      .pipe(
+        filter((mayBeOk: HttpResponse<IUser[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IUser[]>) => response.body)
+      )
+      .subscribe((res: IUser[]) => (this.users = res), (res: HttpErrorResponse) => this.onError(res.message));
     this.districtService
       .query()
-      .subscribe((res: HttpResponse<IDistrict[]>) => (this.districts = res.body), (res: HttpErrorResponse) => this.onError(res.message));
+      .pipe(
+        filter((mayBeOk: HttpResponse<IDistrict[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IDistrict[]>) => response.body)
+      )
+      .subscribe((res: IDistrict[]) => (this.districts = res), (res: HttpErrorResponse) => this.onError(res.message));
+    this.taskerService
+      .query()
+      .pipe(
+        filter((mayBeOk: HttpResponse<ITasker[]>) => mayBeOk.ok),
+        map((response: HttpResponse<ITasker[]>) => response.body)
+      )
+      .subscribe((res: ITasker[]) => (this.taskers = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(address: IAddress) {
@@ -134,11 +147,11 @@ export class AddressUpdateComponent implements OnInit {
     return item.id;
   }
 
-  trackTaskerById(index: number, item: ITasker) {
+  trackDistrictById(index: number, item: IDistrict) {
     return item.id;
   }
 
-  trackDistrictById(index: number, item: IDistrict) {
+  trackTaskerById(index: number, item: ITasker) {
     return item.id;
   }
 }

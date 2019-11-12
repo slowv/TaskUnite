@@ -343,4 +343,42 @@ public class TaskerResourceIT {
         List<Tasker> taskerList = taskerRepository.findAll();
         assertThat(taskerList).hasSize(databaseSizeBeforeDelete - 1);
     }
+
+    @Test
+    @Transactional
+    public void equalsVerifier() throws Exception {
+        TestUtil.equalsVerifier(Tasker.class);
+        Tasker tasker1 = new Tasker();
+        tasker1.setId(1L);
+        Tasker tasker2 = new Tasker();
+        tasker2.setId(tasker1.getId());
+        assertThat(tasker1).isEqualTo(tasker2);
+        tasker2.setId(2L);
+        assertThat(tasker1).isNotEqualTo(tasker2);
+        tasker1.setId(null);
+        assertThat(tasker1).isNotEqualTo(tasker2);
+    }
+
+    @Test
+    @Transactional
+    public void dtoEqualsVerifier() throws Exception {
+        TestUtil.equalsVerifier(TaskerDTO.class);
+        TaskerDTO taskerDTO1 = new TaskerDTO();
+        taskerDTO1.setId(1L);
+        TaskerDTO taskerDTO2 = new TaskerDTO();
+        assertThat(taskerDTO1).isNotEqualTo(taskerDTO2);
+        taskerDTO2.setId(taskerDTO1.getId());
+        assertThat(taskerDTO1).isEqualTo(taskerDTO2);
+        taskerDTO2.setId(2L);
+        assertThat(taskerDTO1).isNotEqualTo(taskerDTO2);
+        taskerDTO1.setId(null);
+        assertThat(taskerDTO1).isNotEqualTo(taskerDTO2);
+    }
+
+    @Test
+    @Transactional
+    public void testEntityFromId() {
+        assertThat(taskerMapper.fromId(42L).getId()).isEqualTo(42);
+        assertThat(taskerMapper.fromId(null)).isNull();
+    }
 }

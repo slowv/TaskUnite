@@ -26,7 +26,6 @@
             <th scope="col"  jhiSortBy="updatedAt"><span jhiTranslate="taskuniteApp.tasker.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="taskuniteApp.tasker.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="userId"><span jhiTranslate="taskuniteApp.tasker.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="adressId"><span jhiTranslate="taskuniteApp.tasker.adress">Adress</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -41,11 +40,6 @@
                 <td>{{tasker.deletedAt | date:'medium'}}</td>
                 <td>
                     {{tasker.userId}}
-                </td>
-                <td>
-                    <div *ngIf="tasker.adressId">
-                        <a [routerLink]="['/address', tasker.adressId , 'view' ]" >{{tasker.adressId}}</a>
-                    </div>
                 </td>
                 <td class="text-right">
                     <div class="btn-group">

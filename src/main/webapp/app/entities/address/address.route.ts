@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
-import { Resolve, ActivatedRouteSnapshot, Routes } from '@angular/router';
+import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
 import { JhiResolvePagingParams } from 'ng-jhipster';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { Address } from 'app/shared/model/address.model';
 import { AddressService } from './address.service';
 import { AddressComponent } from './address.component';
@@ -17,10 +17,13 @@ import { IAddress } from 'app/shared/model/address.model';
 export class AddressResolve implements Resolve<IAddress> {
   constructor(private service: AddressService) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<IAddress> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IAddress> {
     const id = route.params['id'];
     if (id) {
-      return this.service.find(id).pipe(map((address: HttpResponse<Address>) => address.body));
+      return this.service.find(id).pipe(
+        filter((response: HttpResponse<Address>) => response.ok),
+        map((address: HttpResponse<Address>) => address.body)
+      );
     }
     return of(new Address());
   }

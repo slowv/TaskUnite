@@ -23,7 +23,6 @@
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
       "user": "User",
-      "adress": "Adress",
       "workingAddresses": "Working Addresses",
       "tasks": "Tasks",
       "taskCategories": "Task Categories"

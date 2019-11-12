@@ -289,4 +289,42 @@ public class AddressResourceIT {
         List<Address> addressList = addressRepository.findAll();
         assertThat(addressList).hasSize(databaseSizeBeforeDelete - 1);
     }
+
+    @Test
+    @Transactional
+    public void equalsVerifier() throws Exception {
+        TestUtil.equalsVerifier(Address.class);
+        Address address1 = new Address();
+        address1.setId(1L);
+        Address address2 = new Address();
+        address2.setId(address1.getId());
+        assertThat(address1).isEqualTo(address2);
+        address2.setId(2L);
+        assertThat(address1).isNotEqualTo(address2);
+        address1.setId(null);
+        assertThat(address1).isNotEqualTo(address2);
+    }
+
+    @Test
+    @Transactional
+    public void dtoEqualsVerifier() throws Exception {
+        TestUtil.equalsVerifier(AddressDTO.class);
+        AddressDTO addressDTO1 = new AddressDTO();
+        addressDTO1.setId(1L);
+        AddressDTO addressDTO2 = new AddressDTO();
+        assertThat(addressDTO1).isNotEqualTo(addressDTO2);
+        addressDTO2.setId(addressDTO1.getId());
+        assertThat(addressDTO1).isEqualTo(addressDTO2);
+        addressDTO2.setId(2L);
+        assertThat(addressDTO1).isNotEqualTo(addressDTO2);
+        addressDTO1.setId(null);
+        assertThat(addressDTO1).isNotEqualTo(addressDTO2);
+    }
+
+    @Test
+    @Transactional
+    public void testEntityFromId() {
+        assertThat(addressMapper.fromId(42L).getId()).isEqualTo(42);
+        assertThat(addressMapper.fromId(null)).isNull();
+    }
 }

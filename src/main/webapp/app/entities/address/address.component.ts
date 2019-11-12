@@ -2,9 +2,12 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiParseLinks } from 'ng-jhipster';
 
 import { IAddress } from 'app/shared/model/address.model';
+import { AccountService } from 'app/core/auth/account.service';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { AddressService } from './address.service';
@@ -14,6 +17,7 @@ import { AddressService } from './address.service';
   templateUrl: './address.component.html'
 })
 export class AddressComponent implements OnInit, OnDestroy {
+  currentAccount: any;
   addresses: IAddress[];
   error: any;
   success: any;
@@ -30,6 +34,7 @@ export class AddressComponent implements OnInit, OnDestroy {
   constructor(
     protected addressService: AddressService,
     protected parseLinks: JhiParseLinks,
+    protected accountService: AccountService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected eventManager: JhiEventManager
@@ -85,6 +90,9 @@ export class AddressComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadAll();
+    this.accountService.identity().subscribe(account => {
+      this.currentAccount = account;
+    });
     this.registerChangeInAddresses();
   }
 
@@ -97,7 +105,7 @@ export class AddressComponent implements OnInit, OnDestroy {
   }
 
   registerChangeInAddresses() {
-    this.eventSubscriber = this.eventManager.subscribe('addressListModification', () => this.loadAll());
+    this.eventSubscriber = this.eventManager.subscribe('addressListModification', response => this.loadAll());
   }
 
   sort() {

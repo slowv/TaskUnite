@@ -21,7 +21,7 @@ export class TaskerDeleteDialogComponent {
   }
 
   confirmDelete(id: number) {
-    this.taskerService.delete(id).subscribe(() => {
+    this.taskerService.delete(id).subscribe(response => {
       this.eventManager.broadcast({
         name: 'taskerListModification',
         content: 'Deleted an tasker'
@@ -46,11 +46,11 @@ export class TaskerDeletePopupComponent implements OnInit, OnDestroy {
         this.ngbModalRef = this.modalService.open(TaskerDeleteDialogComponent as Component, { size: 'lg', backdrop: 'static' });
         this.ngbModalRef.componentInstance.tasker = tasker;
         this.ngbModalRef.result.then(
-          () => {
+          result => {
             this.router.navigate(['/tasker', { outlets: { popup: null } }]);
             this.ngbModalRef = null;
           },
-          () => {
+          reason => {
             this.router.navigate(['/tasker', { outlets: { popup: null } }]);
             this.ngbModalRef = null;
           }

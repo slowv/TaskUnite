@@ -21,7 +21,7 @@ export class AddressDeleteDialogComponent {
   }
 
   confirmDelete(id: number) {
-    this.addressService.delete(id).subscribe(() => {
+    this.addressService.delete(id).subscribe(response => {
       this.eventManager.broadcast({
         name: 'addressListModification',
         content: 'Deleted an address'
@@ -46,11 +46,11 @@ export class AddressDeletePopupComponent implements OnInit, OnDestroy {
         this.ngbModalRef = this.modalService.open(AddressDeleteDialogComponent as Component, { size: 'lg', backdrop: 'static' });
         this.ngbModalRef.componentInstance.address = address;
         this.ngbModalRef.result.then(
-          () => {
+          result => {
             this.router.navigate(['/address', { outlets: { popup: null } }]);
             this.ngbModalRef = null;
           },
-          () => {
+          reason => {
             this.router.navigate(['/address', { outlets: { popup: null } }]);
             this.ngbModalRef = null;
           }

@@ -38,15 +38,9 @@ public class Tasker implements Serializable {
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
-    @OneToOne(fetch = FetchType.LAZY)
-
+    @OneToOne
     @JoinColumn(unique = true)
     private User user;
-
-    @OneToOne(fetch = FetchType.LAZY)
-
-    @JoinColumn(unique = true)
-    private Address adress;
 
     @OneToMany(mappedBy = "tasker")
     private Set<Address> workingAddresses = new HashSet<>();
@@ -158,19 +152,6 @@ public class Tasker implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Address getAdress() {
-        return adress;
-    }
-
-    public Tasker adress(Address address) {
-        this.adress = address;
-        return this;
-    }
-
-    public void setAdress(Address address) {
-        this.adress = address;
     }
 
     public Set<Address> getWorkingAddresses() {

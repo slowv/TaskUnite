@@ -23,7 +23,6 @@ import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
 
 /**
  * REST controller for managing {@link com.t1708e.taskunite.domain.Address}.
@@ -91,16 +90,10 @@ public class AddressResource {
 
      * @param pageable the pagination information.
 
-     * @param filter the filter of the request.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of addresses in body.
      */
     @GetMapping("/addresses")
-    public ResponseEntity<List<AddressDTO>> getAllAddresses(Pageable pageable, @RequestParam(required = false) String filter) {
-        if ("tasker-is-null".equals(filter)) {
-            log.debug("REST request to get all Addresss where tasker is null");
-            return new ResponseEntity<>(addressService.findAllWhereTaskerIsNull(),
-                    HttpStatus.OK);
-        }
+    public ResponseEntity<List<AddressDTO>> getAllAddresses(Pageable pageable) {
         log.debug("REST request to get a page of Addresses");
         Page<AddressDTO> page = addressService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);

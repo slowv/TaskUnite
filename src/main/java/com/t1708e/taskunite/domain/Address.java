@@ -1,5 +1,4 @@
 package com.t1708e.taskunite.domain;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -35,20 +34,15 @@ public class Address implements Serializable {
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
-    @OneToOne(fetch = FetchType.LAZY)
-
+    @OneToOne
     @JoinColumn(unique = true)
     private User user;
 
-    @OneToOne(mappedBy = "adress")
-    @JsonIgnore
-    private Tasker tasker;
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JsonIgnoreProperties("addresses")
     private District dictrict;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JsonIgnoreProperties("workingAddresses")
     private Tasker tasker;
 
@@ -137,19 +131,6 @@ public class Address implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Tasker getTasker() {
-        return tasker;
-    }
-
-    public Address tasker(Tasker tasker) {
-        this.tasker = tasker;
-        return this;
-    }
-
-    public void setTasker(Tasker tasker) {
-        this.tasker = tasker;
     }
 
     public District getDictrict() {

@@ -5,7 +5,6 @@ import com.t1708e.taskunite.service.dto.AddressDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -28,12 +27,6 @@ public interface AddressService {
      * @return the list of entities.
      */
     Page<AddressDTO> findAll(Pageable pageable);
-    /**
-     * Get all the AddressDTO where Tasker is {@code null}.
-     *
-     * @return the list of entities.
-     */
-    List<AddressDTO> findAllWhereTaskerIsNull();
 
 
     /**

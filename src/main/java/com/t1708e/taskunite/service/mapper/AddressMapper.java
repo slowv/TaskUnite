@@ -17,7 +17,6 @@ public interface AddressMapper extends EntityMapper<AddressDTO, Address> {
     AddressDTO toDto(Address address);
 
     @Mapping(source = "userId", target = "user")
-    @Mapping(target = "tasker", ignore = true)
     @Mapping(source = "dictrictId", target = "dictrict")
     @Mapping(source = "taskerId", target = "tasker")
     Address toEntity(AddressDTO addressDTO);

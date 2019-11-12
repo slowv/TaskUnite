@@ -27,8 +27,6 @@ public class TaskerDTO implements Serializable {
 
     private Long userId;
 
-    private Long adressId;
-
     private Set<TaskCategoryDTO> taskCategories = new HashSet<>();
 
     public Long getId() {
@@ -95,14 +93,6 @@ public class TaskerDTO implements Serializable {
         this.userId = userId;
     }
 
-    public Long getAdressId() {
-        return adressId;
-    }
-
-    public void setAdressId(Long addressId) {
-        this.adressId = addressId;
-    }
-
     public Set<TaskCategoryDTO> getTaskCategories() {
         return taskCategories;
     }
@@ -143,7 +133,6 @@ public class TaskerDTO implements Serializable {
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
             ", user=" + getUserId() +
-            ", adress=" + getAdressId() +
             "}";
     }
 }

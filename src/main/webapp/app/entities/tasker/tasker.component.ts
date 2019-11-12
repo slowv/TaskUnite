@@ -2,9 +2,12 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiParseLinks } from 'ng-jhipster';
 
 import { ITasker } from 'app/shared/model/tasker.model';
+import { AccountService } from 'app/core/auth/account.service';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { TaskerService } from './tasker.service';
@@ -14,6 +17,7 @@ import { TaskerService } from './tasker.service';
   templateUrl: './tasker.component.html'
 })
 export class TaskerComponent implements OnInit, OnDestroy {
+  currentAccount: any;
   taskers: ITasker[];
   error: any;
   success: any;
@@ -30,6 +34,7 @@ export class TaskerComponent implements OnInit, OnDestroy {
   constructor(
     protected taskerService: TaskerService,
     protected parseLinks: JhiParseLinks,
+    protected accountService: AccountService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected eventManager: JhiEventManager
@@ -85,6 +90,9 @@ export class TaskerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadAll();
+    this.accountService.identity().subscribe(account => {
+      this.currentAccount = account;
+    });
     this.registerChangeInTaskers();
   }
 
@@ -97,7 +105,7 @@ export class TaskerComponent implements OnInit, OnDestroy {
   }
 
   registerChangeInTaskers() {
-    this.eventSubscriber = this.eventManager.subscribe('taskerListModification', () => this.loadAll());
+    this.eventSubscriber = this.eventManager.subscribe('taskerListModification', response => this.loadAll());
   }
 
   sort() {

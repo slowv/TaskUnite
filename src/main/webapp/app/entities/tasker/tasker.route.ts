@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
-import { Resolve, ActivatedRouteSnapshot, Routes } from '@angular/router';
+import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
 import { JhiResolvePagingParams } from 'ng-jhipster';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { Tasker } from 'app/shared/model/tasker.model';
 import { TaskerService } from './tasker.service';
 import { TaskerComponent } from './tasker.component';
@@ -17,10 +17,13 @@ import { ITasker } from 'app/shared/model/tasker.model';
 export class TaskerResolve implements Resolve<ITasker> {
   constructor(private service: TaskerService) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<ITasker> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ITasker> {
     const id = route.params['id'];
     if (id) {
-      return this.service.find(id).pipe(map((tasker: HttpResponse<Tasker>) => tasker.body));
+      return this.service.find(id).pipe(
+        filter((response: HttpResponse<Tasker>) => response.ok),
+        map((tasker: HttpResponse<Tasker>) => tasker.body)
+      );
     }
     return of(new Tasker());
   }

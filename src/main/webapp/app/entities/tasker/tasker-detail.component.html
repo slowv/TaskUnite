@@ -33,12 +33,6 @@
                 <dd>
                     {{tasker.userId}}
                 </dd>
-                <dt><span jhiTranslate="taskuniteApp.tasker.adress">Adress</span></dt>
-                <dd>
-                    <div *ngIf="tasker.adressId">
-                        <a [routerLink]="['/address', tasker.adressId, 'view']">{{tasker.adressId}}</a>
-                    </div>
-                </dd>
                 <dt><span jhiTranslate="taskuniteApp.tasker.taskCategories">Task Categories</span></dt>
                 <dd>
                     <span *ngFor="let taskCategories of tasker.taskCategories; let last = last">

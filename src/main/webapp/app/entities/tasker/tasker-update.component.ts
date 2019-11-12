@@ -5,6 +5,7 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
@@ -12,8 +13,6 @@ import { ITasker, Tasker } from 'app/shared/model/tasker.model';
 import { TaskerService } from './tasker.service';
 import { IUser } from 'app/core/user/user.model';
 import { UserService } from 'app/core/user/user.service';
-import { IAddress } from 'app/shared/model/address.model';
-import { AddressService } from 'app/entities/address/address.service';
 import { ITaskCategory } from 'app/shared/model/task-category.model';
 import { TaskCategoryService } from 'app/entities/task-category/task-category.service';
 
@@ -26,8 +25,6 @@ export class TaskerUpdateComponent implements OnInit {
 
   users: IUser[];
 
-  adresses: IAddress[];
-
   taskcategories: ITaskCategory[];
 
   editForm = this.fb.group({
@@ -39,7 +36,6 @@ export class TaskerUpdateComponent implements OnInit {
     updatedAt: [],
     deletedAt: [],
     userId: [],
-    adressId: [],
     taskCategories: []
   });
 
@@ -47,7 +43,6 @@ export class TaskerUpdateComponent implements OnInit {
     protected jhiAlertService: JhiAlertService,
     protected taskerService: TaskerService,
     protected userService: UserService,
-    protected addressService: AddressService,
     protected taskCategoryService: TaskCategoryService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -60,28 +55,18 @@ export class TaskerUpdateComponent implements OnInit {
     });
     this.userService
       .query()
-      .subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body), (res: HttpErrorResponse) => this.onError(res.message));
-    this.addressService.query({ filter: 'tasker-is-null' }).subscribe(
-      (res: HttpResponse<IAddress[]>) => {
-        if (!this.editForm.get('adressId').value) {
-          this.adresses = res.body;
-        } else {
-          this.addressService
-            .find(this.editForm.get('adressId').value)
-            .subscribe(
-              (subRes: HttpResponse<IAddress>) => (this.adresses = [subRes.body].concat(res.body)),
-              (subRes: HttpErrorResponse) => this.onError(subRes.message)
-            );
-        }
-      },
-      (res: HttpErrorResponse) => this.onError(res.message)
-    );
+      .pipe(
+        filter((mayBeOk: HttpResponse<IUser[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IUser[]>) => response.body)
+      )
+      .subscribe((res: IUser[]) => (this.users = res), (res: HttpErrorResponse) => this.onError(res.message));
     this.taskCategoryService
       .query()
-      .subscribe(
-        (res: HttpResponse<ITaskCategory[]>) => (this.taskcategories = res.body),
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
+      .pipe(
+        filter((mayBeOk: HttpResponse<ITaskCategory[]>) => mayBeOk.ok),
+        map((response: HttpResponse<ITaskCategory[]>) => response.body)
+      )
+      .subscribe((res: ITaskCategory[]) => (this.taskcategories = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(tasker: ITasker) {
@@ -94,7 +79,6 @@ export class TaskerUpdateComponent implements OnInit {
       updatedAt: tasker.updatedAt != null ? tasker.updatedAt.format(DATE_TIME_FORMAT) : null,
       deletedAt: tasker.deletedAt != null ? tasker.deletedAt.format(DATE_TIME_FORMAT) : null,
       userId: tasker.userId,
-      adressId: tasker.adressId,
       taskCategories: tasker.taskCategories
     });
   }
@@ -127,7 +111,6 @@ export class TaskerUpdateComponent implements OnInit {
       deletedAt:
         this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
       userId: this.editForm.get(['userId']).value,
-      adressId: this.editForm.get(['adressId']).value,
       taskCategories: this.editForm.get(['taskCategories']).value
     };
   }
@@ -149,10 +132,6 @@ export class TaskerUpdateComponent implements OnInit {
   }
 
   trackUserById(index: number, item: IUser) {
-    return item.id;
-  }
-
-  trackAddressById(index: number, item: IAddress) {
     return item.id;
   }
 

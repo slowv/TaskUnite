@@ -51,13 +51,6 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskuniteApp.tasker.adress" for="field_adress">Adress</label>
-                    <select class="form-control" id="field_adress" name="adress" formControlName="adressId">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="addressOption.id" *ngFor="let addressOption of adresses; trackBy: trackAddressById">{{addressOption.id}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label jhiTranslate="taskuniteApp.tasker.taskCategories" for="field_taskCategories">Task Categories</label>
                     <select class="form-control" id="field_taskCategories" multiple name="taskCategories" formControlName="taskCategories">
                         <option [ngValue]="getSelected(editForm.get('taskCategories').value, taskCategoryOption)" *ngFor="let taskCategoryOption of taskcategories; trackBy: trackTaskCategoryById">{{taskCategoryOption.id}}</option>
