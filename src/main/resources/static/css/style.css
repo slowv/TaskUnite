@@ -1,4 +1,4 @@
-/* Base */
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=vietnamese');
 body {
   line-height: 1.7;
   color: rgba(0, 0, 0, 0.5);
@@ -209,7 +209,7 @@ a:hover {
 
 .bg-image {
   background-size: cover;
-  background-repeat: no-rpeeat;
+  background-repeat: no-repeat;
   overflow: hidden;
   background-position: center center;
 }
@@ -217,7 +217,7 @@ a:hover {
   background-position: top center;
 }
 .bg-image.fixed {
-  background-position: fixed !important;
+  background-position: center !important;
 }
 .bg-image.overlay,
 .bg-image.overlay-primary,
@@ -1237,4 +1237,23 @@ a:hover {
   background: #28a745;
   color: #fff;
   border: 1px solid transparent;
+}
+
+/*MY CSS*/
+
+.text-pink {
+  color: #ff449c;
+}
+.text-purple {
+  color: #7971ea;
+}
+.text-secondary {
+  color: #6c757d;
+}
+
+.job-des-preview {
+  text-overflow: ellipsis;
+  max-width: 250px;
+  overflow: hidden;
+  white-space: nowrap !important;
 }

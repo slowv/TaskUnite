@@ -5,7 +5,7 @@
     <th:block th:fragment="head">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Work+Sans:300,400,700" rel="stylesheet">
+        <link rel="icon" type="image/png" th:href="@{images/favicon.png}">
         <link rel="stylesheet" th:href="@{/fonts/icomoon/style.css}">
         <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
         <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
@@ -14,7 +14,7 @@
         <link rel="stylesheet" th:href="@{/css/owl.theme.default.min.css}">
         <link rel="stylesheet" th:href="@{/css/bootstrap-datepicker.css}">
         <link rel="stylesheet" th:href="@{/css/animate.css}">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+        <link rel="stylesheet" th:href="@{/css/mediaelementplayer.min.css}">
         <link rel="stylesheet" th:href="@{/fonts/flaticon/font/flaticon.css}">
         <link rel="stylesheet" th:href="@{/css/aos.css}">
         <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -42,26 +42,24 @@
                     <div class="row align-items-center">
                         <div class="col-2">
                             <h2 class="mb-0 site-logo">
-                                <a href="#">Job<strong class="font-weight-bold">Finder</strong>
+                                <a th:href="@{/}">
+                                    <img th:src="@{/images/logo.png}" th:alt="#{web.name}" th:height="50">
                                 </a>
                             </h2>
                         </div>
                         <div class="col-10">
                             <nav class="site-navigation text-right" role="navigation">
                                 <div class="container">
-                                    <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#"
-                                                                                                  class="site-menu-toggle js-menu-toggle text-black"><span
-                                        class="icon-menu h3"></span></a></div>
-
+                                    <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3">
+                                        <a href="#" class="site-menu-toggle js-menu-toggle text-black">
+                                            <span class="icon-menu h3"></span>
+                                        </a>
+                                    </div>
                                     <ul class="site-menu js-clone-nav d-none d-lg-block">
-                                        <li><a href="categories.html">For Candidates</a></li>
                                         <li class="has-children">
-                                            <a href="category.html">For Employees</a>
+                                            <a href="category.html" th:text="#{home.category}">Category</a>
                                             <ul class="dropdown arrow-top">
-                                                <li><a href="category.html">Category</a></li>
-                                                <li><a href="#">Browse Candidates</a></li>
-                                                <li><a href="new-post.html">Post a Job</a></li>
-                                                <li><a href="#">Employeer Profile</a></li>
+                                                <li><a href="#">Category</a></li>
                                                 <li class="has-children">
                                                     <a href="#">More Links</a>
                                                     <ul class="dropdown">
@@ -70,13 +68,32 @@
                                                         <li><a href="#">Employeer Profile</a></li>
                                                     </ul>
                                                 </li>
-
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="new-post.html"><span
-                                            class="bg-primary text-white py-3 px-4 rounded"><span
-                                            class="icon-plus mr-3"></span>Post New Job</span></a></li>
+                                        <li class="has-children">
+                                            <a href="category.html" th:text="#{home.services}">Category</a>
+                                            <ul class="dropdown arrow-top">
+                                                <li><a href="#">Services</a></li>
+                                                <li class="has-children">
+                                                    <a href="#">More Links</a>
+                                                    <ul class="dropdown">
+                                                        <li><a href="#">Browse Candidates</a></li>
+                                                        <li><a href="#">Post a Job</a></li>
+                                                        <li><a href="#">Employeer Profile</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a th:href="@{/contact}" th:text="#{home.contact}">Contact</a></li>
+                                        <li><a href="#" th:text="#{home.sign-in}">Sign in</a></li>
+                                        <li>
+                                            <a th:href="@{/task/create}">
+                                                <span class="bg-primary text-white py-3 px-4 rounded">
+                                                    <span class="icon-plus mr-2" style="margin-top: -2px;"></span>
+                                                    <th:block th:text="#{home.post-new-job}"> </th:block>
+                                                </span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </nav>
@@ -88,12 +105,9 @@
     </div>
 </th:block>
 
-
 <th:block th:fragment="footer">
     <footer class="site-footer">
         <div class="container">
-
-
             <div class="row">
                 <div class="col-md-4">
                     <h3 class="footer-heading mb-4 text-white">About</h3>
@@ -125,8 +139,6 @@
                         </div>
                     </div>
                 </div>
-
-
                 <div class="col-md-2">
                     <div class="col-md-12"><h3 class="footer-heading mb-4 text-white">Social Icons</h3></div>
                     <div class="col-md-12">
@@ -148,10 +160,9 @@
                         <script data-cfasync="false"
                                 src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
                         <script>document.write(new Date().getFullYear());</script>
-                        All Rights Reserved | This template is made with <i class="icon-heart text-warning"
-                                                                            aria-hidden="true"></i> by <a
-                        href="https://colorlib.com" target="_blank">Colorlib</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        All Rights Reserved | This template is made with
+                        <i class="icon-heart text-warning" ria-hidden="true"></i> by
+                        <a href="https://colorlib.com" target="_blank">Colorlib</a>
                     </p>
                 </div>
 
@@ -175,26 +186,25 @@
     <script th:src="@{/js/aos.js}"></script>
     <script th:src="@{/js/mediaelement-and-player.min.js}"></script>
     <script th:src="@{/js/main.js}"></script>
-    <!--    <script>-->
-    <!--        document.addEventListener('DOMContentLoaded', function() {-->
-    <!--            var mediaElements = document.querySelectorAll('video, audio'), total = mediaElements.length;-->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var mediaElements = document.querySelectorAll('video, audio'), total = mediaElements.length;
 
-    <!--            for (var i = 0; i < total; i++) {-->
-    <!--                new MediaElementPlayer(mediaElements[i], {-->
-    <!--                    pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',-->
-    <!--                    shimScriptAccess: 'always',-->
-    <!--                    success: function () {-->
-    <!--                        var target = document.body.querySelectorAll('.player'), targetTotal = target.length;-->
-    <!--                        for (var j = 0; j < targetTotal; j++) {-->
-    <!--                            target[j].style.visibility = 'visible';-->
-    <!--                        }-->
-    <!--                    }-->
-    <!--                });-->
-    <!--            }-->
-    <!--        });-->
-    <!--    </script>-->
-    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&libraries=places&callback=initAutocomplete"-->
-    <!--        async defer></script>-->
+                for (var i = 0; i < total; i++) {
+                    new MediaElementPlayer(mediaElements[i], {
+                        pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
+                        shimScriptAccess: 'always',
+                        success: function () {
+                            var target = document.body.querySelectorAll('.player'), targetTotal = target.length;
+                            for (var j = 0; j < targetTotal; j++) {
+                                target[j].style.visibility = 'visible';
+                            }
+                        }
+                    });
+                }
+            });
+        </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHAsBwcpdVr3Yrr6N2szcfMK5MYdfi3k0&libraries=places&callback=initAutocomplete" async defer></script>
 </th:block>
 </body>
 </html>
