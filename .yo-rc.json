@@ -1,0 +1,41 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "org.t1708e.taskunite",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.3.1",
+    "applicationType": "monolith",
+    "baseName": "TaskUnite",
+    "packageName": "org.t1708e.taskunite",
+    "packageFolder": "org/t1708e/taskunite",
+    "serverPort": "8080",
+    "authenticationType": "session",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "rememberMeKey": "67b4518537fce36a026979c865207869f993785c0340891cc08098688b73dba69ed0736318a98072363e036bf33797895bf0",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en", "vi"],
+    "blueprints": []
+  }
+}
