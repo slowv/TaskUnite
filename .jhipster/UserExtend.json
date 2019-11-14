@@ -1,0 +1,73 @@
+{
+    "name": "UserExtend",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "userExtend",
+            "relationshipName": "userLogin",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "message",
+            "otherEntityRelationshipName": "sender",
+            "relationshipName": "sendingMessages"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "message",
+            "otherEntityRelationshipName": "receiver",
+            "relationshipName": "receivingMessages"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "review",
+            "otherEntityRelationshipName": "user",
+            "relationshipName": "reviews"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "notification",
+            "otherEntityRelationshipName": "user",
+            "relationshipName": "notifications"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "tasker",
+            "otherEntityRelationshipName": "user",
+            "relationshipName": "tasker",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "master",
+            "otherEntityRelationshipName": "user",
+            "relationshipName": "master",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "address",
+            "otherEntityRelationshipName": "user",
+            "relationshipName": "address",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20191114125858",
+    "entityTableName": "user_extend",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

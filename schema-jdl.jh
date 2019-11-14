@@ -1,0 +1,174 @@
+
+
+// entity User {
+// 	   username String
+//     password String
+//     name String
+//     phone String
+//     email String
+//     avatar String
+//     status Integer
+//     createdAt Instant
+//     updatedAt Instant
+//     deletedAt Instant
+// }
+
+entity UserExtend {
+    name String
+}
+
+entity Tasker {
+	level Integer
+    pricePerHour Double
+    status Integer
+    createdAt Instant
+    updatedAt Instant
+    deletedAt Instant
+}
+
+
+
+entity Master {
+	status Integer
+    createdAt Instant
+    updatedAt Instant
+    deletedAt Instant
+}
+
+
+
+entity Task {
+	description String
+    planDate Instant
+    totalPrice Double
+    status Integer
+    createdAt Instant
+    updatedAt Instant
+    deletedAt Instant
+}
+
+
+
+entity TaskCategory {
+	name String
+    description String
+    image String
+	status Integer
+    createdAt Instant
+    updatedAt Instant
+    deletedAt Instant
+}
+
+
+
+entity City {
+	name String
+    status Integer
+    createdAt Instant
+    updatedAt Instant
+    deletedAt Instant
+}
+
+
+
+entity District {
+	name String
+    status Integer
+    createdAt Instant
+    updatedAt Instant
+    deletedAt Instant
+}
+
+
+
+entity Address {
+	street String
+    status Integer
+    createdAt Instant
+    updatedAt Instant
+    deletedAt Instant
+}
+
+
+// entity Role {
+// 	name String
+//     status Integer
+//     createdAt Instant
+//     updatedAt Instant
+//     deletedAt Instant
+// }
+
+
+
+entity Notification {
+	content String
+    status Integer
+    createdAt Instant
+    updatedAt Instant
+    deletedAt Instant
+}
+
+
+
+entity Review {
+	content String
+    start Float
+    status Integer
+    createdAt Instant
+    updatedAt Instant
+    deletedAt Instant
+}
+
+
+
+entity Message {
+	body String
+    status Integer
+    createdAt Instant
+    updatedAt Instant
+    deletedAt Instant
+}
+
+/**
+ * One to many relationship.
+ */
+relationship OneToMany {
+    City{districts} to District{city}
+    Task{messages} to Message{task}
+    District{addresses} to Address{dictrict}
+    // Role{users} to User{role}
+    Tasker{workingAddresses} to Address{tasker}
+    Tasker{tasks} to Task{tasker}
+    Master{tasks} to Task{master}
+    Task{reviews} to Review{task}
+    UserExtend{sendingMessages} to Message{sender}
+    UserExtend{receivingMessages} to Message{receiver}
+    UserExtend{reviews} to Review{user}
+    UserExtend{notifications} to Notification{user}
+}
+
+/**
+ * Many to one relationship.
+ */
+// relationship ManyToOne {
+    
+// }
+
+/**
+ * One to one relationship.
+ */
+relationship OneToOne {
+    Tasker{user} to UserExtend{tasker}
+    Master{user} to UserExtend{master}
+    Address{user} to UserExtend{address}
+    UserExtend{userLogin} to User{userExtend}
+}
+
+relationship ManyToMany {
+    Task{taskCategories} to TaskCategory{tasks}
+    Tasker{taskCategories} to TaskCategory{taskers}
+}
+
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination

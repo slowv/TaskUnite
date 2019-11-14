@@ -1,0 +1,30 @@
+{
+  "taskUniteApp": {
+    "userExtend": {
+      "home": {
+        "title": "User Extends",
+        "createLabel": "Thêm mới một User Extend",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật User Extend",
+        "notFound": "No User Extends found"
+      },
+      "created": "Một User Extend mới được tạo với định danh {{ param }}",
+      "updated": "Một User Extend cập nhật với định danh {{ param }}",
+      "deleted": "Một User Extend đã xóa với định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa User Extend {{ id }}?"
+      },
+      "detail": {
+        "title": "User Extend"
+      },
+      "name": "Name",
+      "userLogin": "User Login",
+      "sendingMessages": "Sending Messages",
+      "receivingMessages": "Receiving Messages",
+      "reviews": "Reviews",
+      "notifications": "Notifications",
+      "tasker": "Tasker",
+      "master": "Master",
+      "address": "Address"
+    }
+  }
+}

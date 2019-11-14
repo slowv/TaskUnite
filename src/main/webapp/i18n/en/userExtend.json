@@ -1,0 +1,30 @@
+{
+  "taskUniteApp": {
+    "userExtend": {
+      "home": {
+        "title": "User Extends",
+        "createLabel": "Create a new User Extend",
+        "createOrEditLabel": "Create or edit a User Extend",
+        "notFound": "No User Extends found"
+      },
+      "created": "A new User Extend is created with identifier {{ param }}",
+      "updated": "A User Extend is updated with identifier {{ param }}",
+      "deleted": "A User Extend is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete User Extend {{ id }}?"
+      },
+      "detail": {
+        "title": "User Extend"
+      },
+      "name": "Name",
+      "userLogin": "User Login",
+      "sendingMessages": "Sending Messages",
+      "receivingMessages": "Receiving Messages",
+      "reviews": "Reviews",
+      "notifications": "Notifications",
+      "tasker": "Tasker",
+      "master": "Master",
+      "address": "Address"
+    }
+  }
+}

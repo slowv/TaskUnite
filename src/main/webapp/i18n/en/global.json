@@ -7,6 +7,17 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "userExtend": "User Extend",
+        "tasker": "Tasker",
+        "master": "Master",
+        "task": "Task",
+        "taskCategory": "Task Category",
+        "city": "City",
+        "district": "District",
+        "address": "Address",
+        "notification": "Notification",
+        "review": "Review",
+        "message": "Message",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
