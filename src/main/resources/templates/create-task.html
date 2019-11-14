@@ -1,35 +1,100 @@
 <!DOCTYPE html>
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Job Finder &mdash; Colorlib Website Template</title>
+    <title>Create Task</title>
     <th:block th:include="fragment/layout :: head"> </th:block>
 </head>
 <body>
 
 <div class="site-wrap">
 
-    <th:block th:include="fragment/layout :: site-mobile-memu"> </th:block>
+<!--    <th:block th:include="fragment/layout :: site-mobile-memu"> </th:block>-->
 
-    <th:block th:include="fragment/layout :: site-navbar"> </th:block>
+<!--    <th:block th:include="fragment/layout :: site-navbar"> </th:block>-->
 
-    <div style="height: 113px;"></div>
+<!--    <div style="height: 113px;"></div>-->
 
-    <div class="unit-5 overlay" th:style="'background-image: url(' + @{/images/hero_1.jpg} + ');'"
-         style="background-image: url('images/hero_1.jpg');">
-        <div class="container text-center">
-            <h2 class="mb-0">Post a Job</h2>
-            <p class="mb-0 unit-6"><a href="index.html">Home</a> <span class="sep">></span> <span>Post a Job</span></p>
+<!--    <div class="unit-5 overlay" th:style="'background-image: url(' + @{/images/hero_1.jpg} + ');'"-->
+<!--         style="background-image: url('images/hero_1.jpg');">-->
+<!--        <div class="container text-center">-->
+<!--            <h2 class="mb-0">Post a Job</h2>-->
+<!--            <p class="mb-0 unit-6"><a href="index.html">Home</a> <span class="sep">></span> <span>Post a Job</span></p>-->
+<!--        </div>-->
+<!--    </div>-->
+    <div class="mt-4 mb-3">
+        <div class="container">
+            <div class="row border-bottom pb-3">
+                <div class="col-md-1 box-logo-step">
+                    <img th:src="@{/images/logo1.png}" class="logo-step" alt="TaskUnite">
+                </div>
+                <div class="col-md-9 offset-md-2">
+                    <div class="box-step">
+                        <div class="step active st1">
+                            <div class="box-circle">
+                                <div class="circle">1</div>
+                            </div>
+                            <div class="box-line">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step">
+                                Thông tin công việc
+                            </div>
+                        </div>
+                        <div class="step active st2">
+                            <div class="box-circle">
+                                <div class="circle">2</div>
+                            </div>
+                            <div class="box-line ">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step">
+                                Tác vụ & Giá tiền
+                            </div>
+                        </div>
+                        <div class="step st3 active">
+                            <div class="box-circle">
+                                <div class="circle">3</div>
+                            </div>
+                            <div class="box-line">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step">
+                                Đặt lịch
+                            </div>
+                        </div>
+                        <div class="step st4">
+                            <div class="box-circle">
+                                <div class="circle">4</div>
+                            </div>
+                            <div class="name-step">
+                                Xác nhận
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 p-0 mt-1">
+                    <div class="build-progress__sub-bar">
+                        <div class="build-progress__sub-bar__container">
+                            <img th:src="@{/images/pen.svg}" class="build-progress__sub-bar__icon" alt="form">
+                            <div class="build-progress__sub-bar__message">
+                                <span>
+                                    Hãy cho chúng tôi về công việc của bạn, để hiển thị nhân viên trong khu vực của bạn phù hợp với nhu cầu của bạn.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="site-section bg-light">
         <div class="container">
             <div class="row">
-
                 <div class="col-md-12 col-lg-8 mb-5">
-
                     <form action="#" class="p-5 bg-white">
-
                         <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
                                 <label for="option-price-1">
@@ -129,7 +194,7 @@
                     <div class="p-4 mb-3 bg-white">
                         <h3 class="h5 text-black mb-3">More Info</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ad iure porro mollitia architecto hic consequuntur. Distinctio nisi perferendis dolore, ipsa consectetur</p>
-                        <p><a href="#" class="btn btn-primary  py-2 px-4">Learn More</a></p>
+                        <p><a href="#" class="btn btn-primary  py-2 px-4 text-white">Learn More</a></p>
                     </div>
                 </div>
             </div>
@@ -200,5 +265,6 @@
     <th:block th:include="fragment/layout :: footer"> </th:block>
 </div>
 <th:block th:include="fragment/layout :: javascript"> </th:block>
+<script th:src="@{/js/task-step.js}"></script>
 </body>
 </html>
