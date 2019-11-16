@@ -1467,6 +1467,10 @@ a:hover {
   display: table;
 }
 
+#form-task textarea{
+  min-height: 150px;
+}
+
 .box-step .box-circle .circle {
   float: left;
   width: 25px;
@@ -1492,7 +1496,7 @@ a:hover {
 }
 
 .box-step .step:nth-child(2) .name-step {
-  margin-left: -20%;
+  margin-left: -22%;
 }
 
 .box-step .step:nth-child(3) .name-step {
@@ -1527,6 +1531,10 @@ a:hover {
   margin: 1rem 1rem;
 }
 
+.d-inline {
+  display: inline !important;
+}
+
 .build-progress__sub-bar__icon {
   margin-right: 1rem;
   height: 34px;
@@ -1537,12 +1545,23 @@ a:hover {
   color: #242a30;
 }
 
-.color-primary {
-  color: #c4592b;
+.error-msg {
+  font-size: 12px;
+  font-style: italic;
+  text-transform: none;
+  margin-left: 5px;
 }
 
+.text-bold {
+  font-weight: 600;
+}
+
+/*.color-primary {*/
+/*  color: #c4592b;*/
+/*}*/
+
 .task-box {
-  border-color: #b9b9b9 !important;
+  border-color: #c9c9c9 !important;
   border-radius: 5px;
   padding: 1.375rem;
 }
@@ -1568,7 +1587,7 @@ a:hover {
   color: #aeaeae;
 }
 
-.task-box .status-task-box{
+.task-box .status-task-box {
   cursor: pointer;
 }
 
@@ -1585,21 +1604,21 @@ a:hover {
 }
 
 /*RESET CSS Bootstrap*/
-.btn-primary {
-  border-color: #9a4d28;
-  background: #c4592b;
-  color: #fff;
-}
+/*.btn-primary {*/
+/*  border-color: #9a4d28;*/
+/*  background: #c4592b;*/
+/*  color: #fff;*/
+/*}*/
 
-.btn-primary:hover {
-  background: #d65c2b;
-  border-color: #b3612d;
-}
+/*.btn-primary:hover {*/
+/*  background: #d65c2b;*/
+/*  border-color: #b3612d;*/
+/*}*/
 
-.text-success {
-  color: #c4592b !important;
-}
+/*.text-success {*/
+/*  color: #c4592b !important;*/
+/*}*/
 
-a {
-  color: #c4592b !important;
-}
+/*a {*/
+/*  color: #c4592b !important;*/
+/*}*/
