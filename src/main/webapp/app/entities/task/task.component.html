@@ -18,6 +18,7 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="title"><span jhiTranslate="taskUniteApp.task.title">Title</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="description"><span jhiTranslate="taskUniteApp.task.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="planDate"><span jhiTranslate="taskUniteApp.task.planDate">Plan Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="totalPrice"><span jhiTranslate="taskUniteApp.task.totalPrice">Total Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -33,6 +34,7 @@
             <tbody>
             <tr *ngFor="let task of tasks ;trackBy: trackId">
                 <td><a [routerLink]="['/task', task.id, 'view' ]">{{task.id}}</a></td>
+                <td>{{task.title}}</td>
                 <td>{{task.description}}</td>
                 <td>{{task.planDate | date:'medium'}}</td>
                 <td>{{task.totalPrice}}</td>

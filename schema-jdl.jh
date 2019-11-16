@@ -38,6 +38,7 @@ entity Master {
 
 
 entity Task {
+    title String
 	description String
     planDate Instant
     totalPrice Double
