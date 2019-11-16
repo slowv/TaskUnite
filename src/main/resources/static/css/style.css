@@ -1406,12 +1406,18 @@ a:hover {
 
 /*MY CSS*/
 
+/*create task step 1*/
+
 .text-pink {
   color: #ff449c;
 }
 
 .text-purple {
   color: #7971ea;
+}
+
+.text-orange {
+  color: #fd7e14;
 }
 
 .text-secondary {
@@ -1467,7 +1473,7 @@ a:hover {
   display: table;
 }
 
-#form-task textarea{
+#form-task textarea {
   min-height: 150px;
 }
 
@@ -1554,6 +1560,7 @@ a:hover {
 
 .text-bold {
   font-weight: 600;
+  color: #3b3b3b;
 }
 
 /*.color-primary {*/
@@ -1591,7 +1598,7 @@ a:hover {
   cursor: pointer;
 }
 
-.task-box select[name="option-address"], .task-box select[name="option-address"]:focus {
+.task-box select[name="option-address"], .task-box select[name="option-address"]:focus{
   color: #6f6f6f;
   padding: 5px;
   border: none;
@@ -1599,8 +1606,153 @@ a:hover {
   border-bottom: 1px solid #f1f1f1;
 }
 
+#filter-option{
+  padding: 7px;
+  border: none;
+  border: 1px solid #9c9c9c;
+  border-radius: 3px;
+}
+
 .task-box .text-label {
   color: #616161;
+}
+
+/*create task step 2*/
+.recommendations__trust-safety__box {
+  color: #242a30;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -webkit-box-direction: normal;
+  box-sizing: border-box;
+  margin: 5px;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+  background: white;
+  border: 1px solid #dce0e6;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+  padding: 1rem 1.5rem;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  position: relative;
+}
+
+.recommendations__trust-safety__box__text{
+  font-weight: 400;
+  color: #6d6d6d;
+}
+
+.recommendations__trust-safety__box__icon{
+  margin-right: 1.5rem;
+  height: 33px;
+  object-fit: contain;
+}
+
+.bg-dark-light{
+  background: #F9FAFB;
+}
+
+.panel, .panel--with-overflow{
+  background: white;
+  border: 1px solid #dce0e6;
+  border-radius: 4px;
+  padding: 1rem 1.5rem;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+  position: relative;
+  margin: 5px;
+  color: #505050;
+}
+
+
+.title-date span.iconSlideUp {
+  font-weight: 100 !important;
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.is-selected, .btn-primary:visited:hover, .btn-primary:visited:focus, .btn-primary:visited:active, .btn-primary:visited.is-selected{
+   border: 1px solid #438e29;
+   background-color: #438e29;
+ }
+
+.option-date button{
+  padding: 0.5em 1.38em 0.5em;
+  color: #545e69;
+  border: 1px solid #b1b9c3;
+  background-color: white;
+  outline: none;
+  cursor: pointer;
+  margin: 0;
+  width: 100%;
+  font-size: 15px;
+  transition: .3s;
+  border-radius: 3px;
+}
+
+.option-date button:hover{
+  border: 1px solid #d7d7d7;
+  background-color: #d7d7d7;
+}
+
+.option-date button.active{
+  border: 1px solid #438e29;
+  background-color: #438e29;
+  color: #fff;
+}
+
+.option-date button.active:hover{
+  border: 1px solid #49a82f;
+  background-color: #49a82f;
+}
+
+.box-option{
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.option-date {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 50%;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  padding: 5px;
+}
+
+.h-20{
+  height: 20px;
+  line-height: 20px;
+}
+
+.line-mid{
+  position: relative;
+  width: 100%;
+}
+
+.line-mid .line{
+  height: 1px;
+  width: 100%;
+  background: #afafaf;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 /*RESET CSS Bootstrap*/
