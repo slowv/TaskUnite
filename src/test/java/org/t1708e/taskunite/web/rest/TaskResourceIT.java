@@ -43,6 +43,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = TaskUniteApp.class)
 public class TaskResourceIT {
 
+    private static final String DEFAULT_TITLE = "AAAAAAAAAA";
+    private static final String UPDATED_TITLE = "BBBBBBBBBB";
+
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
@@ -124,6 +127,7 @@ public class TaskResourceIT {
      */
     public static Task createEntity(EntityManager em) {
         Task task = new Task()
+            .title(DEFAULT_TITLE)
             .description(DEFAULT_DESCRIPTION)
             .planDate(DEFAULT_PLAN_DATE)
             .totalPrice(DEFAULT_TOTAL_PRICE)
@@ -141,6 +145,7 @@ public class TaskResourceIT {
      */
     public static Task createUpdatedEntity(EntityManager em) {
         Task task = new Task()
+            .title(UPDATED_TITLE)
             .description(UPDATED_DESCRIPTION)
             .planDate(UPDATED_PLAN_DATE)
             .totalPrice(UPDATED_TOTAL_PRICE)
@@ -172,6 +177,7 @@ public class TaskResourceIT {
         List<Task> taskList = taskRepository.findAll();
         assertThat(taskList).hasSize(databaseSizeBeforeCreate + 1);
         Task testTask = taskList.get(taskList.size() - 1);
+        assertThat(testTask.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testTask.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testTask.getPlanDate()).isEqualTo(DEFAULT_PLAN_DATE);
         assertThat(testTask.getTotalPrice()).isEqualTo(DEFAULT_TOTAL_PRICE);
@@ -213,6 +219,7 @@ public class TaskResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(task.getId().intValue())))
+            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].planDate").value(hasItem(DEFAULT_PLAN_DATE.toString())))
             .andExpect(jsonPath("$.[*].totalPrice").value(hasItem(DEFAULT_TOTAL_PRICE.doubleValue())))
@@ -266,6 +273,7 @@ public class TaskResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(task.getId().intValue()))
+            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.planDate").value(DEFAULT_PLAN_DATE.toString()))
             .andExpect(jsonPath("$.totalPrice").value(DEFAULT_TOTAL_PRICE.doubleValue()))
@@ -296,6 +304,7 @@ public class TaskResourceIT {
         // Disconnect from session so that the updates on updatedTask are not directly saved in db
         em.detach(updatedTask);
         updatedTask
+            .title(UPDATED_TITLE)
             .description(UPDATED_DESCRIPTION)
             .planDate(UPDATED_PLAN_DATE)
             .totalPrice(UPDATED_TOTAL_PRICE)
@@ -314,6 +323,7 @@ public class TaskResourceIT {
         List<Task> taskList = taskRepository.findAll();
         assertThat(taskList).hasSize(databaseSizeBeforeUpdate);
         Task testTask = taskList.get(taskList.size() - 1);
+        assertThat(testTask.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testTask.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testTask.getPlanDate()).isEqualTo(UPDATED_PLAN_DATE);
         assertThat(testTask.getTotalPrice()).isEqualTo(UPDATED_TOTAL_PRICE);

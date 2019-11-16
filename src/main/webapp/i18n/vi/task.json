@@ -16,6 +16,7 @@
       "detail": {
         "title": "Task"
       },
+      "title": "Title",
       "description": "Description",
       "planDate": "Plan Date",
       "totalPrice": "Total Price",
