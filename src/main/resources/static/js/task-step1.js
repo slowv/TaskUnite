@@ -1,24 +1,32 @@
 $(document).ready(init());
 
+let iconStatus;
+let taskBox;
 
+// Hàm để khởi tạo func
 function init() {
   start();
   update();
+  onChange();
+  onKeypress();
+  onClick();
+  onHover();
 }
 
-function start() {
-
-  var taskBox = $('.task-box');
+// Hàm để fixed UI ngay lúc vừa vào page và khởi tạo biến trong này
+function start () {
+  taskBox = $('.task-box');
+  iconStatus = $('span.status-task-box');
   $('.task-box[data-editing=false] .box-input').addClass('d-none');
   if (taskBox.attr('data-editing') && taskBox.attr('data-state') == 'summary') {
-    $('.status-task-box').addClass('d-none');
+    iconStatus.addClass('d-none');
   } else {
-    $('span.status-task-box').removeClass('d-none');
+    iconStatus.removeClass('d-none');
   }
-
 }
 
-function update() {
+// Hàm để viết sự kiện change
+function onChange() {
   $('select[name="option-address"]').change(function () {
     if ($(this).find('option:selected').val() == 1) {
       $('.box-input-address-single').slideDown();
@@ -29,7 +37,10 @@ function update() {
       $('.box-input-address-multi').slideDown();
     }
   });
+}
 
+// Hàm để viết sự kiện keypress
+function onKeypress() {
   $('#form-task input').keypress(function () {
     $('.error-msg').each(function (index, value) {
       if(!$(this).hasClass('d-none')){
@@ -37,8 +48,11 @@ function update() {
       }
     })
   });
+}
 
-  $('.task-box').on('click', '.btn-continue', function () {
+// Hàm để viết sự kiện click
+function onClick() {
+  taskBox.on('click', '.btn-continue', function () {
     var parent = $(this).parent().parent().parent();
     switch ($(this).attr('data-type')) {
       case 'address':
@@ -99,14 +113,6 @@ function update() {
     taskBoxNext.find('.box-input').removeClass('d-none');
   });
 
-  var iconStatus = $('span.status-task-box');
-  iconStatus.hover(function () {
-    $(this).find('i').removeClass('icon-done');
-    $(this).find('i').addClass('icon-pencil');
-  }, function () {
-    $(this).find('i').addClass('icon-done');
-    $(this).find('i').removeClass('icon-pencil');
-  });
   iconStatus.click(function () {
     var parent = $(this).parent();
     switch (parent.find('.btn-continue').attr('data-type')) {
@@ -139,6 +145,15 @@ function update() {
     parent.find('.box-input').removeClass('d-none');
     parent.find('.preview-content').addClass('d-none');
   });
+}
 
-
+// Hàm để viết sự kiện hover
+function onHover() {
+  iconStatus.hover(function () {
+    $(this).find('i').removeClass('icon-done');
+    $(this).find('i').addClass('icon-pencil');
+  }, function () {
+    $(this).find('i').addClass('icon-done');
+    $(this).find('i').removeClass('icon-pencil');
+  });
 }
