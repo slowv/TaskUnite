@@ -8,12 +8,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "/")
 public class HomeController {
     @RequestMapping(method = RequestMethod.GET)
-    public String index(){
+    public String index() {
         return "index";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/contact")
-    public String contact(){
+    public String contact() {
         return "contact";
+    }
+
+    @RequestMapping(value = "/become-task", method = RequestMethod.GET)
+    public String registerTask() {
+        return "registerTask";
+
     }
 }
