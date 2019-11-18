@@ -1,6 +1,6 @@
 $(document).ready(init());
 
-let iconStatus;
+var iconStatus;
 let taskBox;
 
 // Hàm để khởi tạo func

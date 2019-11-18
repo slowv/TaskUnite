@@ -4,10 +4,12 @@ $(document).ready(init());
 function init() {
   start();
   onClick();
+  onHover();
 }
 
 // Hàm để fixed UI ngay lúc vừa vào page và khởi tạo biến trong này
 function start() {
+
 }
 
 // Hàm để viết sự kiện click
@@ -16,7 +18,16 @@ function onClick() {
     $(this).toggleClass('icon-chevron-down');
     $(this).parent().next().slideToggle();
   });
+  console.log(getListTask());
 }
+
+function onHover() {
+  $('.tooltip-tether').hover(function () {
+    $(this).find('.tooltip').toggleClass('active');
+  })
+}
+
+
 
 
 

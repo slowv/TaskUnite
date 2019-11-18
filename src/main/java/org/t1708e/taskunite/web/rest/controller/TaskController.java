@@ -16,4 +16,9 @@ public class TaskController {
     public String createStep2(){
         return "create-task-step-2";
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/create/step3")
+    public String createStep3(){
+        return "create-task-step-3";
+    }
 }
