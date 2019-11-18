@@ -11,14 +11,14 @@
         <div class="container">
             <div class="row border-bottom pb-3">
                 <div class="col-md-1 box-logo-step">
-                    <img alt="TaskUnite" class="logo-step" th:src="@{/images/logo1.png}">
+                    <img alt="TaskUnite" class="logo-step" th:src="@{/images/favicon.png}">
                 </div>
                 <div class="col-md-9 offset-md-2">
                     <div class="box-step ">
                         <div class="step active st1">
                             <a th:href="@{/task/create/step1(action='back')}">
                                 <div class="box-circle">
-                                    <div class="circle">1</div>
+                                    <div class="circle"><i class="icon-done"></i></div>
                                 </div>
                             </a>
                             <div class="box-line">
@@ -91,7 +91,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 col-lg-4 p-3">
+                <div class="col-md-12 col-lg-4 p-2">
                     <div class="recommendations__trust-safety__box panel panel--spaced ">
                         <img class="recommendations__trust-safety__box__icon"
                              th:src="@{/images/protected.svg}" alt="shield">
@@ -191,104 +191,71 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 col-lg-8 p-3">
-                    <div class="recommendations__trust-safety__box panel panel--spaced ">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="site-section">
-        <div class="container">
-            <div class="row justify-content-center text-center mb-5">
-                <div class="col-md-6" data-aos="fade">
-                    <h2>Frequently Ask Questions</h2>
-                </div>
-            </div>
-
-
-            <div class="row justify-content-center" data-aos="fade" data-aos-delay="100">
-                <div class="col-md-8">
-                    <div class="accordion unit-8" id="accordion">
-                        <div class="accordion-item">
-                            <h3 class="mb-0 heading">
-                                <a aria-controls="collapseOne" aria-expanded="true" class="btn-block"
-                                   data-toggle="collapse"
-                                   href="#collapseOne" role="button">What is the name of your
-                                    company<span class="icon"></span></a>
-                            </h3>
-                            <div aria-labelledby="headingOne" class="collapse show" data-parent="#accordion"
-                                 id="collapseOne">
-                                <div class="body-text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur quae cumque
-                                        perspiciatis aperiam accusantium facilis provident aspernatur nisi optio debitis
-                                        dolorum, est eum eligendi vero aut ad necessitatibus nulla sit labore doloremque
-                                        magnam! Ex molestiae, dolor tempora, ad fuga minima enim mollitia consequuntur,
-                                        necessitatibus praesentium eligendi officia recusandae culpa tempore eaque quasi
-                                        ullam magnam modi quidem in amet. Quod debitis error placeat, tempore quasi
-                                        aliquid eaque vel facilis culpa voluptate.</p>
+                <div class="col-md-12 col-lg-8 p-2">
+                    <div class="recommendations__result panel panel--spaced ">
+                        <div class="recommendations__result-figure">
+                            <div>
+                                <img class="recommendations__avatar__circular"
+                                     th:src="@{/images/person_3.jpg}"
+                                     alt="Tasker">
+                            </div>
+                            <div class="recommendations__result-actions">
+                                <a class="recommendations__review-link d-block"
+                                   tabindex="0" role="button">
+                                    <span>Thông tin &amp; Nhận xét</span>
+                                </a>
+                                <a class="recommendations__hire-btn btn btn-primary btn-block "
+                                   role="button">
+                                    <span>Chọn &amp; Tiếp tục</span>
+                                </a>
+                                <div class="u-hidden--sm">
+                                    <span class="whisper">
+                                        <span>
+                                        Bạn có thể trò chuyện với Nhân viên, điều chỉnh chi tiết công việc hoặc thay đổi thời gian thực hiện công việc sau khi đặt chỗ
+                                        </span>
+                                    </span>
                                 </div>
                             </div>
-                        </div> <!-- .accordion-item -->
-
-                        <div class="accordion-item">
-                            <h3 class="mb-0 heading">
-                                <a aria-controls="collapseTwo" aria-expanded="false" class="btn-block"
-                                   data-toggle="collapse"
-                                   href="#collapseTwo" role="button">How much pay for 3 months?<span
-                                    class="icon"></span></a>
-                            </h3>
-                            <div aria-labelledby="headingOne" class="collapse" data-parent="#accordion"
-                                 id="collapseTwo">
-                                <div class="body-text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad laborum
-                                        expedita. Nostrum iure atque enim quisquam minima distinctio omnis, consequatur
-                                        aliquam suscipit, quidem, esse aspernatur! Libero, excepturi animi repellendus
-                                        porro impedit nihil in doloremque a quaerat enim voluptatum, perspiciatis, quas
-                                        dignissimos maxime ut cum reiciendis eius dolorum voluptatem aliquam!</p>
+                        </div>
+                        <div class="recommendations__result-content">
+                            <div class="recommendations__result-name" tabindex="0" role="button">Trần Hiểu Đông</div>
+                            <span>
+                                <div class="recommendations__result-price-container priceChange-appear-active">
+                                    <div class="recommendations__result-price recommendations__pill">
+                                        <strong>80.000 vnđ<span>/h</span></strong>
+                                    </div>
+                                </div>
+                            </span>
+                            <ul class="recommendations__badge-list"></ul>
+                            <ul class="recommendations__result-info">
+                                <li><i class="icon-check-circle-o"></i><span>66 Công việc nhà</span></li>
+                                <li><i class="icon-star-o"></i><span>100% Nhận xét tích cực </span></li>
+                                <li><i class="icon-shield"></i><span>100% Tin cậy</span></li>
+                            </ul>
+                            <div class="recommendations__blurb-title"><span>Tôi có thể giúp bạn:</span></div>
+                            <div class="recommendations__blurb">
+                                Đếm rất khéo léo và hiệu quả với các công cụ phù hợp để hoàn thành công việc, mọi cài
+                                đặt AC của các đơn vị AC có cùng giá mỗi giờ cho mỗi đơn vị (ví dụ: một đơn vị AC một
+                                giờ hai đơn vị AC hai giờ, v.v. Tối thiểu là 2 giờ cho sửa chữa nhà khác
+                            </div>
+                            <div class="recommendations__review media--object">
+                                <div class="media--figure">
+                                    <img class="avatar-new-72" th:src="@{/images/person_1.jpg}"
+                                         alt="Reviewer">
+                                </div>
+                                <div class="media--content">
+                                    <div class="recommendations__review-content">"Công việc tuyệt vời. Đúng giờ, thân thiện, nhanh chóng và lành nghề."
+                                    </div>
+                                    <div class="u-muted">Xuân Thứ - 7/11/2019</div>
                                 </div>
                             </div>
-                        </div> <!-- .accordion-item -->
-
-                        <div class="accordion-item">
-                            <h3 class="mb-0 heading">
-                                <a aria-controls="collapseThree" aria-expanded="false" class="btn-block"
-                                   data-toggle="collapse"
-                                   href="#collapseThree" role="button">Do I need to register? <span
-                                    class="icon"></span></a>
-                            </h3>
-                            <div aria-labelledby="headingOne" class="collapse" data-parent="#accordion"
-                                 id="collapseThree">
-                                <div class="body-text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad laborum
-                                        expedita. Nostrum iure atque enim quisquam minima distinctio omnis, consequatur
-                                        aliquam suscipit, quidem, esse aspernatur! Libero, excepturi animi repellendus
-                                        porro impedit nihil in doloremque a quaerat enim voluptatum, perspiciatis, quas
-                                        dignissimos maxime ut cum reiciendis eius dolorum voluptatem aliquam!</p>
-                                </div>
+                            <div class="recommendations__result-actions">
+                                <a class="recommendations__hire-btn btn btn-primary btn-block js-btn-hire"
+                                   role="button">
+                                    <span>Chọn &amp; Tiếp tục</span>
+                                </a>
                             </div>
-                        </div> <!-- .accordion-item -->
-
-                        <div class="accordion-item">
-                            <h3 class="mb-0 heading">
-                                <a aria-controls="collapseFour" aria-expanded="false" class="btn-block"
-                                   data-toggle="collapse"
-                                   href="#collapseFour" role="button">Who should I contact in case of
-                                    support.<span class="icon"></span></a>
-                            </h3>
-                            <div aria-labelledby="headingOne" class="collapse" data-parent="#accordion"
-                                 id="collapseFour">
-                                <div class="body-text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad laborum
-                                        expedita. Nostrum iure atque enim quisquam minima distinctio omnis, consequatur
-                                        aliquam suscipit, quidem, esse aspernatur! Libero, excepturi animi repellendus
-                                        porro impedit nihil in doloremque a quaerat enim voluptatum, perspiciatis, quas
-                                        dignissimos maxime ut cum reiciendis eius dolorum voluptatem aliquam!</p>
-                                </div>
-                            </div>
-                        </div> <!-- .accordion-item -->
-
+                        </div>
                     </div>
                 </div>
             </div>

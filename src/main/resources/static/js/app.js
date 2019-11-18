@@ -5,6 +5,7 @@ let task = {
   description: null // String
 };
 
+// Tùy biến thêm trường.
 function Task(title, address, category, description){
   return {
     title: title, // String

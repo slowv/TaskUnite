@@ -3,7 +3,7 @@ $(document).ready(function () {
     var step = $('.st' + (i + 1));
     if (step.hasClass('active')) {
       if (step.next().hasClass('active')) {
-        step.find('.line').css({'background': '#C4592B'});
+        step.find('.line').css({'background': '#28A745'});
       }
     }
   }

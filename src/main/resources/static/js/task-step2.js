@@ -3,7 +3,6 @@ $(document).ready(init());
 // Hàm để khởi tạo func
 function init() {
   start();
-  update();
   onClick();
 }
 

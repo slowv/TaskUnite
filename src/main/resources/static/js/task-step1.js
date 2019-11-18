@@ -6,9 +6,8 @@ let taskBox;
 // Hàm để khởi tạo func
 function init() {
   start();
-  update();
   onChange();
-  onKeypress();
+  onKeyPress();
   onClick();
   onHover();
 }
@@ -40,7 +39,7 @@ function onChange() {
 }
 
 // Hàm để viết sự kiện keypress
-function onKeypress() {
+function onKeyPress() {
   $('#form-task input').keypress(function () {
     $('.error-msg').each(function (index, value) {
       if(!$(this).hasClass('d-none')){
