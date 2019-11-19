@@ -1,7 +1,7 @@
 $(document).ready(init());
 
 var iconStatus;
-let taskBox;
+var taskBox;
 
 // Hàm để khởi tạo func
 function init() {
@@ -16,6 +16,7 @@ function init() {
 function start () {
   taskBox = $('.task-box');
   iconStatus = $('span.status-task-box');
+
   $('.task-box[data-editing=false] .box-input').addClass('d-none');
   if (taskBox.attr('data-editing') && taskBox.attr('data-state') == 'summary') {
     iconStatus.addClass('d-none');
@@ -84,11 +85,12 @@ function onClick() {
         break;
       case 'category':
         var content = parent.find('.content');
+        var contentStr = [];
         parent.find('input[type="checkbox"]:checked').each(function (index, value) {
-          content.append(`&nbsp;${$(this).val()}, `);
+          contentStr.push($(this).val());
           task.category.push($(this).attr('id'));
         });
-
+        content.html(contentStr.join(", "));
         break;
       // case 'estimated-time':
       //   parent.find('.content').html(parent.find('input[type="radio"]:checked').val());

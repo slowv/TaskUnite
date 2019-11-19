@@ -84,8 +84,10 @@
         <div class="row">
             <div class="col-md-12 bg-dark-light" style="min-height: 100vh;position: absolute;top: 0;left: 0; z-index: 1000;">
                 <div class="row">
-                    <div class="col-lg-6 my-auto modal-choose-date p-3 bg-white">
-                        <span class="icon-close2 close"></span>
+                    <div class="col-lg-6 modal-choose-date p-3 bg-white">
+                        <a th:href="@{/task/create/step2(action='backStep2')}">
+                            <span class="icon-close2 close"></span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -95,7 +97,7 @@
     <th:block th:include="fragment/layout :: footer"></th:block>
 </div>
 <th:block th:include="fragment/layout :: javascript"></th:block>
-<script th:src="@{/js/task-step.js}"></script>
-<script th:src="@{/js/task-step2.js}"></script>
+<script th:src="@{/js/task/task-step.js}"></script>
+<script th:src="@{/js/task/task-step2.js}"></script>
 </body>
 </html>
