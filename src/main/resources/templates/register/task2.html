@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Job Finder &mdash; Colorlib Website Template</title>
+    <th:block th:include="fragment/layout :: head"></th:block>
+</head>
+<body>
+
+<div class="site-wrap">
+
+    <th:block th:include="fragment/layout :: site-mobile-memu"></th:block>
+
+    <th:block th:include="fragment/layout :: site-navbar"></th:block>
+
+    <div style="height: 113px;"></div>
+
+    <div class="unit-5 overlay" th:style="'background-image: url(' + @{/images/hero_1.jpg} + ');'"
+         style="background-image: url('images/hero_1.jpg');">
+        <div class="container text-center">
+            <h2 class="mb-0">Post a Job</h2>
+            <p class="mb-0 unit-6"><a href="../index.html">Home</a> <span class="sep">></span> <span>Post a Job</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="site-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header" style="text-align: center">
+                            <h5>Register to become a Tasker</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="card">
+                                <div class="card-header">
+                                    Add Your Skills & Rates
+                                </div>
+                                <div class="card-body">
+                                    <p>Select your tasking categories and set your hourly rates. You can add or remove
+                                        categories from your profile, or revise your rates, at any time. You must select
+                                        one category to continue.</p>
+
+                                    <div class="my-3">
+                                        <p style="font-weight: bold" data-toggle="collapse" href="#collapseExample1"
+                                           role="button" aria-expanded="false" aria-controls="collapseExample"><b>Cleaning</b>
+                                            <small style="color: dodgerblue"><i class="icon-star"></i> Popular Skill
+                                            </small>
+                                        </p>
+                                        <p>Cleaning an apartment, house, vacation home, or office.</p>
+                                        <div class="collapse" id="collapseExample1">
+                                            <div class="card card-body">
+                                                <h5>Scope of Task</h5>
+                                                <div>
+                                                    <ul>
+                                                        <li>Bathrooms: Scrubbing sink, toilet, and shower/bathtub;
+                                                            wiping mirrors.
+                                                        </li>
+                                                        <li>Kitchen: Washing dishes; cleaning/wiping backsplash, stove,
+                                                            counters, and appliances.
+                                                        </li>
+                                                        <li>Floors: Vacuuming, sweeping and/or mopping floors.</li>
+                                                        <li>Dusting: Furniture, hard surfaces, and window sills.</li>
+                                                        <li>Tidying: Straighten and organize.</li>
+                                                        <li>Taking out garbage/recycling and replacing trash bags.</li>
+                                                    </ul>
+                                                    <div class="form-group form-check">
+                                                        <input type="checkbox" class="form-check-input"
+                                                               id="exampleCheck1" data-toggle="collapse" href="#check1"
+                                                               role="button" aria-expanded="false"
+                                                               aria-controls="collapseExample">
+                                                        <label class="form-check-label" for="exampleCheck1">I have the
+                                                            skills and qualifications to task in this category.</label>
+                                                    </div>
+                                                    <div class="collapse" id="check1">
+                                                        <h5>Your Tasker Rate</h5>
+                                                        <form>
+                                                            <div class="form-inline">
+                                                                <div class="form-group mx-sm-3 mb-2">
+                                                                    <b>$&nbsp; </b>&nbsp;<input type="text"
+                                                                                                style="border-radius: 10px"
+                                                                                                placeholder="enter number amount..">
+                                                                </div>
+                                                                <div class="form-group mx-sm-3 mb-2">
+                                                                    <h6>Most Taskers with your experience hired at:
+                                                                        17$</h6>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-3">
+                                                                <h5>What supplies do you bring to tasks?</h5>
+                                                                <small>Clients expect you to have basic supplies and a
+                                                                    mop, and will only hire you if you have them.
+                                                                </small>
+                                                                <div class="row m-1">
+                                                                    <div class="col-lg-4">
+                                                                        <input type="checkbox" class="form-check-input"
+                                                                               id="checkTask">
+                                                                        <label class="form-check-label" for="checkTask">
+                                                                            <h6>Basic supplies</h6>
+                                                                            <small>glass & multi-purpose cleaner,
+                                                                                sponges, scrub brushes, bucket, rags
+                                                                            </small>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <input type="checkbox" class="form-check-input"
+                                                                               id="checkTask2">
+                                                                        <label class="form-check-label"
+                                                                               for="checkTask2">
+                                                                            <h6>Mop</h6>
+                                                                            <small>with bucket & floor cleaner</small>
+                                                                        </label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-3">
+                                                                <h5>Your Quick Pitch</h5>
+                                                                <div class="form-group">
+                                                                    <textarea class="form-control"
+                                                                              placeholder="Pitch clients on why you are the best person for this type of task."
+                                                                              rows="2"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <h5>Level of experience</h5>
+                                                                <select class="form-control form-control-sm">
+                                                                    <option></option>
+                                                                    <option>No experience, but I am willing to learn
+                                                                    </option>
+                                                                    <option>Some experience. I have done it for myself
+                                                                        around the home
+                                                                    </option>
+                                                                    <option>I have had part-time experience</option>
+                                                                    <option>I have had professional experience</option>
+                                                                    <option>I am professionally certified in this skill
+                                                                    </option>
+
+                                                                </select>
+                                                            </div>
+                                                            <div class="mt-2">
+                                                                <input type="submit" class="btn btn-success"
+                                                                       value="Save">
+                                                                <input type="reset" class="btn" value="Cancle">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="my-3">
+                                        <p style="font-weight: bold" data-toggle="collapse" href="#collapseDecoration"
+                                           role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            <b>Decoration</b>
+                                            <small style="color: dodgerblue"><i class="icon-star"></i> Popular Skill
+                                            </small>
+                                        </p>
+                                        <p>Home decoration, setting up parties, and more.</p>
+                                        <div class="collapse" id="collapseDecoration">
+                                            <div class="card card-body">
+                                                <h5>Scope of Task</h5>
+                                                <div>
+                                                    <ul>
+                                                        <li>Decorating homes.
+                                                        </li>
+                                                        <li>Setting up parties.
+                                                        </li>
+                                                        <li>Setting up/taking down holiday decorations.</li>
+                                                        <li>Hanging frames.</li>
+                                                        <li>Light interior design.</li>
+
+                                                    </ul>
+                                                    <div class="form-group form-check">
+                                                        <input type="checkbox" class="form-check-input"
+                                                               id="checkDecoration1" data-toggle="collapse"
+                                                               href="#checkDecoration2"
+                                                               role="button" aria-expanded="false"
+                                                               aria-controls="collapseExample">
+                                                        <label class="form-check-label" for="checkDecoration1">I have
+                                                            the skills and qualifications to task in this
+                                                            category.</label>
+                                                    </div>
+                                                    <div class="collapse" id="checkDecoration2">
+                                                        <h5>Your Tasker Rate</h5>
+                                                        <form>
+                                                            <div class="form-inline">
+                                                                <div class="form-group mx-sm-3 mb-2">
+                                                                    <b>$&nbsp; </b>&nbsp;<input type="text"
+                                                                                                style="border-radius: 10px"
+                                                                                                placeholder="enter number amount..">
+                                                                </div>
+                                                                <div class="form-group mx-sm-3 mb-2">
+                                                                    <h6>Most Taskers with your experience hired at:
+                                                                        17$</h6>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-3">
+                                                                <h5>Your Quick Pitch</h5>
+                                                                <div class="form-group">
+                                                                    <textarea class="form-control"
+                                                                              id="exampleFormControlTextarea1"
+                                                                              placeholder="Pitch clients on why you are the best person for this type of task."
+                                                                              rows="2"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <h5>Level of experience</h5>
+                                                                <select class="form-control form-control-sm">
+                                                                    <option></option>
+                                                                    <option>No experience, but I am willing to learn
+                                                                    </option>
+                                                                    <option>Some experience. I have done it for myself
+                                                                        around the home
+                                                                    </option>
+                                                                    <option>I have had part-time experience</option>
+                                                                    <option>I have had professional experience</option>
+                                                                    <option>I am professionally certified in this
+                                                                        skill
+                                                                    </option>
+
+                                                                </select>
+                                                            </div>
+                                                            <div class="mt-2">
+                                                                <input type="submit" class="btn btn-success"
+                                                                       value="Save">
+                                                                <input type="reset" class="btn" value="Cancle">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="my-3">
+                                        <p style="font-weight: bold" data-toggle="collapse" href="#collapseErrands"
+                                           role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            <b>Errands</b>
+                                            <small style="color: dodgerblue"><i class="icon-star"></i> Popular Skill
+                                            </small>
+                                        </p>
+                                        <p>Running errands, and helping with various day-to-day responsibilities.</p>
+                                        <div class="collapse" id="collapseErrands">
+                                            <div class="card card-body">
+                                                <h5>Scope of Task</h5>
+                                                <div>
+                                                    <ul>
+                                                        <li>Decorating homes.
+                                                        </li>
+                                                        <li>Setting up parties.
+                                                        </li>
+                                                        <li>Setting up/taking down holiday decorations.</li>
+                                                        <li>Hanging frames.</li>
+                                                        <li>Light interior design.</li>
+
+                                                    </ul>
+                                                    <div class="form-group form-check">
+                                                        <input type="checkbox" class="form-check-input"
+                                                               id="checkErrands1" data-toggle="collapse"
+                                                               href="#checkErrands2"
+                                                               role="button" aria-expanded="false"
+                                                               aria-controls="collapseExample">
+                                                        <label class="form-check-label" for="checkDecoration1">I have
+                                                            the skills and qualifications to task in this
+                                                            category.</label>
+                                                    </div>
+                                                    <div class="collapse" id="checkErrands2">
+                                                        <h5>Your Tasker Rate</h5>
+                                                        <form>
+                                                            <div class="form-inline">
+                                                                <div class="form-group mx-sm-3 mb-2">
+                                                                    <b>$&nbsp; </b>&nbsp;<input type="text"
+                                                                                                style="border-radius: 10px"
+                                                                                                placeholder="enter number amount..">
+                                                                </div>
+                                                                <div class="form-group mx-sm-3 mb-2">
+                                                                    <h6>Most Taskers with your experience hired at:
+                                                                        17$</h6>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-3">
+                                                                <h5>Your Quick Pitch</h5>
+                                                                <div class="form-group">
+                                                                    <textarea class="form-control"
+                                                                              placeholder="Pitch clients on why you are the best person for this type of task."
+                                                                              rows="2"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <h5>Level of experience</h5>
+                                                                <select class="form-control form-control-sm">
+                                                                    <option></option>
+                                                                    <option>No experience, but I am willing to learn
+                                                                    </option>
+                                                                    <option>Some experience. I have done it for myself
+                                                                        around the home
+                                                                    </option>
+                                                                    <option>I have had part-time experience</option>
+                                                                    <option>I have had professional experience</option>
+                                                                    <option>I am professionally certified in this
+                                                                        skill
+                                                                    </option>
+
+                                                                </select>
+                                                            </div>
+                                                            <div class="mt-2">
+                                                                <input type="submit" class="btn btn-success"
+                                                                       value="Save">
+                                                                <input type="reset" class="btn" value="Cancle">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="my-3">
+                                        <p style="font-weight: bold" data-toggle="collapse" href="#collapseFurniture"
+                                           role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            <b>Furniture Assembly</b>
+                                            <small style="color: dodgerblue"><i class="icon-star"></i> Popular Skill
+                                            </small>
+                                        </p>
+                                        <p>Putting together furniture from IKEA and other furniture stores.</p>
+                                        <div class="collapse" id="collapseFurniture">
+                                            <div class="card card-body">
+                                                <h5>Scope of Task</h5>
+                                                <div>
+                                                    <ul>
+                                                        <li>Reading assembly instructions.
+                                                        </li>
+                                                        <li>Assembling furniture.
+                                                        </li>
+                                                        <li>Carrying furniture up or down stairs.</li>
+                                                        <li>Arranging furniture in the Client's home, and securing it to
+                                                            the wall if so indicated in assembly instructions.
+                                                        </li>
+                                                        <li>Removing recycling and garbage, such as empty boxes.</li>
+                                                    </ul>
+                                                    <p>It can help to get the brand and item number from your Client
+                                                        upfront so you can scope what tools are needed. Before arriving,
+                                                        be sure you have the right tools, and check whether the Client
+                                                        needs special supplies.</p>
+                                                    <div class="form-group form-check">
+                                                        <input type="checkbox" class="form-check-input"
+                                                               id="checkFurniture1" data-toggle="collapse"
+                                                               href="#checkFurniture2"
+                                                               role="button" aria-expanded="false"
+                                                               aria-controls="collapseExample">
+                                                        <label class="form-check-label" for="checkFurniture1">I have
+                                                            the skills and qualifications to task in this
+                                                            category.</label>
+                                                    </div>
+                                                    <div class="collapse" id="checkFurniture2">
+                                                        <h5>Your Tasker Rate</h5>
+                                                        <form>
+                                                            <div class="form-inline">
+                                                                <div class="form-group mx-sm-3 mb-2">
+                                                                    <b>$&nbsp; </b>&nbsp;<input type="text"
+                                                                                                style="border-radius: 10px"
+                                                                                                placeholder="enter number amount..">
+                                                                </div>
+                                                                <div class="form-group mx-sm-3 mb-2">
+                                                                    <h6>Most Taskers with your experience hired at:
+                                                                        17$</h6>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-3">
+                                                                <h5>Your Quick Pitch</h5>
+                                                                <div class="form-group">
+                                                                    <textarea class="form-control"
+                                                                              placeholder="Pitch clients on why you are the best person for this type of task."
+                                                                              rows="2"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <h5>Level of experience</h5>
+                                                                <select class="form-control form-control-sm">
+                                                                    <option></option>
+                                                                    <option>No experience, but I am willing to learn
+                                                                    </option>
+                                                                    <option>Some experience. I have done it for myself
+                                                                        around the home
+                                                                    </option>
+                                                                    <option>I have had part-time experience</option>
+                                                                    <option>I have had professional experience</option>
+                                                                    <option>I am professionally certified in this
+                                                                        skill
+                                                                    </option>
+
+                                                                </select>
+                                                            </div>
+                                                            <div class="mt-2">
+                                                                <input type="submit" class="btn btn-success"
+                                                                       value="Save">
+                                                                <input type="reset" class="btn" value="Cancle">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="my-3">
+                                        <p style="font-weight: bold" data-toggle="collapse" href="#collapseHelpMoving"
+                                           role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            <b>Help Moving</b>
+                                            <small style="color: dodgerblue"><i class="icon-star"></i> Popular Skill
+                                            </small>
+                                        </p>
+                                        <p>Packing or un-packing boxes, or moving boxes and furniture.</p>
+                                        <div class="collapse" id="collapseHelpMoving">
+                                            <div class="card card-body">
+                                                <h5>Scope of Task</h5>
+                                                <div>
+                                                    <ul>
+                                                        <li> Moving boxes and furniture into and out of homes.
+                                                        </li>
+                                                        <li>Carrying boxes and furniture up and down stairs.
+                                                        </li>
+                                                        <li> Helping with packing or unpacking items.</li>
+                                                    </ul>
+                                                    <p>It can help to ask the Client in advance if there will be stairs,
+                                                        an elevator, or a loading dock, and to inquire about stairwell
+                                                        and doorway width. Make sure to check with Clients if they need
+                                                        supplies such as packing tape, boxes, moving blankets, or a
+                                                        rented hauling vehicle.</p>
+                                                    <div class="form-group form-check">
+                                                        <input type="checkbox" class="form-check-input"
+                                                               id="checkHelpMoving1" data-toggle="collapse"
+                                                               href="#checkHelpMoving2"
+                                                               role="button" aria-expanded="false"
+                                                               aria-controls="collapseExample">
+                                                        <label class="form-check-label" for="checkHelpMoving1">I have
+                                                            the skills and qualifications to task in this
+                                                            category.</label>
+                                                    </div>
+                                                    <div class="collapse" id="checkHelpMoving2">
+                                                        <h5>Your Tasker Rate</h5>
+                                                        <form>
+                                                            <div class="form-inline">
+                                                                <div class="form-group mx-sm-3 mb-2">
+                                                                    <b>$&nbsp; </b>&nbsp;<input type="text"
+                                                                                                style="border-radius: 10px"
+                                                                                                placeholder="enter number amount..">
+                                                                </div>
+                                                                <div class="form-group mx-sm-3 mb-2">
+                                                                    <h6>Most Taskers with your experience hired at:
+                                                                        17$</h6>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-3">
+                                                                <h5>Your Quick Pitch</h5>
+                                                                <div class="form-group">
+                                                                    <textarea class="form-control"
+                                                                              placeholder="Pitch clients on why you are the best person for this type of task."
+                                                                              rows="2"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <h5>Level of experience</h5>
+                                                                <select class="form-control form-control-sm">
+                                                                    <option></option>
+                                                                    <option>No experience, but I am willing to learn
+                                                                    </option>
+                                                                    <option>Some experience. I have done it for myself
+                                                                        around the home
+                                                                    </option>
+                                                                    <option>I have had part-time experience</option>
+                                                                    <option>I have had professional experience</option>
+                                                                    <option>I am professionally certified in this
+                                                                        skill
+                                                                    </option>
+
+                                                                </select>
+                                                            </div>
+                                                            <div class="mt-2">
+                                                                <input type="submit" class="btn btn-success"
+                                                                       value="Save">
+                                                                <input type="reset" class="btn" value="Cancle">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="my-3">
+                                        <p style="font-weight: bold" data-toggle="collapse" href="#collapseElectrician"
+                                           role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            <b>Electrician</b>
+                                            <small style="color: dodgerblue"><i class="icon-star"></i> Popular Skill
+                                            </small>
+                                        </p>
+                                        <p>Installing, maintaining, or repairing electrical fixtures.</p>
+                                        <div class="collapse" id="collapseElectrician">
+                                            <div class="card card-body">
+                                                <h5>Scope of Task</h5>
+                                                <div>
+
+                                                    <p>Before arriving, scope out the work with your Client to be sure
+                                                        you have the right tools and expertise. Advise your Client that
+                                                        you are not a professional, but you have some experience in the
+                                                        field. If you have any electrical certifications, be sure to
+                                                        include that information in your Quick Pitch.</p>
+                                                    <div class="form-group form-check">
+                                                        <input type="checkbox" class="form-check-input"
+                                                               id="checkElectrician1" data-toggle="collapse"
+                                                               href="#checkHelpMoving2"
+                                                               role="button" aria-expanded="false"
+                                                               aria-controls="collapseExample">
+                                                        <label class="form-check-label" for="checkElectrician1">I have
+                                                            the skills and qualifications to task in this
+                                                            category.</label>
+                                                    </div>
+                                                    <div class="collapse" id="checkElectrician2">
+                                                        <h5>Your Tasker Rate</h5>
+                                                        <form>
+                                                            <div class="form-inline">
+                                                                <div class="form-group mx-sm-3 mb-2">
+                                                                    <b>$&nbsp; </b>&nbsp;<input type="text"
+                                                                                                style="border-radius: 10px"
+                                                                                                placeholder="enter number amount..">
+                                                                </div>
+                                                                <div class="form-group mx-sm-3 mb-2">
+                                                                    <h6>Most Taskers with your experience hired at:
+                                                                        17$</h6>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-3">
+                                                                <h5>Your Quick Pitch</h5>
+                                                                <div class="form-group">
+                                                                    <textarea class="form-control"
+                                                                              placeholder="Pitch clients on why you are the best person for this type of task."
+                                                                              rows="2"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <h5>Level of experience</h5>
+                                                                <select class="form-control form-control-sm">
+                                                                    <option></option>
+                                                                    <option>No experience, but I am willing to learn
+                                                                    </option>
+                                                                    <option>Some experience. I have done it for myself
+                                                                        around the home
+                                                                    </option>
+                                                                    <option>I have had part-time experience</option>
+                                                                    <option>I have had professional experience</option>
+                                                                    <option>I am professionally certified in this
+                                                                        skill
+                                                                    </option>
+
+                                                                </select>
+                                                            </div>
+                                                            <div class="mt-2">
+                                                                <input type="submit" class="btn btn-success"
+                                                                       value="Save">
+                                                                <input type="reset" class="btn" value="Cancle">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="my-3">
+                                        <p style="font-weight: bold" data-toggle="collapse" href="#collapsePlumbing"
+                                           role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            <b>Plumbing</b>
+                                            <small style="color: dodgerblue"><i class="icon-star"></i> Popular Skill
+                                            </small>
+                                        </p>
+                                        <p>Repairing or maintaining pipes, fixtures, or other apparatus of a water, gas,
+                                            or sewage system.</p>
+                                        <div class="collapse" id="collapsePlumbing">
+                                            <div class="card card-body">
+                                                <h5>Scope of Task</h5>
+                                                <div>
+                                                    <ul>
+                                                        <li>Repairing or maintaining pipes, fixtures, or other
+                                                            water, gas, or sewage systems.
+                                                        </li>
+                                                        <li>Snaking drains, unclogging toilets, fixing leaks.</li>
+                                                    </ul>
+                                                    <p>Before arriving, scope out the work with your Client to be
+                                                        sure you have the right tools and expertise. Advise your
+                                                        Client that you are not a professional, but you have some
+                                                        experience in the field. If you have any electrical
+                                                        certifications, be sure to include that information in your
+                                                        Quick Pitch.</p>
+                                                    <div class="form-group form-check">
+
+                                                        <input type="checkbox" class="form-check-input"
+                                                               id="checkPlumbing1" data-toggle="collapse"
+                                                               href="#checkPlumbing2"
+                                                               role="button" aria-expanded="false"
+                                                               aria-controls="collapseExample">
+                                                        <label class="form-check-label" for="checkElectrician1">I have
+                                                            the skills and qualifications to task in this
+                                                            category.</label>
+                                                    </div>
+                                                    <div class="collapse" id="checkPlumbing2">
+                                                        <h5>Your Tasker Rate</h5>
+                                                        <form>
+                                                            <div class="form-inline">
+                                                                <div class="form-group mx-sm-3 mb-2">
+                                                                    <b>$&nbsp; </b>&nbsp;<input type="text"
+                                                                                                style="border-radius: 10px"
+                                                                                                placeholder="enter number amount..">
+                                                                </div>
+                                                                <div class="form-group mx-sm-3 mb-2">
+                                                                    <h6>Most Taskers with your experience hired at:
+                                                                        17$</h6>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-3">
+                                                                <h5>Your Quick Pitch</h5>
+                                                                <div class="form-group">
+                                                                    <textarea class="form-control"
+                                                                              placeholder="Pitch clients on why you are the best person for this type of task."
+                                                                              rows="2"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <h5>Level of experience</h5>
+                                                                <select class="form-control form-control-sm">
+                                                                    <option></option>
+                                                                    <option>No experience, but I am willing to learn
+                                                                    </option>
+                                                                    <option>Some experience. I have done it for myself
+                                                                        around the home
+                                                                    </option>
+                                                                    <option>I have had part-time experience</option>
+                                                                    <option>I have had professional experience</option>
+                                                                    <option>I am professionally certified in this
+                                                                        skill
+                                                                    </option>
+
+                                                                </select>
+                                                            </div>
+                                                            <div class="mt-2">
+                                                                <input type="submit" class="btn btn-success"
+                                                                       value="Save">
+                                                                <input type="reset" class="btn" value="Cancle">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="my-3">
+                                        <p style="font-weight: bold" data-toggle="collapse" href="#collapseRemoval"
+                                           role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            <b>Yard Work & Removal</b>
+                                        </p>
+                                        <p>Raking leaves, lawn mowing, gardening, landscaping, watering, hauling of
+                                            waste.</p>
+                                        <div class="collapse" id="collapseRemoval">
+                                            <div class="card card-body">
+                                                <h5>Scope of Task</h5>
+                                                <div>
+                                                    <ul>
+                                                        <li>Raking leaves.
+                                                        </li>
+                                                        <li> Lawn mowing.</li>
+                                                        <li> Gardening.</li>
+                                                        <li> Landscaping.</li>
+                                                        <li> Watering.</li>
+                                                        <li> Hauling of yard waste.</li>
+                                                    </ul>
+                                                    <p>Clients typically expect you to clean the entire space and bring
+                                                        your own supplies. Make sure to check with your Client if they
+                                                        have their own tools (such as a lawn mower and rake or blower),
+                                                        or if they expect you to bring your own to each task.</p>
+                                                    <div class="form-group form-check">
+
+                                                        <input type="checkbox" class="form-check-input"
+                                                               id="checkRemoval1" data-toggle="collapse"
+                                                               href="#checkPlumbing2"
+                                                               role="button" aria-expanded="false"
+                                                               aria-controls="collapseExample">
+                                                        <label class="form-check-label" for="checkRemoval1">I have
+                                                            the skills and qualifications to task in this
+                                                            category.</label>
+                                                    </div>
+                                                    <div class="collapse" id="checkRemoval2">
+                                                        <h5>Your Tasker Rate</h5>
+                                                        <form>
+                                                            <div class="form-inline">
+                                                                <div class="form-group mx-sm-3 mb-2">
+                                                                    <b>$&nbsp; </b>&nbsp;<input type="text"
+                                                                                                style="border-radius: 10px"
+                                                                                                placeholder="enter number amount..">
+                                                                </div>
+                                                                <div class="form-group mx-sm-3 mb-2">
+                                                                    <h6>Most Taskers with your experience hired at:
+                                                                        17$</h6>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-3">
+                                                                <h5>Your Quick Pitch</h5>
+                                                                <div class="form-group">
+                                                                    <textarea class="form-control"
+                                                                              placeholder="Pitch clients on why you are the best person for this type of task."
+                                                                              rows="2"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <h5>Level of experience</h5>
+                                                                <select class="form-control form-control-sm">
+                                                                    <option></option>
+                                                                    <option>No experience, but I am willing to learn
+                                                                    </option>
+                                                                    <option>Some experience. I have done it for myself
+                                                                        around the home
+                                                                    </option>
+                                                                    <option>I have had part-time experience</option>
+                                                                    <option>I have had professional experience</option>
+                                                                    <option>I am professionally certified in this
+                                                                        skill
+                                                                    </option>
+
+                                                                </select>
+                                                            </div>
+                                                            <div class="mt-2">
+                                                                <input type="submit" class="btn btn-success"
+                                                                       value="Save">
+                                                                <input type="reset" class="btn" value="Cancle">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="fragment/layout :: footer"></th:block>
+</div>
+<th:block th:include="fragment/layout :: javascript"></th:block>
+</body>
+</html>

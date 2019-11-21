@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Job Finder &mdash; Colorlib Website Template</title>
+    <th:block th:include="fragment/layout :: head"></th:block>
+</head>
+<body>
+
+<div class="site-wrap">
+
+    <th:block th:include="fragment/layout :: site-mobile-memu"></th:block>
+
+    <th:block th:include="fragment/layout :: site-navbar"></th:block>
+
+    <div style="height: 113px;"></div>
+
+    <div class="unit-5 overlay" th:style="'background-image: url(' + @{/images/hero_1.jpg} + ');'"
+         style="background-image: url('images/hero_1.jpg');">
+        <div class="container text-center">
+            <h2 class="mb-0">Post a Job</h2>
+            <p class="mb-0 unit-6"><a href="../index.html">Home</a> <span class="sep">></span> <span>Post a Job</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="site-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header" style="text-align: center">
+                            <h5>Register to become a Tasker</h5>
+                        </div>
+                        <div class="card-body">
+                            <form th:action="@{/step2/register-task}" method="GET">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <img src="../../static/images/logo_1.png" class="img-circle"
+                                             height="170px"/>
+                                        <input type="file" class="form-control-file" value="add photo">
+                                    </div>
+                                    <div class="col-lg-9" style="line-height: 2px; margin-top: auto">
+                                        <p>Upload a clear, professional photo of only yourself to increase your
+                                        </p>
+                                        <p>likelihood of being hired.</p>
+                                    </div>
+                                </div>
+                                <div class="row my-2">
+                                    <div class="col-lg-3">
+                                        What metro would you like to work in?*
+                                        <select class="custom-select">
+                                            <option selected></option>
+                                            <option value="1">Hoan Kiem</option>
+                                            <option value="2">Hai Ba Trung</option>
+                                            <option value="3">Ba Dinh</option>
+                                            <option value="4">Dong Da</option>
+                                            <option value="5">Cau Giay</option>
+                                            <option value="6">Thanh Xuan</option>
+                                            <option value="7">Bac Tu Liem</option>
+                                            <option value="8">Nam Tu Liem</option>
+                                            <option value="9">Ha Dong</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        Home Address
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Street Address</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control"
+                                               placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Apt/Unit Number</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control"
+                                               placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Town/City</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control"
+                                               placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">State*</label>
+                                    <div class="col-sm-5">
+                                        <select class="custom-select">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Zip Code</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control"
+                                               placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Birthdate</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control"
+                                               placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Phone Type*</label>
+                                    <div class="col-sm-5">
+                                        <select class="custom-select">
+                                            <option value="iphone">Iphone</option>
+                                            <option value="android">Android</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <p>Do you have access to a vehicle that do you can reliably use for task</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">
+                                        Motorcycle
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">
+                                        Motorcycle
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">
+                                        Car
+                                    </label>
+                                </div>
+                                <p>How did you hear about TaskUnite?</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio">
+                                    <label class="form-check-label">
+                                        Referred by a friend(word of mouth)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio">
+                                    <label class="form-check-label">
+                                        Web Search
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio">
+                                    <label class="form-check-label">
+                                        TaskUnite Blog
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio">
+                                    <label class="form-check-label">
+                                        Digital Ad
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio">
+                                    <label class="form-check-label">
+                                        Social Media
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio">
+                                    <label class="form-check-label">
+                                        Social Media
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio">
+                                    <label class="form-check-label">
+                                        Other
+                                    </label>
+                                    <input type="text" placeholder="Describe here"/>
+                                </div>
+                                <input type="submit" style="padding-left:10px;border-style: none;float: right;border-radius: 5px; background-color: #28a745;
+                                 width: 100px;height: 40px;color: white;" value="Continue">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="fragment/layout :: footer"></th:block>
+</div>
+<th:block th:include="fragment/layout :: javascript"></th:block>
+</body>
+</html>

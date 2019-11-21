@@ -19,7 +19,11 @@ public class HomeController {
 
     @RequestMapping(value = "/become-task", method = RequestMethod.GET)
     public String registerTask() {
-        return "registerTask";
+        return "register/tasker";
 
+    }
+    @RequestMapping(value = "/step2/register-task", method = RequestMethod.GET)
+    public String step2RegisterTask(){
+        return "register/task2";
     }
 }
