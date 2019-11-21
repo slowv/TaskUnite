@@ -1596,7 +1596,7 @@ a:hover {
   cursor: pointer;
 }
 
-.task-box select[name="option-address"], .task-box select[name="option-address"]:focus{
+.task-box select[name="option-address"], .task-box select[name="option-address"]:focus {
   color: #6f6f6f;
   padding: 5px;
   border: none;
@@ -1604,7 +1604,7 @@ a:hover {
   border-bottom: 1px solid #f1f1f1;
 }
 
-#filter-option{
+#filter-option {
   padding: 7px;
   border: none;
   border: 1px solid #9c9c9c;
@@ -1642,22 +1642,22 @@ a:hover {
   position: relative;
 }
 
-.recommendations__trust-safety__box__text{
+.recommendations__trust-safety__box__text {
   font-weight: 400;
   color: #6d6d6d;
 }
 
-.recommendations__trust-safety__box__icon{
+.recommendations__trust-safety__box__icon {
   margin-right: 1.5rem;
   height: 33px;
   object-fit: contain;
 }
 
-.bg-dark-light{
-  background: #F9FAFB;
+.bg-dark-light {
+  background: #EBEDED;
 }
 
-.panel, .panel--with-overflow{
+.panel, .panel--with-overflow {
   background: white;
   border: 1px solid #dce0e6;
   border-radius: 4px;
@@ -1680,17 +1680,17 @@ a:hover {
   height: 20px;
 }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.is-selected, .btn-primary:visited:hover, .btn-primary:visited:focus, .btn-primary:visited:active, .btn-primary:visited.is-selected{
-   border: 1px solid #438e29;
-   background-color: #438e29;
- }
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.is-selected, .btn-primary:visited:hover, .btn-primary:visited:focus, .btn-primary:visited:active, .btn-primary:visited.is-selected {
+  border: 1px solid #438e29;
+  background-color: #438e29;
+}
 
 .btn-primary {
   border: 1px solid #51af33;
   background-color: #51af33;
 }
 
-.option-date button{
+.option-date button {
   padding: 0.5em 1.38em 0.5em;
   color: #545e69;
   border: 1px solid #b1b9c3;
@@ -1704,27 +1704,27 @@ a:hover {
   border-radius: 3px;
 }
 
-.option-date button:hover{
+.option-date button:hover {
   border: 1px solid #d7d7d7;
   background-color: #d7d7d7;
 }
 
-.option-date button.active{
+.option-date button.active {
   border: 1px solid #51af33;
   background-color: #51af33;
   color: #fff !important;
 }
 
-.btn-primary{
+.btn-primary {
   color: #fff !important;
 }
 
-.option-date button.active:hover{
+.option-date button.active:hover {
   border: 1px solid #438E29;
   background-color: #438E29;
 }
 
-.box-option{
+.box-option {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1743,17 +1743,17 @@ a:hover {
   padding: 5px;
 }
 
-.h-20{
+.h-20 {
   height: 20px;
   line-height: 20px;
 }
 
-.line-mid{
+.line-mid {
   position: relative;
   width: 100%;
 }
 
-.line-mid .line{
+.line-mid .line {
   height: 1px;
   width: 100%;
   background: #afafaf;
@@ -1762,7 +1762,7 @@ a:hover {
   transform: translateY(-50%);
 }
 
-.recommendations__result{
+.recommendations__result {
   padding: 2rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1777,7 +1777,7 @@ a:hover {
   margin-bottom: 15px;
 }
 
-.recommendations__result-figure{
+.recommendations__result-figure {
   -webkit-box-flex: 2;
   -webkit-flex: 2;
   -ms-flex: 2;
@@ -1796,7 +1796,7 @@ a:hover {
   margin: 0 auto;
 }
 
-.recommendations__result-content{
+.recommendations__result-content {
   -webkit-box-flex: 5;
   -webkit-flex: 5;
   -ms-flex: 5;
@@ -1829,12 +1829,12 @@ a:hover {
   }
 }
 
-.recommendations__review-link{
+.recommendations__review-link {
   margin: 20px 0;
   cursor: pointer;
 }
 
-.recommendations__hire-btn{
+.recommendations__hire-btn {
   margin: 1rem 0;
   font-size: 1.125rem;
   display: block;
@@ -1851,6 +1851,7 @@ a:hover {
   .recommendations__result--tasker .recommendations__result-figure .recommendations__review-link {
     display: none
   }
+
   .recommendations__result--tasker .recommendations__result-content .recommendations__result-actions {
     display: -webkit-box;
     display: -webkit-flex;
@@ -1862,6 +1863,7 @@ a:hover {
     -ms-flex-direction: column;
     flex-direction: column
   }
+
   .recommendations__result--tasker .recommendations__result-content .recommendations__hire-btn {
     margin-left: auto;
     margin-right: auto
@@ -1872,6 +1874,7 @@ a:hover {
   .recommendations__result--tasker .recommendations__result-content .recommendations__result-actions {
     display: none
   }
+
   .recommendations__result--tasker .recommendations__result-content .recommendations__review-link {
     display: none
   }
@@ -1949,10 +1952,11 @@ a:hover {
   }
 }
 
-.whisper{
+.whisper {
   font-weight: 200;
   font-size: 14px;
 }
+
 .recommendations__result-name {
   font-size: 2em;
   font-weight: bold
@@ -1991,6 +1995,7 @@ a:hover {
   -webkit-transition: opacity 0.25s ease-out;
   transition: opacity 0.25s ease-out
 }
+
 .recommendations__result-price {
   font-size: 1.5em;
   text-align: center
@@ -2038,7 +2043,7 @@ ul li {
   list-style-type: none;
 }
 
-ul{
+ul {
   margin: 0;
   padding: 0;
 }
@@ -2055,12 +2060,13 @@ ul{
   font-size: 1rem;
   font-weight: bold
 }
+
 .recommendations__result--tasker .recommendations__blurb-title {
   padding-top: 1rem;
   border-top: 1px solid #dce0e6
 }
 
-.recommendations__blurb{
+.recommendations__blurb {
   font-weight: 300;
 }
 
@@ -2117,17 +2123,17 @@ i.recommendations__badge-info {
   }
 }
 
-.recommendations__badge-list li{
+.recommendations__badge-list li {
   display: inline;
   position: relative;
 }
 
-.recommendations__pill--elite i, .recommendations__pill--reliability-badge i, .recommendations__pill--new-tasker i{
+.recommendations__pill--elite i, .recommendations__pill--reliability-badge i, .recommendations__pill--new-tasker i {
   padding-right: 1rem;
   color: #31a7a8;
 }
 
-.recommendations__pill--elite, .recommendations__pill--reliability-badge, .recommendations__pill--new-tasker{
+.recommendations__pill--elite, .recommendations__pill--reliability-badge, .recommendations__pill--new-tasker {
   padding-right: 1rem;
   color: #31a7a8;
   font-weight: 600;
@@ -2136,12 +2142,13 @@ i.recommendations__badge-info {
 .tooltip-hover {
   cursor: pointer;
 }
+
 .tooltip-tether {
   position: relative;
   display: inline;
 }
 
-.recommendations__result-info i{
+.recommendations__result-info i {
   margin-right: 0.25rem;
   padding-right: 12px;
 }
@@ -2151,7 +2158,8 @@ i.recommendations__badge-info {
   margin-left: 0.25rem;
   padding: 0 !important;
 }
-.tooltip{
+
+.tooltip {
   visibility: hidden;
   position: absolute;
   width: 18rem;
@@ -2161,7 +2169,7 @@ i.recommendations__badge-info {
   opacity: 1;
 }
 
-.tooltip.active{
+.tooltip.active {
   visibility: visible;
 }
 
@@ -2198,7 +2206,7 @@ i.recommendations__badge-info {
   color: #242a30;
   background: white;
   border: 1px solid #dce0e6;
-  box-shadow: rgba(0,0,0,0.1) 1px 1px 2px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 0px;
   font-size: 14px;
   font-weight: normal;
   border-radius: 5px;
@@ -2207,23 +2215,297 @@ i.recommendations__badge-info {
   max-width: 100%;
 }
 
-.modal-choose-date{
+.modal-choose-date {
   position: absolute;
   height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-height: 400px;
+  min-height: 450px;
   border-radius: 5px;
-  border: 1px solid #868686;
+  color: #272727;
 }
-.modal-choose-date span.close{
+
+.f-w-300 {
+  font-weight: 300;
+}
+
+.modal-choose-date span.close {
   width: 30px;
   height: 30px;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 15px;
+  right: 15px;
   font-size: 30px;
+}
+
+.recommendations__tasker_schedule_modal_tasker {
+  padding: 0 4.3rem;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.recommendations__tasker_schedule_modal_tasker img {
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.recommendations__tasker_schedule_modal_tasker span {
+  margin-left: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #242a30;
+}
+
+.calendar__container {
+  background: white;
+  z-index: 1;
+}
+
+.calendar__row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.calendar__title {
+  font-size: 16px;
+}
+
+@media (min-width: 501px) {
+  h4, .h4 {
+    font-size: 1.25rem;
+    line-height: 1.6;
+  }
+}
+
+.calendar__week {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.calendar__day--label {
+  color: #86919d;
+  font-weight: normal;
+}
+
+.calendar__box, .calendar__day--label, .calendar__day {
+  height: 45px;
+  width: 45px;
+  font-size: 14px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.calendar__day--selected, .calendar__day--selected:hover {
+  background-color: #51af33;
+  color: #ffffff !important;
+}
+
+.calendar__day--hover:hover {
+  background-color: #dce0e6;
+}
+
+.calendar__day:last-child {
+  border-right: 1px solid #dce0e6
+}
+
+.calendar__row:last-child > .calendar__week {
+  border-bottom: 1px solid #dce0e6
+}
+
+.calendar__day--selected,
+.calendar__day--selected:hover {
+  background-color: #51af33;
+  color: #ffffff
+}
+
+@media (min-width: 1025px) {
+  .calendar__row {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+}
+
+.calendar__day--disabled {
+  color: #dce0e6;
+}
+
+.calendar__day {
+  border: 1px solid #dce0e6;
+  border-right: none;
+  border-bottom: none;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.recommendations__tasker_schedule_modal--select {
+  margin: 1.5em auto;
+  position: relative;
+  width: 315px
+}
+
+.recommendations__tasker_schedule_modal--select select {
+  margin: 0;
+  padding: 0.5em 0.75em;
+  background-color: white;
+  height: 46px;
+  font-weight: normal;
+  border: 1px solid #b1b9c3;
+  font-size: 1em;
+  border-radius: 4px;
+  -webkit-transition-property: border-color, color, box-shadow;
+  transition-property: border-color, color, box-shadow;
+  -webkit-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+  max-width: 100%;
+  vertical-align: middle;
+  min-height: 46px;
+}
+
+.recommendations__tasker_schedule_modal_can_chat {
+  font-size: 0.875rem;
+  margin-top: 1rem;
+  font-weight: 300;
+}
+
+.recommendations__tasker_schedule_modal_can_chat_mobile {
+  font-size: 0.75rem
+}
+
+
+@media all and (min-width: 1001px) {
+  .recommendations__tasker_schedule_modal--selection {
+    margin-left: 1em
+  }
+}
+
+@media all and (min-width: 1001px) and (max-width: 1000px) {
+  .recommendations__tasker_schedule_modal--selection {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center
+  }
+}
+
+@media all and (max-width: 1000px) {
+  .recommendations__tasker_schedule_modal--selection {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center
+  }
+}
+
+
+.recommendations__tasker_schedule_modal_tasker span {
+  margin-left: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #242a30
+}
+
+@media all and (max-width: 1000px) {
+  .recommendations__tasker_schedule_modal_tasker span {
+    font-size: 1rem
+  }
+}
+
+.box-next-step-4 {
+  justify-content: center;
+  padding: 20px;
+  align-items: center;
+}
+
+.pre-datetime{
+  margin-top: -5px;
+}
+
+.recommendations__tasker_schedule_modal_next_step {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.calendar__day--today {
+  color: #259995
+}
+
+.recommendations__tasker_schedule_modal_next_step img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain
+}
+
+.recommendations__tasker_schedule_modal_next_step div {
+  margin-left: 0.5rem;
+  font-size: 0.875rem
+}
+
+@media all and (max-width: 1000px) {
+  .recommendations__tasker_schedule_modal_next_step div {
+    font-size: 0.75rem
+  }
+}
+
+
+/*FONT SIZE*/
+.t-30 {
+  font-size: 30px;
+}
+
+.t-25 {
+  font-size: 25px;
 }
 
 

@@ -82,12 +82,158 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 bg-dark-light" style="min-height: 100vh;position: absolute;top: 0;left: 0; z-index: 1000;">
+            <div class="col-md-12 bg-dark-light"
+                 style="min-height: 100vh;position: absolute;top: 0;left: 0; z-index: 1000;">
                 <div class="row">
-                    <div class="col-lg-6 modal-choose-date p-3 bg-white">
+                    <div class="col-lg-7 modal-choose-date p-4 bg-white">
                         <a th:href="@{/task/create/step2(action='backStep2')}">
                             <span class="icon-close2 close"></span>
                         </a>
+                        <div style="font-size: 25px" class="f-w-300 text-center my-2">Chọn ngày và thời gian bắt đầu làm
+                            việc:
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-lg-7 p-0">
+                                <div class="recommendations__tasker_schedule_modal_tasker">
+                                    <img th:src="@{/images/person_1.jpg}"
+                                         alt="Mahendra B.">
+                                    <div><span>Trần Hiểu Đông</span></div>
+                                </div>
+                                <div style="border-right: 1px solid #E5E7EC">
+                                    <div class="calendar__container">
+                                        <div class="calendar__row"><h4 class="calendar__title"> Hôm nay, <span></span></h4></div>
+                                        <div class="calendar__row">
+                                            <div class="calendar__week">
+                                                <div class="calendar__day--label">Sun</div>
+                                                <div class="calendar__day--label">Mon</div>
+                                                <div class="calendar__day--label">Tue</div>
+                                                <div class="calendar__day--label">Wed</div>
+                                                <div class="calendar__day--label">Thu</div>
+                                                <div class="calendar__day--label">Fri</div>
+                                                <div class="calendar__day--label">Sat</div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="calendar__row">
+                                                <div class="calendar__week">
+                                                    <div
+                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
+                                                        17
+                                                    </div>
+                                                    <div
+                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
+                                                        18
+                                                    </div>
+                                                    <div
+                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
+                                                        19
+                                                    </div>
+                                                    <div
+                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
+                                                        20
+                                                    </div>
+                                                    <div
+                                                        class="calendar__day calendar__day--hover calendar__day--today">
+                                                        21
+                                                    </div>
+                                                    <div
+                                                        class="calendar__day calendar__day--hover calendar__day--selected">
+                                                        22
+                                                    </div>
+                                                    <div class="calendar__day calendar__day--hover">23</div>
+                                                </div>
+                                            </div>
+                                            <div class="calendar__row">
+                                                <div class="calendar__week">
+                                                    <div
+                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
+                                                        24
+                                                    </div>
+                                                    <div class="calendar__day calendar__day--hover">25</div>
+                                                    <div class="calendar__day calendar__day--hover">26</div>
+                                                    <div
+                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
+                                                        27
+                                                    </div>
+                                                    <div
+                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
+                                                        28
+                                                    </div>
+                                                    <div
+                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
+                                                        29
+                                                    </div>
+                                                    <div class="calendar__day calendar__day--hover">30</div>
+                                                </div>
+                                            </div>
+                                            <div class="calendar__row">
+                                                <div class="calendar__week">
+                                                    <div class="calendar__day calendar__day--hover">
+                                                        <div class="calendar__day--with-month">
+                                                            <div style="font-size: 12px">T12</div>
+                                                            <div>1</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="calendar__day calendar__day--hover">2</div>
+                                                    <div class="calendar__day calendar__day--hover">3</div>
+                                                    <div class="calendar__day calendar__day--hover">4</div>
+                                                    <div class="calendar__day calendar__day--hover">5</div>
+                                                    <div
+                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
+                                                        6
+                                                    </div>
+                                                    <div
+                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
+                                                        7
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="exterior__bottom--lg recommendations__tasker_schedule_modal--select">
+                                        <select style="width: 100%;" id="select-time">
+                                            <option value="8:30">8:30</option>
+                                            <option value="9:00">9:00</option>
+                                            <option value="9:30">9:30</option>
+                                            <option value="10:00">10:00</option>
+                                            <option value="10:30">10:30</option>
+                                            <option value="11:00">11:00</option>
+                                            <option value="11:30">11:30</option>
+                                            <option value="12:00">12:00</option>
+                                            <option value="12:30">12:30</option>
+                                            <option value="13:00">13:00</option>
+                                            <option value="13:30">13:30</option>
+                                            <option value="14:00">14:00</option>
+                                            <option value="14:30">14:30</option>
+                                            <option value="15:00">15:00</option>
+                                            <option value="15:30">15:30</option>
+                                        </select>
+                                        <div class="recommendations__tasker_schedule_modal_can_chat u-hidden--sm">
+                                            <span>Bạn có thể trò chuyện để điều chỉnh chi tiết công việc hoặc thay đổi thời gian bắt đầu sau khi xác nhận.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="box-next-step-4 mt-5">
+                                    <div class="t-30 f-w-300">Yêu cầu:</div>
+                                    <div class="pre-datetime t-25">
+                                        22 - T11, 8:30
+                                    </div>
+                                    <div>
+                                        <a href="#" class="btn btn-primary w-100 my-3 py-2">
+                                            Chọn &amp; tiếp tục
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="recommendations__tasker_schedule_modal_next_step">
+                                    <img th:src="@{/images/confirm.svg}" alt="Confirm">
+                                    <div>
+                                        <span>Tiếp theo, xác nhận thông tin của bạn để được kết nối với nhân viên của bạn.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -98,6 +244,6 @@
 </div>
 <th:block th:include="fragment/layout :: javascript"></th:block>
 <script th:src="@{/js/task/task-step.js}"></script>
-<script th:src="@{/js/task/task-step2.js}"></script>
+<script th:src="@{/js/task/task-step3.js}"></script>
 </body>
 </html>
