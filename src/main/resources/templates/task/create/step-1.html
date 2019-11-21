@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Task</title>
+    <th:block th:include="fragment/layout :: head"> </th:block>
+</head>
+<body>
+
+<div class="site-wrap">
+    <div class="mt-4 mb-3">
+        <div class="container">
+            <div class="row border-bottom pb-3">
+                <div class="col-md-1 box-logo-step">
+                    <img alt="TaskUnite" class="logo-step" th:src="@{/images/favicon.png}">
+                </div>
+                <div class="col-md-9 offset-md-2">
+                    <div class="box-step">
+                        <div class="step active st1">
+                            <div class="box-circle">
+                                <div class="circle">1</div>
+                            </div>
+                            <div class="box-line">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step">
+                                Thông tin công việc
+                            </div>
+                        </div>
+                        <div class="step st2">
+                            <div class="box-circle">
+                                <div class="circle">2</div>
+                            </div>
+                            <div class="box-line ">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step">
+                                Tác vụ & Giá tiền
+                            </div>
+                        </div>
+                        <div class="step st3">
+                            <div class="box-circle">
+                                <div class="circle">3</div>
+                            </div>
+                            <div class="box-line">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step">
+                                Đặt lịch
+                            </div>
+                        </div>
+                        <div class="step st4">
+                            <div class="box-circle">
+                                <div class="circle">4</div>
+                            </div>
+                            <div class="name-step">
+                                Xác nhận
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 p-0 mt-1">
+                    <div class="build-progress__sub-bar">
+                        <div class="build-progress__sub-bar__container">
+                            <img alt="form" class="build-progress__sub-bar__icon" th:src="@{/images/pen.svg}">
+                            <div class="build-progress__sub-bar__message">
+                                <span>
+                                    Hãy cho chúng tôi về công việc của bạn, để hiển thị nhân viên trong khu vực của bạn phù hợp với nhu cầu của bạn.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="site-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 mb-5">
+                    <form action="#" id="form-task">
+                        <div class="row form-group">
+                            <div class="col-md-12 mb-3 mb-md-0 task-box bg-white border" data-editing=true
+                                 data-state="summary">
+                                <span class="status-task-box">
+                                    <i class="icon-done text-primary"></i>
+                                    <!--                                    <i class="icon-pencil text-primary"></i>-->
+                                </span>
+                                <div class="form-group text-uppercase text-label d-flex">
+                                    <div style="flex: 9">Địa chỉ <span class="text-danger error-msg d-none"></span>
+                                    </div>
+                                    <select name="option-address" style="flex: 1">
+                                        <option value="1" selected>1 Địa chỉ</option>
+                                        <option value="2">2 Địa chỉ</option>
+                                    </select>
+                                </div>
+                                <div class="box-input">
+                                    <div class="form-group box-input-address-single">
+                                        <input type="text" class="form-control" id="address"
+                                               placeholder="Nhập địa chỉ làm việc">
+                                    </div>
+                                    <div class="box-input-address-multi d-none">
+                                        <div class="form-group">
+                                            <label>Địa chỉ bắt đầu</label>
+                                            <input type="text" class="form-control" id="addressStart"
+                                                   placeholder="Nhập địa chỉ bắt đầu làm việc">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Địa chỉ kết thúc</label>
+                                            <input type="text" class="form-control" id="addressEnd"
+                                                   placeholder="Nhập địa chỉ kết thúc làm việc">
+                                        </div>
+                                    </div>
+                                    <div class="mt-5 form-group text-center">
+                                        <button class="btn btn-success btn-continue px-4 " data-type="address"
+                                                th:type="button">Tiếp tục
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group preview-content d-none">
+                                    <i class="icon-room text-pink mr-1"></i> <span class="content"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12 mb-3 mb-md-0 task-box bg-white border" data-editing=false
+                                 data-state="empty">
+                                <span class="status-task-box">
+                                    <i class="icon-done text-primary"></i>
+                                </span>
+                                <div class="form-group text-uppercase text-label">Tên công việc
+                                    <span class="text-danger error-msg d-none"></span>
+                                </div>
+                                <div class="box-input">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="title-task"
+                                               placeholder="Nhập tên công việc">
+                                    </div>
+                                    <div class="mt-5 form-group text-center">
+                                        <button class="btn btn-success btn-continue px-4" data-type="title"
+                                                th:type="button">Tiếp tục
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group preview-content d-none">
+                                    <i class="icon-title text-purple mr-1"></i>
+                                    <span class="content">
+
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-12 mb-3 mb-md-0 task-box bg-white border" data-editing=false
+                                 data-state="empty">
+                                <span class="status-task-box">
+                                    <i class="icon-done text-primary"></i>
+                                </span>
+                                <div class="form-group text-uppercase text-label">Thể loại <span
+                                    class="text-danger error-msg d-none"></span></div>
+                                <div class="box-input">
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox custom-control-inline">
+                                            <input type="checkbox" class="custom-control-input" id="cateId1"
+                                                   value="Việc nhà">
+                                            <label class="custom-control-label d-inline" for="cateId1">Việc nhà</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox custom-control-inline">
+                                            <input type="checkbox" class="custom-control-input" id="cateId2"
+                                                   value="Thợ điện">
+                                            <label class="custom-control-label d-inline" for="cateId2">Thợ điện</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox custom-control-inline">
+                                            <input type="checkbox" class="custom-control-input" id="cateId3"
+                                                   value="Vận chuyển">
+                                            <label class="custom-control-label d-inline" for="cateId3">Vận
+                                                chuyển</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox custom-control-inline">
+                                            <input type="checkbox" class="custom-control-input" id="cateId4"
+                                                   value="Thợ mộc">
+                                            <label class="custom-control-label d-inline" for="cateId4">Vận
+                                                chuyển</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox custom-control-inline">
+                                            <input type="checkbox" class="custom-control-input" id="cateId5"
+                                                   value="Sửa chữa nội thất">
+                                            <label class="custom-control-label d-inline" for="cateId5">Sửa chữa nội
+                                                thất
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="mt-5 form-group text-center">
+                                        <button class="btn btn-success btn-continue px-4" data-type="category"
+                                                th:type="button">Tiếp tục
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group preview-content d-none">
+                                    <i class="icon-book text-orange mr-1"></i>
+                                    <span class="content">
+
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+<!--                        <div class="row form-group">-->
+<!--                            <div class="col-md-12 mb-3 mb-md-0 task-box bg-white border" data-editing=false-->
+<!--                                 data-state="empty">-->
+<!--                                <span class="status-task-box">-->
+<!--                                    <i class="icon-done text-primary"></i>-->
+<!--                                </span>-->
+<!--                                <div class="form-group text-uppercase text-label">Thời gian dự tính <span-->
+<!--                                    class="text-danger error-msg d-none"></span></div>-->
+<!--                                <div class="box-input">-->
+<!--                                    <div class="form-group text-center">-->
+<!--                                        <label class="radio-inline mx-4 d-inline text-bold">-->
+<!--                                            <input type="radio" name="estimated-time" class="estimated-time" checked value="Nhỏ ~ 1 giờ">-->
+<!--                                            Nhỏ ~ 1 giờ-->
+<!--                                        </label>-->
+<!--                                        <label class="radio-inline mx-4 d-inline text-bold">-->
+<!--                                            <input type="radio" name="estimated-time" class="estimated-time" value="Trung bình-->
+<!--                                            ~ 2 - 3 giờ"> Trung bình-->
+<!--                                            ~ 2 - 3 giờ-->
+<!--                                        </label>-->
+<!--                                        <label class="radio-inline mx-4 d-inline text-bold">-->
+<!--                                            <input type="radio" name="estimated-time" class="estimated-time" value="Lớn ~ 4-->
+<!--                                            giờ trở lên"> Lớn ~ 4-->
+<!--                                            giờ trở lên-->
+<!--                                        </label>-->
+<!--                                    </div>-->
+<!--                                    <div class="mt-5 form-group text-center">-->
+<!--                                        <button class="btn btn-success btn-continue px-4" data-type="estimated-time"-->
+<!--                                                th:type="button">Tiếp tục-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="form-group preview-content d-none">-->
+<!--                                    <i class="icon-clock-o text-secondary mr-1"></i>-->
+<!--                                    <span class="content"></span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                        <div class="row form-group">
+                            <div class="col-md-12 mb-3 mb-md-0 task-box bg-white border" data-editing=false
+                                 data-state="empty">
+                                <span class="status-task-box">
+                                    <i class="icon-done text-primary"></i>
+                                </span>
+                                <div class="form-group text-uppercase text-label">Nội dung công việc <span
+                                    class="text-danger error-msg d-none"></span></div>
+                                <div class="box-input">
+                                    <div class="form-group">
+                                        <textarea class="form-control" style="min-height: 150px"
+                                                  name="description"
+                                                  placeholder="Nội dung công việc, lời nhắn hoặc những yêu cầu cho công việc này. Cám ơns!" ></textarea>
+                                    </div>
+                                    <div class="mt-5 form-group text-center">
+                                        <button class="btn btn-success btn-continue px-4" data-type="description"
+                                                th:type="button">Tiếp tục
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group preview-content d-none">
+                                    <i class="icon-book text-purple mr-1"></i>
+                                    <span class="content"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12 text-right">
+                                <a href="javascript:void (0)" id="next-step2">
+                                    <button type="button" class="btn btn-success py-2 px-5" disabled="disabled">Tiếp tục</button>
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="fragment/layout :: footer"> </th:block>
+</div>
+<th:block th:include="fragment/layout :: javascript"> </th:block>
+<script th:src="@{/js/task/task-step.js}"></script>
+<script th:src="@{/js/task/task-step1.js}"></script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Task</title>
+    <th:block th:include="fragment/layout :: head"></th:block>
+</head>
+<body>
+
+<div class="site-wrap">
+    <div class="mt-4 mb-3">
+        <div class="container">
+            <div class="row border-bottom pb-3">
+                <div class="col-md-1 box-logo-step">
+                    <img alt="TaskUnite" class="logo-step" th:src="@{/images/favicon.png}">
+                </div>
+                <div class="col-md-9 offset-md-2">
+                    <div class="box-step ">
+                        <div class="step active st1">
+                            <a th:href="@{/task/create/step1(action='back')}">
+                                <div class="box-circle">
+                                    <div class="circle"><i class="icon-done"></i></div>
+                                </div>
+                            </a>
+                            <div class="box-line">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step">
+                                Thông tin công việc
+                            </div>
+                        </div>
+                        <div class="step active st2">
+                            <div class="box-circle">
+                                <div class="circle">2</div>
+                            </div>
+                            <div class="box-line ">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step">
+                                Tác vụ & Giá tiền
+                            </div>
+                        </div>
+                        <div class="step st3">
+                            <div class="box-circle">
+                                <div class="circle">3</div>
+                            </div>
+                            <div class="box-line">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step">
+                                Đặt lịch
+                            </div>
+                        </div>
+                        <div class="step st4">
+                            <div class="box-circle">
+                                <div class="circle">4</div>
+                            </div>
+                            <div class="name-step">
+                                Xác nhận
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 p-0 mt-1">
+                    <div class="build-progress__sub-bar">
+                        <div class="build-progress__sub-bar__container">
+                            <img alt="form" class="build-progress__sub-bar__icon" th:src="@{/images/user-plus.svg}">
+                            <div class="build-progress__sub-bar__message">
+                                <span>
+                                    Lọc và sắp xếp để tìm nhân viên của bạn. Sau đó xem sự sẵn có của họ để yêu cầu ngày và thời gian của bạn.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="site-section bg-dark-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 text-right">
+                    <label class="text-uppercase mr-1">Sắp xếp: </label>
+                    <select id="filter-option" class="">
+                        <option value="0" selected>Liên quan</option>
+                        <option value="1">Giá tiền giảm dần</option>
+                        <option value="2">Liên quan</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-4 p-2">
+                    <div class="recommendations__trust-safety__box panel panel--spaced ">
+                        <img class="recommendations__trust-safety__box__icon"
+                             th:src="@{/images/protected.svg}" alt="shield">
+                        <div class="recommendations__trust-safety__box__text">
+                            <span>Hãy yên tâm. Tất cả nhân viên đều được kiểm tra TCC và lý lịch.</span>
+                        </div>
+                    </div>
+                    <div class="panel panel--spaced panel--with-overflow">
+                        <div class="title-date text-uppercase text-bold">
+                            <span class="icon-calendar mr-2"></span> Ngày làm việc
+                            <span class="icon-chevron-up iconSlideUp"></span>
+                        </div>
+                        <div class="box-option mt-3">
+                            <div class="option-date">
+                                <button type="button" class="active">Hôm nay</button>
+                            </div>
+                            <div class="option-date">
+                                <button type="button" class="">Trong 3 ngày</button>
+                            </div>
+                            <div class="option-date">
+                                <button type="button" class="">Trong tuần</button>
+                            </div>
+                            <div class="option-date">
+                                <button type="button" class="">Chọn ngày</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel--spaced panel--with-overflow">
+                        <div class="title-date text-uppercase text-bold">
+                            <span class="icon-clock-o mr-2"></span> Thời gian làm việc
+                            <span class="icon-chevron-up iconSlideUp"></span>
+                        </div>
+                        <div class="mt-3">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="time1"
+                                       value="8-12">
+                                <label class="custom-control-label d-inline" for="time1">Sáng (8h - 12h)</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="time2"
+                                       value="12-17">
+                                <label class="custom-control-label d-inline" for="time2">Chiều (12h - 15h)</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="time3"
+                                       value="17-21">
+                                <label class="custom-control-label d-inline" for="time3">Tối (17h - 21h)</label>
+                            </div>
+                            <div class="row my-2 p-3">
+                                <div class="col-lg-3 p-0">
+                                    <div class="h-20 line-mid">
+                                        <div class="line"></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 text-center p-0">
+                                    <div class="h-20" style="font-size: 13px; color: #3f3f3f">Chọn thời gian khác</div>
+                                </div>
+                                <div class="col-lg-3 p-0">
+                                    <div class="h-20 line-mid">
+                                        <div class="line"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option value="0">Giờ cố định</option>
+                                    <option value="1">8:00am</option>
+                                    <option value="2">8:30am</option>
+                                    <option value="3">9:00am</option>
+                                    <option value="4">9:30am</option>
+                                    <option value="5">10:00am</option>
+                                    <option value="6">10:30am</option>
+                                    <option value="7">11:00am</option>
+                                    <option value="8">11:30am</option>
+                                    <option value="9">12:00pm</option>
+                                    <option value="10">12:30pm</option>
+                                    <option value="11">1:00pm</option>
+                                    <option value="12">1:30pm</option>
+                                    <option value="13">2:00pm</option>
+                                    <option value="14">2:30pm</option>
+                                    <option value="15">3:00pm</option>
+                                    <option value="16">3:30pm</option>
+                                    <option value="17">4:00pm</option>
+                                    <option value="18">4:30pm</option>
+                                    <option value="19">5:00pm</option>
+                                    <option value="20">5:30pm</option>
+                                    <option value="21">6:00pm</option>
+                                    <option value="22">6:30pm</option>
+                                    <option value="23">7:00pm</option>
+                                    <option value="24">7:30pm</option>
+                                    <option value="25">8:00pm</option>
+                                    <option value="26">8:30pm</option>
+                                    <option value="27">9:00pm</option>
+                                    <option value="28">9:30pm</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-8 p-2">
+                    <div class="recommendations__result panel panel--spaced ">
+                        <div class="recommendations__result-figure">
+                            <div>
+                                <img class="recommendations__avatar__circular"
+                                     th:src="@{/images/person_3.jpg}"
+                                     alt="Tasker">
+                            </div>
+                            <div class="recommendations__result-actions">
+                                <a class="recommendations__review-link d-block"
+                                   tabindex="0" role="button">
+                                    <span>Thông tin &amp; Nhận xét</span>
+                                </a>
+                                <a class="recommendations__hire-btn btn btn-primary btn-block " >
+                                    <span>Chọn &amp; Tiếp tục</span>
+                                </a>
+                                <div class="u-hidden--sm">
+                                    <span class="whisper">
+                                        <span>
+                                        Bạn có thể trò chuyện với Nhân viên, điều chỉnh chi tiết công việc hoặc thay đổi thời gian thực hiện công việc sau khi đặt chỗ
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recommendations__result-content">
+                            <div class="recommendations__result-name" tabindex="0" role="button">Trần Hiểu Đông</div>
+                            <span>
+                                <div class="recommendations__result-price-container priceChange-appear-active">
+                                    <div class="recommendations__result-price recommendations__pill">
+                                        <strong>80.000 vnđ<span>/h</span></strong>
+                                    </div>
+                                </div>
+                            </span>
+                            <ul class="recommendations__badge-list">
+                                <li class="recommendations__pill--elite">
+                                    <i class="icon-sentiment_very_satisfied"></i><span>Nhân viên ưu tú</span>
+                                </li>
+                            </ul>
+                            <ul class="recommendations__result-info">
+                                <li><i class="icon-check-circle-o"></i><span>66 Công việc nhà</span></li>
+                                <li><i class="icon-star-o"></i>
+                                    <span>
+                                        100% Nhận xét tích cực
+                                        <span class="tooltip-tether">
+                                            <i class="icon-info_outline recommendations__badge-info"></i>
+                                            <span class="tooltip">
+                                                <div class="tooltip-triangle"></div>
+                                                <div class="tooltip-inner">
+                                                    <span>Đánh giá tích cực dựa trên tất cả các công việc đã hoàn thành. Giúp bạn sáng suốt hơn khi chọn một nhân viên.</span>
+                                                </div>
+                                            </span>
+                                        </span>
+                                    </span>
+
+                                </li>
+                                <li><i class="icon-beenhere"></i><span>100% Tin cậy</span> <i
+                                    class="icon-info_outline"></i></li>
+                            </ul>
+                            <div class="recommendations__blurb-title"><span>Tôi có thể giúp bạn:</span></div>
+                            <div class="recommendations__blurb">
+                                Đếm rất khéo léo và hiệu quả với các công cụ phù hợp để hoàn thành công việc, mọi cài
+                                đặt AC của các đơn vị AC có cùng giá mỗi giờ cho mỗi đơn vị (ví dụ: một đơn vị AC một
+                                giờ hai đơn vị AC hai giờ, v.v. Tối thiểu là 2 giờ cho sửa chữa nhà khác
+                            </div>
+                            <div class="recommendations__review media--object">
+                                <div class="media--figure">
+                                    <img class="avatar-new-72" th:src="@{/images/person_1.jpg}"
+                                         alt="Reviewer">
+                                </div>
+                                <div class="media--content">
+                                    <div class="recommendations__review-content">"Công việc tuyệt vời. Đúng giờ, thân
+                                        thiện, nhanh chóng và lành nghề."
+                                    </div>
+                                    <div class="u-muted">Xuân Thứ - 7/11/2019</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommendations__result panel panel--spaced ">
+                        <div class="recommendations__result-figure">
+                            <div>
+                                <img class="recommendations__avatar__circular"
+                                     th:src="@{/images/person_3.jpg}"
+                                     alt="Tasker">
+                            </div>
+                            <div class="recommendations__result-actions">
+                                <a class="recommendations__review-link d-block"
+                                   tabindex="0" role="button">
+                                    <span>Thông tin &amp; Nhận xét</span>
+                                </a>
+                                <a class="recommendations__hire-btn btn btn-primary btn-block "
+                                   role="button">
+                                    <span>Chọn &amp; Tiếp tục</span>
+                                </a>
+                                <div class="u-hidden--sm">
+                                    <span class="whisper">
+                                        <span>
+                                        Bạn có thể trò chuyện với Nhân viên, điều chỉnh chi tiết công việc hoặc thay đổi thời gian thực hiện công việc sau khi đặt chỗ
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recommendations__result-content">
+                            <div class="recommendations__result-name" tabindex="0" role="button">Trần Hiểu Đông</div>
+                            <span>
+                                <div class="recommendations__result-price-container priceChange-appear-active">
+                                    <div class="recommendations__result-price recommendations__pill">
+                                        <strong>80.000 vnđ<span>/h</span></strong>
+                                    </div>
+                                </div>
+                            </span>
+                            <ul class="recommendations__badge-list">
+                                <li class="recommendations__pill--elite">
+                                    <i class="icon-sentiment_very_satisfied"></i><span>Nhân viên ưu tú</span>
+                                </li>
+                            </ul>
+                            <ul class="recommendations__result-info">
+                                <li><i class="icon-check-circle-o"></i><span>66 Công việc nhà</span></li>
+                                <li><i class="icon-star-o"></i>
+                                    <span>
+                                        100% Nhận xét tích cực
+                                        <span class="tooltip-tether">
+                                            <i class="icon-info_outline recommendations__badge-info"></i>
+                                            <span class="tooltip">
+                                                <div class="tooltip-triangle"></div>
+                                                <div class="tooltip-inner">
+                                                    <span>Đánh giá tích cực dựa trên tất cả các công việc đã hoàn thành. Giúp bạn sáng suốt hơn khi chọn một nhân viên.</span>
+                                                </div>
+                                            </span>
+                                        </span>
+                                    </span>
+
+                                </li>
+                                <li><i class="icon-beenhere"></i><span>100% Tin cậy</span> <i
+                                    class="icon-info_outline"></i></li>
+                            </ul>
+                            <div class="recommendations__blurb-title"><span>Tôi có thể giúp bạn:</span></div>
+                            <div class="recommendations__blurb">
+                                Đếm rất khéo léo và hiệu quả với các công cụ phù hợp để hoàn thành công việc, mọi cài
+                                đặt AC của các đơn vị AC có cùng giá mỗi giờ cho mỗi đơn vị (ví dụ: một đơn vị AC một
+                                giờ hai đơn vị AC hai giờ, v.v. Tối thiểu là 2 giờ cho sửa chữa nhà khác
+                            </div>
+                            <div class="recommendations__review media--object">
+                                <div class="media--figure">
+                                    <img class="avatar-new-72" th:src="@{/images/person_1.jpg}"
+                                         alt="Reviewer">
+                                </div>
+                                <div class="media--content">
+                                    <div class="recommendations__review-content">"Công việc tuyệt vời. Đúng giờ, thân
+                                        thiện, nhanh chóng và lành nghề."
+                                    </div>
+                                    <div class="u-muted">Xuân Thứ - 7/11/2019</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="fragment/layout :: footer"></th:block>
+</div>
+<th:block th:include="fragment/layout :: javascript"></th:block>
+<script th:src="@{/js/task/task-step.js}"></script>
+<script th:src="@{/js/task/task-step2.js}"></script>
+</body>
+</html>

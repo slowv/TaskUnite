@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Task</title>
+    <th:block th:include="fragment/layout :: head"></th:block>
+</head>
+<body style="overflow: hidden">
+
+<div class="site-wrap">
+    <div class="mt-4 mb-3">
+        <div class="container">
+            <div class="row border-bottom pb-3">
+                <div class="col-md-1 box-logo-step">
+                    <img alt="TaskUnite" class="logo-step" th:src="@{/images/favicon.png}">
+                </div>
+                <div class="col-md-9 offset-md-2">
+                    <div class="box-step ">
+                        <div class="step active st1">
+                            <a th:href="@{/task/create/step1(action='backStep1')}">
+                                <div class="box-circle">
+                                    <div class="circle"><i class="icon-done"></i></div>
+                                </div>
+                            </a>
+                            <div class="box-line">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step">
+                                Thông tin công việc
+                            </div>
+                        </div>
+                        <div class="step active st2">
+                            <a th:href="@{/task/create/step1(action='backStep2')}">
+                                <div class="box-circle">
+                                    <div class="circle">2</div>
+                                </div>
+                            </a>
+                            <div class="box-line ">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step">
+                                Tác vụ & Giá tiền
+                            </div>
+                        </div>
+                        <div class="step active st3">
+                            <div class="box-circle">
+                                <div class="circle">3</div>
+                            </div>
+                            <div class="box-line">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step">
+                                Đặt lịch
+                            </div>
+                        </div>
+                        <div class="step st4">
+                            <div class="box-circle">
+                                <div class="circle">4</div>
+                            </div>
+                            <div class="name-step">
+                                Xác nhận
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 p-0 mt-1">
+                    <div class="build-progress__sub-bar">
+                        <div class="build-progress__sub-bar__container">
+                            <img alt="form" class="build-progress__sub-bar__icon" th:src="@{/images/user-plus.svg}">
+                            <div class="build-progress__sub-bar__message">
+                                <span>
+                                    Lọc và sắp xếp để tìm nhân viên của bạn. Sau đó xem sự sẵn có của họ để yêu cầu ngày và thời gian của bạn.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 bg-dark-light" style="min-height: 100vh;position: absolute;top: 0;left: 0; z-index: 1000;">
+                <div class="row">
+                    <div class="col-lg-6 modal-choose-date p-3 bg-white">
+                        <a th:href="@{/task/create/step2(action='backStep2')}">
+                            <span class="icon-close2 close"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <th:block th:include="fragment/layout :: footer"></th:block>
+</div>
+<th:block th:include="fragment/layout :: javascript"></th:block>
+<script th:src="@{/js/task/task-step.js}"></script>
+<script th:src="@{/js/task/task-step2.js}"></script>
+</body>
+</html>
