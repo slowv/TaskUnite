@@ -19,4 +19,6 @@ getListTask = function() {
     new Task('Task 1', 'Hà Nội', [1, 2, 3], 'Việc nhẹ lương cao!'),
     new Task('Task 2', 'Hồ Chí Minh', [1, 2, 3], 'Việc nhẹ lương cao!'),
   ];
-}
+};
+
+
