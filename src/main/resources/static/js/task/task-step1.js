@@ -92,9 +92,9 @@ function onClick() {
         });
         content.html(contentStr.join(", "));
         break;
-      // case 'estimated-time':
-      //   parent.find('.content').html(parent.find('input[type="radio"]:checked').val());
-      //   break;
+      case 'estimated-time':
+        parent.find('.content').html(parent.find('input[type="number"]').val() + " Giờ");
+        break;
       case 'description':
         var strDescription = parent.find('textarea').val();
         parent.find('.content').html(strDescription);
