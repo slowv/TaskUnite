@@ -1654,7 +1654,7 @@ a:hover {
 }
 
 .bg-dark-light {
-  background: #EBEDED;
+  background: #f7f8f9;
 }
 
 .panel, .panel--with-overflow {
@@ -2498,6 +2498,27 @@ i.recommendations__badge-info {
   }
 }
 
+input.iBanking {
+  height: 40px;
+}
+
+.task-name, .tasker-name {
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap !important;
+}
+
+.confirm-avatar-tasker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
 /*FONT SIZE*/
 .t-30 {
@@ -2507,6 +2528,19 @@ i.recommendations__badge-info {
 .t-25 {
   font-size: 25px;
 }
+
+.t-20 {
+  font-size: 20px;
+}
+
+.t-14 {
+  font-size: 14px;
+}
+
+.t-green {
+  color: #28a745;
+}
+
 
 
 /*RESET CSS Bootstrap*/

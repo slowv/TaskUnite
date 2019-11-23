@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Task</title>
+    <th:block th:include="fragment/layout :: head"> </th:block>
+</head>
+<body>
+
+<div class="site-wrap">
+    <div class="mt-4 mb-3">
+        <div class="container">
+            <div class="row border-bottom pb-3">
+                <div class="col-md-1 box-logo-step">
+                    <img alt="TaskUnite" class="logo-step" th:src="@{/images/favicon.png}">
+                </div>
+                <div class="col-md-9 offset-md-2">
+                    <div class="box-step ">
+                        <div class="step active st1">
+                            <a th:href="@{/task/create/step1(action='back')}">
+                                <div class="box-circle">
+                                    <div class="circle"><i class="icon-done"></i></div>
+                                </div>
+                            </a>
+                            <div class="box-line">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step">
+                                Thông tin công việc
+                            </div>
+                        </div>
+                        <div class="step active st2">
+                            <a th:href="@{/task/create/step2(action='back')}">
+                                <div class="box-circle">
+                                    <div class="circle"><i class="icon-done"></i></div>
+                                </div>
+                            </a>
+                            <div class="box-line ">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step">
+                                Tác vụ & Giá tiền
+                            </div>
+                        </div>
+                        <div class="step active st3">
+                            <a th:href="@{/task/create/step3(action='back')}">
+                                <div class="box-circle">
+                                    <div class="circle"><i class="icon-done"></i></div>
+                                </div>
+                            </a>
+                            <div class="box-line">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step">
+                                Đặt lịch
+                            </div>
+                        </div>
+                        <div class="step active st4">
+                            <div class="box-circle">
+                                <div class="circle">4</div>
+                            </div>
+                            <div class="name-step">
+                                Xác nhận
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 p-0 mt-1">
+                    <div class="build-progress__sub-bar">
+                        <div class="build-progress__sub-bar__container">
+                            <img alt="form" class="build-progress__sub-bar__icon" th:src="@{/images/confirm.svg}">
+                            <div class="build-progress__sub-bar__message">
+                                <span>
+                                    Gân xong rôi! Chúng tôi chỉ cần thêm một vài chi tiết để kết nối bạn với Nhân viên của bạn.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="site-section bg-dark-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-lg-7 p-2">
+                    <div class="panel panel--spaced panel--with-overflow">
+                        <div class="form-group">
+                            <!--Thả description vào luôn;-->
+                            <label class="d-block">
+                                <div class="mb-3">
+                                    Xem lại thông tin công việc
+                                </div>
+                                <textarea rows="5" name="description" id="description" class="form-control"
+                                          style="width: 100%; height: 185px;"></textarea>
+                            </label>
+
+                        </div>
+                        <div class="form-group my-4" style="height: 1px; background: #d0d0d0"></div>
+                        <div class="form-group mb-4" style="margin-top: -10px;">
+                            Bạn chỉ trả phí sau khi công việc của bạn hoàn thành.
+                        </div>
+                        <div class="form-group">
+                            <label class="d-block">
+                                <div class="mb-3">
+                                    Số tài khoản
+                                </div>
+                                <input type="text" class="form-control iBanking" placeholder="Nhập số tài khoản">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="d-block">
+                                <div class="mb-3">
+                                    Số điện thoại
+                                </div>
+                                <input type="text" class="form-control iBanking w-50" placeholder="Số điện thoại">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="p-1" style="font-size: 13px;letter-spacing: 1px;">
+                        Đừng lo lắng, bạn sẽ không phải trả phí cho đến khi công việc của bạn hoàn thành. Sau khi xác
+                        nhận, bạn có thể trò chuyện với Nhân viên của mình để cập nhật thông tin chi tiết.
+                    </div>
+                    <div class="text-center my-3">
+                        <a th:href="@{#}" class="btn btn-primary py-2 px-5 disabled">
+                            Xác nhận & nói chuyện
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-5 col-lg-5 p-2">
+                    <div class="panel panel--spaced panel--with-overflow">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="task-name text-bold" style="font-size: 18px">
+                                    Công việc nhà
+                                </div>
+                                <div class="tasker-name mt-1">
+                                    Trần Hiểu Đông
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <img th:src="@{/images/person_1.jpg}" alt="" class="confirm-avatar-tasker">
+                            </div>
+                        </div>
+                        <div style="height: 1px;background: #dadada" class="my-3"></div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <span class="icon-calendar-o mr-lg-3"></span>
+                                <span>22 - T11, 8:30 </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <span class="icon-room mr-lg-3"></span>
+                                <span>Hà Nội - Từ Liêm </span>
+                            </div>
+                        </div>
+                        <div style="height: 1px;background: #dadada" class="my-3"></div>
+                        <div class="row">
+                            <div class="col-lg-6 text-bold t-20">
+                                Giá tiền (vnđ/giờ):
+                            </div>
+                            <div class="col-lg-6 text-right t-20 t-green">
+                                80.000 vnđ/1h
+                            </div>
+                        </div>
+                        <div class="my-3 t-14">
+                            Một khoản phí <span class="t-green">Tin cậy và Hỗ trợ 15%</span> được thêm vào tổng tỷ lệ của Nhân viên.
+                        </div>
+                        <div class="my-3 t-14">
+                            Bạn sẽ không bị tính phí cho đến khi công việc của bạn hoàn thành. Công việc tối thiểu một giờ. Bạn có thể hủy bỏ hoặc sắp xếp lại bất cứ lúc nào. Nếu bạn hủy nhiệm vụ trong vòng 24 giờ kể từ thời gian bắt đầu được lên lịch, bạn có thể bị tính phí hủy trong một giờ với mức giá hàng giờ của Nhân viên.
+                        </div>
+                        <div class="my-3 t-14">
+                            <a th:href="@{#}" class="t-green">Tìm hiểu thêm</a> về chính sách của chúng tôi.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="fragment/layout :: footer"></th:block>
+</div>
+<th:block th:include="fragment/layout :: javascript"></th:block>
+<script th:src="@{/js/task/task-step.js}"></script>
+<script th:src="@{/js/task/task-step2.js}"></script>
+</body>
+</html>
