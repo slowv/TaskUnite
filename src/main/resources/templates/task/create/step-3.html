@@ -24,9 +24,7 @@
                             <div class="box-line">
                                 <div class="line"></div>
                             </div>
-                            <div class="name-step">
-                                Thông tin công việc
-                            </div>
+                            <div class="name-step" th:text="#{task-create.step1.task-infor}"></div>
                         </div>
                         <div class="step active st2">
                             <a th:href="@{/task/create/step1(action='backStep2')}">
@@ -37,9 +35,7 @@
                             <div class="box-line ">
                                 <div class="line"></div>
                             </div>
-                            <div class="name-step">
-                                Tác vụ & Giá tiền
-                            </div>
+                            <div class="name-step" th:text="#{task-create.step2.task-prices}"></div>
                         </div>
                         <div class="step active st3">
                             <div class="box-circle">
@@ -48,17 +44,13 @@
                             <div class="box-line">
                                 <div class="line"></div>
                             </div>
-                            <div class="name-step">
-                                Đặt lịch
-                            </div>
+                            <div class="name-step" th:text="#{task-create.step3.choose-date-time}"></div>
                         </div>
                         <div class="step st4">
                             <div class="box-circle">
                                 <div class="circle">4</div>
                             </div>
-                            <div class="name-step">
-                                Xác nhận
-                            </div>
+                            <div class="name-step" th:text="#{task-create.step4.confirm-details}"></div>
                         </div>
                     </div>
                 </div>
@@ -69,9 +61,7 @@
                         <div class="build-progress__sub-bar__container">
                             <img alt="form" class="build-progress__sub-bar__icon" th:src="@{/images/user-plus.svg}">
                             <div class="build-progress__sub-bar__message">
-                                <span>
-                                    Lọc và sắp xếp để tìm nhân viên của bạn. Sau đó xem sự sẵn có của họ để yêu cầu ngày và thời gian của bạn.
-                                </span>
+                                <span th:text="#{task-create.step2.notification-1}"></span>
                             </div>
                         </div>
                     </div>
@@ -89,9 +79,7 @@
                         <a th:href="@{/task/create/step2(action='backStep2')}">
                             <span class="icon-close2 close"></span>
                         </a>
-                        <div style="font-size: 25px" class="f-w-300 text-center my-2">Chọn ngày và thời gian bắt đầu làm
-                            việc:
-                        </div>
+                        <div style="font-size: 25px" class="f-w-300 text-center my-2" th:text="#{task-create.step3.choose-task-date-and-start-time}"></div>
                         <div class="row mt-2">
                             <div class="col-lg-7 p-0">
                                 <div class="recommendations__tasker_schedule_modal_tasker">
@@ -104,13 +92,13 @@
                                         <div class="calendar__row"><h4 class="calendar__title"> Hôm nay, <span></span></h4></div>
                                         <div class="calendar__row">
                                             <div class="calendar__week">
-                                                <div class="calendar__day--label">Sun</div>
-                                                <div class="calendar__day--label">Mon</div>
-                                                <div class="calendar__day--label">Tue</div>
-                                                <div class="calendar__day--label">Wed</div>
-                                                <div class="calendar__day--label">Thu</div>
-                                                <div class="calendar__day--label">Fri</div>
-                                                <div class="calendar__day--label">Sat</div>
+                                                <div class="calendar__day--label" th:text="#{task-create.step3.sunday}"></div>
+                                                <div class="calendar__day--label" th:text="#{task-create.step3.monday}"></div>
+                                                <div class="calendar__day--label" th:text="#{task-create.step3.tuesday}"></div>
+                                                <div class="calendar__day--label" th:text="#{task-create.step3.wednesday}"></div>
+                                                <div class="calendar__day--label" th:text="#{task-create.step3.thursday}"></div>
+                                                <div class="calendar__day--label" th:text="#{task-create.step3.friday}"></div>
+                                                <div class="calendar__day--label"th:text="#{task-create.step3.saturday}"></div>
                                             </div>
                                         </div>
                                         <div>
@@ -209,27 +197,25 @@
                                             <option value="15:30">15:30</option>
                                         </select>
                                         <div class="recommendations__tasker_schedule_modal_can_chat u-hidden--sm">
-                                            <span>Bạn có thể trò chuyện để điều chỉnh chi tiết công việc hoặc thay đổi thời gian bắt đầu sau khi xác nhận.</span>
+                                            <span th:text="#{task-create.step3.notification-1}"></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-5">
                                 <div class="box-next-step-4 mt-5">
-                                    <div class="t-30 f-w-300">Yêu cầu:</div>
+                                    <div class="t-30 f-w-300" th:text="#{task-create.step3.request-for}"></div>
                                     <div class="pre-datetime t-25">
                                         22 - T11, 8:30
                                     </div>
                                     <div>
-                                        <a th:href="@{/task/create/step4}" class="btn btn-primary w-100 my-3 py-2">
-                                            Chọn &amp; tiếp tục
-                                        </a>
+                                        <a th:href="@{/task/create/step4}" class="btn btn-primary w-100 my-3 py-2" th:text="#{task-create.step2.select-continue-btn}"></a>
                                     </div>
                                 </div>
                                 <div class="recommendations__tasker_schedule_modal_next_step">
                                     <img th:src="@{/images/confirm.svg}" alt="Confirm">
                                     <div>
-                                        <span>Tiếp theo, xác nhận thông tin của bạn để được kết nối với nhân viên của bạn.</span>
+                                        <span th:text="#{task-create.step3.notification-2}"></span>
                                     </div>
                                 </div>
                             </div>
