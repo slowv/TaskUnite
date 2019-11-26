@@ -3,6 +3,7 @@
 <head>
     <title>Register</title>
     <th:block th:include="fragment/layout :: head"> </th:block>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/account/register.css}">
 </head>
 <body>
 
@@ -20,36 +21,42 @@
 
                 <div class="col-md-8 offset-md-2 mt-5">
                     <form th:action="@{/templates/account/register}" style="background: rgba(0,0,0,0.55)"
-                          class="ftco-animate fadeInUp ftco-animated border p-4" method="post">
-                        <h3 class="border-bottom pb-2 text-white">Register</h3>
+                          class="border p-4" method="post">
+                        <h3 class="border-bottom pb-2 text-white" th:text="#{register.form-title}">Become a member</h3>
+                        <p class="form-description">Create an account to get started. All fields required.</p>
                         <div class="form-group mt-1">
-                            <label class="text-white">Username: </label>
+                            <label class="text-white" th:text="#{register.username}">Username: </label>
                             <input type="text" class="form-control" placeholder="Username...">
                         </div>
                         <div class="form-group">
-                            <label class="text-white">Password: </label>
+                            <label class="text-white" th:text="#{register.password}">Password: </label>
                             <input type="password" class="form-control" placeholder="Password...">
                         </div>
                         <div class="form-group">
-                            <label class="text-white">Confirm Password: </label>
+                            <label class="text-white" th:text="#{register.confirm-password}">Confirm Password: </label>
                             <input type="password" class="form-control" placeholder="Confirm Password...">
                         </div>
                         <div class="form-group mt-1">
-                            <label class="text-white">Email: </label>
+                            <label class="text-white" th:text="#{register.email}">Email: </label>
                             <input type="text" class="form-control" placeholder="Email...">
                         </div>
                         <div class="form-group mt-1">
                             <div class="row">
                                 <div class="col-6">
-                                    <label class="text-white">First Name: </label>
+                                    <label class="text-white" th:text="#{register.first-name}">First Name: </label>
                                     <input type="text" class="form-control" placeholder="First name...">
                                 </div>
                                 <div class="col-6">
-                                    <label class="text-white">Last name: </label>
+                                    <label class="text-white" th:text="#{register.last-name}">Last name: </label>
                                     <input type="text" class="form-control" placeholder="Last name...">
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group mt-1">
+                            <label class="text-white" th:text="#{register.mobile-phone}">Mobile phone: </label>
+                            <input type="text" class="form-control" placeholder="Mobile phone...">
+                        </div>
+                        <p class="form-agreement">By signing up you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
                         <div class="form-group text-center mt-5">
                             <button class="btn btn-success " style="padding: 5px 25px" type="submit">
                                 REGISTER
@@ -63,7 +70,7 @@
 
             </div>
         </div>
-    </div>
+    </div>`
 
     <th:block th:include="fragment/layout :: footer"> </th:block>
 </div>

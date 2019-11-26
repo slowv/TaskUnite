@@ -1,5 +1,6 @@
 package org.t1708e.taskunite.config;
 
+import org.t1708e.taskunite.config.securityHandler.SuccessLoginHandler;
 import org.t1708e.taskunite.security.*;
 
 import io.github.jhipster.config.JHipsterProperties;
@@ -43,9 +44,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         this.problemSupport = problemSupport;
     }
 
+//    @Bean
+//    public AjaxAuthenticationSuccessHandler ajaxAuthenticationSuccessHandler() {
+//        return new AjaxAuthenticationSuccessHandler();
+//    }
     @Bean
-    public AjaxAuthenticationSuccessHandler ajaxAuthenticationSuccessHandler() {
-        return new AjaxAuthenticationSuccessHandler();
+    public SuccessLoginHandler successLoginHandler() {
+        return new SuccessLoginHandler();
     }
 
     @Bean
@@ -92,8 +97,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .key(jHipsterProperties.getSecurity().getRememberMe().getKey())
         .and()
             .formLogin()
+            .loginPage("/account/login")
             .loginProcessingUrl("/api/authentication")
-            .successHandler(ajaxAuthenticationSuccessHandler())
+            .successHandler(successLoginHandler())
             .failureHandler(ajaxAuthenticationFailureHandler())
             .permitAll()
         .and()

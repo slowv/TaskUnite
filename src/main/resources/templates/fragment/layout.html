@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <!--Style sheet-->
     <th:block th:fragment="head">
@@ -70,27 +71,44 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li class="has-children">
-                                            <a href="category.html" th:text="#{home.services}">Category</a>
-                                            <ul class="dropdown arrow-top">
-                                                <li><a href="#">Services</a></li>
-                                                <li class="has-children">
-                                                    <a href="#">More Links</a>
-                                                    <ul class="dropdown">
-                                                        <li><a href="#">Browse Candidates</a></li>
-                                                        <li><a href="#">Post a Job</a></li>
-                                                        <li><a href="#">Employeer Profile</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                        <!--<li class="has-children">-->
+                                            <!--<a href="category.html" th:text="#{home.services}">Category</a>-->
+                                            <!--<ul class="dropdown arrow-top">-->
+                                                <!--<li><a href="#">Services</a></li>-->
+                                                <!--<li class="has-children">-->
+                                                    <!--<a href="#">More Links</a>-->
+                                                    <!--<ul class="dropdown">-->
+                                                        <!--<li><a href="#">Browse Candidates</a></li>-->
+                                                        <!--<li><a href="#">Post a Job</a></li>-->
+                                                        <!--<li><a href="#">Employeer Profile</a></li>-->
+                                                    <!--</ul>-->
+                                                <!--</li>-->
+                                            <!--</ul>-->
+                                        <!--</li>-->
                                         <li><a th:href="@{/contact}" th:text="#{home.contact}">Contact</a></li>
-                                        <li><a th:href="@{/account/login}" th:text="#{home.sign-in}">Sign in</a></li>
-                                        <li>
-                                            <a th:href="@{/task/create/step1}">
+                                        <li sec:authorize="!isAuthenticated()"><a th:href="@{/account/login}" th:text="#{home.sign-in}" >Sign in</a></li>
+                                        <!--<li sec:authorize="!isAuthenticated()"><a th:href="@{/account/register}" th:text="#{home.register}" >Register</a></li>-->
+                                        <li sec:authorize="!isAuthenticated()">
+                                            <a th:href="@{/account/register}">
                                                 <span class="bg-primary text-white py-3 px-4 rounded">
                                                     <span class="icon-plus mr-2" style="margin-top: -2px;"></span>
-                                                    <th:block th:text="#{home.post-new-job}"> </th:block>
+                                                    <th:block th:text="#{home.register}">Register </th:block>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <!--<li sec:authorize="isAuthenticated()">-->
+                                            <!--<a th:href="@{/task/create/step1}">-->
+                                                <!--<span class="bg-primary text-white py-3 px-4 rounded">-->
+                                                    <!--<span class="icon-plus mr-2" style="margin-top: -2px;"></span>-->
+                                                    <!--<th:block th:text="#{home.post-new-job}"> </th:block>-->
+                                                <!--</span>-->
+                                            <!--</a>-->
+                                        <!--</li>-->
+                                        <li sec:authorize="isAuthenticated()">
+                                            <a th:href="@{/profile}">
+                                                <span class="bg-primary text-white py-3 px-4 rounded">
+                                                    <span class="icon-user mr-2" style="margin-top: -2px;"></span>
+                                                    <th:block th:text="#{home.profile}">Profile </th:block>
                                                 </span>
                                             </a>
                                         </li>
