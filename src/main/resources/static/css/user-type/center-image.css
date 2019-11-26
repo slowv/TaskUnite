@@ -1,0 +1,18 @@
+.center-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.content-right {
+  border-right: 1px solid #b1b9c3;
+}
+
+.description-text {
+  margin: 10px 50px 0 50px;
+}
+
+.mycontent-left {
+  border-right: 1px dashed #333;
+}
