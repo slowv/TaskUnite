@@ -21,30 +21,32 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskUniteApp.address.createdAt" for="field_createdAt">Created At</label>
-                    <div class="d-flex">
-                        <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" formControlName="createdAt" placeholder="YYYY-MM-DD HH:mm"/>
+                    <div class="input-group">
+                        <input id="field_createdAt" type="text" class="form-control" name="createdAt" ngbDatepicker  #createdAtDp="ngbDatepicker" formControlName="createdAt"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdAtDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskUniteApp.address.updatedAt" for="field_updatedAt">Updated At</label>
-                    <div class="d-flex">
-                        <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" formControlName="updatedAt" placeholder="YYYY-MM-DD HH:mm"/>
+                    <div class="input-group">
+                        <input id="field_updatedAt" type="text" class="form-control" name="updatedAt" ngbDatepicker  #updatedAtDp="ngbDatepicker" formControlName="updatedAt"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="updatedAtDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskUniteApp.address.deletedAt" for="field_deletedAt">Deleted At</label>
-                    <div class="d-flex">
-                        <input id="field_deletedAt" type="datetime-local" class="form-control" name="deletedAt" formControlName="deletedAt" placeholder="YYYY-MM-DD HH:mm"/>
+                    <div class="input-group">
+                        <input id="field_deletedAt" type="text" class="form-control" name="deletedAt" ngbDatepicker  #deletedAtDp="ngbDatepicker" formControlName="deletedAt"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="deletedAtDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskUniteApp.address.user" for="field_user">User</label>
-                    <select class="form-control" id="field_user" name="user" formControlName="userId">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="userExtendOption.id" *ngFor="let userExtendOption of users; trackBy: trackUserExtendById">{{userExtendOption.id}}</option>
-                    </select>
-                </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskUniteApp.address.dictrict" for="field_dictrict">Dictrict</label>
                     <select class="form-control" id="field_dictrict" name="dictrict" formControlName="dictrictId">
@@ -53,10 +55,10 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskUniteApp.address.tasker" for="field_tasker">Tasker</label>
-                    <select class="form-control" id="field_tasker" name="tasker" formControlName="taskerId">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.address.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="userId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="taskerOption.id" *ngFor="let taskerOption of taskers; trackBy: trackTaskerById">{{taskerOption.id}}</option>
+                        <option [ngValue]="userExtendOption.id" *ngFor="let userExtendOption of userextends; trackBy: trackUserExtendById">{{userExtendOption.id}}</option>
                     </select>
                 </div>
             </div>

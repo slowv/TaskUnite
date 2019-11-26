@@ -11,26 +11,18 @@
         },
         {
             "fieldName": "createdAt",
-            "fieldType": "Instant"
+            "fieldType": "LocalDate"
         },
         {
             "fieldName": "updatedAt",
-            "fieldType": "Instant"
+            "fieldType": "LocalDate"
         },
         {
             "fieldName": "deletedAt",
-            "fieldType": "Instant"
+            "fieldType": "LocalDate"
         }
     ],
     "relationships": [
-        {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "userExtend",
-            "otherEntityRelationshipName": "address",
-            "relationshipName": "user",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
         {
             "relationshipType": "many-to-one",
             "otherEntityName": "district",
@@ -40,9 +32,9 @@
         },
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "tasker",
+            "otherEntityName": "userExtend",
             "otherEntityRelationshipName": "workingAddresses",
-            "relationshipName": "tasker",
+            "relationshipName": "user",
             "otherEntityField": "id"
         }
     ],
@@ -54,5 +46,6 @@
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "readOnly": false
 }

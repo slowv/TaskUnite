@@ -47,6 +47,22 @@ import { RouterModule } from '@angular/router';
       {
         path: 'message',
         loadChildren: () => import('./message/message.module').then(m => m.TaskUniteMessageModule)
+      },
+      {
+        path: 'payment-information',
+        loadChildren: () => import('./payment-information/payment-information.module').then(m => m.TaskUnitePaymentInformationModule)
+      },
+      {
+        path: 'statistic',
+        loadChildren: () => import('./statistic/statistic.module').then(m => m.TaskUniteStatisticModule)
+      },
+      {
+        path: 'schedule',
+        loadChildren: () => import('./schedule/schedule.module').then(m => m.TaskUniteScheduleModule)
+      },
+      {
+        path: 'plan',
+        loadChildren: () => import('./plan/plan.module').then(m => m.TaskUnitePlanModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

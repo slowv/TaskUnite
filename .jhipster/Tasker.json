@@ -2,11 +2,7 @@
     "name": "Tasker",
     "fields": [
         {
-            "fieldName": "level",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "pricePerHour",
+            "fieldName": "price",
             "fieldType": "Double"
         },
         {
@@ -15,15 +11,15 @@
         },
         {
             "fieldName": "createdAt",
-            "fieldType": "Instant"
+            "fieldType": "LocalDate"
         },
         {
             "fieldName": "updatedAt",
-            "fieldType": "Instant"
+            "fieldType": "LocalDate"
         },
         {
             "fieldName": "deletedAt",
-            "fieldType": "Instant"
+            "fieldType": "LocalDate"
         }
     ],
     "relationships": [
@@ -37,9 +33,9 @@
         },
         {
             "relationshipType": "one-to-many",
-            "otherEntityName": "address",
+            "otherEntityName": "schedule",
             "otherEntityRelationshipName": "tasker",
-            "relationshipName": "workingAddresses"
+            "relationshipName": "schedule"
         },
         {
             "relationshipType": "one-to-many",
@@ -64,5 +60,6 @@
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "readOnly": false
 }

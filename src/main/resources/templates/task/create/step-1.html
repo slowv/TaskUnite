@@ -24,9 +24,7 @@
                             <div class="box-line">
                                 <div class="line"></div>
                             </div>
-                            <div class="name-step">
-                                Thông tin công việc
-                            </div>
+                            <div class="name-step" th:text="#{task-create.step1.task-infor}"></div>
                         </div>
                         <div class="step st2">
                             <div class="box-circle">
@@ -35,9 +33,7 @@
                             <div class="box-line ">
                                 <div class="line"></div>
                             </div>
-                            <div class="name-step">
-                                Tác vụ & Giá tiền
-                            </div>
+                        <div class="name-step" th:text="#{task-create.step2.task-prices}"></div>
                         </div>
                         <div class="step st3">
                             <div class="box-circle">
@@ -46,17 +42,13 @@
                             <div class="box-line">
                                 <div class="line"></div>
                             </div>
-                            <div class="name-step">
-                                Đặt lịch
-                            </div>
+                            <div class="name-step" th:text="#{task-create.step3.choose-date-time}"></div>
                         </div>
                         <div class="step st4">
                             <div class="box-circle">
                                 <div class="circle">4</div>
                             </div>
-                            <div class="name-step">
-                                Xác nhận
-                            </div>
+                            <div class="name-step" th:text="#{task-create.step4.confirm-details}"></div>
                         </div>
                     </div>
                 </div>
@@ -67,9 +59,7 @@
                         <div class="build-progress__sub-bar__container">
                             <img alt="form" class="build-progress__sub-bar__icon" th:src="@{/images/pen.svg}">
                             <div class="build-progress__sub-bar__message">
-                                <span>
-                                    Hãy cho chúng tôi về công việc của bạn, để hiển thị nhân viên trong khu vực của bạn phù hợp với nhu cầu của bạn.
-                                </span>
+                                <span th:text="#{task-create.step1.task-notification}"></span>
                             </div>
                         </div>
                     </div>
@@ -91,34 +81,33 @@
                                     <!--                                    <i class="icon-pencil text-primary"></i>-->
                                 </span>
                                 <div class="form-group text-uppercase text-label d-flex">
-                                    <div style="flex: 9">Địa chỉ <span class="text-danger error-msg d-none"></span>
+                                    <div style="flex: 9" th:text="#{task-create.step1.task-address}"><span class="text-danger error-msg d-none"></span>
                                     </div>
                                     <select name="option-address" style="flex: 1">
-                                        <option value="1" selected>1 Địa chỉ</option>
-                                        <option value="2">2 Địa chỉ</option>
+                                        <option value="1" selected th:text="#{task-create.step1.task-address1}"></option>
+                                        <option value="2" th:text="#{task-create.step1.task-address2}"></option>
                                     </select>
                                 </div>
                                 <div class="box-input">
                                     <div class="form-group box-input-address-single">
                                         <input type="text" class="form-control" id="address"
-                                               placeholder="Nhập địa chỉ làm việc">
+                                               th:placeholder="#{task-create.step1.placeholder-address}">
                                     </div>
                                     <div class="box-input-address-multi d-none">
                                         <div class="form-group">
-                                            <label>Địa chỉ bắt đầu</label>
+                                            <label th:text="#{task-create.step1.start-address}"></label>
                                             <input type="text" class="form-control" id="addressStart"
-                                                   placeholder="Nhập địa chỉ bắt đầu làm việc">
+                                                   th:placeholder="#{task-create.step1.placeholder-start-address}">
                                         </div>
                                         <div class="form-group">
-                                            <label>Địa chỉ kết thúc</label>
+                                            <label th:text="#{task-create.step1.end-address}"></label>
                                             <input type="text" class="form-control" id="addressEnd"
-                                                   placeholder="Nhập địa chỉ kết thúc làm việc">
+                                                   th:placeholder="#{task-create.step1.placeholder-end-address}">
                                         </div>
                                     </div>
                                     <div class="mt-5 form-group text-center">
                                         <button class="btn btn-success btn-continue px-4 " data-type="address"
-                                                th:type="button">Tiếp tục
-                                        </button>
+                                                th:type="button" th:text="#{task-create.next-btn}"></button>
                                     </div>
                                 </div>
                                 <div class="form-group preview-content d-none">
@@ -132,17 +121,16 @@
                                 <span class="status-task-box">
                                     <i class="icon-done text-primary"></i>
                                 </span>
-                                <div class="form-group text-uppercase text-label">Tên công việc
-                                    <span class="text-danger error-msg d-none"></span>
+                                <div class="form-group text-uppercase text-label" th:text="#{task-create.step1.work-name}"><span class="text-danger error-msg d-none"></span>
                                 </div>
                                 <div class="box-input">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="title-task"
-                                               placeholder="Nhập tên công việc">
+                                               th:placeholder="#{task-create.step1.placeholder-work-name}">
                                     </div>
                                     <div class="mt-5 form-group text-center">
                                         <button class="btn btn-success btn-continue px-4" data-type="title"
-                                                th:type="button">Tiếp tục
+                                                th:type="button" th:text="#{task-create.next-btn}">
                                         </button>
                                     </div>
                                 </div>
@@ -161,14 +149,14 @@
                                 <span class="status-task-box">
                                     <i class="icon-done text-primary"></i>
                                 </span>
-                                <div class="form-group text-uppercase text-label">Thể loại <span
+                                <div class="form-group text-uppercase text-label" th:text="#{task-create.step1.work-categories}"><span
                                     class="text-danger error-msg d-none"></span></div>
                                 <div class="box-input">
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox custom-control-inline">
                                             <input type="checkbox" class="custom-control-input" id="cateId1"
-                                                   value="Việc nhà">
-                                            <label class="custom-control-label d-inline" for="cateId1">Việc nhà</label>
+                                                   th:value="#{task-create.step1.categories-housework}">
+                                            <label class="custom-control-label d-inline" for="cateId1" th:text="#{task-create.step1.categories-housework}"></label>
                                         </div>
                                         <div class="custom-control custom-checkbox custom-control-inline">
                                             <input type="checkbox" class="custom-control-input" id="cateId2"
@@ -215,7 +203,7 @@
                                 <span class="status-task-box">
                                     <i class="icon-done text-primary"></i>
                                 </span>
-                                <div class="form-group text-uppercase text-label">Thời gian dự tính (giờ) <span
+                                <div class="form-group text-uppercase text-label" th:text="#{task-create.step1.estimate-time}"><span
                                     class="text-danger error-msg d-none"></span></div>
                                 <div class="box-input">
                                     <div class="form-group">
@@ -223,7 +211,7 @@
                                     </div>
                                     <div class="mt-5 form-group text-center">
                                         <button class="btn btn-success btn-continue px-4" data-type="estimated-time"
-                                                th:type="button">Tiếp tục
+                                                th:type="button" th:text="#{task-create.next-btn}">
                                         </button>
                                     </div>
                                 </div>
@@ -239,17 +227,17 @@
                                 <span class="status-task-box">
                                     <i class="icon-done text-primary"></i>
                                 </span>
-                                <div class="form-group text-uppercase text-label">Nội dung công việc <span
+                                <div class="form-group text-uppercase text-label" th:text="#{task-create.step1.task-description}"><span
                                     class="text-danger error-msg d-none"></span></div>
                                 <div class="box-input">
                                     <div class="form-group">
                                         <textarea class="form-control" style="min-height: 150px"
                                                   name="description"
-                                                  placeholder="Nội dung công việc, lời nhắn hoặc những yêu cầu cho công việc này. Cám ơns!" ></textarea>
+                                                  th:placeholder="#{task-create.step1.task-des-placehoder}"></textarea>
                                     </div>
                                     <div class="mt-5 form-group text-center">
                                         <button class="btn btn-success btn-continue px-4" data-type="description"
-                                                th:type="button">Tiếp tục
+                                                th:type="button" th:text="#{task-create.next-btn}">
                                         </button>
                                     </div>
                                 </div>
@@ -262,7 +250,7 @@
                         <div class="row form-group">
                             <div class="col-md-12 text-right">
                                 <a href="javascript:void (0)" id="next-step2">
-                                    <button type="button" class="btn btn-success py-2 px-5" disabled="disabled">Tiếp tục</button>
+                                    <button type="button" class="btn btn-success py-2 px-5" disabled="disabled" th:text="#{task-create.next-btn}"></button>
                                 </a>
                             </div>
                         </div>

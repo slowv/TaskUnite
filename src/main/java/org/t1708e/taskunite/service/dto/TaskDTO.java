@@ -1,5 +1,5 @@
 package org.t1708e.taskunite.service.dto;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,21 +12,17 @@ public class TaskDTO implements Serializable {
 
     private Long id;
 
-    private String title;
-
     private String description;
 
-    private Instant planDate;
-
-    private Double totalPrice;
+    private Double price;
 
     private Integer status;
 
-    private Instant createdAt;
+    private LocalDate createdAt;
 
-    private Instant updatedAt;
+    private LocalDate updatedAt;
 
-    private Instant deletedAt;
+    private LocalDate deletedAt;
 
 
     private Set<TaskCategoryDTO> taskCategories = new HashSet<>();
@@ -43,14 +39,6 @@ public class TaskDTO implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -59,20 +47,12 @@ public class TaskDTO implements Serializable {
         this.description = description;
     }
 
-    public Instant getPlanDate() {
-        return planDate;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setPlanDate(Instant planDate) {
-        this.planDate = planDate;
-    }
-
-    public Double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public Integer getStatus() {
@@ -83,27 +63,27 @@ public class TaskDTO implements Serializable {
         this.status = status;
     }
 
-    public Instant getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Instant getUpdatedAt() {
+    public LocalDate getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Instant updatedAt) {
+    public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    public Instant getDeletedAt() {
+    public LocalDate getDeletedAt() {
         return deletedAt;
     }
 
-    public void setDeletedAt(Instant deletedAt) {
+    public void setDeletedAt(LocalDate deletedAt) {
         this.deletedAt = deletedAt;
     }
 
@@ -156,10 +136,8 @@ public class TaskDTO implements Serializable {
     public String toString() {
         return "TaskDTO{" +
             "id=" + getId() +
-            ", title='" + getTitle() + "'" +
             ", description='" + getDescription() + "'" +
-            ", planDate='" + getPlanDate() + "'" +
-            ", totalPrice=" + getTotalPrice() +
+            ", price=" + getPrice() +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +

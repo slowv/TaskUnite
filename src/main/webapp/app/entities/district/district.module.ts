@@ -5,20 +5,12 @@ import { TaskUniteSharedModule } from 'app/shared/shared.module';
 import { DistrictComponent } from './district.component';
 import { DistrictDetailComponent } from './district-detail.component';
 import { DistrictUpdateComponent } from './district-update.component';
-import { DistrictDeletePopupComponent, DistrictDeleteDialogComponent } from './district-delete-dialog.component';
-import { districtRoute, districtPopupRoute } from './district.route';
-
-const ENTITY_STATES = [...districtRoute, ...districtPopupRoute];
+import { DistrictDeleteDialogComponent } from './district-delete-dialog.component';
+import { districtRoute } from './district.route';
 
 @NgModule({
-  imports: [TaskUniteSharedModule, RouterModule.forChild(ENTITY_STATES)],
-  declarations: [
-    DistrictComponent,
-    DistrictDetailComponent,
-    DistrictUpdateComponent,
-    DistrictDeleteDialogComponent,
-    DistrictDeletePopupComponent
-  ],
+  imports: [TaskUniteSharedModule, RouterModule.forChild(districtRoute)],
+  declarations: [DistrictComponent, DistrictDetailComponent, DistrictUpdateComponent, DistrictDeleteDialogComponent],
   entryComponents: [DistrictDeleteDialogComponent]
 })
 export class TaskUniteDistrictModule {}

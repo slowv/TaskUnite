@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,17 +30,20 @@ public class TaskCategory implements Serializable {
     @Column(name = "image")
     private String image;
 
+    @Column(name = "min_price")
+    private Double minPrice;
+
     @Column(name = "status")
     private Integer status;
 
     @Column(name = "created_at")
-    private Instant createdAt;
+    private LocalDate createdAt;
 
     @Column(name = "updated_at")
-    private Instant updatedAt;
+    private LocalDate updatedAt;
 
     @Column(name = "deleted_at")
-    private Instant deletedAt;
+    private LocalDate deletedAt;
 
     @ManyToMany(mappedBy = "taskCategories")
     @JsonIgnore
@@ -98,6 +101,19 @@ public class TaskCategory implements Serializable {
         this.image = image;
     }
 
+    public Double getMinPrice() {
+        return minPrice;
+    }
+
+    public TaskCategory minPrice(Double minPrice) {
+        this.minPrice = minPrice;
+        return this;
+    }
+
+    public void setMinPrice(Double minPrice) {
+        this.minPrice = minPrice;
+    }
+
     public Integer getStatus() {
         return status;
     }
@@ -111,42 +127,42 @@ public class TaskCategory implements Serializable {
         this.status = status;
     }
 
-    public Instant getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public TaskCategory createdAt(Instant createdAt) {
+    public TaskCategory createdAt(LocalDate createdAt) {
         this.createdAt = createdAt;
         return this;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Instant getUpdatedAt() {
+    public LocalDate getUpdatedAt() {
         return updatedAt;
     }
 
-    public TaskCategory updatedAt(Instant updatedAt) {
+    public TaskCategory updatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
         return this;
     }
 
-    public void setUpdatedAt(Instant updatedAt) {
+    public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    public Instant getDeletedAt() {
+    public LocalDate getDeletedAt() {
         return deletedAt;
     }
 
-    public TaskCategory deletedAt(Instant deletedAt) {
+    public TaskCategory deletedAt(LocalDate deletedAt) {
         this.deletedAt = deletedAt;
         return this;
     }
 
-    public void setDeletedAt(Instant deletedAt) {
+    public void setDeletedAt(LocalDate deletedAt) {
         this.deletedAt = deletedAt;
     }
 
@@ -224,6 +240,7 @@ public class TaskCategory implements Serializable {
             ", name='" + getName() + "'" +
             ", description='" + getDescription() + "'" +
             ", image='" + getImage() + "'" +
+            ", minPrice=" + getMinPrice() +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +

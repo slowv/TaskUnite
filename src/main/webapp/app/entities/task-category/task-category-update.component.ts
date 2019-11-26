@@ -5,9 +5,7 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
-import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { ITaskCategory, TaskCategory } from 'app/shared/model/task-category.model';
 import { TaskCategoryService } from './task-category.service';
@@ -26,12 +24,16 @@ export class TaskCategoryUpdateComponent implements OnInit {
   tasks: ITask[];
 
   taskers: ITasker[];
+  createdAtDp: any;
+  updatedAtDp: any;
+  deletedAtDp: any;
 
   editForm = this.fb.group({
     id: [],
     name: [],
     description: [],
     image: [],
+    minPrice: [],
     status: [],
     createdAt: [],
     updatedAt: [],
@@ -54,18 +56,10 @@ export class TaskCategoryUpdateComponent implements OnInit {
     });
     this.taskService
       .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<ITask[]>) => mayBeOk.ok),
-        map((response: HttpResponse<ITask[]>) => response.body)
-      )
-      .subscribe((res: ITask[]) => (this.tasks = res), (res: HttpErrorResponse) => this.onError(res.message));
+      .subscribe((res: HttpResponse<ITask[]>) => (this.tasks = res.body), (res: HttpErrorResponse) => this.onError(res.message));
     this.taskerService
       .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<ITasker[]>) => mayBeOk.ok),
-        map((response: HttpResponse<ITasker[]>) => response.body)
-      )
-      .subscribe((res: ITasker[]) => (this.taskers = res), (res: HttpErrorResponse) => this.onError(res.message));
+      .subscribe((res: HttpResponse<ITasker[]>) => (this.taskers = res.body), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(taskCategory: ITaskCategory) {
@@ -74,10 +68,11 @@ export class TaskCategoryUpdateComponent implements OnInit {
       name: taskCategory.name,
       description: taskCategory.description,
       image: taskCategory.image,
+      minPrice: taskCategory.minPrice,
       status: taskCategory.status,
-      createdAt: taskCategory.createdAt != null ? taskCategory.createdAt.format(DATE_TIME_FORMAT) : null,
-      updatedAt: taskCategory.updatedAt != null ? taskCategory.updatedAt.format(DATE_TIME_FORMAT) : null,
-      deletedAt: taskCategory.deletedAt != null ? taskCategory.deletedAt.format(DATE_TIME_FORMAT) : null
+      createdAt: taskCategory.createdAt,
+      updatedAt: taskCategory.updatedAt,
+      deletedAt: taskCategory.deletedAt
     });
   }
 
@@ -102,13 +97,11 @@ export class TaskCategoryUpdateComponent implements OnInit {
       name: this.editForm.get(['name']).value,
       description: this.editForm.get(['description']).value,
       image: this.editForm.get(['image']).value,
+      minPrice: this.editForm.get(['minPrice']).value,
       status: this.editForm.get(['status']).value,
-      createdAt:
-        this.editForm.get(['createdAt']).value != null ? moment(this.editForm.get(['createdAt']).value, DATE_TIME_FORMAT) : undefined,
-      updatedAt:
-        this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
-      deletedAt:
-        this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined
+      createdAt: this.editForm.get(['createdAt']).value,
+      updatedAt: this.editForm.get(['updatedAt']).value,
+      deletedAt: this.editForm.get(['deletedAt']).value
     };
   }
 

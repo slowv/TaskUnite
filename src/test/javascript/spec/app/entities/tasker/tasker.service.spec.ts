@@ -2,7 +2,7 @@ import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { take, map } from 'rxjs/operators';
 import * as moment from 'moment';
-import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
+import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { TaskerService } from 'app/entities/tasker/tasker.service';
 import { ITasker, Tasker } from 'app/shared/model/tasker.model';
 
@@ -24,16 +24,16 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Tasker(0, 0, 0, 0, currentDate, currentDate, currentDate);
+      elemDefault = new Tasker(0, 0, 0, currentDate, currentDate, currentDate);
     });
 
     describe('Service methods', () => {
       it('should find an element', () => {
         const returnedFromService = Object.assign(
           {
-            createdAt: currentDate.format(DATE_TIME_FORMAT),
-            updatedAt: currentDate.format(DATE_TIME_FORMAT),
-            deletedAt: currentDate.format(DATE_TIME_FORMAT)
+            createdAt: currentDate.format(DATE_FORMAT),
+            updatedAt: currentDate.format(DATE_FORMAT),
+            deletedAt: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
@@ -51,9 +51,9 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
-            createdAt: currentDate.format(DATE_TIME_FORMAT),
-            updatedAt: currentDate.format(DATE_TIME_FORMAT),
-            deletedAt: currentDate.format(DATE_TIME_FORMAT)
+            createdAt: currentDate.format(DATE_FORMAT),
+            updatedAt: currentDate.format(DATE_FORMAT),
+            deletedAt: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
@@ -77,12 +77,11 @@ describe('Service Tests', () => {
       it('should update a Tasker', () => {
         const returnedFromService = Object.assign(
           {
-            level: 1,
-            pricePerHour: 1,
+            price: 1,
             status: 1,
-            createdAt: currentDate.format(DATE_TIME_FORMAT),
-            updatedAt: currentDate.format(DATE_TIME_FORMAT),
-            deletedAt: currentDate.format(DATE_TIME_FORMAT)
+            createdAt: currentDate.format(DATE_FORMAT),
+            updatedAt: currentDate.format(DATE_FORMAT),
+            deletedAt: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
@@ -107,12 +106,11 @@ describe('Service Tests', () => {
       it('should return a list of Tasker', () => {
         const returnedFromService = Object.assign(
           {
-            level: 1,
-            pricePerHour: 1,
+            price: 1,
             status: 1,
-            createdAt: currentDate.format(DATE_TIME_FORMAT),
-            updatedAt: currentDate.format(DATE_TIME_FORMAT),
-            deletedAt: currentDate.format(DATE_TIME_FORMAT)
+            createdAt: currentDate.format(DATE_FORMAT),
+            updatedAt: currentDate.format(DATE_FORMAT),
+            deletedAt: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );

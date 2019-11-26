@@ -1,29 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
+import { Resolve, ActivatedRouteSnapshot, Routes } from '@angular/router';
 import { JhiResolvePagingParams } from 'ng-jhipster';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { Observable, of } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { TaskCategory } from 'app/shared/model/task-category.model';
 import { TaskCategoryService } from './task-category.service';
 import { TaskCategoryComponent } from './task-category.component';
 import { TaskCategoryDetailComponent } from './task-category-detail.component';
 import { TaskCategoryUpdateComponent } from './task-category-update.component';
-import { TaskCategoryDeletePopupComponent } from './task-category-delete-dialog.component';
 import { ITaskCategory } from 'app/shared/model/task-category.model';
 
 @Injectable({ providedIn: 'root' })
 export class TaskCategoryResolve implements Resolve<ITaskCategory> {
   constructor(private service: TaskCategoryService) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ITaskCategory> {
+  resolve(route: ActivatedRouteSnapshot): Observable<ITaskCategory> {
     const id = route.params['id'];
     if (id) {
-      return this.service.find(id).pipe(
-        filter((response: HttpResponse<TaskCategory>) => response.ok),
-        map((taskCategory: HttpResponse<TaskCategory>) => taskCategory.body)
-      );
+      return this.service.find(id).pipe(map((taskCategory: HttpResponse<TaskCategory>) => taskCategory.body));
     }
     return of(new TaskCategory());
   }
@@ -78,21 +74,5 @@ export const taskCategoryRoute: Routes = [
       pageTitle: 'taskUniteApp.taskCategory.home.title'
     },
     canActivate: [UserRouteAccessService]
-  }
-];
-
-export const taskCategoryPopupRoute: Routes = [
-  {
-    path: ':id/delete',
-    component: TaskCategoryDeletePopupComponent,
-    resolve: {
-      taskCategory: TaskCategoryResolve
-    },
-    data: {
-      authorities: ['ROLE_USER'],
-      pageTitle: 'taskUniteApp.taskCategory.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
   }
 ];

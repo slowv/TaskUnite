@@ -8,6 +8,7 @@
             </span>
         </button>
     </h2>
+    <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>
     <br/>
     <div class="alert alert-warning" *ngIf="userExtends?.length === 0">
@@ -17,18 +18,28 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="name"><span jhiTranslate="taskUniteApp.userExtend.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="userLoginId"><span jhiTranslate="taskUniteApp.userExtend.userLogin">User Login</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th></th>
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="address"><span jhiTranslate="taskUniteApp.userExtend.address">Address</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="phone"><span jhiTranslate="taskUniteApp.userExtend.phone">Phone</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="status"><span jhiTranslate="taskUniteApp.userExtend.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="createdAt"><span jhiTranslate="taskUniteApp.userExtend.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.userExtend.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.userExtend.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="userId"><span jhiTranslate="taskUniteApp.userExtend.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let userExtend of userExtends ;trackBy: trackId">
                 <td><a [routerLink]="['/user-extend', userExtend.id, 'view' ]">{{userExtend.id}}</a></td>
-                <td>{{userExtend.name}}</td>
+                <td>{{userExtend.address}}</td>
+                <td>{{userExtend.phone}}</td>
+                <td>{{userExtend.status}}</td>
+                <td>{{userExtend.createdAt | date:'mediumDate'}}</td>
+                <td>{{userExtend.updatedAt | date:'mediumDate'}}</td>
+                <td>{{userExtend.deletedAt | date:'mediumDate'}}</td>
                 <td>
-                    {{userExtend.userLoginId}}
+                    {{userExtend.userId}}
                 </td>
                 <td class="text-right">
                     <div class="btn-group">
@@ -44,10 +55,7 @@
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
-                        <button type="submit"
-                                [routerLink]="['/user-extend', { outlets: { popup: userExtend.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
+                        <button type="submit" (click)="delete(userExtend)"
                                 class="btn btn-danger btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>

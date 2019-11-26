@@ -1,18 +1,17 @@
 import { Moment } from 'moment';
-import { IAddress } from 'app/shared/model/address.model';
+import { ISchedule } from 'app/shared/model/schedule.model';
 import { ITask } from 'app/shared/model/task.model';
 import { ITaskCategory } from 'app/shared/model/task-category.model';
 
 export interface ITasker {
   id?: number;
-  level?: number;
-  pricePerHour?: number;
+  price?: number;
   status?: number;
   createdAt?: Moment;
   updatedAt?: Moment;
   deletedAt?: Moment;
   userId?: number;
-  workingAddresses?: IAddress[];
+  schedules?: ISchedule[];
   tasks?: ITask[];
   taskCategories?: ITaskCategory[];
 }
@@ -20,14 +19,13 @@ export interface ITasker {
 export class Tasker implements ITasker {
   constructor(
     public id?: number,
-    public level?: number,
-    public pricePerHour?: number,
+    public price?: number,
     public status?: number,
     public createdAt?: Moment,
     public updatedAt?: Moment,
     public deletedAt?: Moment,
     public userId?: number,
-    public workingAddresses?: IAddress[],
+    public schedules?: ISchedule[],
     public tasks?: ITask[],
     public taskCategories?: ITaskCategory[]
   ) {}

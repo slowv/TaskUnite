@@ -5,14 +5,12 @@ import { TaskUniteSharedModule } from 'app/shared/shared.module';
 import { CityComponent } from './city.component';
 import { CityDetailComponent } from './city-detail.component';
 import { CityUpdateComponent } from './city-update.component';
-import { CityDeletePopupComponent, CityDeleteDialogComponent } from './city-delete-dialog.component';
-import { cityRoute, cityPopupRoute } from './city.route';
-
-const ENTITY_STATES = [...cityRoute, ...cityPopupRoute];
+import { CityDeleteDialogComponent } from './city-delete-dialog.component';
+import { cityRoute } from './city.route';
 
 @NgModule({
-  imports: [TaskUniteSharedModule, RouterModule.forChild(ENTITY_STATES)],
-  declarations: [CityComponent, CityDetailComponent, CityUpdateComponent, CityDeleteDialogComponent, CityDeletePopupComponent],
+  imports: [TaskUniteSharedModule, RouterModule.forChild(cityRoute)],
+  declarations: [CityComponent, CityDetailComponent, CityUpdateComponent, CityDeleteDialogComponent],
   entryComponents: [CityDeleteDialogComponent]
 })
 export class TaskUniteCityModule {}

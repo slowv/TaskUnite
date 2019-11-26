@@ -15,8 +15,8 @@ public interface TaskMapper extends EntityMapper<TaskDTO, Task> {
     @Mapping(source = "master.id", target = "masterId")
     TaskDTO toDto(Task task);
 
-    @Mapping(target = "messages", ignore = true)
-    @Mapping(target = "removeMessages", ignore = true)
+    @Mapping(target = "plans", ignore = true)
+    @Mapping(target = "removePlan", ignore = true)
     @Mapping(target = "reviews", ignore = true)
     @Mapping(target = "removeReviews", ignore = true)
     @Mapping(target = "removeTaskCategories", ignore = true)

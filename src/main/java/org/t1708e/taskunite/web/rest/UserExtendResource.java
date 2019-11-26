@@ -106,9 +106,9 @@ public class UserExtendResource {
             return new ResponseEntity<>(userExtendService.findAllWhereMasterIsNull(),
                     HttpStatus.OK);
         }
-        if ("address-is-null".equals(filter)) {
-            log.debug("REST request to get all UserExtends where address is null");
-            return new ResponseEntity<>(userExtendService.findAllWhereAddressIsNull(),
+        if ("statistic-is-null".equals(filter)) {
+            log.debug("REST request to get all UserExtends where statistic is null");
+            return new ResponseEntity<>(userExtendService.findAllWhereStatisticIsNull(),
                     HttpStatus.OK);
         }
         log.debug("REST request to get a page of UserExtends");

@@ -2,30 +2,44 @@
     "name": "UserExtend",
     "fields": [
         {
-            "fieldName": "name",
+            "fieldName": "address",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "phone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "deletedAt",
+            "fieldType": "LocalDate"
         }
     ],
     "relationships": [
         {
             "relationshipType": "one-to-one",
             "otherEntityName": "user",
-            "otherEntityRelationshipName": "userExtend",
-            "relationshipName": "userLogin",
+            "otherEntityRelationshipName": "info",
+            "relationshipName": "user",
             "otherEntityField": "id",
             "ownerSide": true
         },
         {
             "relationshipType": "one-to-many",
-            "otherEntityName": "message",
-            "otherEntityRelationshipName": "sender",
-            "relationshipName": "sendingMessages"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "message",
-            "otherEntityRelationshipName": "receiver",
-            "relationshipName": "receivingMessages"
+            "otherEntityName": "address",
+            "otherEntityRelationshipName": "user",
+            "relationshipName": "workingAddresses"
         },
         {
             "relationshipType": "one-to-many",
@@ -55,9 +69,9 @@
         },
         {
             "relationshipType": "one-to-one",
-            "otherEntityName": "address",
+            "otherEntityName": "statistic",
             "otherEntityRelationshipName": "user",
-            "relationshipName": "address",
+            "relationshipName": "statistic",
             "ownerSide": false
         }
     ],
@@ -69,5 +83,6 @@
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "readOnly": false
 }

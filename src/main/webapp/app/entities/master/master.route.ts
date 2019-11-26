@@ -1,29 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
+import { Resolve, ActivatedRouteSnapshot, Routes } from '@angular/router';
 import { JhiResolvePagingParams } from 'ng-jhipster';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { Observable, of } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Master } from 'app/shared/model/master.model';
 import { MasterService } from './master.service';
 import { MasterComponent } from './master.component';
 import { MasterDetailComponent } from './master-detail.component';
 import { MasterUpdateComponent } from './master-update.component';
-import { MasterDeletePopupComponent } from './master-delete-dialog.component';
 import { IMaster } from 'app/shared/model/master.model';
 
 @Injectable({ providedIn: 'root' })
 export class MasterResolve implements Resolve<IMaster> {
   constructor(private service: MasterService) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IMaster> {
+  resolve(route: ActivatedRouteSnapshot): Observable<IMaster> {
     const id = route.params['id'];
     if (id) {
-      return this.service.find(id).pipe(
-        filter((response: HttpResponse<Master>) => response.ok),
-        map((master: HttpResponse<Master>) => master.body)
-      );
+      return this.service.find(id).pipe(map((master: HttpResponse<Master>) => master.body));
     }
     return of(new Master());
   }
@@ -78,21 +74,5 @@ export const masterRoute: Routes = [
       pageTitle: 'taskUniteApp.master.home.title'
     },
     canActivate: [UserRouteAccessService]
-  }
-];
-
-export const masterPopupRoute: Routes = [
-  {
-    path: ':id/delete',
-    component: MasterDeletePopupComponent,
-    resolve: {
-      master: MasterResolve
-    },
-    data: {
-      authorities: ['ROLE_USER'],
-      pageTitle: 'taskUniteApp.master.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
   }
 ];

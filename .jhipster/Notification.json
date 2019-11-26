@@ -11,15 +11,15 @@
         },
         {
             "fieldName": "createdAt",
-            "fieldType": "Instant"
+            "fieldType": "LocalDate"
         },
         {
             "fieldName": "updatedAt",
-            "fieldType": "Instant"
+            "fieldType": "LocalDate"
         },
         {
             "fieldName": "deletedAt",
-            "fieldType": "Instant"
+            "fieldType": "LocalDate"
         }
     ],
     "relationships": [
@@ -39,5 +39,6 @@
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "readOnly": false
 }

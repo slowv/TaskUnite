@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 
 /**
  * A Address.
@@ -26,17 +26,13 @@ public class Address implements Serializable {
     private Integer status;
 
     @Column(name = "created_at")
-    private Instant createdAt;
+    private LocalDate createdAt;
 
     @Column(name = "updated_at")
-    private Instant updatedAt;
+    private LocalDate updatedAt;
 
     @Column(name = "deleted_at")
-    private Instant deletedAt;
-
-    @OneToOne
-    @JoinColumn(unique = true)
-    private UserExtend user;
+    private LocalDate deletedAt;
 
     @ManyToOne
     @JsonIgnoreProperties("addresses")
@@ -44,7 +40,7 @@ public class Address implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("workingAddresses")
-    private Tasker tasker;
+    private UserExtend user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -81,56 +77,43 @@ public class Address implements Serializable {
         this.status = status;
     }
 
-    public Instant getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public Address createdAt(Instant createdAt) {
+    public Address createdAt(LocalDate createdAt) {
         this.createdAt = createdAt;
         return this;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Instant getUpdatedAt() {
+    public LocalDate getUpdatedAt() {
         return updatedAt;
     }
 
-    public Address updatedAt(Instant updatedAt) {
+    public Address updatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
         return this;
     }
 
-    public void setUpdatedAt(Instant updatedAt) {
+    public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    public Instant getDeletedAt() {
+    public LocalDate getDeletedAt() {
         return deletedAt;
     }
 
-    public Address deletedAt(Instant deletedAt) {
+    public Address deletedAt(LocalDate deletedAt) {
         this.deletedAt = deletedAt;
         return this;
     }
 
-    public void setDeletedAt(Instant deletedAt) {
+    public void setDeletedAt(LocalDate deletedAt) {
         this.deletedAt = deletedAt;
-    }
-
-    public UserExtend getUser() {
-        return user;
-    }
-
-    public Address user(UserExtend userExtend) {
-        this.user = userExtend;
-        return this;
-    }
-
-    public void setUser(UserExtend userExtend) {
-        this.user = userExtend;
     }
 
     public District getDictrict() {
@@ -146,17 +129,17 @@ public class Address implements Serializable {
         this.dictrict = district;
     }
 
-    public Tasker getTasker() {
-        return tasker;
+    public UserExtend getUser() {
+        return user;
     }
 
-    public Address tasker(Tasker tasker) {
-        this.tasker = tasker;
+    public Address user(UserExtend userExtend) {
+        this.user = userExtend;
         return this;
     }
 
-    public void setTasker(Tasker tasker) {
-        this.tasker = tasker;
+    public void setUser(UserExtend userExtend) {
+        this.user = userExtend;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

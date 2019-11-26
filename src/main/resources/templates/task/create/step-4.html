@@ -26,9 +26,7 @@
                             <div class="box-line">
                                 <div class="line"></div>
                             </div>
-                            <div class="name-step">
-                                Thông tin công việc
-                            </div>
+                            <div class="name-step" th:text="#{task-create.step1.task-infor}"></div>
                         </div>
                         <div class="step active st2">
                             <a th:href="@{/task/create/step2(action='back')}">
@@ -39,9 +37,7 @@
                             <div class="box-line ">
                                 <div class="line"></div>
                             </div>
-                            <div class="name-step">
-                                Tác vụ & Giá tiền
-                            </div>
+                            <div class="name-step" th:text="#{task-create.step2.task-prices}"></div>
                         </div>
                         <div class="step active st3">
                             <a th:href="@{/task/create/step3(action='back')}">
@@ -52,17 +48,13 @@
                             <div class="box-line">
                                 <div class="line"></div>
                             </div>
-                            <div class="name-step">
-                                Đặt lịch
-                            </div>
+                            <div class="name-step" th:text="#{task-create.step3.choose-date-time}"></div>
                         </div>
                         <div class="step active st4">
                             <div class="box-circle">
                                 <div class="circle">4</div>
                             </div>
-                            <div class="name-step">
-                                Xác nhận
-                            </div>
+                            <div class="name-step" th:text="#{task-create.step4.confirm-details}"></div>
                         </div>
                     </div>
                 </div>
@@ -73,9 +65,7 @@
                         <div class="build-progress__sub-bar__container">
                             <img alt="form" class="build-progress__sub-bar__icon" th:src="@{/images/confirm.svg}">
                             <div class="build-progress__sub-bar__message">
-                                <span>
-                                    Gần xong rôi! Chúng tôi chỉ cần thêm một vài chi tiết để kết nối bạn với Nhân viên của bạn.
-                                </span>
+                                <span th:text="#{task-create.step4.notification-1}"></span>
                             </div>
                         </div>
                     </div>
@@ -92,31 +82,24 @@
                         <div class="form-group">
                             <!--Thả description vào luôn;-->
                             <label class="d-block">
-                                <div class="mb-3">
-                                    Xem lại thông tin công việc
-                                </div>
+                                <div class="mb-3" th:text="#{task-create.step4.review-task-description}"></div>
                                 <textarea rows="5" name="description" id="description" class="form-control"
                                           style="width: 100%; height: 185px;"></textarea>
                             </label>
 
                         </div>
                         <div class="form-group my-4" style="height: 1px; background: #d0d0d0"></div>
-                        <div class="form-group mb-4" style="margin-top: -10px;">
-                            Bạn chỉ trả phí sau khi công việc của bạn hoàn thành.
-                        </div>
+                        <div class="form-group mb-4" style="margin-top: -10px;" th:text="#{task-create.step4.notification-2}"></div>
                         <div class="form-group">
                             <label class="d-block">
-                                <div class="mb-3">
+                                <div class="mb-3" th:text="#{task-create.step4.phone-number}">
                                     Số điện thoại
                                 </div>
-                                <input type="text" class="form-control iBanking w-50" placeholder="Số điện thoại">
+                                <input type="text" class="form-control iBanking w-50" th:placeholder="#{task-create.step4.phone-number-placeholder}">
                             </label>
                         </div>
                     </div>
-                    <div class="px-3" style="font-size: 13px;letter-spacing: 1px;">
-                        Đừng lo lắng, bạn sẽ không phải trả phí cho đến khi công việc của bạn hoàn thành. Sau khi xác
-                        nhận, bạn có thể trò chuyện với Nhân viên của mình để cập nhật thông tin chi tiết.
-                    </div>
+                    <div class="px-3" style="font-size: 13px;letter-spacing: 1px;" th:text="#{task-create.step4.notification-3}"></div>
                 </div>
                 <div class="col-md-5 col-lg-5 p-2">
                     <div class="panel panel--spaced panel--with-overflow">
@@ -148,34 +131,27 @@
                         </div>
                         <div style="height: 1px;background: #dadada" class="my-3"></div>
                         <div class="row">
-                            <div class="col-lg-6 text-bold t-20">
-                                Giá tiền (vnđ/giờ):
-                            </div>
+                            <div class="col-lg-6 text-bold t-20" th:text="#{task-create.step4.price-vnd-hour}"></div>
                             <div class="col-lg-6 text-right t-20 t-green">
                                 80.000 vnđ/1h
                             </div>
                         </div>
                         <div class="my-3 t-14">
-                            Một khoản phí <span class="t-green">Tin cậy và Hỗ trợ 15%</span> được thêm vào tổng tỷ lệ
-                            của Nhân viên.
+                            <span th:text="#{task-create.step4.notification-4-1}"></span>
+                            <span class="t-green"><a href="#" th:text="#{task-create.step4.notification-4-2}"></a> </span>
+                            <span th:text="#{task-create.step4.notification-4-3}"></span>
                         </div>
+                        <div class="my-3 t-14" th:text="#{task-create.step4.notification-5}"> </div>
                         <div class="my-3 t-14">
-                            Bạn sẽ không bị tính phí cho đến khi công việc của bạn hoàn thành. Công việc tối thiểu một
-                            giờ. Bạn có thể hủy bỏ hoặc sắp xếp lại bất cứ lúc nào. Nếu bạn hủy nhiệm vụ trong vòng 24
-                            giờ kể từ thời gian bắt đầu được lên lịch, bạn có thể bị tính phí hủy trong một giờ với mức
-                            giá hàng giờ của Nhân viên.
-                        </div>
-                        <div class="my-3 t-14">
-                            <a th:href="@{#}" class="t-green">Tìm hiểu thêm</a> về chính sách của chúng tôi.
+                            <a th:href="@{#}" class="t-green"><span th:text="#{task-create.step4.notification-6-1}"></span></a>
+                            <span th:text="#{task-create.step4.notification-6-2}"></span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="text-center my-3 col-lg-12">
-                    <a th:href="@{#}" class="btn btn-primary py-3 px-5 disabled">
-                        Xác nhận & nói chuyện
-                    </a>
+                    <a th:href="@{#}" class="btn btn-primary py-3 px-5 disabled" th:text="#{task-create.step4.confirm-chat}"></a>
                 </div>
             </div>
         </div>

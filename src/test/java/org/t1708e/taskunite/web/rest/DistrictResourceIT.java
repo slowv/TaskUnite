@@ -22,8 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.t1708e.taskunite.web.rest.TestUtil.createFormattingConversionService;
@@ -43,19 +43,15 @@ public class DistrictResourceIT {
 
     private static final Integer DEFAULT_STATUS = 1;
     private static final Integer UPDATED_STATUS = 2;
-    private static final Integer SMALLER_STATUS = 1 - 1;
 
-    private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_CREATED_AT = Instant.ofEpochMilli(-1L);
+    private static final LocalDate DEFAULT_CREATED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CREATED_AT = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Instant DEFAULT_UPDATED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_UPDATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_UPDATED_AT = Instant.ofEpochMilli(-1L);
+    private static final LocalDate DEFAULT_UPDATED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_UPDATED_AT = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Instant DEFAULT_DELETED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_DELETED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_DELETED_AT = Instant.ofEpochMilli(-1L);
+    private static final LocalDate DEFAULT_DELETED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DELETED_AT = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private DistrictRepository districtRepository;
@@ -188,7 +184,7 @@ public class DistrictResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(district.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
@@ -206,7 +202,7 @@ public class DistrictResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(district.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
@@ -292,43 +288,5 @@ public class DistrictResourceIT {
         // Validate the database contains one less item
         List<District> districtList = districtRepository.findAll();
         assertThat(districtList).hasSize(databaseSizeBeforeDelete - 1);
-    }
-
-    @Test
-    @Transactional
-    public void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(District.class);
-        District district1 = new District();
-        district1.setId(1L);
-        District district2 = new District();
-        district2.setId(district1.getId());
-        assertThat(district1).isEqualTo(district2);
-        district2.setId(2L);
-        assertThat(district1).isNotEqualTo(district2);
-        district1.setId(null);
-        assertThat(district1).isNotEqualTo(district2);
-    }
-
-    @Test
-    @Transactional
-    public void dtoEqualsVerifier() throws Exception {
-        TestUtil.equalsVerifier(DistrictDTO.class);
-        DistrictDTO districtDTO1 = new DistrictDTO();
-        districtDTO1.setId(1L);
-        DistrictDTO districtDTO2 = new DistrictDTO();
-        assertThat(districtDTO1).isNotEqualTo(districtDTO2);
-        districtDTO2.setId(districtDTO1.getId());
-        assertThat(districtDTO1).isEqualTo(districtDTO2);
-        districtDTO2.setId(2L);
-        assertThat(districtDTO1).isNotEqualTo(districtDTO2);
-        districtDTO1.setId(null);
-        assertThat(districtDTO1).isNotEqualTo(districtDTO2);
-    }
-
-    @Test
-    @Transactional
-    public void testEntityFromId() {
-        assertThat(districtMapper.fromId(42L).getId()).isEqualTo(42);
-        assertThat(districtMapper.fromId(null)).isNull();
     }
 }

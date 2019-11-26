@@ -52,17 +52,15 @@ export class TaskService {
 
   protected convertDateFromClient(task: ITask): ITask {
     const copy: ITask = Object.assign({}, task, {
-      planDate: task.planDate != null && task.planDate.isValid() ? task.planDate.toJSON() : null,
-      createdAt: task.createdAt != null && task.createdAt.isValid() ? task.createdAt.toJSON() : null,
-      updatedAt: task.updatedAt != null && task.updatedAt.isValid() ? task.updatedAt.toJSON() : null,
-      deletedAt: task.deletedAt != null && task.deletedAt.isValid() ? task.deletedAt.toJSON() : null
+      createdAt: task.createdAt != null && task.createdAt.isValid() ? task.createdAt.format(DATE_FORMAT) : null,
+      updatedAt: task.updatedAt != null && task.updatedAt.isValid() ? task.updatedAt.format(DATE_FORMAT) : null,
+      deletedAt: task.deletedAt != null && task.deletedAt.isValid() ? task.deletedAt.format(DATE_FORMAT) : null
     });
     return copy;
   }
 
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
-      res.body.planDate = res.body.planDate != null ? moment(res.body.planDate) : null;
       res.body.createdAt = res.body.createdAt != null ? moment(res.body.createdAt) : null;
       res.body.updatedAt = res.body.updatedAt != null ? moment(res.body.updatedAt) : null;
       res.body.deletedAt = res.body.deletedAt != null ? moment(res.body.deletedAt) : null;
@@ -73,7 +71,6 @@ export class TaskService {
   protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
       res.body.forEach((task: ITask) => {
-        task.planDate = task.planDate != null ? moment(task.planDate) : null;
         task.createdAt = task.createdAt != null ? moment(task.createdAt) : null;
         task.updatedAt = task.updatedAt != null ? moment(task.updatedAt) : null;
         task.deletedAt = task.deletedAt != null ? moment(task.deletedAt) : null;

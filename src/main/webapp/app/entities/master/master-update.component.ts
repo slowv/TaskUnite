@@ -5,9 +5,7 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
-import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { IMaster, Master } from 'app/shared/model/master.model';
 import { MasterService } from './master.service';
@@ -22,6 +20,9 @@ export class MasterUpdateComponent implements OnInit {
   isSaving: boolean;
 
   users: IUserExtend[];
+  createdAtDp: any;
+  updatedAtDp: any;
+  deletedAtDp: any;
 
   editForm = this.fb.group({
     id: [],
@@ -45,40 +46,30 @@ export class MasterUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ master }) => {
       this.updateForm(master);
     });
-    this.userExtendService
-      .query({ filter: 'master-is-null' })
-      .pipe(
-        filter((mayBeOk: HttpResponse<IUserExtend[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IUserExtend[]>) => response.body)
-      )
-      .subscribe(
-        (res: IUserExtend[]) => {
-          if (!this.editForm.get('userId').value) {
-            this.users = res;
-          } else {
-            this.userExtendService
-              .find(this.editForm.get('userId').value)
-              .pipe(
-                filter((subResMayBeOk: HttpResponse<IUserExtend>) => subResMayBeOk.ok),
-                map((subResponse: HttpResponse<IUserExtend>) => subResponse.body)
-              )
-              .subscribe(
-                (subRes: IUserExtend) => (this.users = [subRes].concat(res)),
-                (subRes: HttpErrorResponse) => this.onError(subRes.message)
-              );
-          }
-        },
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
+    this.userExtendService.query({ filter: 'master-is-null' }).subscribe(
+      (res: HttpResponse<IUserExtend[]>) => {
+        if (!this.editForm.get('userId').value) {
+          this.users = res.body;
+        } else {
+          this.userExtendService
+            .find(this.editForm.get('userId').value)
+            .subscribe(
+              (subRes: HttpResponse<IUserExtend>) => (this.users = [subRes.body].concat(res.body)),
+              (subRes: HttpErrorResponse) => this.onError(subRes.message)
+            );
+        }
+      },
+      (res: HttpErrorResponse) => this.onError(res.message)
+    );
   }
 
   updateForm(master: IMaster) {
     this.editForm.patchValue({
       id: master.id,
       status: master.status,
-      createdAt: master.createdAt != null ? master.createdAt.format(DATE_TIME_FORMAT) : null,
-      updatedAt: master.updatedAt != null ? master.updatedAt.format(DATE_TIME_FORMAT) : null,
-      deletedAt: master.deletedAt != null ? master.deletedAt.format(DATE_TIME_FORMAT) : null,
+      createdAt: master.createdAt,
+      updatedAt: master.updatedAt,
+      deletedAt: master.deletedAt,
       userId: master.userId
     });
   }
@@ -102,12 +93,9 @@ export class MasterUpdateComponent implements OnInit {
       ...new Master(),
       id: this.editForm.get(['id']).value,
       status: this.editForm.get(['status']).value,
-      createdAt:
-        this.editForm.get(['createdAt']).value != null ? moment(this.editForm.get(['createdAt']).value, DATE_TIME_FORMAT) : undefined,
-      updatedAt:
-        this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
-      deletedAt:
-        this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
+      createdAt: this.editForm.get(['createdAt']).value,
+      updatedAt: this.editForm.get(['updatedAt']).value,
+      deletedAt: this.editForm.get(['deletedAt']).value,
       userId: this.editForm.get(['userId']).value
     };
   }

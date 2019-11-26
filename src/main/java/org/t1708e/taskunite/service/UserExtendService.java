@@ -41,11 +41,11 @@ public interface UserExtendService {
      */
     List<UserExtendDTO> findAllWhereMasterIsNull();
     /**
-     * Get all the UserExtendDTO where Address is {@code null}.
+     * Get all the UserExtendDTO where Statistic is {@code null}.
      *
      * @return the list of entities.
      */
-    List<UserExtendDTO> findAllWhereAddressIsNull();
+    List<UserExtendDTO> findAllWhereStatisticIsNull();
 
 
     /**

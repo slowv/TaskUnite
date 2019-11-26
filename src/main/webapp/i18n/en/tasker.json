@@ -16,14 +16,13 @@
       "detail": {
         "title": "Tasker"
       },
-      "level": "Level",
-      "pricePerHour": "Price Per Hour",
+      "price": "Price",
       "status": "Status",
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
       "user": "User",
-      "workingAddresses": "Working Addresses",
+      "schedule": "Schedule",
       "tasks": "Tasks",
       "taskCategories": "Task Categories"
     }
