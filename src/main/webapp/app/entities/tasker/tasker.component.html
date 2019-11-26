@@ -8,6 +8,7 @@
             </span>
         </button>
     </h2>
+    <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>
     <br/>
     <div class="alert alert-warning" *ngIf="taskers?.length === 0">
@@ -17,26 +18,24 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="level"><span jhiTranslate="taskUniteApp.tasker.level">Level</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="pricePerHour"><span jhiTranslate="taskUniteApp.tasker.pricePerHour">Price Per Hour</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="status"><span jhiTranslate="taskUniteApp.tasker.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="createdAt"><span jhiTranslate="taskUniteApp.tasker.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.tasker.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.tasker.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="userId"><span jhiTranslate="taskUniteApp.tasker.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th></th>
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="price"><span jhiTranslate="taskUniteApp.tasker.price">Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="status"><span jhiTranslate="taskUniteApp.tasker.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="createdAt"><span jhiTranslate="taskUniteApp.tasker.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.tasker.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.tasker.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="userId"><span jhiTranslate="taskUniteApp.tasker.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let tasker of taskers ;trackBy: trackId">
                 <td><a [routerLink]="['/tasker', tasker.id, 'view' ]">{{tasker.id}}</a></td>
-                <td>{{tasker.level}}</td>
-                <td>{{tasker.pricePerHour}}</td>
+                <td>{{tasker.price}}</td>
                 <td>{{tasker.status}}</td>
-                <td>{{tasker.createdAt | date:'medium'}}</td>
-                <td>{{tasker.updatedAt | date:'medium'}}</td>
-                <td>{{tasker.deletedAt | date:'medium'}}</td>
+                <td>{{tasker.createdAt | date:'mediumDate'}}</td>
+                <td>{{tasker.updatedAt | date:'mediumDate'}}</td>
+                <td>{{tasker.deletedAt | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="tasker.userId">
                         <a [routerLink]="['/user-extend', tasker.userId , 'view' ]" >{{tasker.userId}}</a>
@@ -56,10 +55,7 @@
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
-                        <button type="submit"
-                                [routerLink]="['/tasker', { outlets: { popup: tasker.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
+                        <button type="submit" (click)="delete(tasker)"
                                 class="btn btn-danger btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>

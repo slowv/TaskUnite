@@ -52,9 +52,9 @@ export class CityService {
 
   protected convertDateFromClient(city: ICity): ICity {
     const copy: ICity = Object.assign({}, city, {
-      createdAt: city.createdAt != null && city.createdAt.isValid() ? city.createdAt.toJSON() : null,
-      updatedAt: city.updatedAt != null && city.updatedAt.isValid() ? city.updatedAt.toJSON() : null,
-      deletedAt: city.deletedAt != null && city.deletedAt.isValid() ? city.deletedAt.toJSON() : null
+      createdAt: city.createdAt != null && city.createdAt.isValid() ? city.createdAt.format(DATE_FORMAT) : null,
+      updatedAt: city.updatedAt != null && city.updatedAt.isValid() ? city.updatedAt.format(DATE_FORMAT) : null,
+      deletedAt: city.deletedAt != null && city.deletedAt.isValid() ? city.deletedAt.format(DATE_FORMAT) : null
     });
     return copy;
   }

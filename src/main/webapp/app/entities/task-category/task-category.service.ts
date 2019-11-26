@@ -52,9 +52,9 @@ export class TaskCategoryService {
 
   protected convertDateFromClient(taskCategory: ITaskCategory): ITaskCategory {
     const copy: ITaskCategory = Object.assign({}, taskCategory, {
-      createdAt: taskCategory.createdAt != null && taskCategory.createdAt.isValid() ? taskCategory.createdAt.toJSON() : null,
-      updatedAt: taskCategory.updatedAt != null && taskCategory.updatedAt.isValid() ? taskCategory.updatedAt.toJSON() : null,
-      deletedAt: taskCategory.deletedAt != null && taskCategory.deletedAt.isValid() ? taskCategory.deletedAt.toJSON() : null
+      createdAt: taskCategory.createdAt != null && taskCategory.createdAt.isValid() ? taskCategory.createdAt.format(DATE_FORMAT) : null,
+      updatedAt: taskCategory.updatedAt != null && taskCategory.updatedAt.isValid() ? taskCategory.updatedAt.format(DATE_FORMAT) : null,
+      deletedAt: taskCategory.deletedAt != null && taskCategory.deletedAt.isValid() ? taskCategory.deletedAt.format(DATE_FORMAT) : null
     });
     return copy;
   }

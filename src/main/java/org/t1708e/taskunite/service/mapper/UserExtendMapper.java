@@ -11,21 +11,19 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {UserMapper.class})
 public interface UserExtendMapper extends EntityMapper<UserExtendDTO, UserExtend> {
 
-    @Mapping(source = "userLogin.id", target = "userLoginId")
+    @Mapping(source = "user.id", target = "userId")
     UserExtendDTO toDto(UserExtend userExtend);
 
-    @Mapping(source = "userLoginId", target = "userLogin")
-    @Mapping(target = "sendingMessages", ignore = true)
-    @Mapping(target = "removeSendingMessages", ignore = true)
-    @Mapping(target = "receivingMessages", ignore = true)
-    @Mapping(target = "removeReceivingMessages", ignore = true)
+    @Mapping(source = "userId", target = "user")
+    @Mapping(target = "workingAddresses", ignore = true)
+    @Mapping(target = "removeWorkingAddresses", ignore = true)
     @Mapping(target = "reviews", ignore = true)
     @Mapping(target = "removeReviews", ignore = true)
     @Mapping(target = "notifications", ignore = true)
     @Mapping(target = "removeNotifications", ignore = true)
     @Mapping(target = "tasker", ignore = true)
     @Mapping(target = "master", ignore = true)
-    @Mapping(target = "address", ignore = true)
+    @Mapping(target = "statistic", ignore = true)
     UserExtend toEntity(UserExtendDTO userExtendDTO);
 
     default UserExtend fromId(Long id) {

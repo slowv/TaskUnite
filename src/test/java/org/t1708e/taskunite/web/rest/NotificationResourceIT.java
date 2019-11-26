@@ -22,8 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.t1708e.taskunite.web.rest.TestUtil.createFormattingConversionService;
@@ -43,19 +43,15 @@ public class NotificationResourceIT {
 
     private static final Integer DEFAULT_STATUS = 1;
     private static final Integer UPDATED_STATUS = 2;
-    private static final Integer SMALLER_STATUS = 1 - 1;
 
-    private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_CREATED_AT = Instant.ofEpochMilli(-1L);
+    private static final LocalDate DEFAULT_CREATED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CREATED_AT = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Instant DEFAULT_UPDATED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_UPDATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_UPDATED_AT = Instant.ofEpochMilli(-1L);
+    private static final LocalDate DEFAULT_UPDATED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_UPDATED_AT = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Instant DEFAULT_DELETED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_DELETED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_DELETED_AT = Instant.ofEpochMilli(-1L);
+    private static final LocalDate DEFAULT_DELETED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DELETED_AT = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private NotificationRepository notificationRepository;
@@ -188,7 +184,7 @@ public class NotificationResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(notification.getId().intValue())))
-            .andExpect(jsonPath("$.[*].content").value(hasItem(DEFAULT_CONTENT.toString())))
+            .andExpect(jsonPath("$.[*].content").value(hasItem(DEFAULT_CONTENT)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
@@ -206,7 +202,7 @@ public class NotificationResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(notification.getId().intValue()))
-            .andExpect(jsonPath("$.content").value(DEFAULT_CONTENT.toString()))
+            .andExpect(jsonPath("$.content").value(DEFAULT_CONTENT))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
@@ -292,43 +288,5 @@ public class NotificationResourceIT {
         // Validate the database contains one less item
         List<Notification> notificationList = notificationRepository.findAll();
         assertThat(notificationList).hasSize(databaseSizeBeforeDelete - 1);
-    }
-
-    @Test
-    @Transactional
-    public void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(Notification.class);
-        Notification notification1 = new Notification();
-        notification1.setId(1L);
-        Notification notification2 = new Notification();
-        notification2.setId(notification1.getId());
-        assertThat(notification1).isEqualTo(notification2);
-        notification2.setId(2L);
-        assertThat(notification1).isNotEqualTo(notification2);
-        notification1.setId(null);
-        assertThat(notification1).isNotEqualTo(notification2);
-    }
-
-    @Test
-    @Transactional
-    public void dtoEqualsVerifier() throws Exception {
-        TestUtil.equalsVerifier(NotificationDTO.class);
-        NotificationDTO notificationDTO1 = new NotificationDTO();
-        notificationDTO1.setId(1L);
-        NotificationDTO notificationDTO2 = new NotificationDTO();
-        assertThat(notificationDTO1).isNotEqualTo(notificationDTO2);
-        notificationDTO2.setId(notificationDTO1.getId());
-        assertThat(notificationDTO1).isEqualTo(notificationDTO2);
-        notificationDTO2.setId(2L);
-        assertThat(notificationDTO1).isNotEqualTo(notificationDTO2);
-        notificationDTO1.setId(null);
-        assertThat(notificationDTO1).isNotEqualTo(notificationDTO2);
-    }
-
-    @Test
-    @Transactional
-    public void testEntityFromId() {
-        assertThat(notificationMapper.fromId(42L).getId()).isEqualTo(42);
-        assertThat(notificationMapper.fromId(null)).isNull();
     }
 }

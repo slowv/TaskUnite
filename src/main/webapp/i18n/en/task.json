@@ -16,15 +16,13 @@
       "detail": {
         "title": "Task"
       },
-      "title": "Title",
       "description": "Description",
-      "planDate": "Plan Date",
-      "totalPrice": "Total Price",
+      "price": "Price",
       "status": "Status",
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
-      "messages": "Messages",
+      "plan": "Plan",
       "reviews": "Reviews",
       "taskCategories": "Task Categories",
       "tasker": "Tasker",

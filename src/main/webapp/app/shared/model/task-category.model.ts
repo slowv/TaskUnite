@@ -7,6 +7,7 @@ export interface ITaskCategory {
   name?: string;
   description?: string;
   image?: string;
+  minPrice?: number;
   status?: number;
   createdAt?: Moment;
   updatedAt?: Moment;
@@ -21,6 +22,7 @@ export class TaskCategory implements ITaskCategory {
     public name?: string,
     public description?: string,
     public image?: string,
+    public minPrice?: number,
     public status?: number,
     public createdAt?: Moment,
     public updatedAt?: Moment,

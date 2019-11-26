@@ -52,9 +52,9 @@ export class MasterService {
 
   protected convertDateFromClient(master: IMaster): IMaster {
     const copy: IMaster = Object.assign({}, master, {
-      createdAt: master.createdAt != null && master.createdAt.isValid() ? master.createdAt.toJSON() : null,
-      updatedAt: master.updatedAt != null && master.updatedAt.isValid() ? master.updatedAt.toJSON() : null,
-      deletedAt: master.deletedAt != null && master.deletedAt.isValid() ? master.deletedAt.toJSON() : null
+      createdAt: master.createdAt != null && master.createdAt.isValid() ? master.createdAt.format(DATE_FORMAT) : null,
+      updatedAt: master.updatedAt != null && master.updatedAt.isValid() ? master.updatedAt.format(DATE_FORMAT) : null,
+      deletedAt: master.deletedAt != null && master.deletedAt.isValid() ? master.deletedAt.format(DATE_FORMAT) : null
     });
     return copy;
   }

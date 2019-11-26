@@ -5,9 +5,7 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
-import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { IReview, Review } from 'app/shared/model/review.model';
 import { ReviewService } from './review.service';
@@ -26,11 +24,14 @@ export class ReviewUpdateComponent implements OnInit {
   tasks: ITask[];
 
   userextends: IUserExtend[];
+  createdAtDp: any;
+  updatedAtDp: any;
+  deletedAtDp: any;
 
   editForm = this.fb.group({
     id: [],
     content: [],
-    start: [],
+    point: [],
     status: [],
     createdAt: [],
     updatedAt: [],
@@ -55,29 +56,24 @@ export class ReviewUpdateComponent implements OnInit {
     });
     this.taskService
       .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<ITask[]>) => mayBeOk.ok),
-        map((response: HttpResponse<ITask[]>) => response.body)
-      )
-      .subscribe((res: ITask[]) => (this.tasks = res), (res: HttpErrorResponse) => this.onError(res.message));
+      .subscribe((res: HttpResponse<ITask[]>) => (this.tasks = res.body), (res: HttpErrorResponse) => this.onError(res.message));
     this.userExtendService
       .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<IUserExtend[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IUserExtend[]>) => response.body)
-      )
-      .subscribe((res: IUserExtend[]) => (this.userextends = res), (res: HttpErrorResponse) => this.onError(res.message));
+      .subscribe(
+        (res: HttpResponse<IUserExtend[]>) => (this.userextends = res.body),
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
   }
 
   updateForm(review: IReview) {
     this.editForm.patchValue({
       id: review.id,
       content: review.content,
-      start: review.start,
+      point: review.point,
       status: review.status,
-      createdAt: review.createdAt != null ? review.createdAt.format(DATE_TIME_FORMAT) : null,
-      updatedAt: review.updatedAt != null ? review.updatedAt.format(DATE_TIME_FORMAT) : null,
-      deletedAt: review.deletedAt != null ? review.deletedAt.format(DATE_TIME_FORMAT) : null,
+      createdAt: review.createdAt,
+      updatedAt: review.updatedAt,
+      deletedAt: review.deletedAt,
       taskId: review.taskId,
       userId: review.userId
     });
@@ -102,14 +98,11 @@ export class ReviewUpdateComponent implements OnInit {
       ...new Review(),
       id: this.editForm.get(['id']).value,
       content: this.editForm.get(['content']).value,
-      start: this.editForm.get(['start']).value,
+      point: this.editForm.get(['point']).value,
       status: this.editForm.get(['status']).value,
-      createdAt:
-        this.editForm.get(['createdAt']).value != null ? moment(this.editForm.get(['createdAt']).value, DATE_TIME_FORMAT) : undefined,
-      updatedAt:
-        this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
-      deletedAt:
-        this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
+      createdAt: this.editForm.get(['createdAt']).value,
+      updatedAt: this.editForm.get(['updatedAt']).value,
+      deletedAt: this.editForm.get(['deletedAt']).value,
       taskId: this.editForm.get(['taskId']).value,
       userId: this.editForm.get(['userId']).value
     };

@@ -22,8 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.t1708e.taskunite.web.rest.TestUtil.createFormattingConversionService;
@@ -47,21 +47,20 @@ public class TaskCategoryResourceIT {
     private static final String DEFAULT_IMAGE = "AAAAAAAAAA";
     private static final String UPDATED_IMAGE = "BBBBBBBBBB";
 
+    private static final Double DEFAULT_MIN_PRICE = 1D;
+    private static final Double UPDATED_MIN_PRICE = 2D;
+
     private static final Integer DEFAULT_STATUS = 1;
     private static final Integer UPDATED_STATUS = 2;
-    private static final Integer SMALLER_STATUS = 1 - 1;
 
-    private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_CREATED_AT = Instant.ofEpochMilli(-1L);
+    private static final LocalDate DEFAULT_CREATED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CREATED_AT = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Instant DEFAULT_UPDATED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_UPDATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_UPDATED_AT = Instant.ofEpochMilli(-1L);
+    private static final LocalDate DEFAULT_UPDATED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_UPDATED_AT = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Instant DEFAULT_DELETED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_DELETED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_DELETED_AT = Instant.ofEpochMilli(-1L);
+    private static final LocalDate DEFAULT_DELETED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DELETED_AT = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private TaskCategoryRepository taskCategoryRepository;
@@ -114,6 +113,7 @@ public class TaskCategoryResourceIT {
             .name(DEFAULT_NAME)
             .description(DEFAULT_DESCRIPTION)
             .image(DEFAULT_IMAGE)
+            .minPrice(DEFAULT_MIN_PRICE)
             .status(DEFAULT_STATUS)
             .createdAt(DEFAULT_CREATED_AT)
             .updatedAt(DEFAULT_UPDATED_AT)
@@ -131,6 +131,7 @@ public class TaskCategoryResourceIT {
             .name(UPDATED_NAME)
             .description(UPDATED_DESCRIPTION)
             .image(UPDATED_IMAGE)
+            .minPrice(UPDATED_MIN_PRICE)
             .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
@@ -162,6 +163,7 @@ public class TaskCategoryResourceIT {
         assertThat(testTaskCategory.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testTaskCategory.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testTaskCategory.getImage()).isEqualTo(DEFAULT_IMAGE);
+        assertThat(testTaskCategory.getMinPrice()).isEqualTo(DEFAULT_MIN_PRICE);
         assertThat(testTaskCategory.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testTaskCategory.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testTaskCategory.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
@@ -200,9 +202,10 @@ public class TaskCategoryResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(taskCategory.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
-            .andExpect(jsonPath("$.[*].image").value(hasItem(DEFAULT_IMAGE.toString())))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].image").value(hasItem(DEFAULT_IMAGE)))
+            .andExpect(jsonPath("$.[*].minPrice").value(hasItem(DEFAULT_MIN_PRICE.doubleValue())))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
@@ -220,9 +223,10 @@ public class TaskCategoryResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(taskCategory.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
-            .andExpect(jsonPath("$.image").value(DEFAULT_IMAGE.toString()))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
+            .andExpect(jsonPath("$.image").value(DEFAULT_IMAGE))
+            .andExpect(jsonPath("$.minPrice").value(DEFAULT_MIN_PRICE.doubleValue()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
@@ -253,6 +257,7 @@ public class TaskCategoryResourceIT {
             .name(UPDATED_NAME)
             .description(UPDATED_DESCRIPTION)
             .image(UPDATED_IMAGE)
+            .minPrice(UPDATED_MIN_PRICE)
             .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
@@ -271,6 +276,7 @@ public class TaskCategoryResourceIT {
         assertThat(testTaskCategory.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testTaskCategory.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testTaskCategory.getImage()).isEqualTo(UPDATED_IMAGE);
+        assertThat(testTaskCategory.getMinPrice()).isEqualTo(UPDATED_MIN_PRICE);
         assertThat(testTaskCategory.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testTaskCategory.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testTaskCategory.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
@@ -312,43 +318,5 @@ public class TaskCategoryResourceIT {
         // Validate the database contains one less item
         List<TaskCategory> taskCategoryList = taskCategoryRepository.findAll();
         assertThat(taskCategoryList).hasSize(databaseSizeBeforeDelete - 1);
-    }
-
-    @Test
-    @Transactional
-    public void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(TaskCategory.class);
-        TaskCategory taskCategory1 = new TaskCategory();
-        taskCategory1.setId(1L);
-        TaskCategory taskCategory2 = new TaskCategory();
-        taskCategory2.setId(taskCategory1.getId());
-        assertThat(taskCategory1).isEqualTo(taskCategory2);
-        taskCategory2.setId(2L);
-        assertThat(taskCategory1).isNotEqualTo(taskCategory2);
-        taskCategory1.setId(null);
-        assertThat(taskCategory1).isNotEqualTo(taskCategory2);
-    }
-
-    @Test
-    @Transactional
-    public void dtoEqualsVerifier() throws Exception {
-        TestUtil.equalsVerifier(TaskCategoryDTO.class);
-        TaskCategoryDTO taskCategoryDTO1 = new TaskCategoryDTO();
-        taskCategoryDTO1.setId(1L);
-        TaskCategoryDTO taskCategoryDTO2 = new TaskCategoryDTO();
-        assertThat(taskCategoryDTO1).isNotEqualTo(taskCategoryDTO2);
-        taskCategoryDTO2.setId(taskCategoryDTO1.getId());
-        assertThat(taskCategoryDTO1).isEqualTo(taskCategoryDTO2);
-        taskCategoryDTO2.setId(2L);
-        assertThat(taskCategoryDTO1).isNotEqualTo(taskCategoryDTO2);
-        taskCategoryDTO1.setId(null);
-        assertThat(taskCategoryDTO1).isNotEqualTo(taskCategoryDTO2);
-    }
-
-    @Test
-    @Transactional
-    public void testEntityFromId() {
-        assertThat(taskCategoryMapper.fromId(42L).getId()).isEqualTo(42);
-        assertThat(taskCategoryMapper.fromId(null)).isNull();
     }
 }

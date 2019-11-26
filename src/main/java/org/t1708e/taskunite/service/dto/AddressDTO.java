@@ -1,5 +1,5 @@
 package org.t1708e.taskunite.service.dto;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -14,18 +14,16 @@ public class AddressDTO implements Serializable {
 
     private Integer status;
 
-    private Instant createdAt;
+    private LocalDate createdAt;
 
-    private Instant updatedAt;
+    private LocalDate updatedAt;
 
-    private Instant deletedAt;
+    private LocalDate deletedAt;
 
-
-    private Long userId;
 
     private Long dictrictId;
 
-    private Long taskerId;
+    private Long userId;
 
     public Long getId() {
         return id;
@@ -51,36 +49,28 @@ public class AddressDTO implements Serializable {
         this.status = status;
     }
 
-    public Instant getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Instant getUpdatedAt() {
+    public LocalDate getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Instant updatedAt) {
+    public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    public Instant getDeletedAt() {
+    public LocalDate getDeletedAt() {
         return deletedAt;
     }
 
-    public void setDeletedAt(Instant deletedAt) {
+    public void setDeletedAt(LocalDate deletedAt) {
         this.deletedAt = deletedAt;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userExtendId) {
-        this.userId = userExtendId;
     }
 
     public Long getDictrictId() {
@@ -91,12 +81,12 @@ public class AddressDTO implements Serializable {
         this.dictrictId = districtId;
     }
 
-    public Long getTaskerId() {
-        return taskerId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setTaskerId(Long taskerId) {
-        this.taskerId = taskerId;
+    public void setUserId(Long userExtendId) {
+        this.userId = userExtendId;
     }
 
     @Override
@@ -129,9 +119,8 @@ public class AddressDTO implements Serializable {
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
-            ", user=" + getUserId() +
             ", dictrict=" + getDictrictId() +
-            ", tasker=" + getTaskerId() +
+            ", user=" + getUserId() +
             "}";
     }
 }

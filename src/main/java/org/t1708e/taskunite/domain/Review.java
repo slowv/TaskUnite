@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 
 /**
  * A Review.
@@ -22,20 +22,20 @@ public class Review implements Serializable {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "start")
-    private Float start;
+    @Column(name = "point")
+    private Double point;
 
     @Column(name = "status")
     private Integer status;
 
     @Column(name = "created_at")
-    private Instant createdAt;
+    private LocalDate createdAt;
 
     @Column(name = "updated_at")
-    private Instant updatedAt;
+    private LocalDate updatedAt;
 
     @Column(name = "deleted_at")
-    private Instant deletedAt;
+    private LocalDate deletedAt;
 
     @ManyToOne
     @JsonIgnoreProperties("reviews")
@@ -67,17 +67,17 @@ public class Review implements Serializable {
         this.content = content;
     }
 
-    public Float getStart() {
-        return start;
+    public Double getPoint() {
+        return point;
     }
 
-    public Review start(Float start) {
-        this.start = start;
+    public Review point(Double point) {
+        this.point = point;
         return this;
     }
 
-    public void setStart(Float start) {
-        this.start = start;
+    public void setPoint(Double point) {
+        this.point = point;
     }
 
     public Integer getStatus() {
@@ -93,42 +93,42 @@ public class Review implements Serializable {
         this.status = status;
     }
 
-    public Instant getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public Review createdAt(Instant createdAt) {
+    public Review createdAt(LocalDate createdAt) {
         this.createdAt = createdAt;
         return this;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Instant getUpdatedAt() {
+    public LocalDate getUpdatedAt() {
         return updatedAt;
     }
 
-    public Review updatedAt(Instant updatedAt) {
+    public Review updatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
         return this;
     }
 
-    public void setUpdatedAt(Instant updatedAt) {
+    public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    public Instant getDeletedAt() {
+    public LocalDate getDeletedAt() {
         return deletedAt;
     }
 
-    public Review deletedAt(Instant deletedAt) {
+    public Review deletedAt(LocalDate deletedAt) {
         this.deletedAt = deletedAt;
         return this;
     }
 
-    public void setDeletedAt(Instant deletedAt) {
+    public void setDeletedAt(LocalDate deletedAt) {
         this.deletedAt = deletedAt;
     }
 
@@ -180,7 +180,7 @@ public class Review implements Serializable {
         return "Review{" +
             "id=" + getId() +
             ", content='" + getContent() + "'" +
-            ", start=" + getStart() +
+            ", point=" + getPoint() +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +

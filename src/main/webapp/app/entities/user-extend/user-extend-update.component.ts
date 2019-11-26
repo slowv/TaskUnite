@@ -5,7 +5,7 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import * as moment from 'moment';
 import { JhiAlertService } from 'ng-jhipster';
 import { IUserExtend, UserExtend } from 'app/shared/model/user-extend.model';
 import { UserExtendService } from './user-extend.service';
@@ -15,8 +15,8 @@ import { ITasker } from 'app/shared/model/tasker.model';
 import { TaskerService } from 'app/entities/tasker/tasker.service';
 import { IMaster } from 'app/shared/model/master.model';
 import { MasterService } from 'app/entities/master/master.service';
-import { IAddress } from 'app/shared/model/address.model';
-import { AddressService } from 'app/entities/address/address.service';
+import { IStatistic } from 'app/shared/model/statistic.model';
+import { StatisticService } from 'app/entities/statistic/statistic.service';
 
 @Component({
   selector: 'jhi-user-extend-update',
@@ -31,12 +31,20 @@ export class UserExtendUpdateComponent implements OnInit {
 
   masters: IMaster[];
 
-  addresses: IAddress[];
+  statistics: IStatistic[];
+  createdAtDp: any;
+  updatedAtDp: any;
+  deletedAtDp: any;
 
   editForm = this.fb.group({
     id: [],
-    name: [],
-    userLoginId: []
+    address: [],
+    phone: [],
+    status: [],
+    createdAt: [],
+    updatedAt: [],
+    deletedAt: [],
+    userId: []
   });
 
   constructor(
@@ -45,7 +53,7 @@ export class UserExtendUpdateComponent implements OnInit {
     protected userService: UserService,
     protected taskerService: TaskerService,
     protected masterService: MasterService,
-    protected addressService: AddressService,
+    protected statisticService: StatisticService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -57,39 +65,28 @@ export class UserExtendUpdateComponent implements OnInit {
     });
     this.userService
       .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<IUser[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IUser[]>) => response.body)
-      )
-      .subscribe((res: IUser[]) => (this.users = res), (res: HttpErrorResponse) => this.onError(res.message));
+      .subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body), (res: HttpErrorResponse) => this.onError(res.message));
     this.taskerService
       .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<ITasker[]>) => mayBeOk.ok),
-        map((response: HttpResponse<ITasker[]>) => response.body)
-      )
-      .subscribe((res: ITasker[]) => (this.taskers = res), (res: HttpErrorResponse) => this.onError(res.message));
+      .subscribe((res: HttpResponse<ITasker[]>) => (this.taskers = res.body), (res: HttpErrorResponse) => this.onError(res.message));
     this.masterService
       .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<IMaster[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IMaster[]>) => response.body)
-      )
-      .subscribe((res: IMaster[]) => (this.masters = res), (res: HttpErrorResponse) => this.onError(res.message));
-    this.addressService
+      .subscribe((res: HttpResponse<IMaster[]>) => (this.masters = res.body), (res: HttpErrorResponse) => this.onError(res.message));
+    this.statisticService
       .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<IAddress[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IAddress[]>) => response.body)
-      )
-      .subscribe((res: IAddress[]) => (this.addresses = res), (res: HttpErrorResponse) => this.onError(res.message));
+      .subscribe((res: HttpResponse<IStatistic[]>) => (this.statistics = res.body), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(userExtend: IUserExtend) {
     this.editForm.patchValue({
       id: userExtend.id,
-      name: userExtend.name,
-      userLoginId: userExtend.userLoginId
+      address: userExtend.address,
+      phone: userExtend.phone,
+      status: userExtend.status,
+      createdAt: userExtend.createdAt,
+      updatedAt: userExtend.updatedAt,
+      deletedAt: userExtend.deletedAt,
+      userId: userExtend.userId
     });
   }
 
@@ -111,8 +108,13 @@ export class UserExtendUpdateComponent implements OnInit {
     return {
       ...new UserExtend(),
       id: this.editForm.get(['id']).value,
-      name: this.editForm.get(['name']).value,
-      userLoginId: this.editForm.get(['userLoginId']).value
+      address: this.editForm.get(['address']).value,
+      phone: this.editForm.get(['phone']).value,
+      status: this.editForm.get(['status']).value,
+      createdAt: this.editForm.get(['createdAt']).value,
+      updatedAt: this.editForm.get(['updatedAt']).value,
+      deletedAt: this.editForm.get(['deletedAt']).value,
+      userId: this.editForm.get(['userId']).value
     };
   }
 
@@ -144,7 +146,7 @@ export class UserExtendUpdateComponent implements OnInit {
     return item.id;
   }
 
-  trackAddressById(index: number, item: IAddress) {
+  trackStatisticById(index: number, item: IStatistic) {
     return item.id;
   }
 }

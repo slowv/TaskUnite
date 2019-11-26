@@ -22,8 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.t1708e.taskunite.web.rest.TestUtil.createFormattingConversionService;
@@ -40,19 +40,15 @@ public class MasterResourceIT {
 
     private static final Integer DEFAULT_STATUS = 1;
     private static final Integer UPDATED_STATUS = 2;
-    private static final Integer SMALLER_STATUS = 1 - 1;
 
-    private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_CREATED_AT = Instant.ofEpochMilli(-1L);
+    private static final LocalDate DEFAULT_CREATED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CREATED_AT = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Instant DEFAULT_UPDATED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_UPDATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_UPDATED_AT = Instant.ofEpochMilli(-1L);
+    private static final LocalDate DEFAULT_UPDATED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_UPDATED_AT = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Instant DEFAULT_DELETED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_DELETED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_DELETED_AT = Instant.ofEpochMilli(-1L);
+    private static final LocalDate DEFAULT_DELETED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DELETED_AT = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private MasterRepository masterRepository;
@@ -282,43 +278,5 @@ public class MasterResourceIT {
         // Validate the database contains one less item
         List<Master> masterList = masterRepository.findAll();
         assertThat(masterList).hasSize(databaseSizeBeforeDelete - 1);
-    }
-
-    @Test
-    @Transactional
-    public void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(Master.class);
-        Master master1 = new Master();
-        master1.setId(1L);
-        Master master2 = new Master();
-        master2.setId(master1.getId());
-        assertThat(master1).isEqualTo(master2);
-        master2.setId(2L);
-        assertThat(master1).isNotEqualTo(master2);
-        master1.setId(null);
-        assertThat(master1).isNotEqualTo(master2);
-    }
-
-    @Test
-    @Transactional
-    public void dtoEqualsVerifier() throws Exception {
-        TestUtil.equalsVerifier(MasterDTO.class);
-        MasterDTO masterDTO1 = new MasterDTO();
-        masterDTO1.setId(1L);
-        MasterDTO masterDTO2 = new MasterDTO();
-        assertThat(masterDTO1).isNotEqualTo(masterDTO2);
-        masterDTO2.setId(masterDTO1.getId());
-        assertThat(masterDTO1).isEqualTo(masterDTO2);
-        masterDTO2.setId(2L);
-        assertThat(masterDTO1).isNotEqualTo(masterDTO2);
-        masterDTO1.setId(null);
-        assertThat(masterDTO1).isNotEqualTo(masterDTO2);
-    }
-
-    @Test
-    @Transactional
-    public void testEntityFromId() {
-        assertThat(masterMapper.fromId(42L).getId()).isEqualTo(42);
-        assertThat(masterMapper.fromId(null)).isNull();
     }
 }

@@ -1,23 +1,21 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { filter, map } from 'rxjs/operators';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager, JhiParseLinks } from 'ng-jhipster';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ICity } from 'app/shared/model/city.model';
-import { AccountService } from 'app/core/auth/account.service';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { CityService } from './city.service';
+import { CityDeleteDialogComponent } from './city-delete-dialog.component';
 
 @Component({
   selector: 'jhi-city',
   templateUrl: './city.component.html'
 })
 export class CityComponent implements OnInit, OnDestroy {
-  currentAccount: any;
   cities: ICity[];
   error: any;
   success: any;
@@ -34,11 +32,10 @@ export class CityComponent implements OnInit, OnDestroy {
   constructor(
     protected cityService: CityService,
     protected parseLinks: JhiParseLinks,
-    protected jhiAlertService: JhiAlertService,
-    protected accountService: AccountService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
-    protected eventManager: JhiEventManager
+    protected eventManager: JhiEventManager,
+    protected modalService: NgbModal
   ) {
     this.itemsPerPage = ITEMS_PER_PAGE;
     this.routeData = this.activatedRoute.data.subscribe(data => {
@@ -56,10 +53,7 @@ export class CityComponent implements OnInit, OnDestroy {
         size: this.itemsPerPage,
         sort: this.sort()
       })
-      .subscribe(
-        (res: HttpResponse<ICity[]>) => this.paginateCities(res.body, res.headers),
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
+      .subscribe((res: HttpResponse<ICity[]>) => this.paginateCities(res.body, res.headers));
   }
 
   loadPage(page: number) {
@@ -94,9 +88,6 @@ export class CityComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadAll();
-    this.accountService.identity().then(account => {
-      this.currentAccount = account;
-    });
     this.registerChangeInCities();
   }
 
@@ -109,7 +100,12 @@ export class CityComponent implements OnInit, OnDestroy {
   }
 
   registerChangeInCities() {
-    this.eventSubscriber = this.eventManager.subscribe('cityListModification', response => this.loadAll());
+    this.eventSubscriber = this.eventManager.subscribe('cityListModification', () => this.loadAll());
+  }
+
+  delete(city: ICity) {
+    const modalRef = this.modalService.open(CityDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.city = city;
   }
 
   sort() {
@@ -124,9 +120,5 @@ export class CityComponent implements OnInit, OnDestroy {
     this.links = this.parseLinks.parse(headers.get('link'));
     this.totalItems = parseInt(headers.get('X-Total-Count'), 10);
     this.cities = data;
-  }
-
-  protected onError(errorMessage: string) {
-    this.jhiAlertService.error(errorMessage, null, null);
   }
 }

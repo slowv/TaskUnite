@@ -19,19 +19,19 @@
             <column name="content" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="start" type="${floatType}">
+            <column name="point" type="double">
                 <constraints nullable="true" />
             </column>
             <column name="status" type="integer">
                 <constraints nullable="true" />
             </column>
-            <column name="created_at" type="datetime">
+            <column name="created_at" type="date">
                 <constraints nullable="true" />
             </column>
-            <column name="updated_at" type="datetime">
+            <column name="updated_at" type="date">
                 <constraints nullable="true" />
             </column>
-            <column name="deleted_at" type="datetime">
+            <column name="deleted_at" type="date">
                 <constraints nullable="true" />
             </column>
             <column name="task_id" type="bigint">
@@ -42,9 +42,6 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="review" columnName="created_at" columnDataType="datetime"/>
-        <dropDefaultValue tableName="review" columnName="updated_at" columnDataType="datetime"/>
-        <dropDefaultValue tableName="review" columnName="deleted_at" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20191114125907-1-relations" author="jhipster">
@@ -55,7 +52,7 @@
     <!--
         Load sample data generated with Faker.js
         - This data can be easily edited using a CSV editor (or even MS Excel) and
-          is located in the 'src/main/resources/config/liquibase/data' directory
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
         - By default this data is applied when running with the JHipster 'dev' profile.
           This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
           Spring Boot configuration key.
@@ -67,11 +64,11 @@
                   tableName="review">
             <column name="id" type="numeric"/>
             <column name="content" type="string"/>
-            <column name="start" type="numeric"/>
+            <column name="point" type="numeric"/>
             <column name="status" type="numeric"/>
-            <column name="created_at" type="datetime"/>
-            <column name="updated_at" type="datetime"/>
-            <column name="deleted_at" type="datetime"/>
+            <column name="created_at" type="date"/>
+            <column name="updated_at" type="date"/>
+            <column name="deleted_at" type="date"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

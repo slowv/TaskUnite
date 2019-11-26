@@ -17,7 +17,7 @@
         "title": "Review"
       },
       "content": "Content",
-      "start": "Start",
+      "point": "Point",
       "status": "Status",
       "createdAt": "Created At",
       "updatedAt": "Updated At",
