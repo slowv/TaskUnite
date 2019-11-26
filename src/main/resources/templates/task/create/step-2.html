@@ -24,8 +24,7 @@
                             <div class="box-line">
                                 <div class="line"></div>
                             </div>
-                            <div class="name-step">
-                                Thông tin công việc
+                            <div class="name-step" th:text="#{task-create.step1.task-infor}">
                             </div>
                         </div>
                         <div class="step active st2">
@@ -35,8 +34,7 @@
                             <div class="box-line ">
                                 <div class="line"></div>
                             </div>
-                            <div class="name-step">
-                                Tác vụ & Giá tiền
+                            <div class="name-step" th:text="#{task-create.step2.task-prices}">
                             </div>
                         </div>
                         <div class="step st3">
@@ -46,17 +44,13 @@
                             <div class="box-line">
                                 <div class="line"></div>
                             </div>
-                            <div class="name-step">
-                                Đặt lịch
-                            </div>
+                            <div class="name-step" th:text="#{task-create.step3.choose-date-time}"></div>
                         </div>
                         <div class="step st4">
                             <div class="box-circle">
                                 <div class="circle">4</div>
                             </div>
-                            <div class="name-step">
-                                Xác nhận
-                            </div>
+                            <div class="name-step" th:text="#{task-create.step4.confirm-details}"></div>
                         </div>
                     </div>
                 </div>
@@ -67,9 +61,7 @@
                         <div class="build-progress__sub-bar__container">
                             <img alt="form" class="build-progress__sub-bar__icon" th:src="@{/images/user-plus.svg}">
                             <div class="build-progress__sub-bar__message">
-                                <span>
-                                    Lọc và sắp xếp để tìm nhân viên của bạn. Sau đó xem sự sẵn có của họ để yêu cầu ngày và thời gian của bạn.
-                                </span>
+                                <span th:text="#{task-create.step2.notification-1}"></span>
                             </div>
                         </div>
                     </div>
@@ -82,11 +74,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 text-right">
-                    <label class="text-uppercase mr-1">Sắp xếp: </label>
+                    <label class="text-uppercase mr-1" th:text="#{task-create.step2.sorted-by}"></label>
                     <select id="filter-option" class="">
-                        <option value="0" selected>Liên quan</option>
-                        <option value="1">Giá tiền giảm dần</option>
-                        <option value="2">Liên quan</option>
+                        <option value="0" selected th:text="#{task-create.step2.sorted-by-recommended}"></option>
+                        <option value="1" th:text="#{task-create.step2.sorted-by-price-lowest-to-highest}"></option>
+                        <option value="2" th:text="#{task-create.step2.sorted-by-price-highest-to-lowest}"></option>
+                        <option value="3" th:text="#{task-create.step2.sorted-by-recommended}"></option>
                     </select>
                 </div>
             </div>
@@ -96,49 +89,56 @@
                         <img class="recommendations__trust-safety__box__icon"
                              th:src="@{/images/protected.svg}" alt="shield">
                         <div class="recommendations__trust-safety__box__text">
-                            <span>Hãy yên tâm. Tất cả nhân viên đều được kiểm tra TCC và lý lịch.</span>
+                            <span th:text="#{task-create.step2.notification-2}"></span>
                         </div>
                     </div>
                     <div class="panel panel--spaced panel--with-overflow">
                         <div class="title-date text-uppercase text-bold">
-                            <span class="icon-calendar mr-2"></span> Ngày làm việc
+                            <span class="icon-calendar mr-2" th:text="#{task-create.step2.task-date}"></span>
                             <span class="icon-chevron-up iconSlideUp"></span>
                         </div>
                         <div class="box-option mt-3">
                             <div class="option-date">
-                                <button type="button" class="active">Hôm nay</button>
+                                <button type="button" class="active"
+                                        th:text="#{task-create.step2.task-date-today}"></button>
                             </div>
                             <div class="option-date">
-                                <button type="button" class="">Trong 3 ngày</button>
+                                <button type="button" class=""
+                                        th:text="#{task-create.step2.task-date-within3days}"></button>
                             </div>
                             <div class="option-date">
-                                <button type="button" class="">Trong tuần</button>
+                                <button type="button" class=""
+                                        th:text="#{task-create.step2.task-date-withinaweek}"></button>
                             </div>
                             <div class="option-date">
-                                <button type="button" class="">Chọn ngày</button>
+                                <button type="button" class=""
+                                        th:text="#{task-create.step2.task-date-choosedates}"></button>
                             </div>
                         </div>
                     </div>
                     <div class="panel panel--spaced panel--with-overflow">
                         <div class="title-date text-uppercase text-bold">
-                            <span class="icon-clock-o mr-2"></span> Thời gian làm việc
+                            <span class="icon-clock-o mr-2" th:text="#{task-create.step2.task-time}"> </span>
                             <span class="icon-chevron-up iconSlideUp"></span>
                         </div>
                         <div class="mt-3">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="time1"
                                        value="8-12">
-                                <label class="custom-control-label d-inline" for="time1">Sáng (8h - 12h)</label>
+                                <label class="custom-control-label d-inline" for="time1"
+                                       th:text="#{task-create.step2.task-time-morning}"></label>
                             </div>
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="time2"
                                        value="12-17">
-                                <label class="custom-control-label d-inline" for="time2">Chiều (12h - 15h)</label>
+                                <label class="custom-control-label d-inline" for="time2"
+                                       th:text="#{task-create.step2.task-time-afternoon}"></label>
                             </div>
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="time3"
                                        value="17-21">
-                                <label class="custom-control-label d-inline" for="time3">Tối (17h - 21h)</label>
+                                <label class="custom-control-label d-inline" for="time3"
+                                       th:text="#{task-create.step2.task-time-evening}"></label>
                             </div>
                             <div class="row my-2 p-3">
                                 <div class="col-lg-3 p-0">
@@ -147,7 +147,9 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 text-center p-0">
-                                    <div class="h-20" style="font-size: 13px; color: #3f3f3f">Chọn thời gian khác</div>
+                                    <div class="h-20" style="font-size: 13px; color: #3f3f3f"
+                                         th:text="#{task-create.step2.task-time-choose-a-specific-time}">s
+                                    </div>
                                 </div>
                                 <div class="col-lg-3 p-0">
                                     <div class="h-20 line-mid">
@@ -157,7 +159,7 @@
                             </div>
                             <div class="form-group">
                                 <select class="form-control">
-                                    <option value="0">Giờ cố định</option>
+                                    <option value="0" th:text="#{task-create.step2.task-flexible}"></option>
                                     <option value="1">8:00am</option>
                                     <option value="2">8:30am</option>
                                     <option value="3">9:00am</option>
@@ -202,16 +204,15 @@
                             <div class="recommendations__result-actions">
                                 <a class="recommendations__review-link d-block"
                                    tabindex="0" role="button">
-                                    <span>Thông tin &amp; Nhận xét</span>
+                                    <span th:text="#{task-create.step2.view-profile-reviews}"></span>
                                 </a>
-                                <a class="recommendations__hire-btn btn btn-primary btn-block " th:href="@{/task/create/step3}">
-                                    <span>Chọn &amp; Tiếp tục</span>
+                                <a class="recommendations__hire-btn btn btn-primary btn-block "
+                                   th:href="@{/task/create/step3}">
+                                    <span th:text="#{task-create.step2.select-continue-btn}"></span>
                                 </a>
                                 <div class="u-hidden--sm">
                                     <span class="whisper">
-                                        <span>
-                                        Bạn có thể trò chuyện với Nhân viên, điều chỉnh chi tiết công việc hoặc thay đổi thời gian thực hiện công việc sau khi đặt chỗ
-                                        </span>
+                                        <span th:text="#{task-create.step2.notification-3}"></span>
                                     </span>
                                 </div>
                             </div>
@@ -227,30 +228,30 @@
                             </span>
                             <ul class="recommendations__badge-list">
                                 <li class="recommendations__pill--elite">
-                                    <i class="icon-sentiment_very_satisfied"></i><span>Nhân viên ưu tú</span>
+                                    <i class="icon-sentiment_very_satisfied"></i><span th:text="#{task-create.step2.elite-tasker}">Nhân viên ưu tú</span>
                                 </li>
                             </ul>
                             <ul class="recommendations__result-info">
                                 <li><i class="icon-check-circle-o"></i><span>66 Công việc nhà</span></li>
                                 <li><i class="icon-star-o"></i>
-                                    <span>
+                                    <span style="margin-left: -5px;">
                                         100% Nhận xét tích cực
                                         <span class="tooltip-tether">
                                             <i class="icon-info_outline recommendations__badge-info"></i>
                                             <span class="tooltip">
                                                 <div class="tooltip-triangle"></div>
                                                 <div class="tooltip-inner">
-                                                    <span>Đánh giá tích cực dựa trên tất cả các công việc đã hoàn thành. Giúp bạn sáng suốt hơn khi chọn một nhân viên.</span>
+                                                    <span th:text="#{task-create.step2.positive-reviews-detail}"></span>
                                                 </div>
                                             </span>
                                         </span>
                                     </span>
 
                                 </li>
-                                <li><i class="icon-beenhere"></i><span>100% Tin cậy</span> <i
+                                <li><i class="icon-beenhere"></i><span style="margin-left: -3px;">100% Tin cậy</span> <i
                                     class="icon-info_outline"></i></li>
                             </ul>
-                            <div class="recommendations__blurb-title"><span>Tôi có thể giúp bạn:</span></div>
+                            <div class="recommendations__blurb-title"><span th:text="#{task-create.step2.how-i-can-help}"></span></div>
                             <div class="recommendations__blurb">
                                 Đếm rất khéo léo và hiệu quả với các công cụ phù hợp để hoàn thành công việc, mọi cài
                                 đặt AC của các đơn vị AC có cùng giá mỗi giờ cho mỗi đơn vị (ví dụ: một đơn vị AC một
