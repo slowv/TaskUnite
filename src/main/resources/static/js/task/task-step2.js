@@ -18,7 +18,6 @@ function onClick() {
     $(this).toggleClass('icon-chevron-down');
     $(this).parent().next().slideToggle();
   });
-  console.log(getListTask());
 }
 
 function onHover() {

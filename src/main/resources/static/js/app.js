@@ -1,9 +1,3 @@
-let task = {
-  title: null, // String
-  address: null, // String
-  category: [], // id Category
-  description: null // String
-};
 // Tùy biến thêm trường.
 function Task(title, address, category, description){
   return {
