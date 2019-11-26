@@ -22,8 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.t1708e.taskunite.web.rest.TestUtil.createFormattingConversionService;
@@ -43,19 +43,15 @@ public class CityResourceIT {
 
     private static final Integer DEFAULT_STATUS = 1;
     private static final Integer UPDATED_STATUS = 2;
-    private static final Integer SMALLER_STATUS = 1 - 1;
 
-    private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_CREATED_AT = Instant.ofEpochMilli(-1L);
+    private static final LocalDate DEFAULT_CREATED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CREATED_AT = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Instant DEFAULT_UPDATED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_UPDATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_UPDATED_AT = Instant.ofEpochMilli(-1L);
+    private static final LocalDate DEFAULT_UPDATED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_UPDATED_AT = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Instant DEFAULT_DELETED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_DELETED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_DELETED_AT = Instant.ofEpochMilli(-1L);
+    private static final LocalDate DEFAULT_DELETED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DELETED_AT = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private CityRepository cityRepository;
@@ -188,7 +184,7 @@ public class CityResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(city.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
@@ -206,7 +202,7 @@ public class CityResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(city.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
@@ -292,43 +288,5 @@ public class CityResourceIT {
         // Validate the database contains one less item
         List<City> cityList = cityRepository.findAll();
         assertThat(cityList).hasSize(databaseSizeBeforeDelete - 1);
-    }
-
-    @Test
-    @Transactional
-    public void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(City.class);
-        City city1 = new City();
-        city1.setId(1L);
-        City city2 = new City();
-        city2.setId(city1.getId());
-        assertThat(city1).isEqualTo(city2);
-        city2.setId(2L);
-        assertThat(city1).isNotEqualTo(city2);
-        city1.setId(null);
-        assertThat(city1).isNotEqualTo(city2);
-    }
-
-    @Test
-    @Transactional
-    public void dtoEqualsVerifier() throws Exception {
-        TestUtil.equalsVerifier(CityDTO.class);
-        CityDTO cityDTO1 = new CityDTO();
-        cityDTO1.setId(1L);
-        CityDTO cityDTO2 = new CityDTO();
-        assertThat(cityDTO1).isNotEqualTo(cityDTO2);
-        cityDTO2.setId(cityDTO1.getId());
-        assertThat(cityDTO1).isEqualTo(cityDTO2);
-        cityDTO2.setId(2L);
-        assertThat(cityDTO1).isNotEqualTo(cityDTO2);
-        cityDTO1.setId(null);
-        assertThat(cityDTO1).isNotEqualTo(cityDTO2);
-    }
-
-    @Test
-    @Transactional
-    public void testEntityFromId() {
-        assertThat(cityMapper.fromId(42L).getId()).isEqualTo(42);
-        assertThat(cityMapper.fromId(null)).isNull();
     }
 }

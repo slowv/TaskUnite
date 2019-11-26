@@ -21,9 +21,8 @@
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
-      "user": "User",
       "dictrict": "Dictrict",
-      "tasker": "Tasker"
+      "user": "User"
     }
   }
 }

@@ -16,15 +16,19 @@
       "detail": {
         "title": "User Extend"
       },
-      "name": "Name",
-      "userLogin": "User Login",
-      "sendingMessages": "Sending Messages",
-      "receivingMessages": "Receiving Messages",
+      "address": "Address",
+      "phone": "Phone",
+      "status": "Status",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "deletedAt": "Deleted At",
+      "user": "User",
+      "workingAddresses": "Working Addresses",
       "reviews": "Reviews",
       "notifications": "Notifications",
       "tasker": "Tasker",
       "master": "Master",
-      "address": "Address"
+      "statistic": "Statistic"
     }
   }
 }

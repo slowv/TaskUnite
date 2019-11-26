@@ -1,5 +1,5 @@
 package org.t1708e.taskunite.service.dto;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,17 +12,15 @@ public class TaskerDTO implements Serializable {
 
     private Long id;
 
-    private Integer level;
-
-    private Double pricePerHour;
+    private Double price;
 
     private Integer status;
 
-    private Instant createdAt;
+    private LocalDate createdAt;
 
-    private Instant updatedAt;
+    private LocalDate updatedAt;
 
-    private Instant deletedAt;
+    private LocalDate deletedAt;
 
 
     private Long userId;
@@ -37,20 +35,12 @@ public class TaskerDTO implements Serializable {
         this.id = id;
     }
 
-    public Integer getLevel() {
-        return level;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
-
-    public Double getPricePerHour() {
-        return pricePerHour;
-    }
-
-    public void setPricePerHour(Double pricePerHour) {
-        this.pricePerHour = pricePerHour;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public Integer getStatus() {
@@ -61,27 +51,27 @@ public class TaskerDTO implements Serializable {
         this.status = status;
     }
 
-    public Instant getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Instant getUpdatedAt() {
+    public LocalDate getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Instant updatedAt) {
+    public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    public Instant getDeletedAt() {
+    public LocalDate getDeletedAt() {
         return deletedAt;
     }
 
-    public void setDeletedAt(Instant deletedAt) {
+    public void setDeletedAt(LocalDate deletedAt) {
         this.deletedAt = deletedAt;
     }
 
@@ -126,8 +116,7 @@ public class TaskerDTO implements Serializable {
     public String toString() {
         return "TaskerDTO{" +
             "id=" + getId() +
-            ", level=" + getLevel() +
-            ", pricePerHour=" + getPricePerHour() +
+            ", price=" + getPrice() +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +

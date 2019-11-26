@@ -1,4 +1,5 @@
 package org.t1708e.taskunite.service.dto;
+import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -9,10 +10,20 @@ public class UserExtendDTO implements Serializable {
 
     private Long id;
 
-    private String name;
+    private String address;
+
+    private String phone;
+
+    private Integer status;
+
+    private LocalDate createdAt;
+
+    private LocalDate updatedAt;
+
+    private LocalDate deletedAt;
 
 
-    private Long userLoginId;
+    private Long userId;
 
     public Long getId() {
         return id;
@@ -22,20 +33,60 @@ public class UserExtendDTO implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getAddress() {
+        return address;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public Long getUserLoginId() {
-        return userLoginId;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setUserLoginId(Long userId) {
-        this.userLoginId = userId;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDate getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDate updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public LocalDate getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt(LocalDate deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     @Override
@@ -63,8 +114,13 @@ public class UserExtendDTO implements Serializable {
     public String toString() {
         return "UserExtendDTO{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
-            ", userLogin=" + getUserLoginId() +
+            ", address='" + getAddress() + "'" +
+            ", phone='" + getPhone() + "'" +
+            ", status=" + getStatus() +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", updatedAt='" + getUpdatedAt() + "'" +
+            ", deletedAt='" + getDeletedAt() + "'" +
+            ", user=" + getUserId() +
             "}";
     }
 }

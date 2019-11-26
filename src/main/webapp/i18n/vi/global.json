@@ -18,6 +18,10 @@
         "notification": "Notification",
         "review": "Review",
         "message": "Message",
+        "paymentInformation": "Payment Information",
+        "statistic": "Statistic",
+        "schedule": "Schedule",
+        "plan": "Plan",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

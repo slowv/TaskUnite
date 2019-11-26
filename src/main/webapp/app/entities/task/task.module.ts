@@ -5,14 +5,12 @@ import { TaskUniteSharedModule } from 'app/shared/shared.module';
 import { TaskComponent } from './task.component';
 import { TaskDetailComponent } from './task-detail.component';
 import { TaskUpdateComponent } from './task-update.component';
-import { TaskDeletePopupComponent, TaskDeleteDialogComponent } from './task-delete-dialog.component';
-import { taskRoute, taskPopupRoute } from './task.route';
-
-const ENTITY_STATES = [...taskRoute, ...taskPopupRoute];
+import { TaskDeleteDialogComponent } from './task-delete-dialog.component';
+import { taskRoute } from './task.route';
 
 @NgModule({
-  imports: [TaskUniteSharedModule, RouterModule.forChild(ENTITY_STATES)],
-  declarations: [TaskComponent, TaskDetailComponent, TaskUpdateComponent, TaskDeleteDialogComponent, TaskDeletePopupComponent],
+  imports: [TaskUniteSharedModule, RouterModule.forChild(taskRoute)],
+  declarations: [TaskComponent, TaskDetailComponent, TaskUpdateComponent, TaskDeleteDialogComponent],
   entryComponents: [TaskDeleteDialogComponent]
 })
 export class TaskUniteTaskModule {}

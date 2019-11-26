@@ -8,6 +8,7 @@
             </span>
         </button>
     </h2>
+    <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>
     <br/>
     <div class="alert alert-warning" *ngIf="cities?.length === 0">
@@ -17,13 +18,13 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="name"><span jhiTranslate="taskUniteApp.city.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="status"><span jhiTranslate="taskUniteApp.city.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="createdAt"><span jhiTranslate="taskUniteApp.city.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.city.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.city.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th></th>
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="name"><span jhiTranslate="taskUniteApp.city.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="status"><span jhiTranslate="taskUniteApp.city.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="createdAt"><span jhiTranslate="taskUniteApp.city.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.city.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.city.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -31,9 +32,9 @@
                 <td><a [routerLink]="['/city', city.id, 'view' ]">{{city.id}}</a></td>
                 <td>{{city.name}}</td>
                 <td>{{city.status}}</td>
-                <td>{{city.createdAt | date:'medium'}}</td>
-                <td>{{city.updatedAt | date:'medium'}}</td>
-                <td>{{city.deletedAt | date:'medium'}}</td>
+                <td>{{city.createdAt | date:'mediumDate'}}</td>
+                <td>{{city.updatedAt | date:'mediumDate'}}</td>
+                <td>{{city.deletedAt | date:'mediumDate'}}</td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"
@@ -48,10 +49,7 @@
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
-                        <button type="submit"
-                                [routerLink]="['/city', { outlets: { popup: city.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
+                        <button type="submit" (click)="delete(city)"
                                 class="btn btn-danger btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>

@@ -1,19 +1,17 @@
 import { Moment } from 'moment';
-import { IMessage } from 'app/shared/model/message.model';
+import { IPlan } from 'app/shared/model/plan.model';
 import { IReview } from 'app/shared/model/review.model';
 import { ITaskCategory } from 'app/shared/model/task-category.model';
 
 export interface ITask {
   id?: number;
-  title?: string;
   description?: string;
-  planDate?: Moment;
-  totalPrice?: number;
+  price?: number;
   status?: number;
   createdAt?: Moment;
   updatedAt?: Moment;
   deletedAt?: Moment;
-  messages?: IMessage[];
+  plans?: IPlan[];
   reviews?: IReview[];
   taskCategories?: ITaskCategory[];
   taskerId?: number;
@@ -23,15 +21,13 @@ export interface ITask {
 export class Task implements ITask {
   constructor(
     public id?: number,
-    public title?: string,
     public description?: string,
-    public planDate?: Moment,
-    public totalPrice?: number,
+    public price?: number,
     public status?: number,
     public createdAt?: Moment,
     public updatedAt?: Moment,
     public deletedAt?: Moment,
-    public messages?: IMessage[],
+    public plans?: IPlan[],
     public reviews?: IReview[],
     public taskCategories?: ITaskCategory[],
     public taskerId?: number,

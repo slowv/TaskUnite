@@ -1,5 +1,5 @@
 package org.t1708e.taskunite.service.dto;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -16,13 +16,15 @@ public class TaskCategoryDTO implements Serializable {
 
     private String image;
 
+    private Double minPrice;
+
     private Integer status;
 
-    private Instant createdAt;
+    private LocalDate createdAt;
 
-    private Instant updatedAt;
+    private LocalDate updatedAt;
 
-    private Instant deletedAt;
+    private LocalDate deletedAt;
 
 
     public Long getId() {
@@ -57,6 +59,14 @@ public class TaskCategoryDTO implements Serializable {
         this.image = image;
     }
 
+    public Double getMinPrice() {
+        return minPrice;
+    }
+
+    public void setMinPrice(Double minPrice) {
+        this.minPrice = minPrice;
+    }
+
     public Integer getStatus() {
         return status;
     }
@@ -65,27 +75,27 @@ public class TaskCategoryDTO implements Serializable {
         this.status = status;
     }
 
-    public Instant getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Instant getUpdatedAt() {
+    public LocalDate getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Instant updatedAt) {
+    public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    public Instant getDeletedAt() {
+    public LocalDate getDeletedAt() {
         return deletedAt;
     }
 
-    public void setDeletedAt(Instant deletedAt) {
+    public void setDeletedAt(LocalDate deletedAt) {
         this.deletedAt = deletedAt;
     }
 
@@ -117,6 +127,7 @@ public class TaskCategoryDTO implements Serializable {
             ", name='" + getName() + "'" +
             ", description='" + getDescription() + "'" +
             ", image='" + getImage() + "'" +
+            ", minPrice=" + getMinPrice() +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +

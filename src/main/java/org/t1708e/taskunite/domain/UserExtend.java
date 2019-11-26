@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,18 +21,30 @@ public class UserExtend implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "status")
+    private Integer status;
+
+    @Column(name = "created_at")
+    private LocalDate createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDate updatedAt;
+
+    @Column(name = "deleted_at")
+    private LocalDate deletedAt;
 
     @OneToOne
     @JoinColumn(unique = true)
-    private User userLogin;
+    private User user;
 
-    @OneToMany(mappedBy = "sender")
-    private Set<Message> sendingMessages = new HashSet<>();
-
-    @OneToMany(mappedBy = "receiver")
-    private Set<Message> receivingMessages = new HashSet<>();
+    @OneToMany(mappedBy = "user")
+    private Set<Address> workingAddresses = new HashSet<>();
 
     @OneToMany(mappedBy = "user")
     private Set<Review> reviews = new HashSet<>();
@@ -49,7 +62,7 @@ public class UserExtend implements Serializable {
 
     @OneToOne(mappedBy = "user")
     @JsonIgnore
-    private Address address;
+    private Statistic statistic;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -60,80 +73,120 @@ public class UserExtend implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getAddress() {
+        return address;
     }
 
-    public UserExtend name(String name) {
-        this.name = name;
+    public UserExtend address(String address) {
+        this.address = address;
         return this;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public User getUserLogin() {
-        return userLogin;
+    public String getPhone() {
+        return phone;
     }
 
-    public UserExtend userLogin(User user) {
-        this.userLogin = user;
+    public UserExtend phone(String phone) {
+        this.phone = phone;
         return this;
     }
 
-    public void setUserLogin(User user) {
-        this.userLogin = user;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public Set<Message> getSendingMessages() {
-        return sendingMessages;
+    public Integer getStatus() {
+        return status;
     }
 
-    public UserExtend sendingMessages(Set<Message> messages) {
-        this.sendingMessages = messages;
+    public UserExtend status(Integer status) {
+        this.status = status;
         return this;
     }
 
-    public UserExtend addSendingMessages(Message message) {
-        this.sendingMessages.add(message);
-        message.setSender(this);
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
+
+    public UserExtend createdAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
         return this;
     }
 
-    public UserExtend removeSendingMessages(Message message) {
-        this.sendingMessages.remove(message);
-        message.setSender(null);
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDate getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public UserExtend updatedAt(LocalDate updatedAt) {
+        this.updatedAt = updatedAt;
         return this;
     }
 
-    public void setSendingMessages(Set<Message> messages) {
-        this.sendingMessages = messages;
+    public void setUpdatedAt(LocalDate updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
-    public Set<Message> getReceivingMessages() {
-        return receivingMessages;
+    public LocalDate getDeletedAt() {
+        return deletedAt;
     }
 
-    public UserExtend receivingMessages(Set<Message> messages) {
-        this.receivingMessages = messages;
+    public UserExtend deletedAt(LocalDate deletedAt) {
+        this.deletedAt = deletedAt;
         return this;
     }
 
-    public UserExtend addReceivingMessages(Message message) {
-        this.receivingMessages.add(message);
-        message.setReceiver(this);
+    public void setDeletedAt(LocalDate deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public UserExtend user(User user) {
+        this.user = user;
         return this;
     }
 
-    public UserExtend removeReceivingMessages(Message message) {
-        this.receivingMessages.remove(message);
-        message.setReceiver(null);
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Set<Address> getWorkingAddresses() {
+        return workingAddresses;
+    }
+
+    public UserExtend workingAddresses(Set<Address> addresses) {
+        this.workingAddresses = addresses;
         return this;
     }
 
-    public void setReceivingMessages(Set<Message> messages) {
-        this.receivingMessages = messages;
+    public UserExtend addWorkingAddresses(Address address) {
+        this.workingAddresses.add(address);
+        address.setUser(this);
+        return this;
+    }
+
+    public UserExtend removeWorkingAddresses(Address address) {
+        this.workingAddresses.remove(address);
+        address.setUser(null);
+        return this;
+    }
+
+    public void setWorkingAddresses(Set<Address> addresses) {
+        this.workingAddresses = addresses;
     }
 
     public Set<Review> getReviews() {
@@ -212,17 +265,17 @@ public class UserExtend implements Serializable {
         this.master = master;
     }
 
-    public Address getAddress() {
-        return address;
+    public Statistic getStatistic() {
+        return statistic;
     }
 
-    public UserExtend address(Address address) {
-        this.address = address;
+    public UserExtend statistic(Statistic statistic) {
+        this.statistic = statistic;
         return this;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setStatistic(Statistic statistic) {
+        this.statistic = statistic;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -246,7 +299,12 @@ public class UserExtend implements Serializable {
     public String toString() {
         return "UserExtend{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
+            ", address='" + getAddress() + "'" +
+            ", phone='" + getPhone() + "'" +
+            ", status=" + getStatus() +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", updatedAt='" + getUpdatedAt() + "'" +
+            ", deletedAt='" + getDeletedAt() + "'" +
             "}";
     }
 }

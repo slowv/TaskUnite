@@ -22,6 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.t1708e.taskunite.web.rest.TestUtil.createFormattingConversionService;
@@ -36,8 +38,23 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = TaskUniteApp.class)
 public class UserExtendResourceIT {
 
-    private static final String DEFAULT_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_NAME = "BBBBBBBBBB";
+    private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
+    private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PHONE = "AAAAAAAAAA";
+    private static final String UPDATED_PHONE = "BBBBBBBBBB";
+
+    private static final Integer DEFAULT_STATUS = 1;
+    private static final Integer UPDATED_STATUS = 2;
+
+    private static final LocalDate DEFAULT_CREATED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CREATED_AT = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_UPDATED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_UPDATED_AT = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DELETED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DELETED_AT = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private UserExtendRepository userExtendRepository;
@@ -87,7 +104,12 @@ public class UserExtendResourceIT {
      */
     public static UserExtend createEntity(EntityManager em) {
         UserExtend userExtend = new UserExtend()
-            .name(DEFAULT_NAME);
+            .address(DEFAULT_ADDRESS)
+            .phone(DEFAULT_PHONE)
+            .status(DEFAULT_STATUS)
+            .createdAt(DEFAULT_CREATED_AT)
+            .updatedAt(DEFAULT_UPDATED_AT)
+            .deletedAt(DEFAULT_DELETED_AT);
         return userExtend;
     }
     /**
@@ -98,7 +120,12 @@ public class UserExtendResourceIT {
      */
     public static UserExtend createUpdatedEntity(EntityManager em) {
         UserExtend userExtend = new UserExtend()
-            .name(UPDATED_NAME);
+            .address(UPDATED_ADDRESS)
+            .phone(UPDATED_PHONE)
+            .status(UPDATED_STATUS)
+            .createdAt(UPDATED_CREATED_AT)
+            .updatedAt(UPDATED_UPDATED_AT)
+            .deletedAt(UPDATED_DELETED_AT);
         return userExtend;
     }
 
@@ -123,7 +150,12 @@ public class UserExtendResourceIT {
         List<UserExtend> userExtendList = userExtendRepository.findAll();
         assertThat(userExtendList).hasSize(databaseSizeBeforeCreate + 1);
         UserExtend testUserExtend = userExtendList.get(userExtendList.size() - 1);
-        assertThat(testUserExtend.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testUserExtend.getAddress()).isEqualTo(DEFAULT_ADDRESS);
+        assertThat(testUserExtend.getPhone()).isEqualTo(DEFAULT_PHONE);
+        assertThat(testUserExtend.getStatus()).isEqualTo(DEFAULT_STATUS);
+        assertThat(testUserExtend.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
+        assertThat(testUserExtend.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
+        assertThat(testUserExtend.getDeletedAt()).isEqualTo(DEFAULT_DELETED_AT);
     }
 
     @Test
@@ -158,7 +190,12 @@ public class UserExtendResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(userExtend.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+            .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS)))
+            .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE)))
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
+            .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
+            .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
+            .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())));
     }
     
     @Test
@@ -172,7 +209,12 @@ public class UserExtendResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(userExtend.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
+            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS))
+            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
+            .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
+            .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
+            .andExpect(jsonPath("$.deletedAt").value(DEFAULT_DELETED_AT.toString()));
     }
 
     @Test
@@ -196,7 +238,12 @@ public class UserExtendResourceIT {
         // Disconnect from session so that the updates on updatedUserExtend are not directly saved in db
         em.detach(updatedUserExtend);
         updatedUserExtend
-            .name(UPDATED_NAME);
+            .address(UPDATED_ADDRESS)
+            .phone(UPDATED_PHONE)
+            .status(UPDATED_STATUS)
+            .createdAt(UPDATED_CREATED_AT)
+            .updatedAt(UPDATED_UPDATED_AT)
+            .deletedAt(UPDATED_DELETED_AT);
         UserExtendDTO userExtendDTO = userExtendMapper.toDto(updatedUserExtend);
 
         restUserExtendMockMvc.perform(put("/api/user-extends")
@@ -208,7 +255,12 @@ public class UserExtendResourceIT {
         List<UserExtend> userExtendList = userExtendRepository.findAll();
         assertThat(userExtendList).hasSize(databaseSizeBeforeUpdate);
         UserExtend testUserExtend = userExtendList.get(userExtendList.size() - 1);
-        assertThat(testUserExtend.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testUserExtend.getAddress()).isEqualTo(UPDATED_ADDRESS);
+        assertThat(testUserExtend.getPhone()).isEqualTo(UPDATED_PHONE);
+        assertThat(testUserExtend.getStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testUserExtend.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testUserExtend.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
+        assertThat(testUserExtend.getDeletedAt()).isEqualTo(UPDATED_DELETED_AT);
     }
 
     @Test
@@ -246,43 +298,5 @@ public class UserExtendResourceIT {
         // Validate the database contains one less item
         List<UserExtend> userExtendList = userExtendRepository.findAll();
         assertThat(userExtendList).hasSize(databaseSizeBeforeDelete - 1);
-    }
-
-    @Test
-    @Transactional
-    public void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(UserExtend.class);
-        UserExtend userExtend1 = new UserExtend();
-        userExtend1.setId(1L);
-        UserExtend userExtend2 = new UserExtend();
-        userExtend2.setId(userExtend1.getId());
-        assertThat(userExtend1).isEqualTo(userExtend2);
-        userExtend2.setId(2L);
-        assertThat(userExtend1).isNotEqualTo(userExtend2);
-        userExtend1.setId(null);
-        assertThat(userExtend1).isNotEqualTo(userExtend2);
-    }
-
-    @Test
-    @Transactional
-    public void dtoEqualsVerifier() throws Exception {
-        TestUtil.equalsVerifier(UserExtendDTO.class);
-        UserExtendDTO userExtendDTO1 = new UserExtendDTO();
-        userExtendDTO1.setId(1L);
-        UserExtendDTO userExtendDTO2 = new UserExtendDTO();
-        assertThat(userExtendDTO1).isNotEqualTo(userExtendDTO2);
-        userExtendDTO2.setId(userExtendDTO1.getId());
-        assertThat(userExtendDTO1).isEqualTo(userExtendDTO2);
-        userExtendDTO2.setId(2L);
-        assertThat(userExtendDTO1).isNotEqualTo(userExtendDTO2);
-        userExtendDTO1.setId(null);
-        assertThat(userExtendDTO1).isNotEqualTo(userExtendDTO2);
-    }
-
-    @Test
-    @Transactional
-    public void testEntityFromId() {
-        assertThat(userExtendMapper.fromId(42L).getId()).isEqualTo(42);
-        assertThat(userExtendMapper.fromId(null)).isNull();
     }
 }

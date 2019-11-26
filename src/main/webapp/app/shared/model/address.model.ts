@@ -7,9 +7,8 @@ export interface IAddress {
   createdAt?: Moment;
   updatedAt?: Moment;
   deletedAt?: Moment;
-  userId?: number;
   dictrictId?: number;
-  taskerId?: number;
+  userId?: number;
 }
 
 export class Address implements IAddress {
@@ -20,8 +19,7 @@ export class Address implements IAddress {
     public createdAt?: Moment,
     public updatedAt?: Moment,
     public deletedAt?: Moment,
-    public userId?: number,
     public dictrictId?: number,
-    public taskerId?: number
+    public userId?: number
   ) {}
 }

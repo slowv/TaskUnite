@@ -5,9 +5,7 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
-import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { ITasker, Tasker } from 'app/shared/model/tasker.model';
 import { TaskerService } from './tasker.service';
@@ -26,11 +24,13 @@ export class TaskerUpdateComponent implements OnInit {
   users: IUserExtend[];
 
   taskcategories: ITaskCategory[];
+  createdAtDp: any;
+  updatedAtDp: any;
+  deletedAtDp: any;
 
   editForm = this.fb.group({
     id: [],
-    level: [],
-    pricePerHour: [],
+    price: [],
     status: [],
     createdAt: [],
     updatedAt: [],
@@ -53,49 +53,37 @@ export class TaskerUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ tasker }) => {
       this.updateForm(tasker);
     });
-    this.userExtendService
-      .query({ filter: 'tasker-is-null' })
-      .pipe(
-        filter((mayBeOk: HttpResponse<IUserExtend[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IUserExtend[]>) => response.body)
-      )
-      .subscribe(
-        (res: IUserExtend[]) => {
-          if (!this.editForm.get('userId').value) {
-            this.users = res;
-          } else {
-            this.userExtendService
-              .find(this.editForm.get('userId').value)
-              .pipe(
-                filter((subResMayBeOk: HttpResponse<IUserExtend>) => subResMayBeOk.ok),
-                map((subResponse: HttpResponse<IUserExtend>) => subResponse.body)
-              )
-              .subscribe(
-                (subRes: IUserExtend) => (this.users = [subRes].concat(res)),
-                (subRes: HttpErrorResponse) => this.onError(subRes.message)
-              );
-          }
-        },
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
+    this.userExtendService.query({ filter: 'tasker-is-null' }).subscribe(
+      (res: HttpResponse<IUserExtend[]>) => {
+        if (!this.editForm.get('userId').value) {
+          this.users = res.body;
+        } else {
+          this.userExtendService
+            .find(this.editForm.get('userId').value)
+            .subscribe(
+              (subRes: HttpResponse<IUserExtend>) => (this.users = [subRes.body].concat(res.body)),
+              (subRes: HttpErrorResponse) => this.onError(subRes.message)
+            );
+        }
+      },
+      (res: HttpErrorResponse) => this.onError(res.message)
+    );
     this.taskCategoryService
       .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<ITaskCategory[]>) => mayBeOk.ok),
-        map((response: HttpResponse<ITaskCategory[]>) => response.body)
-      )
-      .subscribe((res: ITaskCategory[]) => (this.taskcategories = res), (res: HttpErrorResponse) => this.onError(res.message));
+      .subscribe(
+        (res: HttpResponse<ITaskCategory[]>) => (this.taskcategories = res.body),
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
   }
 
   updateForm(tasker: ITasker) {
     this.editForm.patchValue({
       id: tasker.id,
-      level: tasker.level,
-      pricePerHour: tasker.pricePerHour,
+      price: tasker.price,
       status: tasker.status,
-      createdAt: tasker.createdAt != null ? tasker.createdAt.format(DATE_TIME_FORMAT) : null,
-      updatedAt: tasker.updatedAt != null ? tasker.updatedAt.format(DATE_TIME_FORMAT) : null,
-      deletedAt: tasker.deletedAt != null ? tasker.deletedAt.format(DATE_TIME_FORMAT) : null,
+      createdAt: tasker.createdAt,
+      updatedAt: tasker.updatedAt,
+      deletedAt: tasker.deletedAt,
       userId: tasker.userId,
       taskCategories: tasker.taskCategories
     });
@@ -119,15 +107,11 @@ export class TaskerUpdateComponent implements OnInit {
     return {
       ...new Tasker(),
       id: this.editForm.get(['id']).value,
-      level: this.editForm.get(['level']).value,
-      pricePerHour: this.editForm.get(['pricePerHour']).value,
+      price: this.editForm.get(['price']).value,
       status: this.editForm.get(['status']).value,
-      createdAt:
-        this.editForm.get(['createdAt']).value != null ? moment(this.editForm.get(['createdAt']).value, DATE_TIME_FORMAT) : undefined,
-      updatedAt:
-        this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
-      deletedAt:
-        this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
+      createdAt: this.editForm.get(['createdAt']).value,
+      updatedAt: this.editForm.get(['updatedAt']).value,
+      deletedAt: this.editForm.get(['deletedAt']).value,
       userId: this.editForm.get(['userId']).value,
       taskCategories: this.editForm.get(['taskCategories']).value
     };

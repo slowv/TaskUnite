@@ -1,23 +1,21 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { filter, map } from 'rxjs/operators';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager, JhiParseLinks } from 'ng-jhipster';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ITaskCategory } from 'app/shared/model/task-category.model';
-import { AccountService } from 'app/core/auth/account.service';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { TaskCategoryService } from './task-category.service';
+import { TaskCategoryDeleteDialogComponent } from './task-category-delete-dialog.component';
 
 @Component({
   selector: 'jhi-task-category',
   templateUrl: './task-category.component.html'
 })
 export class TaskCategoryComponent implements OnInit, OnDestroy {
-  currentAccount: any;
   taskCategories: ITaskCategory[];
   error: any;
   success: any;
@@ -34,11 +32,10 @@ export class TaskCategoryComponent implements OnInit, OnDestroy {
   constructor(
     protected taskCategoryService: TaskCategoryService,
     protected parseLinks: JhiParseLinks,
-    protected jhiAlertService: JhiAlertService,
-    protected accountService: AccountService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
-    protected eventManager: JhiEventManager
+    protected eventManager: JhiEventManager,
+    protected modalService: NgbModal
   ) {
     this.itemsPerPage = ITEMS_PER_PAGE;
     this.routeData = this.activatedRoute.data.subscribe(data => {
@@ -56,10 +53,7 @@ export class TaskCategoryComponent implements OnInit, OnDestroy {
         size: this.itemsPerPage,
         sort: this.sort()
       })
-      .subscribe(
-        (res: HttpResponse<ITaskCategory[]>) => this.paginateTaskCategories(res.body, res.headers),
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
+      .subscribe((res: HttpResponse<ITaskCategory[]>) => this.paginateTaskCategories(res.body, res.headers));
   }
 
   loadPage(page: number) {
@@ -94,9 +88,6 @@ export class TaskCategoryComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadAll();
-    this.accountService.identity().then(account => {
-      this.currentAccount = account;
-    });
     this.registerChangeInTaskCategories();
   }
 
@@ -109,7 +100,12 @@ export class TaskCategoryComponent implements OnInit, OnDestroy {
   }
 
   registerChangeInTaskCategories() {
-    this.eventSubscriber = this.eventManager.subscribe('taskCategoryListModification', response => this.loadAll());
+    this.eventSubscriber = this.eventManager.subscribe('taskCategoryListModification', () => this.loadAll());
+  }
+
+  delete(taskCategory: ITaskCategory) {
+    const modalRef = this.modalService.open(TaskCategoryDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.taskCategory = taskCategory;
   }
 
   sort() {
@@ -124,9 +120,5 @@ export class TaskCategoryComponent implements OnInit, OnDestroy {
     this.links = this.parseLinks.parse(headers.get('link'));
     this.totalItems = parseInt(headers.get('X-Total-Count'), 10);
     this.taskCategories = data;
-  }
-
-  protected onError(errorMessage: string) {
-    this.jhiAlertService.error(errorMessage, null, null);
   }
 }

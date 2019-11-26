@@ -8,9 +8,9 @@
     -->
     <changeSet id="20191114125858-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="user_login_id"
+        <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="user_extend"
-                                 constraintName="fk_user_extend_user_login_id"
+                                 constraintName="fk_user_extend_user_id"
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
 

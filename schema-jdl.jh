@@ -1,73 +1,85 @@
-
-
-// entity User {
-// 	   username String
-//     password String
-//     name String
-//     phone String
-//     email String
-//     avatar String
-//     status Integer
-//     createdAt Instant
-//     updatedAt Instant
-//     deletedAt Instant
-// }
+entity PaymentInformation {
+    balance Double
+    createdAt LocalDate
+    updatedAt LocalDate
+    deletedAt LocalDate
+}
 
 entity UserExtend {
-    name String
+    address String
+    phone String
+    status Integer
+    createdAt LocalDate
+    updatedAt LocalDate
+    deletedAt LocalDate
 }
 
 entity Tasker {
-	level Integer
-    pricePerHour Double
+    price Double
     status Integer
-    createdAt Instant
-    updatedAt Instant
-    deletedAt Instant
+    createdAt LocalDate
+    updatedAt LocalDate
+    deletedAt LocalDate
 }
-
-
 
 entity Master {
 	status Integer
-    createdAt Instant
-    updatedAt Instant
-    deletedAt Instant
+    createdAt LocalDate
+    updatedAt LocalDate
+    deletedAt LocalDate
 }
 
-
+entity Statistic {
+	level Integer
+    experience Integer
+	completedTask Integer
+    incompletedTask Integer
+    rating Integer
+    ranking Integer
+    bonus Double
+	createdAt LocalDate
+    updatedAt LocalDate
+    deletedAt LocalDate
+}
 
 entity Task {
-    title String
 	description String
-    planDate Instant
-    totalPrice Double
+    price Double
     status Integer
-    createdAt Instant
-    updatedAt Instant
-    deletedAt Instant
+    createdAt LocalDate
+    updatedAt LocalDate
+    deletedAt LocalDate
 }
 
+entity Schedule {
+	from LocalDate
+    to LocalDate
+    duration Duration
+}
 
+entity Plan {
+	from LocalDate
+    to LocalDate
+    duration Duration
+}
 
 entity TaskCategory {
 	name String
     description String
     image String
+    minPrice Double
 	status Integer
-    createdAt Instant
-    updatedAt Instant
-    deletedAt Instant
+    createdAt LocalDate
+    updatedAt LocalDate
+    deletedAt LocalDate
 }
-
-
 
 entity City {
 	name String
     status Integer
-    createdAt Instant
-    updatedAt Instant
-    deletedAt Instant
+    createdAt LocalDate
+    updatedAt LocalDate
+    deletedAt LocalDate
 }
 
 
@@ -75,9 +87,9 @@ entity City {
 entity District {
 	name String
     status Integer
-    createdAt Instant
-    updatedAt Instant
-    deletedAt Instant
+    createdAt LocalDate
+    updatedAt LocalDate
+    deletedAt LocalDate
 }
 
 
@@ -85,65 +97,42 @@ entity District {
 entity Address {
 	street String
     status Integer
-    createdAt Instant
-    updatedAt Instant
-    deletedAt Instant
+    createdAt LocalDate
+    updatedAt LocalDate
+    deletedAt LocalDate
 }
-
-
-// entity Role {
-// 	name String
-//     status Integer
-//     createdAt Instant
-//     updatedAt Instant
-//     deletedAt Instant
-// }
-
-
 
 entity Notification {
 	content String
     status Integer
-    createdAt Instant
-    updatedAt Instant
-    deletedAt Instant
+    createdAt LocalDate
+    updatedAt LocalDate
+    deletedAt LocalDate
 }
 
 
 
 entity Review {
 	content String
-    start Float
+    point Double
     status Integer
-    createdAt Instant
-    updatedAt Instant
-    deletedAt Instant
-}
-
-
-
-entity Message {
-	body String
-    status Integer
-    createdAt Instant
-    updatedAt Instant
-    deletedAt Instant
+    createdAt LocalDate
+    updatedAt LocalDate
+    deletedAt LocalDate
 }
 
 /**
  * One to many relationship.
  */
 relationship OneToMany {
+	Tasker{schedule} to Schedule{tasker}
+    Task{plan} to Plan{task}
     City{districts} to District{city}
-    Task{messages} to Message{task}
     District{addresses} to Address{dictrict}
-    // Role{users} to User{role}
-    Tasker{workingAddresses} to Address{tasker}
+    UserExtend{workingAddresses} to Address{user}
     Tasker{tasks} to Task{tasker}
     Master{tasks} to Task{master}
     Task{reviews} to Review{task}
-    UserExtend{sendingMessages} to Message{sender}
-    UserExtend{receivingMessages} to Message{receiver}
     UserExtend{reviews} to Review{user}
     UserExtend{notifications} to Notification{user}
 }
@@ -152,7 +141,7 @@ relationship OneToMany {
  * Many to one relationship.
  */
 // relationship ManyToOne {
-    
+
 // }
 
 /**
@@ -161,8 +150,9 @@ relationship OneToMany {
 relationship OneToOne {
     Tasker{user} to UserExtend{tasker}
     Master{user} to UserExtend{master}
-    Address{user} to UserExtend{address}
-    UserExtend{userLogin} to User{userExtend}
+    Statistic{user} to UserExtend{statistic}
+    PaymentInformation{user} to User{payment}
+    UserExtend{user} to User{info}
 }
 
 relationship ManyToMany {

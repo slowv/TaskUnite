@@ -3,7 +3,7 @@ import { Moment } from 'moment';
 export interface IReview {
   id?: number;
   content?: string;
-  start?: number;
+  point?: number;
   status?: number;
   createdAt?: Moment;
   updatedAt?: Moment;
@@ -16,7 +16,7 @@ export class Review implements IReview {
   constructor(
     public id?: number,
     public content?: string,
-    public start?: number,
+    public point?: number,
     public status?: number,
     public createdAt?: Moment,
     public updatedAt?: Moment,

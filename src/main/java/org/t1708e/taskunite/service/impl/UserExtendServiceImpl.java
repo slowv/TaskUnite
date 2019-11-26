@@ -98,15 +98,15 @@ public class UserExtendServiceImpl implements UserExtendService {
 
 
     /**
-    *  Get all the userExtends where Address is {@code null}.
+    *  Get all the userExtends where Statistic is {@code null}.
      *  @return the list of entities.
      */
     @Transactional(readOnly = true) 
-    public List<UserExtendDTO> findAllWhereAddressIsNull() {
-        log.debug("Request to get all userExtends where Address is null");
+    public List<UserExtendDTO> findAllWhereStatisticIsNull() {
+        log.debug("Request to get all userExtends where Statistic is null");
         return StreamSupport
             .stream(userExtendRepository.findAll().spliterator(), false)
-            .filter(userExtend -> userExtend.getAddress() == null)
+            .filter(userExtend -> userExtend.getStatistic() == null)
             .map(userExtendMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }

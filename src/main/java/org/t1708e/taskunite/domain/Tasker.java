@@ -3,7 +3,7 @@ package org.t1708e.taskunite.domain;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,30 +20,27 @@ public class Tasker implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "level")
-    private Integer level;
-
-    @Column(name = "price_per_hour")
-    private Double pricePerHour;
+    @Column(name = "price")
+    private Double price;
 
     @Column(name = "status")
     private Integer status;
 
     @Column(name = "created_at")
-    private Instant createdAt;
+    private LocalDate createdAt;
 
     @Column(name = "updated_at")
-    private Instant updatedAt;
+    private LocalDate updatedAt;
 
     @Column(name = "deleted_at")
-    private Instant deletedAt;
+    private LocalDate deletedAt;
 
     @OneToOne
     @JoinColumn(unique = true)
     private UserExtend user;
 
     @OneToMany(mappedBy = "tasker")
-    private Set<Address> workingAddresses = new HashSet<>();
+    private Set<Schedule> schedules = new HashSet<>();
 
     @OneToMany(mappedBy = "tasker")
     private Set<Task> tasks = new HashSet<>();
@@ -63,30 +60,17 @@ public class Tasker implements Serializable {
         this.id = id;
     }
 
-    public Integer getLevel() {
-        return level;
+    public Double getPrice() {
+        return price;
     }
 
-    public Tasker level(Integer level) {
-        this.level = level;
+    public Tasker price(Double price) {
+        this.price = price;
         return this;
     }
 
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
-
-    public Double getPricePerHour() {
-        return pricePerHour;
-    }
-
-    public Tasker pricePerHour(Double pricePerHour) {
-        this.pricePerHour = pricePerHour;
-        return this;
-    }
-
-    public void setPricePerHour(Double pricePerHour) {
-        this.pricePerHour = pricePerHour;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public Integer getStatus() {
@@ -102,42 +86,42 @@ public class Tasker implements Serializable {
         this.status = status;
     }
 
-    public Instant getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public Tasker createdAt(Instant createdAt) {
+    public Tasker createdAt(LocalDate createdAt) {
         this.createdAt = createdAt;
         return this;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Instant getUpdatedAt() {
+    public LocalDate getUpdatedAt() {
         return updatedAt;
     }
 
-    public Tasker updatedAt(Instant updatedAt) {
+    public Tasker updatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
         return this;
     }
 
-    public void setUpdatedAt(Instant updatedAt) {
+    public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    public Instant getDeletedAt() {
+    public LocalDate getDeletedAt() {
         return deletedAt;
     }
 
-    public Tasker deletedAt(Instant deletedAt) {
+    public Tasker deletedAt(LocalDate deletedAt) {
         this.deletedAt = deletedAt;
         return this;
     }
 
-    public void setDeletedAt(Instant deletedAt) {
+    public void setDeletedAt(LocalDate deletedAt) {
         this.deletedAt = deletedAt;
     }
 
@@ -154,29 +138,29 @@ public class Tasker implements Serializable {
         this.user = userExtend;
     }
 
-    public Set<Address> getWorkingAddresses() {
-        return workingAddresses;
+    public Set<Schedule> getSchedules() {
+        return schedules;
     }
 
-    public Tasker workingAddresses(Set<Address> addresses) {
-        this.workingAddresses = addresses;
+    public Tasker schedules(Set<Schedule> schedules) {
+        this.schedules = schedules;
         return this;
     }
 
-    public Tasker addWorkingAddresses(Address address) {
-        this.workingAddresses.add(address);
-        address.setTasker(this);
+    public Tasker addSchedule(Schedule schedule) {
+        this.schedules.add(schedule);
+        schedule.setTasker(this);
         return this;
     }
 
-    public Tasker removeWorkingAddresses(Address address) {
-        this.workingAddresses.remove(address);
-        address.setTasker(null);
+    public Tasker removeSchedule(Schedule schedule) {
+        this.schedules.remove(schedule);
+        schedule.setTasker(null);
         return this;
     }
 
-    public void setWorkingAddresses(Set<Address> addresses) {
-        this.workingAddresses = addresses;
+    public void setSchedules(Set<Schedule> schedules) {
+        this.schedules = schedules;
     }
 
     public Set<Task> getTasks() {
@@ -250,8 +234,7 @@ public class Tasker implements Serializable {
     public String toString() {
         return "Tasker{" +
             "id=" + getId() +
-            ", level=" + getLevel() +
-            ", pricePerHour=" + getPricePerHour() +
+            ", price=" + getPrice() +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +

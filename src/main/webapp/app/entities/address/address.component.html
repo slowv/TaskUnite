@@ -8,6 +8,7 @@
             </span>
         </button>
     </h2>
+    <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>
     <br/>
     <div class="alert alert-warning" *ngIf="addresses?.length === 0">
@@ -17,16 +18,15 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="street"><span jhiTranslate="taskUniteApp.address.street">Street</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="status"><span jhiTranslate="taskUniteApp.address.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="createdAt"><span jhiTranslate="taskUniteApp.address.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.address.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.address.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="userId"><span jhiTranslate="taskUniteApp.address.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="dictrictId"><span jhiTranslate="taskUniteApp.address.dictrict">Dictrict</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="taskerId"><span jhiTranslate="taskUniteApp.address.tasker">Tasker</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th></th>
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="street"><span jhiTranslate="taskUniteApp.address.street">Street</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="status"><span jhiTranslate="taskUniteApp.address.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="createdAt"><span jhiTranslate="taskUniteApp.address.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.address.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.address.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dictrictId"><span jhiTranslate="taskUniteApp.address.dictrict">Dictrict</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="userId"><span jhiTranslate="taskUniteApp.address.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -34,22 +34,17 @@
                 <td><a [routerLink]="['/address', address.id, 'view' ]">{{address.id}}</a></td>
                 <td>{{address.street}}</td>
                 <td>{{address.status}}</td>
-                <td>{{address.createdAt | date:'medium'}}</td>
-                <td>{{address.updatedAt | date:'medium'}}</td>
-                <td>{{address.deletedAt | date:'medium'}}</td>
-                <td>
-                    <div *ngIf="address.userId">
-                        <a [routerLink]="['/user-extend', address.userId , 'view' ]" >{{address.userId}}</a>
-                    </div>
-                </td>
+                <td>{{address.createdAt | date:'mediumDate'}}</td>
+                <td>{{address.updatedAt | date:'mediumDate'}}</td>
+                <td>{{address.deletedAt | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="address.dictrictId">
                         <a [routerLink]="['/district', address.dictrictId , 'view' ]" >{{address.dictrictId}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="address.taskerId">
-                        <a [routerLink]="['/tasker', address.taskerId , 'view' ]" >{{address.taskerId}}</a>
+                    <div *ngIf="address.userId">
+                        <a [routerLink]="['/user-extend', address.userId , 'view' ]" >{{address.userId}}</a>
                     </div>
                 </td>
                 <td class="text-right">
@@ -66,10 +61,7 @@
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
-                        <button type="submit"
-                                [routerLink]="['/address', { outlets: { popup: address.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
+                        <button type="submit" (click)="delete(address)"
                                 class="btn btn-danger btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>

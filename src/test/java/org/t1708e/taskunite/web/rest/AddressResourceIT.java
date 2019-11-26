@@ -22,8 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.t1708e.taskunite.web.rest.TestUtil.createFormattingConversionService;
@@ -43,19 +43,15 @@ public class AddressResourceIT {
 
     private static final Integer DEFAULT_STATUS = 1;
     private static final Integer UPDATED_STATUS = 2;
-    private static final Integer SMALLER_STATUS = 1 - 1;
 
-    private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_CREATED_AT = Instant.ofEpochMilli(-1L);
+    private static final LocalDate DEFAULT_CREATED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CREATED_AT = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Instant DEFAULT_UPDATED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_UPDATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_UPDATED_AT = Instant.ofEpochMilli(-1L);
+    private static final LocalDate DEFAULT_UPDATED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_UPDATED_AT = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Instant DEFAULT_DELETED_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_DELETED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-    private static final Instant SMALLER_DELETED_AT = Instant.ofEpochMilli(-1L);
+    private static final LocalDate DEFAULT_DELETED_AT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DELETED_AT = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private AddressRepository addressRepository;
@@ -188,7 +184,7 @@ public class AddressResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(address.getId().intValue())))
-            .andExpect(jsonPath("$.[*].street").value(hasItem(DEFAULT_STREET.toString())))
+            .andExpect(jsonPath("$.[*].street").value(hasItem(DEFAULT_STREET)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
@@ -206,7 +202,7 @@ public class AddressResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(address.getId().intValue()))
-            .andExpect(jsonPath("$.street").value(DEFAULT_STREET.toString()))
+            .andExpect(jsonPath("$.street").value(DEFAULT_STREET))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
@@ -292,43 +288,5 @@ public class AddressResourceIT {
         // Validate the database contains one less item
         List<Address> addressList = addressRepository.findAll();
         assertThat(addressList).hasSize(databaseSizeBeforeDelete - 1);
-    }
-
-    @Test
-    @Transactional
-    public void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(Address.class);
-        Address address1 = new Address();
-        address1.setId(1L);
-        Address address2 = new Address();
-        address2.setId(address1.getId());
-        assertThat(address1).isEqualTo(address2);
-        address2.setId(2L);
-        assertThat(address1).isNotEqualTo(address2);
-        address1.setId(null);
-        assertThat(address1).isNotEqualTo(address2);
-    }
-
-    @Test
-    @Transactional
-    public void dtoEqualsVerifier() throws Exception {
-        TestUtil.equalsVerifier(AddressDTO.class);
-        AddressDTO addressDTO1 = new AddressDTO();
-        addressDTO1.setId(1L);
-        AddressDTO addressDTO2 = new AddressDTO();
-        assertThat(addressDTO1).isNotEqualTo(addressDTO2);
-        addressDTO2.setId(addressDTO1.getId());
-        assertThat(addressDTO1).isEqualTo(addressDTO2);
-        addressDTO2.setId(2L);
-        assertThat(addressDTO1).isNotEqualTo(addressDTO2);
-        addressDTO1.setId(null);
-        assertThat(addressDTO1).isNotEqualTo(addressDTO2);
-    }
-
-    @Test
-    @Transactional
-    public void testEntityFromId() {
-        assertThat(addressMapper.fromId(42L).getId()).isEqualTo(42);
-        assertThat(addressMapper.fromId(null)).isNull();
     }
 }

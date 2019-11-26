@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,32 +21,26 @@ public class Task implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "title")
-    private String title;
-
     @Column(name = "description")
     private String description;
 
-    @Column(name = "plan_date")
-    private Instant planDate;
-
-    @Column(name = "total_price")
-    private Double totalPrice;
+    @Column(name = "price")
+    private Double price;
 
     @Column(name = "status")
     private Integer status;
 
     @Column(name = "created_at")
-    private Instant createdAt;
+    private LocalDate createdAt;
 
     @Column(name = "updated_at")
-    private Instant updatedAt;
+    private LocalDate updatedAt;
 
     @Column(name = "deleted_at")
-    private Instant deletedAt;
+    private LocalDate deletedAt;
 
     @OneToMany(mappedBy = "task")
-    private Set<Message> messages = new HashSet<>();
+    private Set<Plan> plans = new HashSet<>();
 
     @OneToMany(mappedBy = "task")
     private Set<Review> reviews = new HashSet<>();
@@ -74,19 +68,6 @@ public class Task implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public Task title(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -100,30 +81,17 @@ public class Task implements Serializable {
         this.description = description;
     }
 
-    public Instant getPlanDate() {
-        return planDate;
+    public Double getPrice() {
+        return price;
     }
 
-    public Task planDate(Instant planDate) {
-        this.planDate = planDate;
+    public Task price(Double price) {
+        this.price = price;
         return this;
     }
 
-    public void setPlanDate(Instant planDate) {
-        this.planDate = planDate;
-    }
-
-    public Double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public Task totalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
-        return this;
-    }
-
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public Integer getStatus() {
@@ -139,68 +107,68 @@ public class Task implements Serializable {
         this.status = status;
     }
 
-    public Instant getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public Task createdAt(Instant createdAt) {
+    public Task createdAt(LocalDate createdAt) {
         this.createdAt = createdAt;
         return this;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Instant getUpdatedAt() {
+    public LocalDate getUpdatedAt() {
         return updatedAt;
     }
 
-    public Task updatedAt(Instant updatedAt) {
+    public Task updatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
         return this;
     }
 
-    public void setUpdatedAt(Instant updatedAt) {
+    public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    public Instant getDeletedAt() {
+    public LocalDate getDeletedAt() {
         return deletedAt;
     }
 
-    public Task deletedAt(Instant deletedAt) {
+    public Task deletedAt(LocalDate deletedAt) {
         this.deletedAt = deletedAt;
         return this;
     }
 
-    public void setDeletedAt(Instant deletedAt) {
+    public void setDeletedAt(LocalDate deletedAt) {
         this.deletedAt = deletedAt;
     }
 
-    public Set<Message> getMessages() {
-        return messages;
+    public Set<Plan> getPlans() {
+        return plans;
     }
 
-    public Task messages(Set<Message> messages) {
-        this.messages = messages;
+    public Task plans(Set<Plan> plans) {
+        this.plans = plans;
         return this;
     }
 
-    public Task addMessages(Message message) {
-        this.messages.add(message);
-        message.setTask(this);
+    public Task addPlan(Plan plan) {
+        this.plans.add(plan);
+        plan.setTask(this);
         return this;
     }
 
-    public Task removeMessages(Message message) {
-        this.messages.remove(message);
-        message.setTask(null);
+    public Task removePlan(Plan plan) {
+        this.plans.remove(plan);
+        plan.setTask(null);
         return this;
     }
 
-    public void setMessages(Set<Message> messages) {
-        this.messages = messages;
+    public void setPlans(Set<Plan> plans) {
+        this.plans = plans;
     }
 
     public Set<Review> getReviews() {
@@ -300,10 +268,8 @@ public class Task implements Serializable {
     public String toString() {
         return "Task{" +
             "id=" + getId() +
-            ", title='" + getTitle() + "'" +
             ", description='" + getDescription() + "'" +
-            ", planDate='" + getPlanDate() + "'" +
-            ", totalPrice=" + getTotalPrice() +
+            ", price=" + getPrice() +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +

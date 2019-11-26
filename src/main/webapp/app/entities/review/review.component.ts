@@ -1,23 +1,21 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { filter, map } from 'rxjs/operators';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager, JhiParseLinks } from 'ng-jhipster';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { IReview } from 'app/shared/model/review.model';
-import { AccountService } from 'app/core/auth/account.service';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { ReviewService } from './review.service';
+import { ReviewDeleteDialogComponent } from './review-delete-dialog.component';
 
 @Component({
   selector: 'jhi-review',
   templateUrl: './review.component.html'
 })
 export class ReviewComponent implements OnInit, OnDestroy {
-  currentAccount: any;
   reviews: IReview[];
   error: any;
   success: any;
@@ -34,11 +32,10 @@ export class ReviewComponent implements OnInit, OnDestroy {
   constructor(
     protected reviewService: ReviewService,
     protected parseLinks: JhiParseLinks,
-    protected jhiAlertService: JhiAlertService,
-    protected accountService: AccountService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
-    protected eventManager: JhiEventManager
+    protected eventManager: JhiEventManager,
+    protected modalService: NgbModal
   ) {
     this.itemsPerPage = ITEMS_PER_PAGE;
     this.routeData = this.activatedRoute.data.subscribe(data => {
@@ -56,10 +53,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
         size: this.itemsPerPage,
         sort: this.sort()
       })
-      .subscribe(
-        (res: HttpResponse<IReview[]>) => this.paginateReviews(res.body, res.headers),
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
+      .subscribe((res: HttpResponse<IReview[]>) => this.paginateReviews(res.body, res.headers));
   }
 
   loadPage(page: number) {
@@ -94,9 +88,6 @@ export class ReviewComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadAll();
-    this.accountService.identity().then(account => {
-      this.currentAccount = account;
-    });
     this.registerChangeInReviews();
   }
 
@@ -109,7 +100,12 @@ export class ReviewComponent implements OnInit, OnDestroy {
   }
 
   registerChangeInReviews() {
-    this.eventSubscriber = this.eventManager.subscribe('reviewListModification', response => this.loadAll());
+    this.eventSubscriber = this.eventManager.subscribe('reviewListModification', () => this.loadAll());
+  }
+
+  delete(review: IReview) {
+    const modalRef = this.modalService.open(ReviewDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.review = review;
   }
 
   sort() {
@@ -124,9 +120,5 @@ export class ReviewComponent implements OnInit, OnDestroy {
     this.links = this.parseLinks.parse(headers.get('link'));
     this.totalItems = parseInt(headers.get('X-Total-Count'), 10);
     this.reviews = data;
-  }
-
-  protected onError(errorMessage: string) {
-    this.jhiAlertService.error(errorMessage, null, null);
   }
 }

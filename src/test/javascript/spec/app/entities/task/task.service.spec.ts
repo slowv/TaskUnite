@@ -2,7 +2,7 @@ import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { take, map } from 'rxjs/operators';
 import * as moment from 'moment';
-import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
+import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { TaskService } from 'app/entities/task/task.service';
 import { ITask, Task } from 'app/shared/model/task.model';
 
@@ -24,17 +24,16 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Task(0, 'AAAAAAA', 'AAAAAAA', currentDate, 0, 0, currentDate, currentDate, currentDate);
+      elemDefault = new Task(0, 'AAAAAAA', 0, 0, currentDate, currentDate, currentDate);
     });
 
     describe('Service methods', () => {
       it('should find an element', () => {
         const returnedFromService = Object.assign(
           {
-            planDate: currentDate.format(DATE_TIME_FORMAT),
-            createdAt: currentDate.format(DATE_TIME_FORMAT),
-            updatedAt: currentDate.format(DATE_TIME_FORMAT),
-            deletedAt: currentDate.format(DATE_TIME_FORMAT)
+            createdAt: currentDate.format(DATE_FORMAT),
+            updatedAt: currentDate.format(DATE_FORMAT),
+            deletedAt: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
@@ -52,16 +51,14 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
-            planDate: currentDate.format(DATE_TIME_FORMAT),
-            createdAt: currentDate.format(DATE_TIME_FORMAT),
-            updatedAt: currentDate.format(DATE_TIME_FORMAT),
-            deletedAt: currentDate.format(DATE_TIME_FORMAT)
+            createdAt: currentDate.format(DATE_FORMAT),
+            updatedAt: currentDate.format(DATE_FORMAT),
+            deletedAt: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
         const expected = Object.assign(
           {
-            planDate: currentDate,
             createdAt: currentDate,
             updatedAt: currentDate,
             deletedAt: currentDate
@@ -80,21 +77,18 @@ describe('Service Tests', () => {
       it('should update a Task', () => {
         const returnedFromService = Object.assign(
           {
-            title: 'BBBBBB',
             description: 'BBBBBB',
-            planDate: currentDate.format(DATE_TIME_FORMAT),
-            totalPrice: 1,
+            price: 1,
             status: 1,
-            createdAt: currentDate.format(DATE_TIME_FORMAT),
-            updatedAt: currentDate.format(DATE_TIME_FORMAT),
-            deletedAt: currentDate.format(DATE_TIME_FORMAT)
+            createdAt: currentDate.format(DATE_FORMAT),
+            updatedAt: currentDate.format(DATE_FORMAT),
+            deletedAt: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
 
         const expected = Object.assign(
           {
-            planDate: currentDate,
             createdAt: currentDate,
             updatedAt: currentDate,
             deletedAt: currentDate
@@ -113,20 +107,17 @@ describe('Service Tests', () => {
       it('should return a list of Task', () => {
         const returnedFromService = Object.assign(
           {
-            title: 'BBBBBB',
             description: 'BBBBBB',
-            planDate: currentDate.format(DATE_TIME_FORMAT),
-            totalPrice: 1,
+            price: 1,
             status: 1,
-            createdAt: currentDate.format(DATE_TIME_FORMAT),
-            updatedAt: currentDate.format(DATE_TIME_FORMAT),
-            deletedAt: currentDate.format(DATE_TIME_FORMAT)
+            createdAt: currentDate.format(DATE_FORMAT),
+            updatedAt: currentDate.format(DATE_FORMAT),
+            deletedAt: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
         const expected = Object.assign(
           {
-            planDate: currentDate,
             createdAt: currentDate,
             updatedAt: currentDate,
             deletedAt: currentDate
