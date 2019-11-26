@@ -1,6 +1,7 @@
 package org.t1708e.taskunite.web.rest.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,5 +26,10 @@ public class TaskController {
     @RequestMapping(method = RequestMethod.GET, value = "/create/step4")
     public String createStep4(){
         return "task/create/step-4";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/room/{id}")
+    public String roomTask(@PathVariable("id") Long id){
+        return "task/room/task-room";
     }
 }
