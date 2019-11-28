@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Job Finder &mdash; Colorlib Website Template</title>
+    <title>Contact</title>
     <th:block th:include="fragment/layout :: head"> </th:block>
 </head>
 <body>
@@ -14,10 +14,13 @@
 
     <div style="height: 113px;"></div>
 
-    <div class="unit-5 overlay" style="background-image: url('images/hero_1.jpg');">
+    <div class="unit-5 overlay" style="background-image: url('/images/hero_1.jpg');">
         <div class="container text-center">
-            <h2 class="mb-0">Contact</h2>
-            <p class="mb-0 unit-6"><a href="index.html">Home</a> <span class="sep">></span> <span>Contact</span></p>
+            <h2 class="mb-0" th:text="#{contact.banner}"></h2>
+            <p class="mb-0 unit-6">
+                <a href="#" th:text="#{home.home-page}" class="text-white"></a>
+                <span class="sep">></span>
+                <a href="#" th:text="#{contact.link-contact}" class="text-white"></a></p>
         </div>
     </div>
 
