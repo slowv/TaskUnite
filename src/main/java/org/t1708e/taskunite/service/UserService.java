@@ -1,10 +1,13 @@
 package org.t1708e.taskunite.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.t1708e.taskunite.config.Constants;
 import org.t1708e.taskunite.domain.Authority;
 import org.t1708e.taskunite.domain.User;
+import org.t1708e.taskunite.domain.UserExtend;
 import org.t1708e.taskunite.repository.AuthorityRepository;
 import org.t1708e.taskunite.repository.PersistentTokenRepository;
+import org.t1708e.taskunite.repository.UserExtendRepository;
 import org.t1708e.taskunite.repository.UserRepository;
 import org.t1708e.taskunite.security.AuthoritiesConstants;
 import org.t1708e.taskunite.security.SecurityUtils;
@@ -19,6 +22,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.t1708e.taskunite.web.rest.vm.ManagedUserVM;
 
 import java.time.LocalDate;
 import java.time.Instant;
@@ -32,6 +36,9 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 public class UserService {
+
+    @Autowired
+    UserExtendRepository userExtendRepository;
 
     private final Logger log = LoggerFactory.getLogger(UserService.class);
 
@@ -84,7 +91,7 @@ public class UserService {
             });
     }
 
-    public User registerUser(UserDTO userDTO, String password) {
+    public User registerUser(ManagedUserVM userDTO, String password) {
         userRepository.findOneByLogin(userDTO.getLogin().toLowerCase()).ifPresent(existingUser -> {
             boolean removed = removeNonActivatedUser(existingUser);
             if (!removed) {
@@ -115,6 +122,12 @@ public class UserService {
         authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
+        UserExtend userExtend = new UserExtend();
+        userExtend.setAddress(userDTO.getAddress());
+        userExtend.setPhone(userDTO.getPhone());
+        userExtend.setStatus(0);
+        userExtend.setUser(newUser);
+        userExtendRepository.save(userExtend);
         log.debug("Created Information for User: {}", newUser);
         return newUser;
     }
