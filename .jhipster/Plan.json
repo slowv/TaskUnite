@@ -1,0 +1,36 @@
+{
+    "name": "Plan",
+    "fields": [
+        {
+            "fieldName": "from",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "to",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "duration",
+            "fieldType": "Duration"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "schedule",
+            "relationshipName": "task",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191128073444",
+    "entityTableName": "plan",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
