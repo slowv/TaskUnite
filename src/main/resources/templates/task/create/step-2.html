@@ -81,7 +81,6 @@
                         <option value="0" selected th:text="#{task-create.step2.sorted-by-recommended}"></option>
                         <option value="1" th:text="#{task-create.step2.sorted-by-price-lowest-to-highest}"></option>
                         <option value="2" th:text="#{task-create.step2.sorted-by-price-highest-to-lowest}"></option>
-                        <option value="3" th:text="#{task-create.step2.sorted-by-recommended}"></option>
                     </select>
                 </div>
             </div>
@@ -96,7 +95,7 @@
                     </div>
                     <div class="panel panel--spaced panel--with-overflow">
                         <div class="title-date text-uppercase text-bold">
-                            <span class="icon-calendar mr-2" th:text="#{task-create.step2.task-date}"></span>
+                            <span class="icon-calendar mr-2"></span> <span th:class="text-bold" th:text="#{task-create.step2.task-date}"></span>
                             <span class="icon-chevron-up iconSlideUp"></span>
                         </div>
                         <div class="box-option mt-3">
@@ -119,8 +118,9 @@
                         </div>
                     </div>
                     <div class="panel panel--spaced panel--with-overflow">
-                        <div class="title-date text-uppercase text-bold">
-                            <span class="icon-clock-o mr-2" th:text="#{task-create.step2.task-time}"> </span>
+                        <div class="title-date text-bold">
+                            <span class="icon-clock-o mr-2"></span>
+                            <span th:class="'text-bold text-uppercase'" th:text="#{task-create.step2.task-time}"></span>
                             <span class="icon-chevron-up iconSlideUp"></span>
                         </div>
                         <div class="mt-3">
