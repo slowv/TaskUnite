@@ -33,9 +33,9 @@
                 <td><a [routerLink]="['/tasker', tasker.id, 'view' ]">{{tasker.id}}</a></td>
                 <td>{{tasker.price}}</td>
                 <td>{{tasker.status}}</td>
-                <td>{{tasker.createdAt | date:'mediumDate'}}</td>
-                <td>{{tasker.updatedAt | date:'mediumDate'}}</td>
-                <td>{{tasker.deletedAt | date:'mediumDate'}}</td>
+                <td>{{tasker.createdAt | date:'medium'}}</td>
+                <td>{{tasker.updatedAt | date:'medium'}}</td>
+                <td>{{tasker.deletedAt | date:'medium'}}</td>
                 <td>
                     <div *ngIf="tasker.userId">
                         <a [routerLink]="['/user-information', tasker.userId , 'view' ]" >{{tasker.userId}}</a>

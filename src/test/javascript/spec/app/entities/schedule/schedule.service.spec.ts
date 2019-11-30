@@ -2,7 +2,7 @@ import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { take, map } from 'rxjs/operators';
 import * as moment from 'moment';
-import { DATE_FORMAT } from 'app/shared/constants/input.constants';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { ScheduleService } from 'app/entities/schedule/schedule.service';
 import { ISchedule, Schedule } from 'app/shared/model/schedule.model';
 
@@ -31,8 +31,8 @@ describe('Service Tests', () => {
       it('should find an element', () => {
         const returnedFromService = Object.assign(
           {
-            from: currentDate.format(DATE_FORMAT),
-            to: currentDate.format(DATE_FORMAT)
+            from: currentDate.format(DATE_TIME_FORMAT),
+            to: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
@@ -50,8 +50,8 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
-            from: currentDate.format(DATE_FORMAT),
-            to: currentDate.format(DATE_FORMAT)
+            from: currentDate.format(DATE_TIME_FORMAT),
+            to: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
@@ -74,8 +74,8 @@ describe('Service Tests', () => {
       it('should update a Schedule', () => {
         const returnedFromService = Object.assign(
           {
-            from: currentDate.format(DATE_FORMAT),
-            to: currentDate.format(DATE_FORMAT),
+            from: currentDate.format(DATE_TIME_FORMAT),
+            to: currentDate.format(DATE_TIME_FORMAT),
             duration: 'BBBBBB'
           },
           elemDefault
@@ -100,8 +100,8 @@ describe('Service Tests', () => {
       it('should return a list of Schedule', () => {
         const returnedFromService = Object.assign(
           {
-            from: currentDate.format(DATE_FORMAT),
-            to: currentDate.format(DATE_FORMAT),
+            from: currentDate.format(DATE_TIME_FORMAT),
+            to: currentDate.format(DATE_TIME_FORMAT),
             duration: 'BBBBBB'
           },
           elemDefault

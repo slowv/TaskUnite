@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.Instant;
 
 /**
  * A Notification.
@@ -26,13 +26,13 @@ public class Notification implements Serializable {
     private Integer status;
 
     @Column(name = "created_at")
-    private LocalDate createdAt;
+    private Instant createdAt;
 
     @Column(name = "updated_at")
-    private LocalDate updatedAt;
+    private Instant updatedAt;
 
     @Column(name = "deleted_at")
-    private LocalDate deletedAt;
+    private Instant deletedAt;
 
     @ManyToOne
     @JsonIgnoreProperties("notifications")
@@ -73,42 +73,42 @@ public class Notification implements Serializable {
         this.status = status;
     }
 
-    public LocalDate getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public Notification createdAt(LocalDate createdAt) {
+    public Notification createdAt(Instant createdAt) {
         this.createdAt = createdAt;
         return this;
     }
 
-    public void setCreatedAt(LocalDate createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDate getUpdatedAt() {
+    public Instant getUpdatedAt() {
         return updatedAt;
     }
 
-    public Notification updatedAt(LocalDate updatedAt) {
+    public Notification updatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
         return this;
     }
 
-    public void setUpdatedAt(LocalDate updatedAt) {
+    public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    public LocalDate getDeletedAt() {
+    public Instant getDeletedAt() {
         return deletedAt;
     }
 
-    public Notification deletedAt(LocalDate deletedAt) {
+    public Notification deletedAt(Instant deletedAt) {
         this.deletedAt = deletedAt;
         return this;
     }
 
-    public void setDeletedAt(LocalDate deletedAt) {
+    public void setDeletedAt(Instant deletedAt) {
         this.deletedAt = deletedAt;
     }
 

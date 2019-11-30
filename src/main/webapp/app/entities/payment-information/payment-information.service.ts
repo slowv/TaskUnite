@@ -53,17 +53,11 @@ export class PaymentInformationService {
   protected convertDateFromClient(paymentInformation: IPaymentInformation): IPaymentInformation {
     const copy: IPaymentInformation = Object.assign({}, paymentInformation, {
       createdAt:
-        paymentInformation.createdAt != null && paymentInformation.createdAt.isValid()
-          ? paymentInformation.createdAt.format(DATE_FORMAT)
-          : null,
+        paymentInformation.createdAt != null && paymentInformation.createdAt.isValid() ? paymentInformation.createdAt.toJSON() : null,
       updatedAt:
-        paymentInformation.updatedAt != null && paymentInformation.updatedAt.isValid()
-          ? paymentInformation.updatedAt.format(DATE_FORMAT)
-          : null,
+        paymentInformation.updatedAt != null && paymentInformation.updatedAt.isValid() ? paymentInformation.updatedAt.toJSON() : null,
       deletedAt:
-        paymentInformation.deletedAt != null && paymentInformation.deletedAt.isValid()
-          ? paymentInformation.deletedAt.format(DATE_FORMAT)
-          : null
+        paymentInformation.deletedAt != null && paymentInformation.deletedAt.isValid() ? paymentInformation.deletedAt.toJSON() : null
     });
     return copy;
   }

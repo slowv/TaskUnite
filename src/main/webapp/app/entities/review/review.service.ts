@@ -52,9 +52,9 @@ export class ReviewService {
 
   protected convertDateFromClient(review: IReview): IReview {
     const copy: IReview = Object.assign({}, review, {
-      createdAt: review.createdAt != null && review.createdAt.isValid() ? review.createdAt.format(DATE_FORMAT) : null,
-      updatedAt: review.updatedAt != null && review.updatedAt.isValid() ? review.updatedAt.format(DATE_FORMAT) : null,
-      deletedAt: review.deletedAt != null && review.deletedAt.isValid() ? review.deletedAt.format(DATE_FORMAT) : null
+      createdAt: review.createdAt != null && review.createdAt.isValid() ? review.createdAt.toJSON() : null,
+      updatedAt: review.updatedAt != null && review.updatedAt.isValid() ? review.updatedAt.toJSON() : null,
+      deletedAt: review.deletedAt != null && review.deletedAt.isValid() ? review.deletedAt.toJSON() : null
     });
     return copy;
   }

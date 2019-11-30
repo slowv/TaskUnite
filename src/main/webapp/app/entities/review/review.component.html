@@ -36,9 +36,9 @@
                 <td>{{review.content}}</td>
                 <td>{{review.point}}</td>
                 <td>{{review.status}}</td>
-                <td>{{review.createdAt | date:'mediumDate'}}</td>
-                <td>{{review.updatedAt | date:'mediumDate'}}</td>
-                <td>{{review.deletedAt | date:'mediumDate'}}</td>
+                <td>{{review.createdAt | date:'medium'}}</td>
+                <td>{{review.updatedAt | date:'medium'}}</td>
+                <td>{{review.deletedAt | date:'medium'}}</td>
                 <td>
                     <div *ngIf="review.taskId">
                         <a [routerLink]="['/task', review.taskId , 'view' ]" >{{review.taskId}}</a>

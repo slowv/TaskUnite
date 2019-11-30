@@ -23,8 +23,8 @@ import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
 import java.time.Duration;
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static com.vbtn.taskunite.web.rest.TestUtil.createFormattingConversionService;
@@ -39,11 +39,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = TaskUniteApp.class)
 public class ScheduleResourceIT {
 
-    private static final LocalDate DEFAULT_FROM = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_FROM = LocalDate.now(ZoneId.systemDefault());
+    private static final Instant DEFAULT_FROM = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_FROM = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final LocalDate DEFAULT_TO = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_TO = LocalDate.now(ZoneId.systemDefault());
+    private static final Instant DEFAULT_TO = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_TO = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     private static final Duration DEFAULT_DURATION = Duration.ofHours(6);
     private static final Duration UPDATED_DURATION = Duration.ofHours(12);

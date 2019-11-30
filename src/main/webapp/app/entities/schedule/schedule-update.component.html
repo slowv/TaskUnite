@@ -11,20 +11,14 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskUniteApp.schedule.from" for="field_from">From</label>
-                    <div class="input-group">
-                        <input id="field_from" type="text" class="form-control" name="from" ngbDatepicker  #fromDp="ngbDatepicker" formControlName="from"/>
-                        <span class="input-group-append">
-                            <button type="button" class="btn btn-secondary" (click)="fromDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
-                        </span>
+                    <div class="d-flex">
+                        <input id="field_from" type="datetime-local" class="form-control" name="from" formControlName="from" placeholder="YYYY-MM-DD HH:mm"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskUniteApp.schedule.to" for="field_to">To</label>
-                    <div class="input-group">
-                        <input id="field_to" type="text" class="form-control" name="to" ngbDatepicker  #toDp="ngbDatepicker" formControlName="to"/>
-                        <span class="input-group-append">
-                            <button type="button" class="btn btn-secondary" (click)="toDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
-                        </span>
+                    <div class="d-flex">
+                        <input id="field_to" type="datetime-local" class="form-control" name="to" formControlName="to" placeholder="YYYY-MM-DD HH:mm"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -38,6 +32,13 @@
                     <select class="form-control" id="field_tasker" name="tasker" formControlName="taskerId">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="taskerOption.id" *ngFor="let taskerOption of taskers; trackBy: trackTaskerById">{{taskerOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.schedule.task" for="field_task">Task</label>
+                    <select class="form-control" id="field_task" name="task" formControlName="taskId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="taskOption.id" *ngFor="let taskOption of tasks; trackBy: trackTaskById">{{taskOption.id}}</option>
                     </select>
                 </div>
             </div>

@@ -19,7 +19,8 @@
       "from": "From",
       "to": "To",
       "duration": "Duration",
-      "tasker": "Tasker"
+      "tasker": "Tasker",
+      "task": "Task"
     }
   }
 }

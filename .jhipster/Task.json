@@ -15,15 +15,15 @@
         },
         {
             "fieldName": "createdAt",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant"
         },
         {
             "fieldName": "updatedAt",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant"
         },
         {
             "fieldName": "deletedAt",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant"
         }
     ],
     "relationships": [
@@ -37,7 +37,7 @@
         },
         {
             "relationshipType": "one-to-many",
-            "otherEntityName": "plan",
+            "otherEntityName": "schedule",
             "otherEntityRelationshipName": "task",
             "relationshipName": "schedule"
         },

@@ -52,9 +52,9 @@ export class NotificationService {
 
   protected convertDateFromClient(notification: INotification): INotification {
     const copy: INotification = Object.assign({}, notification, {
-      createdAt: notification.createdAt != null && notification.createdAt.isValid() ? notification.createdAt.format(DATE_FORMAT) : null,
-      updatedAt: notification.updatedAt != null && notification.updatedAt.isValid() ? notification.updatedAt.format(DATE_FORMAT) : null,
-      deletedAt: notification.deletedAt != null && notification.deletedAt.isValid() ? notification.deletedAt.format(DATE_FORMAT) : null
+      createdAt: notification.createdAt != null && notification.createdAt.isValid() ? notification.createdAt.toJSON() : null,
+      updatedAt: notification.updatedAt != null && notification.updatedAt.isValid() ? notification.updatedAt.toJSON() : null,
+      deletedAt: notification.deletedAt != null && notification.deletedAt.isValid() ? notification.deletedAt.toJSON() : null
     });
     return copy;
   }

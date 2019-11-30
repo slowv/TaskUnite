@@ -25,13 +25,13 @@
             <column name="status" type="integer">
                 <constraints nullable="true" />
             </column>
-            <column name="created_at" type="date">
+            <column name="created_at" type="datetime">
                 <constraints nullable="true" />
             </column>
-            <column name="updated_at" type="date">
+            <column name="updated_at" type="datetime">
                 <constraints nullable="true" />
             </column>
-            <column name="deleted_at" type="date">
+            <column name="deleted_at" type="datetime">
                 <constraints nullable="true" />
             </column>
             <column name="task_id" type="bigint">
@@ -42,6 +42,9 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="review" columnName="created_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="review" columnName="updated_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="review" columnName="deleted_at" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20191128073450-1-relations" author="jhipster">
@@ -66,9 +69,9 @@
             <column name="content" type="string"/>
             <column name="point" type="numeric"/>
             <column name="status" type="numeric"/>
-            <column name="created_at" type="date"/>
-            <column name="updated_at" type="date"/>
-            <column name="deleted_at" type="date"/>
+            <column name="created_at" type="datetime"/>
+            <column name="updated_at" type="datetime"/>
+            <column name="deleted_at" type="datetime"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

@@ -1,5 +1,5 @@
 package com.vbtn.taskunite.service.dto;
-import java.time.LocalDate;
+import java.time.Instant;
 import java.time.Duration;
 import java.io.Serializable;
 import java.util.Objects;
@@ -11,14 +11,16 @@ public class ScheduleDTO implements Serializable {
 
     private Long id;
 
-    private LocalDate from;
+    private Instant from;
 
-    private LocalDate to;
+    private Instant to;
 
     private Duration duration;
 
 
     private Long taskerId;
+
+    private Long taskId;
 
     public Long getId() {
         return id;
@@ -28,19 +30,19 @@ public class ScheduleDTO implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getFrom() {
+    public Instant getFrom() {
         return from;
     }
 
-    public void setFrom(LocalDate from) {
+    public void setFrom(Instant from) {
         this.from = from;
     }
 
-    public LocalDate getTo() {
+    public Instant getTo() {
         return to;
     }
 
-    public void setTo(LocalDate to) {
+    public void setTo(Instant to) {
         this.to = to;
     }
 
@@ -58,6 +60,14 @@ public class ScheduleDTO implements Serializable {
 
     public void setTaskerId(Long taskerId) {
         this.taskerId = taskerId;
+    }
+
+    public Long getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(Long taskId) {
+        this.taskId = taskId;
     }
 
     @Override
@@ -89,6 +99,7 @@ public class ScheduleDTO implements Serializable {
             ", to='" + getTo() + "'" +
             ", duration='" + getDuration() + "'" +
             ", tasker=" + getTaskerId() +
+            ", task=" + getTaskId() +
             "}";
     }
 }

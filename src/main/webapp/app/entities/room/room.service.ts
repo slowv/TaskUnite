@@ -52,9 +52,9 @@ export class RoomService {
 
   protected convertDateFromClient(room: IRoom): IRoom {
     const copy: IRoom = Object.assign({}, room, {
-      createdAt: room.createdAt != null && room.createdAt.isValid() ? room.createdAt.format(DATE_FORMAT) : null,
-      updatedAt: room.updatedAt != null && room.updatedAt.isValid() ? room.updatedAt.format(DATE_FORMAT) : null,
-      deletedAt: room.deletedAt != null && room.deletedAt.isValid() ? room.deletedAt.format(DATE_FORMAT) : null
+      createdAt: room.createdAt != null && room.createdAt.isValid() ? room.createdAt.toJSON() : null,
+      updatedAt: room.updatedAt != null && room.updatedAt.isValid() ? room.updatedAt.toJSON() : null,
+      deletedAt: room.deletedAt != null && room.deletedAt.isValid() ? room.deletedAt.toJSON() : null
     });
     return copy;
   }

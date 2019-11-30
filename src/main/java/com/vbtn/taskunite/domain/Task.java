@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,20 +31,20 @@ public class Task implements Serializable {
     private Integer status;
 
     @Column(name = "created_at")
-    private LocalDate createdAt;
+    private Instant createdAt;
 
     @Column(name = "updated_at")
-    private LocalDate updatedAt;
+    private Instant updatedAt;
 
     @Column(name = "deleted_at")
-    private LocalDate deletedAt;
+    private Instant deletedAt;
 
     @OneToOne
     @JoinColumn(unique = true)
     private Room room;
 
     @OneToMany(mappedBy = "task")
-    private Set<Plan> schedules = new HashSet<>();
+    private Set<Schedule> schedules = new HashSet<>();
 
     @OneToMany(mappedBy = "task")
     private Set<Review> reviews = new HashSet<>();
@@ -111,42 +111,42 @@ public class Task implements Serializable {
         this.status = status;
     }
 
-    public LocalDate getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public Task createdAt(LocalDate createdAt) {
+    public Task createdAt(Instant createdAt) {
         this.createdAt = createdAt;
         return this;
     }
 
-    public void setCreatedAt(LocalDate createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDate getUpdatedAt() {
+    public Instant getUpdatedAt() {
         return updatedAt;
     }
 
-    public Task updatedAt(LocalDate updatedAt) {
+    public Task updatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
         return this;
     }
 
-    public void setUpdatedAt(LocalDate updatedAt) {
+    public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    public LocalDate getDeletedAt() {
+    public Instant getDeletedAt() {
         return deletedAt;
     }
 
-    public Task deletedAt(LocalDate deletedAt) {
+    public Task deletedAt(Instant deletedAt) {
         this.deletedAt = deletedAt;
         return this;
     }
 
-    public void setDeletedAt(LocalDate deletedAt) {
+    public void setDeletedAt(Instant deletedAt) {
         this.deletedAt = deletedAt;
     }
 
@@ -163,29 +163,29 @@ public class Task implements Serializable {
         this.room = room;
     }
 
-    public Set<Plan> getSchedules() {
+    public Set<Schedule> getSchedules() {
         return schedules;
     }
 
-    public Task schedules(Set<Plan> plans) {
-        this.schedules = plans;
+    public Task schedules(Set<Schedule> schedules) {
+        this.schedules = schedules;
         return this;
     }
 
-    public Task addSchedule(Plan plan) {
-        this.schedules.add(plan);
-        plan.setTask(this);
+    public Task addSchedule(Schedule schedule) {
+        this.schedules.add(schedule);
+        schedule.setTask(this);
         return this;
     }
 
-    public Task removeSchedule(Plan plan) {
-        this.schedules.remove(plan);
-        plan.setTask(null);
+    public Task removeSchedule(Schedule schedule) {
+        this.schedules.remove(schedule);
+        schedule.setTask(null);
         return this;
     }
 
-    public void setSchedules(Set<Plan> plans) {
-        this.schedules = plans;
+    public void setSchedules(Set<Schedule> schedules) {
+        this.schedules = schedules;
     }
 
     public Set<Review> getReviews() {

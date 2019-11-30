@@ -52,9 +52,9 @@ export class StatisticService {
 
   protected convertDateFromClient(statistic: IStatistic): IStatistic {
     const copy: IStatistic = Object.assign({}, statistic, {
-      createdAt: statistic.createdAt != null && statistic.createdAt.isValid() ? statistic.createdAt.format(DATE_FORMAT) : null,
-      updatedAt: statistic.updatedAt != null && statistic.updatedAt.isValid() ? statistic.updatedAt.format(DATE_FORMAT) : null,
-      deletedAt: statistic.deletedAt != null && statistic.deletedAt.isValid() ? statistic.deletedAt.format(DATE_FORMAT) : null
+      createdAt: statistic.createdAt != null && statistic.createdAt.isValid() ? statistic.createdAt.toJSON() : null,
+      updatedAt: statistic.updatedAt != null && statistic.updatedAt.isValid() ? statistic.updatedAt.toJSON() : null,
+      deletedAt: statistic.deletedAt != null && statistic.deletedAt.isValid() ? statistic.deletedAt.toJSON() : null
     });
     return copy;
   }

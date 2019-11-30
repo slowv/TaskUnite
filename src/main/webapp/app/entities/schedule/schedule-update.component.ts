@@ -6,11 +6,14 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { ISchedule, Schedule } from 'app/shared/model/schedule.model';
 import { ScheduleService } from './schedule.service';
 import { ITasker } from 'app/shared/model/tasker.model';
 import { TaskerService } from 'app/entities/tasker/tasker.service';
+import { ITask } from 'app/shared/model/task.model';
+import { TaskService } from 'app/entities/task/task.service';
 
 @Component({
   selector: 'jhi-schedule-update',
@@ -20,21 +23,23 @@ export class ScheduleUpdateComponent implements OnInit {
   isSaving: boolean;
 
   taskers: ITasker[];
-  fromDp: any;
-  toDp: any;
+
+  tasks: ITask[];
 
   editForm = this.fb.group({
     id: [],
     from: [],
     to: [],
     duration: [],
-    taskerId: []
+    taskerId: [],
+    taskId: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected scheduleService: ScheduleService,
     protected taskerService: TaskerService,
+    protected taskService: TaskService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -47,15 +52,19 @@ export class ScheduleUpdateComponent implements OnInit {
     this.taskerService
       .query()
       .subscribe((res: HttpResponse<ITasker[]>) => (this.taskers = res.body), (res: HttpErrorResponse) => this.onError(res.message));
+    this.taskService
+      .query()
+      .subscribe((res: HttpResponse<ITask[]>) => (this.tasks = res.body), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(schedule: ISchedule) {
     this.editForm.patchValue({
       id: schedule.id,
-      from: schedule.from,
-      to: schedule.to,
+      from: schedule.from != null ? schedule.from.format(DATE_TIME_FORMAT) : null,
+      to: schedule.to != null ? schedule.to.format(DATE_TIME_FORMAT) : null,
       duration: schedule.duration,
-      taskerId: schedule.taskerId
+      taskerId: schedule.taskerId,
+      taskId: schedule.taskId
     });
   }
 
@@ -77,10 +86,11 @@ export class ScheduleUpdateComponent implements OnInit {
     return {
       ...new Schedule(),
       id: this.editForm.get(['id']).value,
-      from: this.editForm.get(['from']).value,
-      to: this.editForm.get(['to']).value,
+      from: this.editForm.get(['from']).value != null ? moment(this.editForm.get(['from']).value, DATE_TIME_FORMAT) : undefined,
+      to: this.editForm.get(['to']).value != null ? moment(this.editForm.get(['to']).value, DATE_TIME_FORMAT) : undefined,
       duration: this.editForm.get(['duration']).value,
-      taskerId: this.editForm.get(['taskerId']).value
+      taskerId: this.editForm.get(['taskerId']).value,
+      taskId: this.editForm.get(['taskId']).value
     };
   }
 
@@ -101,6 +111,10 @@ export class ScheduleUpdateComponent implements OnInit {
   }
 
   trackTaskerById(index: number, item: ITasker) {
+    return item.id;
+  }
+
+  trackTaskById(index: number, item: ITask) {
     return item.id;
   }
 }

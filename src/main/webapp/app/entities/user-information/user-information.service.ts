@@ -52,12 +52,9 @@ export class UserInformationService {
 
   protected convertDateFromClient(userInformation: IUserInformation): IUserInformation {
     const copy: IUserInformation = Object.assign({}, userInformation, {
-      createdAt:
-        userInformation.createdAt != null && userInformation.createdAt.isValid() ? userInformation.createdAt.format(DATE_FORMAT) : null,
-      updatedAt:
-        userInformation.updatedAt != null && userInformation.updatedAt.isValid() ? userInformation.updatedAt.format(DATE_FORMAT) : null,
-      deletedAt:
-        userInformation.deletedAt != null && userInformation.deletedAt.isValid() ? userInformation.deletedAt.format(DATE_FORMAT) : null
+      createdAt: userInformation.createdAt != null && userInformation.createdAt.isValid() ? userInformation.createdAt.toJSON() : null,
+      updatedAt: userInformation.updatedAt != null && userInformation.updatedAt.isValid() ? userInformation.updatedAt.toJSON() : null,
+      deletedAt: userInformation.deletedAt != null && userInformation.deletedAt.isValid() ? userInformation.deletedAt.toJSON() : null
     });
     return copy;
   }

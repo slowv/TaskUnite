@@ -37,9 +37,9 @@
                 <td>{{task.description}}</td>
                 <td>{{task.price}}</td>
                 <td>{{task.status}}</td>
-                <td>{{task.createdAt | date:'mediumDate'}}</td>
-                <td>{{task.updatedAt | date:'mediumDate'}}</td>
-                <td>{{task.deletedAt | date:'mediumDate'}}</td>
+                <td>{{task.createdAt | date:'medium'}}</td>
+                <td>{{task.updatedAt | date:'medium'}}</td>
+                <td>{{task.deletedAt | date:'medium'}}</td>
                 <td>
                     <div *ngIf="task.roomId">
                         <a [routerLink]="['/room', task.roomId , 'view' ]" >{{task.roomId}}</a>

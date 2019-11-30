@@ -43,9 +43,9 @@
                 <td>{{statistic.rating}}</td>
                 <td>{{statistic.ranking}}</td>
                 <td>{{statistic.bonus}}</td>
-                <td>{{statistic.createdAt | date:'mediumDate'}}</td>
-                <td>{{statistic.updatedAt | date:'mediumDate'}}</td>
-                <td>{{statistic.deletedAt | date:'mediumDate'}}</td>
+                <td>{{statistic.createdAt | date:'medium'}}</td>
+                <td>{{statistic.updatedAt | date:'medium'}}</td>
+                <td>{{statistic.deletedAt | date:'medium'}}</td>
                 <td>
                     <div *ngIf="statistic.userId">
                         <a [routerLink]="['/user-information', statistic.userId , 'view' ]" >{{statistic.userId}}</a>

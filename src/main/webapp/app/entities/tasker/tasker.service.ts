@@ -52,9 +52,9 @@ export class TaskerService {
 
   protected convertDateFromClient(tasker: ITasker): ITasker {
     const copy: ITasker = Object.assign({}, tasker, {
-      createdAt: tasker.createdAt != null && tasker.createdAt.isValid() ? tasker.createdAt.format(DATE_FORMAT) : null,
-      updatedAt: tasker.updatedAt != null && tasker.updatedAt.isValid() ? tasker.updatedAt.format(DATE_FORMAT) : null,
-      deletedAt: tasker.deletedAt != null && tasker.deletedAt.isValid() ? tasker.deletedAt.format(DATE_FORMAT) : null
+      createdAt: tasker.createdAt != null && tasker.createdAt.isValid() ? tasker.createdAt.toJSON() : null,
+      updatedAt: tasker.updatedAt != null && tasker.updatedAt.isValid() ? tasker.updatedAt.toJSON() : null,
+      deletedAt: tasker.deletedAt != null && tasker.deletedAt.isValid() ? tasker.deletedAt.toJSON() : null
     });
     return copy;
   }
