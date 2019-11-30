@@ -1,5 +1,8 @@
 package com.vbtn.taskunite.domain;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -22,9 +25,11 @@ public class PaymentInformation implements Serializable {
     private Double balance;
 
     @Column(name = "created_at")
+    @CreationTimestamp
     private Instant createdAt;
 
     @Column(name = "updated_at")
+    @UpdateTimestamp
     private Instant updatedAt;
 
     @Column(name = "deleted_at")

@@ -1,5 +1,8 @@
 package com.vbtn.taskunite.domain;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -40,9 +43,11 @@ public class Statistic implements Serializable {
     private Double bonus;
 
     @Column(name = "created_at")
+    @CreationTimestamp
     private Instant createdAt;
 
     @Column(name = "updated_at")
+    @UpdateTimestamp
     private Instant updatedAt;
 
     @Column(name = "deleted_at")
