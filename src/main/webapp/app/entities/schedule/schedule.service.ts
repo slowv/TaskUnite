@@ -52,8 +52,8 @@ export class ScheduleService {
 
   protected convertDateFromClient(schedule: ISchedule): ISchedule {
     const copy: ISchedule = Object.assign({}, schedule, {
-      from: schedule.from != null && schedule.from.isValid() ? schedule.from.format(DATE_FORMAT) : null,
-      to: schedule.to != null && schedule.to.isValid() ? schedule.to.format(DATE_FORMAT) : null
+      from: schedule.from != null && schedule.from.isValid() ? schedule.from.toJSON() : null,
+      to: schedule.to != null && schedule.to.isValid() ? schedule.to.toJSON() : null
     });
     return copy;
   }

@@ -19,6 +19,7 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="gender"><span jhiTranslate="taskUniteApp.userInformation.gender">Gender</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="address"><span jhiTranslate="taskUniteApp.userInformation.address">Address</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="phone"><span jhiTranslate="taskUniteApp.userInformation.phone">Phone</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="status"><span jhiTranslate="taskUniteApp.userInformation.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -32,12 +33,13 @@
             <tbody>
             <tr *ngFor="let userInformation of userInformations ;trackBy: trackId">
                 <td><a [routerLink]="['/user-information', userInformation.id, 'view' ]">{{userInformation.id}}</a></td>
+                <td>{{userInformation.gender}}</td>
                 <td>{{userInformation.address}}</td>
                 <td>{{userInformation.phone}}</td>
                 <td>{{userInformation.status}}</td>
-                <td>{{userInformation.createdAt | date:'mediumDate'}}</td>
-                <td>{{userInformation.updatedAt | date:'mediumDate'}}</td>
-                <td>{{userInformation.deletedAt | date:'mediumDate'}}</td>
+                <td>{{userInformation.createdAt | date:'medium'}}</td>
+                <td>{{userInformation.updatedAt | date:'medium'}}</td>
+                <td>{{userInformation.deletedAt | date:'medium'}}</td>
                 <td>
                     {{userInformation.userId}}
                 </td>

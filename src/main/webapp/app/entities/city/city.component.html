@@ -32,9 +32,9 @@
                 <td><a [routerLink]="['/city', city.id, 'view' ]">{{city.id}}</a></td>
                 <td>{{city.name}}</td>
                 <td>{{city.status}}</td>
-                <td>{{city.createdAt | date:'mediumDate'}}</td>
-                <td>{{city.updatedAt | date:'mediumDate'}}</td>
-                <td>{{city.deletedAt | date:'mediumDate'}}</td>
+                <td>{{city.createdAt | date:'medium'}}</td>
+                <td>{{city.updatedAt | date:'medium'}}</td>
+                <td>{{city.deletedAt | date:'medium'}}</td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

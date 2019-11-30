@@ -6,8 +6,16 @@ export interface ISchedule {
   to?: Moment;
   duration?: number;
   taskerId?: number;
+  taskId?: number;
 }
 
 export class Schedule implements ISchedule {
-  constructor(public id?: number, public from?: Moment, public to?: Moment, public duration?: number, public taskerId?: number) {}
+  constructor(
+    public id?: number,
+    public from?: Moment,
+    public to?: Moment,
+    public duration?: number,
+    public taskerId?: number,
+    public taskId?: number
+  ) {}
 }

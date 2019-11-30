@@ -6,6 +6,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { ITasker, Tasker } from 'app/shared/model/tasker.model';
 import { TaskerService } from './tasker.service';
@@ -24,9 +25,6 @@ export class TaskerUpdateComponent implements OnInit {
   users: IUserInformation[];
 
   taskcategories: ITaskCategory[];
-  createdAtDp: any;
-  updatedAtDp: any;
-  deletedAtDp: any;
 
   editForm = this.fb.group({
     id: [],
@@ -81,9 +79,9 @@ export class TaskerUpdateComponent implements OnInit {
       id: tasker.id,
       price: tasker.price,
       status: tasker.status,
-      createdAt: tasker.createdAt,
-      updatedAt: tasker.updatedAt,
-      deletedAt: tasker.deletedAt,
+      createdAt: tasker.createdAt != null ? tasker.createdAt.format(DATE_TIME_FORMAT) : null,
+      updatedAt: tasker.updatedAt != null ? tasker.updatedAt.format(DATE_TIME_FORMAT) : null,
+      deletedAt: tasker.deletedAt != null ? tasker.deletedAt.format(DATE_TIME_FORMAT) : null,
       userId: tasker.userId,
       taskCategories: tasker.taskCategories
     });
@@ -109,9 +107,12 @@ export class TaskerUpdateComponent implements OnInit {
       id: this.editForm.get(['id']).value,
       price: this.editForm.get(['price']).value,
       status: this.editForm.get(['status']).value,
-      createdAt: this.editForm.get(['createdAt']).value,
-      updatedAt: this.editForm.get(['updatedAt']).value,
-      deletedAt: this.editForm.get(['deletedAt']).value,
+      createdAt:
+        this.editForm.get(['createdAt']).value != null ? moment(this.editForm.get(['createdAt']).value, DATE_TIME_FORMAT) : undefined,
+      updatedAt:
+        this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
+      deletedAt:
+        this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
       userId: this.editForm.get(['userId']).value,
       taskCategories: this.editForm.get(['taskCategories']).value
     };

@@ -16,10 +16,10 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="jhi_from" type="date">
+            <column name="jhi_from" type="datetime">
                 <constraints nullable="true" />
             </column>
-            <column name="jhi_to" type="date">
+            <column name="jhi_to" type="datetime">
                 <constraints nullable="true" />
             </column>
             <column name="duration" type="bigint">
@@ -28,8 +28,13 @@
             <column name="tasker_id" type="bigint">
                 <constraints nullable="true" />
             </column>
+            <column name="task_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="schedule" columnName="jhi_from" columnDataType="datetime"/>
+        <dropDefaultValue tableName="schedule" columnName="jhi_to" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20191128073443-1-relations" author="jhipster">
@@ -51,8 +56,8 @@
                   separator=";"
                   tableName="schedule">
             <column name="id" type="numeric"/>
-            <column name="jhi_from" type="date"/>
-            <column name="jhi_to" type="date"/>
+            <column name="jhi_from" type="datetime"/>
+            <column name="jhi_to" type="datetime"/>
             <column name="duration" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>

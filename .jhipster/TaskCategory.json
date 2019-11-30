@@ -23,15 +23,15 @@
         },
         {
             "fieldName": "createdAt",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant"
         },
         {
             "fieldName": "updatedAt",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant"
         },
         {
             "fieldName": "deletedAt",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant"
         }
     ],
     "relationships": [

@@ -33,9 +33,9 @@
                 <td><a [routerLink]="['/district', district.id, 'view' ]">{{district.id}}</a></td>
                 <td>{{district.name}}</td>
                 <td>{{district.status}}</td>
-                <td>{{district.createdAt | date:'mediumDate'}}</td>
-                <td>{{district.updatedAt | date:'mediumDate'}}</td>
-                <td>{{district.deletedAt | date:'mediumDate'}}</td>
+                <td>{{district.createdAt | date:'medium'}}</td>
+                <td>{{district.updatedAt | date:'medium'}}</td>
+                <td>{{district.deletedAt | date:'medium'}}</td>
                 <td>
                     <div *ngIf="district.cityId">
                         <a [routerLink]="['/city', district.cityId , 'view' ]" >{{district.cityId}}</a>

@@ -14,5 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="tasker"/>
 
+        <addForeignKeyConstraint baseColumnNames="task_id"
+                                 baseTableName="schedule"
+                                 constraintName="fk_schedule_task_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="task"/>
+
     </changeSet>
 </databaseChangeLog>

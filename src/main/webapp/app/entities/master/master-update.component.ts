@@ -6,6 +6,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { IMaster, Master } from 'app/shared/model/master.model';
 import { MasterService } from './master.service';
@@ -20,9 +21,6 @@ export class MasterUpdateComponent implements OnInit {
   isSaving: boolean;
 
   users: IUserInformation[];
-  createdAtDp: any;
-  updatedAtDp: any;
-  deletedAtDp: any;
 
   editForm = this.fb.group({
     id: [],
@@ -67,9 +65,9 @@ export class MasterUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: master.id,
       status: master.status,
-      createdAt: master.createdAt,
-      updatedAt: master.updatedAt,
-      deletedAt: master.deletedAt,
+      createdAt: master.createdAt != null ? master.createdAt.format(DATE_TIME_FORMAT) : null,
+      updatedAt: master.updatedAt != null ? master.updatedAt.format(DATE_TIME_FORMAT) : null,
+      deletedAt: master.deletedAt != null ? master.deletedAt.format(DATE_TIME_FORMAT) : null,
       userId: master.userId
     });
   }
@@ -93,9 +91,12 @@ export class MasterUpdateComponent implements OnInit {
       ...new Master(),
       id: this.editForm.get(['id']).value,
       status: this.editForm.get(['status']).value,
-      createdAt: this.editForm.get(['createdAt']).value,
-      updatedAt: this.editForm.get(['updatedAt']).value,
-      deletedAt: this.editForm.get(['deletedAt']).value,
+      createdAt:
+        this.editForm.get(['createdAt']).value != null ? moment(this.editForm.get(['createdAt']).value, DATE_TIME_FORMAT) : undefined,
+      updatedAt:
+        this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
+      deletedAt:
+        this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
       userId: this.editForm.get(['userId']).value
     };
   }

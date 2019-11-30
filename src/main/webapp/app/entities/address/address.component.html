@@ -34,9 +34,9 @@
                 <td><a [routerLink]="['/address', address.id, 'view' ]">{{address.id}}</a></td>
                 <td>{{address.street}}</td>
                 <td>{{address.status}}</td>
-                <td>{{address.createdAt | date:'mediumDate'}}</td>
-                <td>{{address.updatedAt | date:'mediumDate'}}</td>
-                <td>{{address.deletedAt | date:'mediumDate'}}</td>
+                <td>{{address.createdAt | date:'medium'}}</td>
+                <td>{{address.updatedAt | date:'medium'}}</td>
+                <td>{{address.deletedAt | date:'medium'}}</td>
                 <td>
                     <div *ngIf="address.dictrictId">
                         <a [routerLink]="['/district', address.dictrictId , 'view' ]" >{{address.dictrictId}}</a>

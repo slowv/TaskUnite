@@ -52,9 +52,9 @@ export class DistrictService {
 
   protected convertDateFromClient(district: IDistrict): IDistrict {
     const copy: IDistrict = Object.assign({}, district, {
-      createdAt: district.createdAt != null && district.createdAt.isValid() ? district.createdAt.format(DATE_FORMAT) : null,
-      updatedAt: district.updatedAt != null && district.updatedAt.isValid() ? district.updatedAt.format(DATE_FORMAT) : null,
-      deletedAt: district.deletedAt != null && district.deletedAt.isValid() ? district.deletedAt.format(DATE_FORMAT) : null
+      createdAt: district.createdAt != null && district.createdAt.isValid() ? district.createdAt.toJSON() : null,
+      updatedAt: district.updatedAt != null && district.updatedAt.isValid() ? district.updatedAt.toJSON() : null,
+      deletedAt: district.deletedAt != null && district.deletedAt.isValid() ? district.deletedAt.toJSON() : null
     });
     return copy;
   }

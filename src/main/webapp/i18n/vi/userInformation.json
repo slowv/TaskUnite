@@ -16,6 +16,7 @@
       "detail": {
         "title": "User Information"
       },
+      "gender": "Gender",
       "address": "Address",
       "phone": "Phone",
       "status": "Status",

@@ -87,13 +87,13 @@ spring:
       enabled: false
   task:
     execution:
-      thread-name-prefix: task-unite-task-
+      thread-name-prefix: task-unite-task
       pool:
         core-size: 2
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: task-unite-scheduling-
+      thread-name-prefix: task-unite-scheduling
       pool:
         size: 2
   thymeleaf:

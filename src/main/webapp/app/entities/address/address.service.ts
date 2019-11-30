@@ -52,9 +52,9 @@ export class AddressService {
 
   protected convertDateFromClient(address: IAddress): IAddress {
     const copy: IAddress = Object.assign({}, address, {
-      createdAt: address.createdAt != null && address.createdAt.isValid() ? address.createdAt.format(DATE_FORMAT) : null,
-      updatedAt: address.updatedAt != null && address.updatedAt.isValid() ? address.updatedAt.format(DATE_FORMAT) : null,
-      deletedAt: address.deletedAt != null && address.deletedAt.isValid() ? address.deletedAt.format(DATE_FORMAT) : null
+      createdAt: address.createdAt != null && address.createdAt.isValid() ? address.createdAt.toJSON() : null,
+      updatedAt: address.updatedAt != null && address.updatedAt.isValid() ? address.updatedAt.toJSON() : null,
+      deletedAt: address.deletedAt != null && address.deletedAt.isValid() ? address.deletedAt.toJSON() : null
     });
     return copy;
   }

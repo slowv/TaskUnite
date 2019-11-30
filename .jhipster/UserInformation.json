@@ -2,6 +2,10 @@
     "name": "UserInformation",
     "fields": [
         {
+            "fieldName": "gender",
+            "fieldType": "Integer"
+        },
+        {
             "fieldName": "address",
             "fieldType": "String"
         },
@@ -15,15 +19,15 @@
         },
         {
             "fieldName": "createdAt",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant"
         },
         {
             "fieldName": "updatedAt",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant"
         },
         {
             "fieldName": "deletedAt",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant"
         }
     ],
     "relationships": [

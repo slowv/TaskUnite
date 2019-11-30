@@ -37,10 +37,6 @@ import { RouterModule } from '@angular/router';
         loadChildren: () => import('./schedule/schedule.module').then(m => m.TaskUniteScheduleModule)
       },
       {
-        path: 'plan',
-        loadChildren: () => import('./plan/plan.module').then(m => m.TaskUnitePlanModule)
-      },
-      {
         path: 'task-category',
         loadChildren: () => import('./task-category/task-category.module').then(m => m.TaskUniteTaskCategoryModule)
       },

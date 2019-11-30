@@ -1,11 +1,13 @@
 package com.vbtn.taskunite.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.Instant;
 
 /**
  * A Room.
@@ -27,13 +29,15 @@ public class Room implements Serializable {
     private Integer status;
 
     @Column(name = "created_at")
-    private LocalDate createdAt;
+    @CreationTimestamp
+    private Instant createdAt;
 
     @Column(name = "updated_at")
-    private LocalDate updatedAt;
+    @UpdateTimestamp
+    private Instant updatedAt;
 
     @Column(name = "deleted_at")
-    private LocalDate deletedAt;
+    private Instant deletedAt;
 
     @OneToOne(mappedBy = "room")
     @JsonIgnore
@@ -82,42 +86,42 @@ public class Room implements Serializable {
         this.status = status;
     }
 
-    public LocalDate getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public Room createdAt(LocalDate createdAt) {
+    public Room createdAt(Instant createdAt) {
         this.createdAt = createdAt;
         return this;
     }
 
-    public void setCreatedAt(LocalDate createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDate getUpdatedAt() {
+    public Instant getUpdatedAt() {
         return updatedAt;
     }
 
-    public Room updatedAt(LocalDate updatedAt) {
+    public Room updatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
         return this;
     }
 
-    public void setUpdatedAt(LocalDate updatedAt) {
+    public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    public LocalDate getDeletedAt() {
+    public Instant getDeletedAt() {
         return deletedAt;
     }
 
-    public Room deletedAt(LocalDate deletedAt) {
+    public Room deletedAt(Instant deletedAt) {
         this.deletedAt = deletedAt;
         return this;
     }
 
-    public void setDeletedAt(LocalDate deletedAt) {
+    public void setDeletedAt(Instant deletedAt) {
         this.deletedAt = deletedAt;
     }
 

@@ -33,9 +33,9 @@
                 <td><a [routerLink]="['/notification', notification.id, 'view' ]">{{notification.id}}</a></td>
                 <td>{{notification.content}}</td>
                 <td>{{notification.status}}</td>
-                <td>{{notification.createdAt | date:'mediumDate'}}</td>
-                <td>{{notification.updatedAt | date:'mediumDate'}}</td>
-                <td>{{notification.deletedAt | date:'mediumDate'}}</td>
+                <td>{{notification.createdAt | date:'medium'}}</td>
+                <td>{{notification.updatedAt | date:'medium'}}</td>
+                <td>{{notification.deletedAt | date:'medium'}}</td>
                 <td>
                     <div *ngIf="notification.userId">
                         <a [routerLink]="['/user-information', notification.userId , 'view' ]" >{{notification.userId}}</a>

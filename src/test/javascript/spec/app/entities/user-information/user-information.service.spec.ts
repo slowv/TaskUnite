@@ -2,7 +2,7 @@ import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { take, map } from 'rxjs/operators';
 import * as moment from 'moment';
-import { DATE_FORMAT } from 'app/shared/constants/input.constants';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { UserInformationService } from 'app/entities/user-information/user-information.service';
 import { IUserInformation, UserInformation } from 'app/shared/model/user-information.model';
 
@@ -24,16 +24,16 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new UserInformation(0, 'AAAAAAA', 'AAAAAAA', 0, currentDate, currentDate, currentDate);
+      elemDefault = new UserInformation(0, 0, 'AAAAAAA', 'AAAAAAA', 0, currentDate, currentDate, currentDate);
     });
 
     describe('Service methods', () => {
       it('should find an element', () => {
         const returnedFromService = Object.assign(
           {
-            createdAt: currentDate.format(DATE_FORMAT),
-            updatedAt: currentDate.format(DATE_FORMAT),
-            deletedAt: currentDate.format(DATE_FORMAT)
+            createdAt: currentDate.format(DATE_TIME_FORMAT),
+            updatedAt: currentDate.format(DATE_TIME_FORMAT),
+            deletedAt: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
@@ -51,9 +51,9 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
-            createdAt: currentDate.format(DATE_FORMAT),
-            updatedAt: currentDate.format(DATE_FORMAT),
-            deletedAt: currentDate.format(DATE_FORMAT)
+            createdAt: currentDate.format(DATE_TIME_FORMAT),
+            updatedAt: currentDate.format(DATE_TIME_FORMAT),
+            deletedAt: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
@@ -77,12 +77,13 @@ describe('Service Tests', () => {
       it('should update a UserInformation', () => {
         const returnedFromService = Object.assign(
           {
+            gender: 1,
             address: 'BBBBBB',
             phone: 'BBBBBB',
             status: 1,
-            createdAt: currentDate.format(DATE_FORMAT),
-            updatedAt: currentDate.format(DATE_FORMAT),
-            deletedAt: currentDate.format(DATE_FORMAT)
+            createdAt: currentDate.format(DATE_TIME_FORMAT),
+            updatedAt: currentDate.format(DATE_TIME_FORMAT),
+            deletedAt: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
@@ -107,12 +108,13 @@ describe('Service Tests', () => {
       it('should return a list of UserInformation', () => {
         const returnedFromService = Object.assign(
           {
+            gender: 1,
             address: 'BBBBBB',
             phone: 'BBBBBB',
             status: 1,
-            createdAt: currentDate.format(DATE_FORMAT),
-            updatedAt: currentDate.format(DATE_FORMAT),
-            deletedAt: currentDate.format(DATE_FORMAT)
+            createdAt: currentDate.format(DATE_TIME_FORMAT),
+            updatedAt: currentDate.format(DATE_TIME_FORMAT),
+            deletedAt: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );

@@ -22,8 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static com.vbtn.taskunite.web.rest.TestUtil.createFormattingConversionService;
@@ -59,14 +59,14 @@ public class StatisticResourceIT {
     private static final Double DEFAULT_BONUS = 1D;
     private static final Double UPDATED_BONUS = 2D;
 
-    private static final LocalDate DEFAULT_CREATED_AT = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_CREATED_AT = LocalDate.now(ZoneId.systemDefault());
+    private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final LocalDate DEFAULT_UPDATED_AT = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_UPDATED_AT = LocalDate.now(ZoneId.systemDefault());
+    private static final Instant DEFAULT_UPDATED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_UPDATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final LocalDate DEFAULT_DELETED_AT = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DELETED_AT = LocalDate.now(ZoneId.systemDefault());
+    private static final Instant DEFAULT_DELETED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DELETED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     @Autowired
     private StatisticRepository statisticRepository;

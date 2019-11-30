@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.Instant;
 import java.time.Duration;
 
 /**
@@ -21,10 +21,10 @@ public class Schedule implements Serializable {
     private Long id;
 
     @Column(name = "jhi_from")
-    private LocalDate from;
+    private Instant from;
 
     @Column(name = "jhi_to")
-    private LocalDate to;
+    private Instant to;
 
     @Column(name = "duration")
     private Duration duration;
@@ -32,6 +32,10 @@ public class Schedule implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("schedules")
     private Tasker tasker;
+
+    @ManyToOne
+    @JsonIgnoreProperties("schedules")
+    private Task task;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -42,29 +46,29 @@ public class Schedule implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getFrom() {
+    public Instant getFrom() {
         return from;
     }
 
-    public Schedule from(LocalDate from) {
+    public Schedule from(Instant from) {
         this.from = from;
         return this;
     }
 
-    public void setFrom(LocalDate from) {
+    public void setFrom(Instant from) {
         this.from = from;
     }
 
-    public LocalDate getTo() {
+    public Instant getTo() {
         return to;
     }
 
-    public Schedule to(LocalDate to) {
+    public Schedule to(Instant to) {
         this.to = to;
         return this;
     }
 
-    public void setTo(LocalDate to) {
+    public void setTo(Instant to) {
         this.to = to;
     }
 
@@ -92,6 +96,19 @@ public class Schedule implements Serializable {
 
     public void setTasker(Tasker tasker) {
         this.tasker = tasker;
+    }
+
+    public Task getTask() {
+        return task;
+    }
+
+    public Schedule task(Task task) {
+        this.task = task;
+        return this;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

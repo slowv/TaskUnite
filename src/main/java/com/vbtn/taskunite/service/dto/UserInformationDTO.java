@@ -1,5 +1,5 @@
 package com.vbtn.taskunite.service.dto;
-import java.time.LocalDate;
+import java.time.Instant;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -10,17 +10,19 @@ public class UserInformationDTO implements Serializable {
 
     private Long id;
 
+    private Integer gender;
+
     private String address;
 
     private String phone;
 
     private Integer status;
 
-    private LocalDate createdAt;
+    private Instant createdAt;
 
-    private LocalDate updatedAt;
+    private Instant updatedAt;
 
-    private LocalDate deletedAt;
+    private Instant deletedAt;
 
 
     private Long userId;
@@ -31,6 +33,14 @@ public class UserInformationDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getGender() {
+        return gender;
+    }
+
+    public void setGender(Integer gender) {
+        this.gender = gender;
     }
 
     public String getAddress() {
@@ -57,27 +67,27 @@ public class UserInformationDTO implements Serializable {
         this.status = status;
     }
 
-    public LocalDate getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDate createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDate getUpdatedAt() {
+    public Instant getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDate updatedAt) {
+    public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    public LocalDate getDeletedAt() {
+    public Instant getDeletedAt() {
         return deletedAt;
     }
 
-    public void setDeletedAt(LocalDate deletedAt) {
+    public void setDeletedAt(Instant deletedAt) {
         this.deletedAt = deletedAt;
     }
 
@@ -114,6 +124,7 @@ public class UserInformationDTO implements Serializable {
     public String toString() {
         return "UserInformationDTO{" +
             "id=" + getId() +
+            ", gender=" + getGender() +
             ", address='" + getAddress() + "'" +
             ", phone='" + getPhone() + "'" +
             ", status=" + getStatus() +

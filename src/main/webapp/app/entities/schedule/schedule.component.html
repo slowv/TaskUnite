@@ -23,18 +23,24 @@
             <th scope="col"  jhiSortBy="to"><span jhiTranslate="taskUniteApp.schedule.to">To</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="duration"><span jhiTranslate="taskUniteApp.schedule.duration">Duration</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="taskerId"><span jhiTranslate="taskUniteApp.schedule.tasker">Tasker</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="taskId"><span jhiTranslate="taskUniteApp.schedule.task">Task</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let schedule of schedules ;trackBy: trackId">
                 <td><a [routerLink]="['/schedule', schedule.id, 'view' ]">{{schedule.id}}</a></td>
-                <td>{{schedule.from | date:'mediumDate'}}</td>
-                <td>{{schedule.to | date:'mediumDate'}}</td>
+                <td>{{schedule.from | date:'medium'}}</td>
+                <td>{{schedule.to | date:'medium'}}</td>
                 <td>{{schedule.duration}}</td>
                 <td>
                     <div *ngIf="schedule.taskerId">
                         <a [routerLink]="['/tasker', schedule.taskerId , 'view' ]" >{{schedule.taskerId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="schedule.taskId">
+                        <a [routerLink]="['/task', schedule.taskId , 'view' ]" >{{schedule.taskId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

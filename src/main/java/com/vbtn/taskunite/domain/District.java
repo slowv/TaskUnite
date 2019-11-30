@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,13 +28,13 @@ public class District implements Serializable {
     private Integer status;
 
     @Column(name = "created_at")
-    private LocalDate createdAt;
+    private Instant createdAt;
 
     @Column(name = "updated_at")
-    private LocalDate updatedAt;
+    private Instant updatedAt;
 
     @Column(name = "deleted_at")
-    private LocalDate deletedAt;
+    private Instant deletedAt;
 
     @OneToMany(mappedBy = "dictrict")
     private Set<Address> addresses = new HashSet<>();
@@ -78,42 +78,42 @@ public class District implements Serializable {
         this.status = status;
     }
 
-    public LocalDate getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public District createdAt(LocalDate createdAt) {
+    public District createdAt(Instant createdAt) {
         this.createdAt = createdAt;
         return this;
     }
 
-    public void setCreatedAt(LocalDate createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDate getUpdatedAt() {
+    public Instant getUpdatedAt() {
         return updatedAt;
     }
 
-    public District updatedAt(LocalDate updatedAt) {
+    public District updatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
         return this;
     }
 
-    public void setUpdatedAt(LocalDate updatedAt) {
+    public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    public LocalDate getDeletedAt() {
+    public Instant getDeletedAt() {
         return deletedAt;
     }
 
-    public District deletedAt(LocalDate deletedAt) {
+    public District deletedAt(Instant deletedAt) {
         this.deletedAt = deletedAt;
         return this;
     }
 
-    public void setDeletedAt(LocalDate deletedAt) {
+    public void setDeletedAt(Instant deletedAt) {
         this.deletedAt = deletedAt;
     }
 

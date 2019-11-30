@@ -31,9 +31,9 @@
             <tr *ngFor="let master of masters ;trackBy: trackId">
                 <td><a [routerLink]="['/master', master.id, 'view' ]">{{master.id}}</a></td>
                 <td>{{master.status}}</td>
-                <td>{{master.createdAt | date:'mediumDate'}}</td>
-                <td>{{master.updatedAt | date:'mediumDate'}}</td>
-                <td>{{master.deletedAt | date:'mediumDate'}}</td>
+                <td>{{master.createdAt | date:'medium'}}</td>
+                <td>{{master.updatedAt | date:'medium'}}</td>
+                <td>{{master.deletedAt | date:'medium'}}</td>
                 <td>
                     <div *ngIf="master.userId">
                         <a [routerLink]="['/user-information', master.userId , 'view' ]" >{{master.userId}}</a>

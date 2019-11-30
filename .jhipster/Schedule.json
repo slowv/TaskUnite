@@ -3,11 +3,11 @@
     "fields": [
         {
             "fieldName": "from",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant"
         },
         {
             "fieldName": "to",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant"
         },
         {
             "fieldName": "duration",
@@ -20,6 +20,13 @@
             "otherEntityName": "tasker",
             "otherEntityRelationshipName": "schedule",
             "relationshipName": "tasker",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "schedule",
+            "relationshipName": "task",
             "otherEntityField": "id"
         }
     ],

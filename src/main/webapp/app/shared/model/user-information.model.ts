@@ -5,6 +5,7 @@ import { INotification } from 'app/shared/model/notification.model';
 
 export interface IUserInformation {
   id?: number;
+  gender?: number;
   address?: string;
   phone?: string;
   status?: number;
@@ -23,6 +24,7 @@ export interface IUserInformation {
 export class UserInformation implements IUserInformation {
   constructor(
     public id?: number,
+    public gender?: number,
     public address?: string,
     public phone?: string,
     public status?: number,

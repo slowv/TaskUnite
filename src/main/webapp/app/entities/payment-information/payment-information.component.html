@@ -31,9 +31,9 @@
             <tr *ngFor="let paymentInformation of paymentInformations ;trackBy: trackId">
                 <td><a [routerLink]="['/payment-information', paymentInformation.id, 'view' ]">{{paymentInformation.id}}</a></td>
                 <td>{{paymentInformation.balance}}</td>
-                <td>{{paymentInformation.createdAt | date:'mediumDate'}}</td>
-                <td>{{paymentInformation.updatedAt | date:'mediumDate'}}</td>
-                <td>{{paymentInformation.deletedAt | date:'mediumDate'}}</td>
+                <td>{{paymentInformation.createdAt | date:'medium'}}</td>
+                <td>{{paymentInformation.updatedAt | date:'medium'}}</td>
+                <td>{{paymentInformation.deletedAt | date:'medium'}}</td>
                 <td>
                     {{paymentInformation.userId}}
                 </td>

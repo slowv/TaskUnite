@@ -23,6 +23,12 @@
                         <a [routerLink]="['/tasker', schedule.taskerId, 'view']">{{schedule.taskerId}}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="taskUniteApp.schedule.task">Task</span></dt>
+                <dd>
+                    <div *ngIf="schedule.taskId">
+                        <a [routerLink]="['/task', schedule.taskId, 'view']">{{schedule.taskId}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"
