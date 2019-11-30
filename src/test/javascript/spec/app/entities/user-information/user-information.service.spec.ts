@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new UserInformation(0, 'AAAAAAA', 'AAAAAAA', 0, currentDate, currentDate, currentDate);
+      elemDefault = new UserInformation(0, 0, 'AAAAAAA', 'AAAAAAA', 0, currentDate, currentDate, currentDate);
     });
 
     describe('Service methods', () => {
@@ -77,6 +77,7 @@ describe('Service Tests', () => {
       it('should update a UserInformation', () => {
         const returnedFromService = Object.assign(
           {
+            gender: 1,
             address: 'BBBBBB',
             phone: 'BBBBBB',
             status: 1,
@@ -107,6 +108,7 @@ describe('Service Tests', () => {
       it('should return a list of UserInformation', () => {
         const returnedFromService = Object.assign(
           {
+            gender: 1,
             address: 'BBBBBB',
             phone: 'BBBBBB',
             status: 1,

@@ -2,6 +2,10 @@
     "name": "UserInformation",
     "fields": [
         {
+            "fieldName": "gender",
+            "fieldType": "Integer"
+        },
+        {
             "fieldName": "address",
             "fieldType": "String"
         },

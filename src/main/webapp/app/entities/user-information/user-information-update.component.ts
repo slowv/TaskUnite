@@ -36,6 +36,7 @@ export class UserInformationUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
+    gender: [],
     address: [],
     phone: [],
     status: [],
@@ -78,6 +79,7 @@ export class UserInformationUpdateComponent implements OnInit {
   updateForm(userInformation: IUserInformation) {
     this.editForm.patchValue({
       id: userInformation.id,
+      gender: userInformation.gender,
       address: userInformation.address,
       phone: userInformation.phone,
       status: userInformation.status,
@@ -106,6 +108,7 @@ export class UserInformationUpdateComponent implements OnInit {
     return {
       ...new UserInformation(),
       id: this.editForm.get(['id']).value,
+      gender: this.editForm.get(['gender']).value,
       address: this.editForm.get(['address']).value,
       phone: this.editForm.get(['phone']).value,
       status: this.editForm.get(['status']).value,

@@ -5,20 +5,21 @@
     <!--Style sheet-->
     <th:block th:fragment="head">
         <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/png" th:href="@{~/images/favicon.png}">
-        <link rel="stylesheet" th:href="@{/fonts/icomoon/style.css}">
-        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-        <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
-        <link rel="stylesheet" th:href="@{/css/jquery-ui.css}">
-        <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
-        <link rel="stylesheet" th:href="@{/css/owl.theme.default.min.css}">
-        <link rel="stylesheet" th:href="@{/css/bootstrap-datepicker.css}">
-        <link rel="stylesheet" th:href="@{/css/animate.css}">
-        <link rel="stylesheet" th:href="@{/css/mediaelementplayer.min.css}">
-        <link rel="stylesheet" th:href="@{/fonts/flaticon/font/flaticon.css}">
-        <link rel="stylesheet" th:href="@{/css/aos.css}">
-        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <link rel="stylesheet" th:href="@{~/fonts/icomoon/style.css}">
+        <link rel="stylesheet" th:href="@{~/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{~/css/magnific-popup.css}">
+        <link rel="stylesheet" th:href="@{~/css/jquery-ui.css}">
+        <link rel="stylesheet" th:href="@{~/css/owl.carousel.min.css}">
+        <link rel="stylesheet" th:href="@{~/css/owl.theme.default.min.css}">
+        <link rel="stylesheet" th:href="@{~/css/bootstrap-datepicker.css}">
+        <link rel="stylesheet" th:href="@{~/css/animate.css}">
+        <link rel="stylesheet" th:href="@{~/css/mediaelementplayer.min.css}">
+        <link rel="stylesheet" th:href="@{~/fonts/flaticon/font/flaticon.css}">
+        <link rel="stylesheet" th:href="@{~/css/aos.css}">
+        <link rel="stylesheet" th:href="@{~/css/style.css}">
     </th:block>
 </head>
 <body>
@@ -86,10 +87,10 @@
                                             <!--</ul>-->
                                         <!--</li>-->
                                         <li><a th:href="@{/contact}" th:text="#{home.contact}">Contact</a></li>
-                                        <li sec:authorize="!isAuthenticated()"><a th:href="@{/account/login}" th:text="#{home.sign-in}" >Sign in</a></li>
+                                        <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}" th:text="#{home.sign-in}" >Sign in</a></li>
                                         <!--<li sec:authorize="!isAuthenticated()"><a th:href="@{/account/register}" th:text="#{home.register}" >Register</a></li>-->
                                         <li sec:authorize="!isAuthenticated()">
-                                            <a th:href="@{/account/intro}">
+                                            <a th:href="@{/register}">
                                                 <span class="bg-primary text-white py-3 px-4 rounded">
                                                     <span class="icon-plus mr-2" style="margin-top: -2px;"></span>
                                                     <th:block th:text="#{home.register}">Register </th:block>
@@ -199,29 +200,7 @@
     <script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
     <script th:src="@{/js/bootstrap-datepicker.min.js}"></script>
     <script th:src="@{/js/aos.js}"></script>
-    <script th:src="@{/js/mediaelement-and-player.min.js}"></script>
     <script th:src="@{/js/main.js}"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var mediaElements = document.querySelectorAll('video, audio'), total = mediaElements.length;
-
-            for (var i = 0; i < total; i++) {
-                new MediaElementPlayer(mediaElements[i], {
-                    pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
-                    shimScriptAccess: 'always',
-                    success: function () {
-                        var target = document.body.querySelectorAll('.player'), targetTotal = target.length;
-                        for (var j = 0; j < targetTotal; j++) {
-                            target[j].style.visibility = 'visible';
-                        }
-                    }
-                });
-            }
-        });
-    </script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHAsBwcpdVr3Yrr6N2szcfMK5MYdfi3k0&libraries=places&callback=initAutocomplete"
-        async defer></script>
 </th:block>
 </body>
 </html>

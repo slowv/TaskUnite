@@ -1,0 +1,54 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="quanganh9x (generated)" id="1575109895458-9">
+        <addColumn tableName="user_information">
+            <column name="gender" type="integer"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575109895458-10">
+        <addColumn tableName="schedule">
+            <column name="task_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575109895458-11">
+        <addForeignKeyConstraint baseColumnNames="task_id" baseTableName="schedule" constraintName="FK3bcyktkt076ioqv5vm1vnltxh" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="task" validate="true"/>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575109895458-12">
+        <dropForeignKeyConstraint baseTableName="plan" constraintName="fk_plan_task_id"/>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575109895458-13">
+        <dropTable tableName="plan"/>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575109895458-1">
+        <dropUniqueConstraint constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+        <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575109895458-2">
+        <dropUniqueConstraint constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575109895458-3">
+        <dropUniqueConstraint constraintName="UC_MASTERUSER_ID_COL" tableName="master"/>
+        <addUniqueConstraint columnNames="user_id" constraintName="UC_MASTERUSER_ID_COL" tableName="master"/>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575109895458-4">
+        <dropUniqueConstraint constraintName="UC_PAYMENT_INFORMATIONUSER_ID_COL" tableName="payment_information"/>
+        <addUniqueConstraint columnNames="user_id" constraintName="UC_PAYMENT_INFORMATIONUSER_ID_COL" tableName="payment_information"/>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575109895458-5">
+        <dropUniqueConstraint constraintName="UC_STATISTICUSER_ID_COL" tableName="statistic"/>
+        <addUniqueConstraint columnNames="user_id" constraintName="UC_STATISTICUSER_ID_COL" tableName="statistic"/>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575109895458-6">
+        <dropUniqueConstraint constraintName="UC_TASKERUSER_ID_COL" tableName="tasker"/>
+        <addUniqueConstraint columnNames="user_id" constraintName="UC_TASKERUSER_ID_COL" tableName="tasker"/>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575109895458-7">
+        <dropUniqueConstraint constraintName="UC_TASKROOM_ID_COL" tableName="task"/>
+        <addUniqueConstraint columnNames="room_id" constraintName="UC_TASKROOM_ID_COL" tableName="task"/>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575109895458-8">
+        <dropUniqueConstraint constraintName="UC_USER_INFORMATIONUSER_ID_COL" tableName="user_information"/>
+        <addUniqueConstraint columnNames="user_id" constraintName="UC_USER_INFORMATIONUSER_ID_COL" tableName="user_information"/>
+    </changeSet>
+</databaseChangeLog>

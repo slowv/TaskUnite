@@ -1,7 +1,5 @@
 package com.vbtn.taskunite.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 
@@ -23,6 +21,9 @@ public class UserInformation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "gender")
+    private Integer gender;
+
     @Column(name = "address")
     private String address;
 
@@ -33,11 +34,9 @@ public class UserInformation implements Serializable {
     private Integer status;
 
     @Column(name = "created_at")
-    @CreationTimestamp
     private Instant createdAt;
 
     @Column(name = "updated_at")
-    @UpdateTimestamp
     private Instant updatedAt;
 
     @Column(name = "deleted_at")
@@ -75,6 +74,19 @@ public class UserInformation implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getGender() {
+        return gender;
+    }
+
+    public UserInformation gender(Integer gender) {
+        this.gender = gender;
+        return this;
+    }
+
+    public void setGender(Integer gender) {
+        this.gender = gender;
     }
 
     public String getAddress() {
@@ -303,6 +315,7 @@ public class UserInformation implements Serializable {
     public String toString() {
         return "UserInformation{" +
             "id=" + getId() +
+            ", gender=" + getGender() +
             ", address='" + getAddress() + "'" +
             ", phone='" + getPhone() + "'" +
             ", status=" + getStatus() +

@@ -10,6 +10,8 @@ public class UserInformationDTO implements Serializable {
 
     private Long id;
 
+    private Integer gender;
+
     private String address;
 
     private String phone;
@@ -31,6 +33,14 @@ public class UserInformationDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getGender() {
+        return gender;
+    }
+
+    public void setGender(Integer gender) {
+        this.gender = gender;
     }
 
     public String getAddress() {
@@ -114,6 +124,7 @@ public class UserInformationDTO implements Serializable {
     public String toString() {
         return "UserInformationDTO{" +
             "id=" + getId() +
+            ", gender=" + getGender() +
             ", address='" + getAddress() + "'" +
             ", phone='" + getPhone() + "'" +
             ", status=" + getStatus() +
