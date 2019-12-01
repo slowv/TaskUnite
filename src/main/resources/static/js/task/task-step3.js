@@ -22,10 +22,18 @@ function start() {
 
 function onClick() {
   calendar__container.on('click', '.calendar__day', function () {
+    var day = 0;
+    var month = 0;
+    var hours = 0
     calendar__container.find('.calendar__day--selected').removeClass('calendar__day--selected');
-    var day = $(this).addClass('calendar__day--selected').html();
-    var month = String(new Date().getMonth() + 1).padStart(2, '0');
-    var hours = $('#select-time').val();
+    hours = $('#select-time').val();
+    if($(this).find(".calendar__day--with-month").length == 0){
+      day = $(this).addClass('calendar__day--selected').html();
+      month = String(new Date().getMonth() + 1).padStart(2, '0');
+    } else {
+      day = $(this).find(".calendar__day--with-month div:nth-child(2)").html();
+      month = $(this).find(".calendar__day--with-month div:nth-child(1)").html().replace(/[^0-9]/gi,'');
+    }
     $('.pre-datetime').html(`${day} - T${month}, ${hours}`);
   });
 }
