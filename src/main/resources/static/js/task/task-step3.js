@@ -11,13 +11,6 @@ function init() {
 // Hàm để fixed UI ngay lúc vừa vào page và khởi tạo biến trong này
 function start() {
   calendar__container = $('.calendar__container');
-
-  var today = new Date();
-  var dd = String(today.getDate()).padStart(2, '0');
-  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-  var yyyy = today.getFullYear();
-  today = mm + '-' + dd + '-' + yyyy;
-  $('.calendar__title span').html(today.toString());
 }
 
 function onClick() {
@@ -29,6 +22,18 @@ function onClick() {
     $('.pre-datetime').html(`${day} - T${month}, ${hours}`);
   });
 }
+
+// Truong hop lien quan den date pahi cho vao day.
+$(document).ready(function () {
+  var date = new Date();
+  var endDate = date.getDate() + 4;
+  $('#calendar-value').datepicker({
+    language: 'vi',
+    format: 'yyyy/mm/dd',
+    startDate: date,
+  }).datepicker('setDate', date);
+
+});
 
 
 

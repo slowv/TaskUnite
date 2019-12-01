@@ -2550,6 +2550,54 @@ div.name {
   color: #ffdd00;
 }
 
+
+/* Custom css Datepicker*/
+.datepicker.datepicker-inline {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.datepicker.datepicker-inline .datepicker-days{
+  width: 100%;
+  padding: 0 65px;
+}
+.datepicker.datepicker-inline .datepicker-days > .table-condensed{
+  width: 100%;
+}
+
+.datepicker.datepicker-inline .datepicker-days > .table-condensed thead tr{
+  line-height: 30px;
+}
+
+.datepicker.datepicker-inline .datepicker-days > .table-condensed tbody tr:last-child{
+  border-bottom: 1px solid #dce0e6;
+}
+
+.datepicker.datepicker-inline .datepicker-days > .table-condensed tbody{
+  line-height: 35px;
+}
+.datepicker.datepicker-inline .datepicker-days > .table-condensed tbody td{
+  border: 1px solid #dce0e6;
+  border-right: none;
+  border-bottom: none;
+  height: 45px;
+  width: 45px;
+  font-size: 14px;
+  border-radius: 0px;
+}
+
+.datepicker.datepicker-inline .datepicker-days > .table-condensed tbody td.active{
+  background: #1e7e34;
+  border: 1px solid #1e7e34;
+}
+
+.datepicker.datepicker-inline .datepicker-days > .table-condensed tbody td:last-child{
+  border-right: 1px solid #dce0e6;
+}
+
+
+
+
 /*.btn-task-done {*/
 /*  position: relative;*/
 /*  background: transparent;*/
