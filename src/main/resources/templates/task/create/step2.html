@@ -208,10 +208,14 @@
                                    tabindex="0" role="button">
                                     <span th:text="#{task-create.step2.view-profile-reviews}"></span>
                                 </a>
-                                <a class="recommendations__hire-btn btn btn-primary btn-block "
-                                   th:href="@{/task/create/step3}">
-                                    <span th:text="#{task-create.step2.select-continue-btn}"></span>
-                                </a>
+                                <form th:action="@{/task/create/step2}" th:object="${taskInfo}" method="post">
+                                     <!--Temporary set tasker ID = 1 -->
+                                    <input type="hidden" id="tasker" name="tasker" th:value="1">
+                                    <button type="submit" class="recommendations__hire-btn btn btn-primary btn-block">
+                                        <span th:text="#{task-create.step2.select-continue-btn}"></span>
+                                    </button>
+                                </form>
+
                                 <div class="u-hidden--sm">
                                     <span class="whisper">
                                         <span th:text="#{task-create.step2.notification-3}"></span>
