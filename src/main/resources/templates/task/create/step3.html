@@ -8,6 +8,70 @@
 <body style="overflow: hidden">
 
 <div class="site-wrap">
+    <div class="mt-4 mb-3">
+        <div class="container">
+            <div class="row border-bottom pb-3">
+                <div class="col-md-1 box-logo-step col-xs-12">
+                    <a th:href="@{/}">
+                        <img alt="TaskUnite" class="logo-step" th:src="@{~/images/favicon.png}">
+                    </a>
+                </div>
+                <div class="col-md-9 offset-md-2">
+                    <div class="box-step ">
+                        <div class="step active st1">
+                            <a th:href="@{/task/create/step1(action='backStep1')}">
+                                <div class="box-circle">
+                                    <div class="circle"><i class="icon-done"></i></div>
+                                </div>
+                            </a>
+                            <div class="box-line">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step" th:text="#{task-create.step1.task-infor}"></div>
+                        </div>
+                        <div class="step active st2">
+                            <a th:href="@{/task/create/step1(action='backStep2')}">
+                                <div class="box-circle">
+                                    <div class="circle">2</div>
+                                </div>
+                            </a>
+                            <div class="box-line ">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step" th:text="#{task-create.step2.task-prices}"></div>
+                        </div>
+                        <div class="step active st3">
+                            <div class="box-circle">
+                                <div class="circle">3</div>
+                            </div>
+                            <div class="box-line">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step" th:text="#{task-create.step3.choose-date-time}"></div>
+                        </div>
+                        <div class="step st4">
+                            <div class="box-circle">
+                                <div class="circle">4</div>
+                            </div>
+                            <div class="name-step" th:text="#{task-create.step4.confirm-details}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 p-0 mt-1">
+                    <div class="build-progress__sub-bar">
+                        <div class="build-progress__sub-bar__container">
+                            <img alt="form" class="build-progress__sub-bar__icon" th:src="@{~/images/user-plus.svg}">
+                            <div class="build-progress__sub-bar__message">
+                                <span th:text="#{task-create.step2.notification-1}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 bg-dark-light step-3-responsive">
