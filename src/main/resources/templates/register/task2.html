@@ -30,24 +30,22 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header" style="text-align: center">
-                            <h5>Register to become a Tasker</h5>
+                            <h5 th:text="#{register-task.h5-register}"></h5>
                         </div>
                         <div class="card-body">
                             <div class="card addSkill">
                                 <div class="card-header">
-                                    Add Your Skills & Rates
+                                    Thêm kỹ năng và Giá
                                 </div>
                                 <div class="card-body">
                                     <div>
-                                        <p>Select your tasking categories and set your hourly rates. You can add or
-                                            remove
-                                            categories from your profile, or revise your rates, at any time. You must
-                                            select
-                                            one category to continue.</p>
+                                        <p>Chọn danh mục nhiệm vụ của bạn và đặt mức giá hàng giờ của bạn. Bạn có thể
+                                            thêm hoặc xóa các danh mục khỏi hồ sơ của bạn hoặc sửa đổi giá của bạn bất
+                                            cứ lúc nào. Bạn phải chọn một danh mục để tiếp tục.</p>
                                         <div>
                                             <button class="btn" id="btnContinue"
                                                     style="font-weight: bold; background-color: #28a745; border-style: none;border-radius: 3px;color: white">
-                                                Continue
+                                                Tiếp Tục
                                             </button>
                                         </div>
 
@@ -55,7 +53,8 @@
                                             <p style="font-weight: bold" data-toggle="collapse" href="#collapseExample1"
                                                role="button" aria-expanded="false" aria-controls="collapseExample"><b
                                                 th:text="#{register-task.cleaning}"></b>
-                                                <small style="color: dodgerblue"><i class="icon-star"></i> Popular Skill
+                                                <small style="color: dodgerblue"><i class="icon-star"></i> Kỹ năng phổ
+                                                    biến
                                                 </small>
                                             </p>
                                             <p th:text="#{register-task.description-clean}"></p>
@@ -176,23 +175,24 @@
                                             <p style="font-weight: bold" data-toggle="collapse"
                                                href="#collapseDecoration"
                                                role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                <b>Decoration</b>
-                                                <small style="color: dodgerblue"><i class="icon-star"></i> Popular Skill
+                                                <b>Trang Trí</b>
+                                                <small style="color: dodgerblue"><i class="icon-star"></i> Kỹ năng phổ
+                                                    biến
                                                 </small>
                                             </p>
-                                            <p>Home decoration, setting up parties, and more.</p>
+                                            <p>Trang trí nhà cửa, trang trí các bữa tiệc, và nhiều hơn nữa</p>
                                             <div class="collapse" id="collapseDecoration">
                                                 <div class="card card-body">
-                                                    <h5>Scope of Task</h5>
+                                                    <h5>Phạm vi nhiệm vụ</h5>
                                                     <div>
                                                         <ul>
-                                                            <li>Decorating homes.
+                                                            <li>Trang trí nhà cửa.
                                                             </li>
-                                                            <li>Setting up parties.
+                                                            <li>Trang trí các bữa tiệc.
                                                             </li>
-                                                            <li>Setting up/taking down holiday decorations.</li>
-                                                            <li>Hanging frames.</li>
-                                                            <li>Light interior design.</li>
+                                                            <li>Thiết lập / lấy xuống trang trí kỳ nghỉ.</li>
+                                                            <li>Khung treo.</li>
+                                                            <li>Thiết kế nội thất nhẹ nhàng.</li>
 
                                                         </ul>
                                                         <div class="form-group form-check">
@@ -201,22 +201,22 @@
                                                                    href="#checkDecoration2"
                                                                    role="button" aria-expanded="false"
                                                                    aria-controls="collapseExample">
-                                                            <label class="form-check-label" for="checkDecoration1">I
-                                                                have
-                                                                the skills and qualifications to task in this
-                                                                category.</label>
+                                                            <label class="form-check-label" for="checkDecoration1">Tôi
+                                                                có các kỹ năng và trình độ để thực hiện nhiệm vụ trong
+                                                                thể loại này.</label>
                                                         </div>
                                                         <div class="collapse" id="checkDecoration2">
-                                                            <h5>Your Tasker Rate</h5>
+                                                            <h5>Giá công việc</h5>
                                                             <form>
                                                                 <div class="form-inline">
                                                                     <div class="form-group mx-sm-3 mb-2">
                                                                         <b>$&nbsp; </b>&nbsp;<input type="text"
                                                                                                     style="border-radius: 10px"
-                                                                                                    placeholder="enter number amount..">
+                                                                                                    placeholder="nhập giá">
                                                                     </div>
                                                                     <div class="form-group mx-sm-3 mb-2">
-                                                                        <h6>Most Taskers with your experience hired at:
+                                                                        <h6>Hầu hết các nhân viên với kinh nghiệm của
+                                                                            bạn được thuê:
                                                                             17$</h6>
                                                                     </div>
                                                                 </div>
@@ -230,28 +230,29 @@
                                                                     </div>
                                                                 </div>
                                                                 <div>
-                                                                    <h5>Level of experience</h5>
+                                                                    <h5>Kinh nghiệm của bạn</h5>
                                                                     <select class="form-control form-control-sm">
                                                                         <option></option>
-                                                                        <option>No experience, but I am willing to learn
+                                                                        <option>Chưa có kinh nghiệm, nhưng tôi sẵn sàng
+                                                                            học hỏi
                                                                         </option>
-                                                                        <option>Some experience. I have done it for
-                                                                            myself
-                                                                            around the home
+                                                                        <option>Một số kinh nghiệm. Tôi đã làm điều đó
+                                                                            cho bản thân mình xung quanh nhà
                                                                         </option>
-                                                                        <option>I have had part-time experience</option>
-                                                                        <option>I have had professional experience
+                                                                        <option>Tôi đã có kinh nghiệm bán thời gian
                                                                         </option>
-                                                                        <option>I am professionally certified in this
-                                                                            skill
+                                                                        <option>Tôi đã có kinh nghiệm chuyên môn
+                                                                        </option>
+                                                                        <option>Tôi được chứng nhận chuyên nghiệp trong
+                                                                            kỹ năng này
                                                                         </option>
 
                                                                     </select>
                                                                 </div>
                                                                 <div class="mt-2">
                                                                     <input type="submit" class="btn btn-success"
-                                                                           value="Save">
-                                                                    <input type="reset" class="btn" value="Cancle">
+                                                                           value="Lưu">
+                                                                    <input type="reset" class="btn" value="Huỷ">
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -262,15 +263,15 @@
                                         <div class="my-3">
                                             <p style="font-weight: bold" data-toggle="collapse" href="#collapseErrands"
                                                role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                <b>Errands</b>
-                                                <small style="color: dodgerblue"><i class="icon-star"></i> Popular Skill
+                                                <b>Việc vặt</b>
+                                                <small style="color: dodgerblue"><i class="icon-star"></i> Kỹ năng phổ
+                                                    biến
                                                 </small>
                                             </p>
-                                            <p>Running errands, and helping with various day-to-day
-                                                responsibilities.</p>
+                                            <p>Chạy việc vặt, và giúp đỡ với nhiều trách nhiệm hàng ngày.</p>
                                             <div class="collapse" id="collapseErrands">
                                                 <div class="card card-body">
-                                                    <h5>Scope of Task</h5>
+                                                    <h5>Phạm vi nhiệm vụ</h5>
                                                     <div>
                                                         <ul>
                                                             <li>Decorating homes.
@@ -349,55 +350,55 @@
                                             <p style="font-weight: bold" data-toggle="collapse"
                                                href="#collapseFurniture"
                                                role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                <b>Furniture Assembly</b>
-                                                <small style="color: dodgerblue"><i class="icon-star"></i> Popular Skill
+                                                <b>Nội thất</b>
+                                                <small style="color: dodgerblue"><i class="icon-star"></i> Kỹ năng phổ
+                                                    biến
                                                 </small>
                                             </p>
-                                            <p>Putting together furniture from IKEA and other furniture stores.</p>
+                                            <p>Kết hợp đồ nội thất từ ​​IKEA và các cửa hàng đồ nội thất khác.</p>
                                             <div class="collapse" id="collapseFurniture">
                                                 <div class="card card-body">
-                                                    <h5>Scope of Task</h5>
+                                                    <h5>Phạm vi nhiệm vụ</h5>
                                                     <div>
                                                         <ul>
-                                                            <li>Reading assembly instructions.
+                                                            <li>Đọc hướng dẫn lắp ráp.
                                                             </li>
-                                                            <li>Assembling furniture.
+                                                            <li>Lắp ráp đồ nội thất.
                                                             </li>
-                                                            <li>Carrying furniture up or down stairs.</li>
-                                                            <li>Arranging furniture in the Client's home, and securing
-                                                                it to
-                                                                the wall if so indicated in assembly instructions.
+                                                            <li>Mang đồ đạc lên hoặc xuống cầu thang.</li>
+                                                            <li>Sắp xếp đồ đạc trong nhà của Khách hàng và bảo vệ nó vào
+                                                                tường nếu được chỉ định trong hướng dẫn lắp ráp.
                                                             </li>
-                                                            <li>Removing recycling and garbage, such as empty boxes.
+                                                            <li>Loại bỏ tái chế và rác, chẳng hạn như hộp trống.
                                                             </li>
                                                         </ul>
-                                                        <p>It can help to get the brand and item number from your Client
-                                                            upfront so you can scope what tools are needed. Before
-                                                            arriving,
-                                                            be sure you have the right tools, and check whether the
-                                                            Client
-                                                            needs special supplies.</p>
+                                                        <p>Nó có thể giúp lấy thương hiệu và số mặt hàng từ phía trước
+                                                            của Khách hàng để bạn có thể xác định những công cụ nào cần
+                                                            thiết. Trước khi đến, hãy chắc chắn rằng bạn có các công cụ
+                                                            phù hợp và kiểm tra xem Khách hàng có cần nguồn cung cấp đặc
+                                                            biệt hay không.</p>
                                                         <div class="form-group form-check">
                                                             <input type="checkbox" class="form-check-input"
                                                                    id="checkFurniture1" data-toggle="collapse"
                                                                    href="#checkFurniture2"
                                                                    role="button" aria-expanded="false"
                                                                    aria-controls="collapseExample">
-                                                            <label class="form-check-label" for="checkFurniture1">I have
-                                                                the skills and qualifications to task in this
-                                                                category.</label>
+                                                            <label class="form-check-label" for="checkFurniture1">Tôi có
+                                                                các kỹ năng và trình độ để thực hiện nhiệm vụ trong thể
+                                                                loại này.</label>
                                                         </div>
                                                         <div class="collapse" id="checkFurniture2">
-                                                            <h5>Your Tasker Rate</h5>
+                                                            <h5>Giá của bạn</h5>
                                                             <form>
                                                                 <div class="form-inline">
                                                                     <div class="form-group mx-sm-3 mb-2">
                                                                         <b>$&nbsp; </b>&nbsp;<input type="text"
                                                                                                     style="border-radius: 10px"
-                                                                                                    placeholder="enter number amount..">
+                                                                                                    placeholder="nhập giá..">
                                                                     </div>
                                                                     <div class="form-group mx-sm-3 mb-2">
-                                                                        <h6>Most Taskers with your experience hired at:
+                                                                        <h6>Hầu hết các nhân viên với kinh nghiệm của
+                                                                            bạn được thuê tại:
                                                                             17$</h6>
                                                                     </div>
                                                                 </div>
@@ -410,20 +411,21 @@
                                                                     </div>
                                                                 </div>
                                                                 <div>
-                                                                    <h5>Level of experience</h5>
+                                                                    <h5>Cấp độ kinh nghiệm</h5>
                                                                     <select class="form-control form-control-sm">
                                                                         <option></option>
-                                                                        <option>No experience, but I am willing to learn
+                                                                        <option>Chưa có kinh nghiệm, nhưng tôi sẵn sàng
+                                                                            học hỏi
                                                                         </option>
-                                                                        <option>Some experience. I have done it for
-                                                                            myself
-                                                                            around the home
+                                                                        <option>Một số kinh nghiệm. Tôi đã làm điều đó
+                                                                            cho bản thân mình xung quanh nhà
                                                                         </option>
-                                                                        <option>I have had part-time experience</option>
-                                                                        <option>I have had professional experience
+                                                                        <option>Tôi đã có kinh nghiệm bán thời gian
                                                                         </option>
-                                                                        <option>I am professionally certified in this
-                                                                            skill
+                                                                        <option>Tôi đã có kinh nghiệm chuyên môn
+                                                                        </option>
+                                                                        <option>Tôi được chứng nhận chuyên nghiệp trong
+                                                                            kỹ năng này.
                                                                         </option>
 
                                                                     </select>
@@ -443,52 +445,49 @@
                                             <p style="font-weight: bold" data-toggle="collapse"
                                                href="#collapseHelpMoving"
                                                role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                <b>Help Moving</b>
-                                                <small style="color: dodgerblue"><i class="icon-star"></i> Popular Skill
+                                                <b>Giúp di chuyển</b>
+                                                <small style="color: dodgerblue"><i class="icon-star"></i> Kỹ năng phổ
+                                                    biến
                                                 </small>
                                             </p>
                                             <p>Packing or un-packing boxes, or moving boxes and furniture.</p>
                                             <div class="collapse" id="collapseHelpMoving">
                                                 <div class="card card-body">
-                                                    <h5>Scope of Task</h5>
+                                                    <h5>Phạm vi công việc</h5>
                                                     <div>
                                                         <ul>
-                                                            <li> Moving boxes and furniture into and out of homes.
+                                                            <li> Di chuyển hộp và đồ nội thất vào và ra khỏi nhà.
                                                             </li>
-                                                            <li>Carrying boxes and furniture up and down stairs.
+                                                            <li>Mang hộp và đồ đạc lên xuống cầu thang.
                                                             </li>
-                                                            <li> Helping with packing or unpacking items.</li>
+                                                            <li> Giúp đóng gói hoặc gỡ các mặt hàng.</li>
                                                         </ul>
-                                                        <p>It can help to ask the Client in advance if there will be
-                                                            stairs,
-                                                            an elevator, or a loading dock, and to inquire about
-                                                            stairwell
-                                                            and doorway width. Make sure to check with Clients if they
-                                                            need
-                                                            supplies such as packing tape, boxes, moving blankets, or a
-                                                            rented hauling vehicle.</p>
+                                                        <p>Có thể giúp hỏi Khách hàng trước nếu có cầu thang, thang máy
+                                                            hoặc bến tàu tải và hỏi về chiều rộng cầu thang và cửa. Đảm
+                                                            bảo kiểm tra với Khách hàng nếu họ cần các vật tư như băng
+                                                            keo đóng gói, hộp, chăn di chuyển hoặc xe chở hàng thuê.</p>
                                                         <div class="form-group form-check">
                                                             <input type="checkbox" class="form-check-input"
                                                                    id="checkHelpMoving1" data-toggle="collapse"
                                                                    href="#checkHelpMoving2"
                                                                    role="button" aria-expanded="false"
                                                                    aria-controls="collapseExample">
-                                                            <label class="form-check-label" for="checkHelpMoving1">I
-                                                                have
-                                                                the skills and qualifications to task in this
-                                                                category.</label>
+                                                            <label class="form-check-label" for="checkHelpMoving1">Tôi
+                                                                có các kỹ năng và trình độ để thực hiện nhiệm vụ trong
+                                                                thể loại này.</label>
                                                         </div>
                                                         <div class="collapse" id="checkHelpMoving2">
-                                                            <h5>Your Tasker Rate</h5>
+                                                            <h5>Giá của bạn</h5>
                                                             <form>
                                                                 <div class="form-inline">
                                                                     <div class="form-group mx-sm-3 mb-2">
                                                                         <b>$&nbsp; </b>&nbsp;<input type="text"
                                                                                                     style="border-radius: 10px"
-                                                                                                    placeholder="enter number amount..">
+                                                                                                    placeholder="nhập giá..">
                                                                     </div>
                                                                     <div class="form-group mx-sm-3 mb-2">
-                                                                        <h6>Most Taskers with your experience hired at:
+                                                                        <h6>Hầu hết các nhân viên với kinh nghiệm của
+                                                                            bạn được thuê tại:
                                                                             17$</h6>
                                                                     </div>
                                                                 </div>
@@ -501,20 +500,21 @@
                                                                     </div>
                                                                 </div>
                                                                 <div>
-                                                                    <h5>Level of experience</h5>
+                                                                    <h5>Cấp độ kinh nghiệm</h5>
                                                                     <select class="form-control form-control-sm">
                                                                         <option></option>
-                                                                        <option>No experience, but I am willing to learn
+                                                                        <option>Chưa có kinh nghiệm, nhưng tôi sẵn sàng
+                                                                            học hỏi
                                                                         </option>
-                                                                        <option>Some experience. I have done it for
-                                                                            myself
-                                                                            around the home
+                                                                        <option>Một số kinh nghiệm. Tôi đã làm điều đó
+                                                                            cho bản thân mình xung quanh nhà
                                                                         </option>
-                                                                        <option>I have had part-time experience</option>
-                                                                        <option>I have had professional experience
+                                                                        <option>Tôi đã có kinh nghiệm bán thời gian
                                                                         </option>
-                                                                        <option>I am professionally certified in this
-                                                                            skill
+                                                                        <option>Tôi đã có kinh nghiệm chuyên môn
+                                                                        </option>
+                                                                        <option>Tôi được chứng nhận chuyên nghiệp trong
+                                                                            kỹ năng này
                                                                         </option>
 
                                                                     </select>
@@ -534,46 +534,45 @@
                                             <p style="font-weight: bold" data-toggle="collapse"
                                                href="#collapseElectrician"
                                                role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                <b>Electrician</b>
-                                                <small style="color: dodgerblue"><i class="icon-star"></i> Popular Skill
+                                                <b>Thợ Điện</b>
+                                                <small style="color: dodgerblue"><i class="icon-star"></i> Kỹ năng phổ
+                                                    biến
                                                 </small>
                                             </p>
-                                            <p>Installing, maintaining, or repairing electrical fixtures.</p>
+                                            <p>Lắp đặt, bảo trì hoặc sửa chữa đồ đạc điện.</p>
                                             <div class="collapse" id="collapseElectrician">
                                                 <div class="card card-body">
-                                                    <h5>Scope of Task</h5>
+                                                    <h5>Công việc</h5>
                                                     <div>
 
-                                                        <p>Before arriving, scope out the work with your Client to be
-                                                            sure
-                                                            you have the right tools and expertise. Advise your Client
-                                                            that
-                                                            you are not a professional, but you have some experience in
-                                                            the
-                                                            field. If you have any electrical certifications, be sure to
-                                                            include that information in your Quick Pitch.</p>
+                                                        <p>Trước khi đến, hãy vạch ra công việc với Khách hàng của bạn
+                                                            để đảm bảo bạn có các công cụ và chuyên môn phù hợp. Tư vấn
+                                                            cho Khách hàng của bạn rằng bạn không phải là một chuyên
+                                                            gia, nhưng bạn có một số kinh nghiệm trong lĩnh vực này. Nếu
+                                                            bạn có bất kỳ chứng chỉ điện nào, hãy chắc chắn đưa thông
+                                                            tin đó vào Sân nhanh của bạn.</p>
                                                         <div class="form-group form-check">
                                                             <input type="checkbox" class="form-check-input"
                                                                    id="checkElectrician1" data-toggle="collapse"
                                                                    href="#checkHelpMoving2"
                                                                    role="button" aria-expanded="false"
                                                                    aria-controls="collapseExample">
-                                                            <label class="form-check-label" for="checkElectrician1">I
-                                                                have
-                                                                the skills and qualifications to task in this
-                                                                category.</label>
+                                                            <label class="form-check-label" for="checkElectrician1">Tôi
+                                                                có các kỹ năng và trình độ để thực hiện nhiệm vụ trong
+                                                                thể loại này.</label>
                                                         </div>
                                                         <div class="collapse" id="checkElectrician2">
-                                                            <h5>Your Tasker Rate</h5>
+                                                            <h5>Giá của bạn</h5>
                                                             <form>
                                                                 <div class="form-inline">
                                                                     <div class="form-group mx-sm-3 mb-2">
                                                                         <b>$&nbsp; </b>&nbsp;<input type="text"
                                                                                                     style="border-radius: 10px"
-                                                                                                    placeholder="enter number amount..">
+                                                                                                    placeholder="nhập giá..">
                                                                     </div>
                                                                     <div class="form-group mx-sm-3 mb-2">
-                                                                        <h6>Most Taskers with your experience hired at:
+                                                                        <h6>Hầu hết các nhân viên với kinh nghiệm của
+                                                                            bạn được thuê:
                                                                             17$</h6>
                                                                     </div>
                                                                 </div>
@@ -586,20 +585,21 @@
                                                                     </div>
                                                                 </div>
                                                                 <div>
-                                                                    <h5>Level of experience</h5>
+                                                                    <h5>Cấp độ kinh nghiệm</h5>
                                                                     <select class="form-control form-control-sm">
                                                                         <option></option>
-                                                                        <option>No experience, but I am willing to learn
+                                                                        <option>Chưa có kinh nghiệm, nhưng tôi sẵn sàng
+                                                                            học hỏi
                                                                         </option>
-                                                                        <option>Some experience. I have done it for
-                                                                            myself
-                                                                            around the home
+                                                                        <option>Một số kinh nghiệm. Tôi đã làm điều đó
+                                                                            cho bản thân mình xung quanh nhà
                                                                         </option>
-                                                                        <option>I have had part-time experience</option>
-                                                                        <option>I have had professional experience
+                                                                        <option>Tôi đã có kinh nghiệm bán thời gian
                                                                         </option>
-                                                                        <option>I am professionally certified in this
-                                                                            skill
+                                                                        <option>Tôi đã có kinh nghiệm chuyên môn
+                                                                        </option>
+                                                                        <option>Tôi được chứng nhận chuyên nghiệp trong
+                                                                            kỹ năng này
                                                                         </option>
 
                                                                     </select>
@@ -803,31 +803,26 @@
                                     Background Checks on the Platform, Page 1 of 2
                                 </div>
                                 <div class="card-body ">
-                                    <p style="text-align: center">DISCLOSURE REGARDING BACKGROUND INVESTIGATION</p>
-                                    <p>TaskRabbit (“the Company”) may obtain information about you from a third party
-                                        consumer reporting agency in connection with your potential engagement as an
-                                        Independent Contractor. Thus, you may be the subject of a “consumer report”
-                                        which may include information about your character, general reputation, personal
-                                        characteristics, and/or mode of living. These reports may contain information
-                                        regarding your criminal history, social security verification, motor vehicle
-                                        records (“driving records”), verification of your education or employment
-                                        history, or other background checks. You have the right, upon written request
-                                        made within a reasonable time, to request whether a consumer report has been run
-                                        about you and to request a copy of your report. These searches will be conducted
-                                        by Sterling Infosystems, Inc. at 6111 Oak Tree Boulevard, Independence, OH 44131
-                                        / Telephone: (800) 853-3228. www.sterlingtalentsolutions.com. The scope of this
-                                        disclosure is all-encompassing, however, allowing the Company to obtain from any
-                                        outside organization all manner of consumer reports throughout the course of
-                                        your engagement to the extent permitted by law.</p>
+                                    <p style="text-align: center">TIẾT LỘ ĐĂNG KÝ ĐẦU TƯ NỀN TẢNG</p>
+                                    <p>TaskUnites (“the Company”) có thể có được thông tin về bạn từ một cơ quan báo cáo
+                                        người tiêu dùng bên thứ ba liên quan đến sự tham gia tiềm năng của bạn với tư
+                                        cách là Nhà thầu độc lập. Do đó, bạn có thể là đối tượng của một báo cáo người
+                                        tiêu dùng, có thể bao gồm thông tin về tính cách, danh tiếng chung, đặc điểm cá
+                                        nhân và / hoặc chế độ sinh hoạt của bạn. Các báo cáo này có thể chứa thông tin
+                                        liên quan đến lịch sử tội phạm của bạn, xác minh an sinh xã hội, hồ sơ xe cơ
+                                        giới (hồ sơ lái xe của Cameron), xác minh lịch sử giáo dục hoặc việc làm của bạn
+                                        hoặc kiểm tra lý lịch khác. Bạn có quyền, theo yêu cầu bằng văn bản được đưa ra
+                                        trong một thời gian hợp lý, để yêu cầu xem một báo cáo người tiêu dùng đã được
+                                        chạy về bạn hay chưa và yêu cầu một bản sao báo cáo của bạn.
+                                    </p>
 
                                     <div>
-                                        <input type="text" class="form-group mr-1"><label> Signature (Please enter
-                                        your
-                                        full name)</label>
+                                        <input type="text" class="form-group mr-1"><label> Chữ ký (Vui lòng nhập tên đầy
+                                        đủ của bạn)</label>
                                     </div>
                                     <button class="btn float-right" id="signature1"
                                             style="font-weight: bold; background-color: #28a745; border-style: none;border-radius: 3px;color: white">
-                                        Continue
+                                        Tiếp tục
                                     </button>
                                 </div>
                             </div>

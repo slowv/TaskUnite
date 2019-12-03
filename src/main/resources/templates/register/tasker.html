@@ -29,7 +29,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header" style="text-align: center">
-                            <h5>Register to become a Tasker</h5>
+                            <h5 th:text="#{register-task.h5-register}"></h5>
                         </div>
                         <div class="card-body">
                             <form th:action="@{/step2/register-task}" method="GET">
@@ -40,115 +40,113 @@
                                         <input type="file" class="form-control-file" value="add photo">
                                     </div>
                                     <div class="col-lg-9" style="line-height: 2px; margin-top: auto">
-                                        <p>Upload a clear, professional photo of only yourself to increase your
+                                        <p th:text="#{register-task.upload-avatar}">
                                         </p>
-                                        <p>likelihood of being hired.</p>
                                     </div>
                                 </div>
                                 <div class="row my-2">
                                     <div class="col-lg-3">
-                                        What metro would you like to work in?*
+                                        <p th:text="#{register-task.what-work}"></p>
                                         <select class="custom-select">
                                             <option selected></option>
-                                            <option value="1">Hoan Kiem</option>
-                                            <option value="2">Hai Ba Trung</option>
-                                            <option value="3">Ba Dinh</option>
-                                            <option value="4">Dong Da</option>
-                                            <option value="5">Cau Giay</option>
-                                            <option value="6">Thanh Xuan</option>
+                                            <option value="1">Hoàn kiếm</option>
+                                            <option value="2">Hai Bà Trưng</option>
+                                            <option value="3">Ba Đình</option>
+                                            <option value="4">Đống Đa</option>
+                                            <option value="5">Cầu Giấy</option>
+                                            <option value="6">Thanh Xuân</option>
                                             <option value="7">Bac Tu Liem</option>
-                                            <option value="8">Nam Tu Liem</option>
-                                            <option value="9">Ha Dong</option>
+                                            <option value="8">Bắc Từ Liêm</option>
+                                            <option value="9">Nam Từ Liêm</option>
+                                            <option value="9">Hà Đông</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3">
-                                        Home Address
+                                        Địa chỉ nhà
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Street Address</label>
+                                    <label class="col-sm-3 col-form-label">Đường Phố</label>
                                     <div class="col-sm-5">
                                         <input type="text" class="form-control"
                                                placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Apt/Unit Number</label>
+                                    <label class="col-sm-3 col-form-label">Số nhà</label>
                                     <div class="col-sm-5">
                                         <input type="text" class="form-control"
                                                placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Town/City</label>
+                                    <label class="col-sm-3 col-form-label">Thị Trấn / Thành Phố</label>
                                     <div class="col-sm-5">
                                         <input type="text" class="form-control"
                                                placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">State*</label>
-                                    <div class="col-sm-5">
-                                        <select class="custom-select">
-                                            <option></option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Zip Code</label>
+                                    <label class="col-sm-3 col-form-label">Mã Bưu Chính</label>
                                     <div class="col-sm-5">
                                         <input type="text" class="form-control"
                                                placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Birthdate</label>
+                                    <label class="col-sm-3 col-form-label">Ngày/tháng/năm sinh</label>
                                     <div class="col-sm-5">
                                         <input type="text" class="form-control"
                                                placeholder="">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Phone Type*</label>
-                                    <div class="col-sm-5">
-                                        <select class="custom-select">
-                                            <option value="iphone">Iphone</option>
-                                            <option value="android">Android</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <p>Do you have access to a vehicle that do you can reliably use for task</p>
+<!--                                <div class="form-group row">-->
+<!--                                    <label class="col-sm-3 col-form-label">Phone Type*</label>-->
+<!--                                    <div class="col-sm-5">-->
+<!--                                        <select class="custom-select">-->
+<!--                                            <option value="iphone">Iphone</option>-->
+<!--                                            <option value="android">Android</option>-->
+<!--                                        </select>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                                <p>Bạn có quyền truy cập vào một chiếc xe mà bạn có thể sử dụng đáng tin cậy cho nhiệm vụ</p>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="">
                                     <label class="form-check-label">
-                                        Motorcycle
+                                        Xe máy
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="">
                                     <label class="form-check-label">
-                                        Motorcycle
+                                        Xe đạp
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="">
                                     <label class="form-check-label">
-                                        Car
+                                        Ô tô
                                     </label>
                                 </div>
-                                <p>How did you hear about TaskUnite?</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">
+                                        Ô tô tải nhỏ
+                                    </label>
+                                </div>
+                                <p>Bạn biết đến TasUnite qua đâu?</p>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio">
                                     <label class="form-check-label">
-                                        Referred by a friend(word of mouth)
+                                        Được bạn bè giới thiệu
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio">
                                     <label class="form-check-label">
-                                        Web Search
+                                        Tìm kiếm trên web
                                     </label>
                                 </div>
                                 <div class="form-check">
@@ -160,30 +158,19 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio">
                                     <label class="form-check-label">
-                                        Digital Ad
+                                        Qua quảng cáo
                                     </label>
                                 </div>
+
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio">
                                     <label class="form-check-label">
-                                        Social Media
+                                        Khác
                                     </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio">
-                                    <label class="form-check-label">
-                                        Social Media
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio">
-                                    <label class="form-check-label">
-                                        Other
-                                    </label>
-                                    <input type="text" placeholder="Describe here"/>
+                                    <input type="text" placeholder="Mô tả ở đây"/>
                                 </div>
                                 <input type="submit" style="padding-left:10px;border-style: none;float: right;border-radius: 5px; background-color: #28a745;
-                                 width: 100px;height: 40px;color: white;" value="Continue">
+                                 width: 100px;height: 40px;color: white;" value="Tiếp tục">
                             </form>
                         </div>
                     </div>
