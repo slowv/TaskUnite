@@ -1,5 +1,7 @@
 package com.vbtn.taskunite.service.api.task;
 
+import com.vbtn.taskunite.domain.Room;
+import com.vbtn.taskunite.domain.Task;
 import com.vbtn.taskunite.repository.custom.CustomTaskRepository;
 import com.vbtn.taskunite.service.dto.TaskDTO;
 import com.vbtn.taskunite.service.mapper.TaskMapper;
@@ -30,5 +32,11 @@ public class CustomTaskService {
         log.debug("Request to get all Task");
         return customTaskRepository.findAll(pageable)
             .map(taskMapper::toDto);
+    }
+
+    public Task save(Task task) {
+        task.setRoom(new Room());
+        task = customTaskRepository.save(task);
+        return task;
     }
 }

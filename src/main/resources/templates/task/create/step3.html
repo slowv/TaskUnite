@@ -17,7 +17,7 @@
                             <span class="icon-close2 close"></span>
                         </a>
                         <div class="f-w-300 text-center my-2 t-25" th:text="#{task-create.step3.choose-task-date-and-start-time}"></div>
-                        <div class="row mt-2">
+                            <div class="row mt-2">
                             <div class="col-lg-7 p-0">
                                 <div class="recommendations__tasker_schedule_modal_tasker">
                                     <img th:src="@{~/images/person_1.jpg}"
@@ -30,7 +30,7 @@
                                     </div>
 
                                     <div class="exterior__bottom--lg recommendations__tasker_schedule_modal--select">
-                                        <select style="width: 100%;" id="select-time">
+                                        <select name="selected-time" style="width: 100%;" id="selected-time">
                                             <option value="8:30">8:30</option>
                                             <option value="9:00">9:00</option>
                                             <option value="9:30">9:30</option>
@@ -60,11 +60,10 @@
                                         22 - T11, 8:30
                                     </div>
                                     <div>
-                                        <form th:action="@{/task/create/step4}" method="post">
-                                            <input type="hidden" id="selected-date">
+                                        <form th:action="@{/task/create/step3}" method="post">
+                                            <input type="hidden" id="selected-date" name="selected-date">
                                             <button type="submit" class="btn btn-primary w-100 my-3 py-2" th:text="#{task-create.step2.select-continue-btn}"></button>
                                         </form>
-
                                     </div>
                                 </div>
                                 <div class="recommendations__tasker_schedule_modal_next_step">

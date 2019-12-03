@@ -1,5 +1,6 @@
 package com.vbtn.taskunite.service.api.task;
 
+import com.vbtn.taskunite.domain.Tasker;
 import com.vbtn.taskunite.repository.custom.CustomTaskerRepository;
 import com.vbtn.taskunite.service.dto.TaskerDTO;
 import com.vbtn.taskunite.service.mapper.TaskerMapper;
@@ -35,9 +36,8 @@ public class CustomTaskerService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<TaskerDTO> findOne(Long id) {
+    public Optional<Tasker> findOne(Long id) {
         log.debug("Request to get Tasker : {}", id);
-        return customTaskerRepository.findOneWithEagerRelationships(id)
-            .map(taskerMapper::toDto);
+        return customTaskerRepository.findOneWithEagerRelationships(id);
     }
 }
