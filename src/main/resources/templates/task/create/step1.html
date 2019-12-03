@@ -3,6 +3,7 @@
 <head>
     <title>Create Task</title>
     <th:block th:include="fragment/layout :: head"> </th:block>
+    <link rel="stylesheet" th:href="@{~/css/responsive/task/create.css}">
 </head>
 <body>
 
@@ -10,13 +11,13 @@
     <div class="mt-4 mb-3">
         <div class="container">
             <div class="row border-bottom pb-3">
-                <div class="col-md-1 box-logo-step">
+                <div class="col-md-1 box-logo-step col-xl-12">
                     <a th:href="@{/}">
                         <img alt="TaskUnite" class="logo-step" th:src="@{~/images/favicon.png}">
                     </a>
                 </div>
-                <div class="col-md-9 offset-md-2">
-                    <div class="box-step">
+                <div class="col-md-9 offset-md-2 col-xl-12">
+                    <div class="box-step ">
                         <div class="step active st1">
                             <div class="box-circle">
                                 <div class="circle">1</div>
@@ -74,7 +75,7 @@
                 <div class="col-md-12 col-lg-12 mb-5">
                     <form action="#" id="form-task">
                         <div class="row form-group">
-                            <div class="col-md-12 mb-3 mb-md-0 task-box bg-white border" data-editing=true
+                            <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=true
                                  data-state="summary">
                                 <span class="status-task-box">
                                     <i class="icon-done text-primary"></i>
@@ -105,7 +106,7 @@
                                                    th:placeholder="#{task-create.step1.placeholder-end-address}">
                                         </div>
                                     </div>
-                                    <div class="mt-5 form-group text-center">
+                                    <div class="mt-lg-5 form-group text-center">
                                         <button class="btn btn-success btn-continue px-4 " data-type="address"
                                                 th:type="button" th:text="#{task-create.next-btn}"></button>
                                     </div>
@@ -116,7 +117,7 @@
                             </div>
                         </div>
                         <div class="row form-group">
-                            <div class="col-md-12 mb-3 mb-md-0 task-box bg-white border" data-editing=false
+                            <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=false
                                  data-state="empty">
                                 <span class="status-task-box">
                                     <i class="icon-done text-primary"></i>
@@ -128,7 +129,7 @@
                                         <input type="text" class="form-control" id="title-task"
                                                th:placeholder="#{task-create.step1.placeholder-work-name}">
                                     </div>
-                                    <div class="mt-5 form-group text-center">
+                                    <div class="mt-lg-5 form-group text-center">
                                         <button class="btn btn-success btn-continue px-4" data-type="title"
                                                 th:type="button" th:text="#{task-create.next-btn}">
                                         </button>
@@ -144,7 +145,7 @@
                         </div>
 
                         <div class="row form-group">
-                            <div class="col-md-12 mb-3 mb-md-0 task-box bg-white border" data-editing=false
+                            <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=false
                                  data-state="empty">
                                 <span class="status-task-box">
                                     <i class="icon-done text-primary"></i>
@@ -183,7 +184,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="mt-5 form-group text-center">
+                                    <div class="mt-lg-5 form-group text-center">
                                         <button class="btn btn-success btn-continue px-4" data-type="category"
                                                 th:type="button">Tiếp tục
                                         </button>
@@ -198,7 +199,7 @@
                             </div>
                         </div>
                         <div class="row form-group">
-                            <div class="col-md-12 mb-3 mb-md-0 task-box bg-white border" data-editing=false
+                            <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=false
                                  data-state="empty">
                                 <span class="status-task-box">
                                     <i class="icon-done text-primary"></i>
@@ -209,7 +210,7 @@
                                     <div class="form-group">
                                         <input type="number" class="form-control w-25" id="estimated-time">
                                     </div>
-                                    <div class="mt-5 form-group text-center">
+                                    <div class="mt-lg-5 form-group text-center">
                                         <button class="btn btn-success btn-continue px-4" data-type="estimated-time"
                                                 th:type="button" th:text="#{task-create.next-btn}">
                                         </button>
@@ -222,7 +223,7 @@
                             </div>
                         </div>
                         <div class="row form-group">
-                            <div class="col-md-12 mb-3 mb-md-0 task-box bg-white border" data-editing=false
+                            <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=false
                                  data-state="empty">
                                 <span class="status-task-box">
                                     <i class="icon-done text-primary"></i>
@@ -235,7 +236,7 @@
                                                   name="description"
                                                   th:placeholder="#{task-create.step1.task-des-placehoder}"></textarea>
                                     </div>
-                                    <div class="mt-5 form-group text-center">
+                                    <div class="mt-lg-5 form-group text-center">
                                         <button class="btn btn-success btn-continue px-4" data-type="description"
                                                 th:type="button" th:text="#{task-create.next-btn}">
                                         </button>
