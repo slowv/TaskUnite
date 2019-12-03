@@ -3,185 +3,34 @@
 <head>
     <title>Create Task</title>
     <th:block th:include="fragment/layout :: head"></th:block>
+    <link rel="stylesheet" th:href="@{~/css/responsive/task/create.css}">
 </head>
 <body style="overflow: hidden">
 
 <div class="site-wrap">
-    <div class="mt-4 mb-3">
-        <div class="container">
-            <div class="row border-bottom pb-3">
-                <div class="col-md-1 box-logo-step">
-                    <a th:href="@{/}">
-                        <img alt="TaskUnite" class="logo-step" th:src="@{~/images/favicon.png}">
-                    </a>
-                </div>
-                <div class="col-md-9 offset-md-2">
-                    <div class="box-step ">
-                        <div class="step active st1">
-                            <a th:href="@{/task/create/step1(action='backStep1')}">
-                                <div class="box-circle">
-                                    <div class="circle"><i class="icon-done"></i></div>
-                                </div>
-                            </a>
-                            <div class="box-line">
-                                <div class="line"></div>
-                            </div>
-                            <div class="name-step" th:text="#{task-create.step1.task-infor}"></div>
-                        </div>
-                        <div class="step active st2">
-                            <a th:href="@{/task/create/step1(action='backStep2')}">
-                                <div class="box-circle">
-                                    <div class="circle">2</div>
-                                </div>
-                            </a>
-                            <div class="box-line ">
-                                <div class="line"></div>
-                            </div>
-                            <div class="name-step" th:text="#{task-create.step2.task-prices}"></div>
-                        </div>
-                        <div class="step active st3">
-                            <div class="box-circle">
-                                <div class="circle">3</div>
-                            </div>
-                            <div class="box-line">
-                                <div class="line"></div>
-                            </div>
-                            <div class="name-step" th:text="#{task-create.step3.choose-date-time}"></div>
-                        </div>
-                        <div class="step st4">
-                            <div class="box-circle">
-                                <div class="circle">4</div>
-                            </div>
-                            <div class="name-step" th:text="#{task-create.step4.confirm-details}"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 p-0 mt-1">
-                    <div class="build-progress__sub-bar">
-                        <div class="build-progress__sub-bar__container">
-                            <img alt="form" class="build-progress__sub-bar__icon" th:src="@{~/images/user-plus.svg}">
-                            <div class="build-progress__sub-bar__message">
-                                <span th:text="#{task-create.step2.notification-1}"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 bg-dark-light"
-                 style="min-height: 100vh;position: absolute;top: 0;left: 0; z-index: 1000;">
+            <div class="col-md-12 bg-dark-light step-3-responsive">
                 <div class="row">
                     <div class="col-lg-7 modal-choose-date p-4 bg-white">
                         <a th:href="@{/task/create/step2(action='backStep2')}">
                             <span class="icon-close2 close"></span>
                         </a>
-                        <div style="font-size: 25px" class="f-w-300 text-center my-2" th:text="#{task-create.step3.choose-task-date-and-start-time}"></div>
-                        <div class="row mt-2">
+                        <div class="f-w-300 text-center my-2 t-25" th:text="#{task-create.step3.choose-task-date-and-start-time}"></div>
+                            <div class="row mt-2">
                             <div class="col-lg-7 p-0">
                                 <div class="recommendations__tasker_schedule_modal_tasker">
                                     <img th:src="@{~/images/person_1.jpg}"
                                          alt="Mahendra B.">
                                     <div><span>Trần Hiểu Đông</span></div>
                                 </div>
-                                <div style="border-right: 1px solid #E5E7EC">
+                                <div class="border-right box-date">
                                     <div class="calendar__container">
-                                        <div class="calendar__row"><h4 class="calendar__title"> Hôm nay, <span></span></h4></div>
-                                        <div class="calendar__row">
-                                            <div class="calendar__week">
-                                                <div class="calendar__day--label" th:text="#{task-create.step3.sunday}"></div>
-                                                <div class="calendar__day--label" th:text="#{task-create.step3.monday}"></div>
-                                                <div class="calendar__day--label" th:text="#{task-create.step3.tuesday}"></div>
-                                                <div class="calendar__day--label" th:text="#{task-create.step3.wednesday}"></div>
-                                                <div class="calendar__day--label" th:text="#{task-create.step3.thursday}"></div>
-                                                <div class="calendar__day--label" th:text="#{task-create.step3.friday}"></div>
-                                                <div class="calendar__day--label"th:text="#{task-create.step3.saturday}"></div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="calendar__row">
-                                                <div class="calendar__week">
-                                                    <div
-                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
-                                                        17
-                                                    </div>
-                                                    <div
-                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
-                                                        18
-                                                    </div>
-                                                    <div
-                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
-                                                        19
-                                                    </div>
-                                                    <div
-                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
-                                                        20
-                                                    </div>
-                                                    <div
-                                                        class="calendar__day calendar__day--hover calendar__day--today">
-                                                        21
-                                                    </div>
-                                                    <div
-                                                        class="calendar__day calendar__day--hover calendar__day--selected">
-                                                        22
-                                                    </div>
-                                                    <div class="calendar__day calendar__day--hover">23</div>
-                                                </div>
-                                            </div>
-                                            <div class="calendar__row">
-                                                <div class="calendar__week">
-                                                    <div
-                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
-                                                        24
-                                                    </div>
-                                                    <div class="calendar__day calendar__day--hover">25</div>
-                                                    <div class="calendar__day calendar__day--hover">26</div>
-                                                    <div
-                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
-                                                        27
-                                                    </div>
-                                                    <div
-                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
-                                                        28
-                                                    </div>
-                                                    <div
-                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
-                                                        29
-                                                    </div>
-                                                    <div class="calendar__day calendar__day--hover">30</div>
-                                                </div>
-                                            </div>
-                                            <div class="calendar__row">
-                                                <div class="calendar__week">
-                                                    <div class="calendar__day calendar__day--hover">
-                                                        <div class="calendar__day--with-month">
-                                                            <div style="font-size: 12px">T12</div>
-                                                            <div>1</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="calendar__day calendar__day--hover">2</div>
-                                                    <div class="calendar__day calendar__day--hover">3</div>
-                                                    <div class="calendar__day calendar__day--hover">4</div>
-                                                    <div class="calendar__day calendar__day--hover">5</div>
-                                                    <div
-                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
-                                                        6
-                                                    </div>
-                                                    <div
-                                                        class="calendar__day calendar__day--hover calendar__day--disabled">
-                                                        7
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <div id="calendar-value"></div>
                                     </div>
+
                                     <div class="exterior__bottom--lg recommendations__tasker_schedule_modal--select">
-                                        <select style="width: 100%;" id="select-time">
+                                        <select name="selected-time" style="width: 100%;" id="selected-time">
                                             <option value="8:30">8:30</option>
                                             <option value="9:00">9:00</option>
                                             <option value="9:30">9:30</option>
@@ -204,14 +53,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-5">
-                                <div class="box-next-step-4 mt-5">
+                            <div class="col-lg-5 p-0">
+                                <div class="box-next-step-4 mt-lg-5 mt-xl-1">
                                     <div class="t-30 f-w-300" th:text="#{task-create.step3.request-for}"></div>
                                     <div class="pre-datetime t-25">
                                         22 - T11, 8:30
                                     </div>
                                     <div>
-                                        <a th:href="@{/task/create/step4}" class="btn btn-primary w-100 my-3 py-2" th:text="#{task-create.step2.select-continue-btn}"></a>
+                                        <form th:action="@{/task/create/step3}" method="post">
+                                            <input type="hidden" id="selected-date" name="selected-date">
+                                            <button type="submit" class="btn btn-primary w-100 my-3 py-2" th:text="#{task-create.step2.select-continue-btn}"></button>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="recommendations__tasker_schedule_modal_next_step">

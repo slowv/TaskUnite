@@ -154,12 +154,12 @@ a:hover {
 }
 
 .site-section {
-  padding: 3em 0;
+  padding: 3em 3em;
 }
 
 @media (min-width: 768px) {
   .site-section {
-    padding: 3em 0;
+    padding: 3em 3em;
   }
 }
 
@@ -1504,11 +1504,15 @@ a:hover {
 }
 
 .box-step .step:nth-child(3) .name-step {
-  margin-left: -5%;
+  margin-left: -25%;
 }
 
 .box-step .step:nth-child(4) .name-step {
-  margin-left: -10%;
+  margin-left: -25%;
+}
+
+.box-step .step.active .name-step {
+  color: #414141;
 }
 
 .build-progress__sub-bar {
@@ -1605,11 +1609,17 @@ a:hover {
   border-bottom: 1px solid #f1f1f1;
 }
 
-#filter-option {
+.filter-option {
   padding: 7px;
   border: none;
   border: 1px solid #9c9c9c;
   border-radius: 3px;
+  height: 40px;
+  margin-right: 5px;
+}
+
+.box-filter {
+  margin-top: 40px;
 }
 
 .task-box .text-label {
@@ -1824,7 +1834,6 @@ a:hover {
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
-    max-width: 350px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
@@ -2227,11 +2236,10 @@ i.recommendations__badge-info {
 
 .modal-choose-date {
   position: absolute;
-  height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-height: 450px;
+  height: 450px;
   border-radius: 5px;
   color: #272727;
 }
@@ -2510,7 +2518,7 @@ i.recommendations__badge-info {
   }
 }
 
-input.iBanking {
+input.iPhoneNumber {
   height: 40px;
 }
 
@@ -2526,6 +2534,7 @@ input.iBanking {
   position: absolute;
   top: 50%;
   left: 50%;
+  margin-left: 7px;
   transform: translate(-50%, -50%);
   height: 60px;
   width: 60px;
@@ -2548,6 +2557,66 @@ div.name {
 }
 .box-star span.icon-star {
   color: #ffdd00;
+}
+
+/* Custom css Datepicker*/
+.datepicker.datepicker-inline {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.datepicker.datepicker-inline .datepicker-days {
+  width: 100%;
+  padding: 0 65px;
+}
+.datepicker.datepicker-inline .datepicker-days > .table-condensed {
+  width: 100%;
+}
+
+.datepicker.datepicker-inline .datepicker-days > .table-condensed thead tr {
+  line-height: 30px;
+}
+
+.datepicker.datepicker-inline .datepicker-days > .table-condensed tbody tr:last-child {
+  border-bottom: 1px solid #dce0e6;
+}
+
+.datepicker.datepicker-inline .datepicker-days > .table-condensed tbody {
+  line-height: 35px;
+}
+.datepicker.datepicker-inline .datepicker-days > .table-condensed tbody td {
+  border: 1px solid #dce0e6;
+  border-right: none;
+  border-bottom: none;
+  height: 45px;
+  width: 45px;
+  font-size: 14px;
+  border-radius: 0px;
+}
+
+.datepicker.datepicker-inline .datepicker-days > .table-condensed tbody td.active {
+  background: #1e7e34;
+  border: 1px solid #1e7e34;
+}
+
+.datepicker.datepicker-inline .datepicker-days > .table-condensed tbody td:last-child {
+  border-right: 1px solid #dce0e6;
+}
+
+.view-pc {
+  display: block;
+}
+
+.view-mobile {
+  display: none;
+}
+
+.step-3-responsive {
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 /*.btn-task-done {*/
