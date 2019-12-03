@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Job Finder &mdash; Colorlib Website Template</title>
+    <th:block th:include="fragment/layout :: head"></th:block>
+</head>
+<body>
+
+<div class="site-wrap">
+
+    <th:block th:include="fragment/layout :: site-mobile-memu"></th:block>
+
+    <th:block th:include="fragment/layout :: site-navbar"></th:block>
+
+    <div style="height: 113px;"></div>
+
+    <div class="unit-5 overlay" th:style="'background-image: url(' + @{/images/hero_1.jpg} + ');'"
+         style="background-image: url('images/hero_1.jpg');">
+        <div class="container text-center">
+            <h2 class="mb-0">On your marks</h2>
+            <p class="mb-0 unit-6"><a href="../index.html">Home</a> <span class="sep">></span>
+                <span>Become Tasker</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="site-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 b-5">
+                    <form action="#" class="p-5 bg-white">
+                        <div class="row form-group">
+                            <div class="col-md-12 mb-3 mb-md-0">
+                                <label class="font-weight-bold" for="avatar"
+                                       th:text="#{register-task.upload-avatar}"></label>
+                                <input type="file" id="avatar" class="form-control" placeholder="Avatar">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12 mb-3 mb-md-0">
+                                <label for="city" th:text="#{register-task.what-work}"></label>
+                                <select class="custom-select" id="city">
+                                    <option selected>City</option>
+                                    <option value="1">Hoàn Kiếm</option>
+                                    <option value="2">Hai Bà Trưng</option>
+                                    <option value="3">Ba Đình</option>
+                                    <option value="4">Đống Đa</option>
+                                    <option value="5">Cầu Giấy</option>
+                                    <option value="6">Thanh Xuân</option>
+                                    <option value="7">Bac Tu Liem</option>
+                                    <option value="8">Bắc Từ Liêm</option>
+                                    <option value="9">Nam Từ Liêm</option>
+                                    <option value="9">Hà Đông</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12 mb-3 mb-md-0">
+                                <label class="font-weight-bold">Địa chỉ</label>
+                                <input type="text" class="form-control"
+                                       placeholder="Địa chỉ">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12 mb-3 mb-md-0">
+                                <label class="font-weight-bold" for="bday">Ngày/tháng/năm sinh</label>
+                                <input type="text" id="bday" class="form-control"
+                                       placeholder="Birthday">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12 text-center">
+                                <input type="submit" value="Continue" class="btn btn-primary  py-2 px-5">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="fragment/layout :: footer"></th:block>
+</div>
+<th:block th:include="fragment/layout :: javascript"></th:block>
+</body>
+</html>
