@@ -1,4 +1,56 @@
+
+
 @media screen and (max-width: 400px) {
+
+
+  .build-progress__sub-bar__message{
+    font-size: 13px;
+  }
+
+  /*Create task step 1*/
+  .site-section{
+    padding: 1rem 0;
+  }
+
+  .task-box{
+    border-radius: 0px !important;
+    border-right: none;
+    border-left: none;
+  }
+
+  .task-box .custom-control-inline{
+    display: flow-root;
+  }
+  #estimated-time{
+    width: 100% !important;
+  }
+
+  /*Create task step 2*/
+
+  .box-filter{
+    margin-top: 0;
+  }
+
+  .panel, .panel--with-overflow{
+    padding: 1rem 1rem;
+  }
+
+  .recommendations__result-price{
+    margin-top: 0;
+  }
+
+  /*Create task step 3*/
+  .datepicker.datepicker-inline .datepicker-days{
+    padding: 0;
+  }
+
+  /*Create task step 4*/
+  .iPhoneNumber::placeholder{
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 991px){
   .box-logo-step{
     text-align: center;
   }
@@ -33,40 +85,70 @@
     text-align: center;
     margin-left: 0 !important;
   }
-
-  .box-step .step.active .name-step{
-    color: #414141;
+  .site-section {
+    padding: 0em 3em;
+  }
+  .step-3-responsive{
+    position: static;
+    overflow: auto;
   }
 
-  .build-progress__sub-bar__message{
-    font-size: 13px;
-  }
-
-  /*Create task step 1*/
-  .site-section{
-    padding: 1rem 0;
-  }
-
-  .task-box{
-    border-radius: 0px;
-    border-right: none;
-    border-left: none;
-  }
-
-  .task-box .custom-control-inline{
-    display: flow-root;
-  }
-  #estimated-time{
-    width: 100% !important;
-  }
-
-  /*Create task step 2*/
-
-  .box-filter{
-    margin-top: 0;
-  }
-
-  .panel, .panel--with-overflow{
-    padding: 1rem 1rem;
+  .modal-choose-date{
+    position: static;
+    transform: translate(0, 0);
+    height: fit-content;
   }
 }
+@media screen and (max-width: 800px){
+  .site-section {
+    padding: 0.5em 0em;
+  }
+  .view-pc{
+    display: none;
+  }
+
+  .view-mobile {
+    display: block;
+  }
+  .recommendations__result-name {
+    font-size: 1.5rem;
+  }
+  .recommendations__result-price {
+    font-size: 1em;
+  }
+  .recommendations__result-price-container{
+    top: 10px;
+  }
+
+  .box-date {
+    border-right: none !important;
+  }
+  .box-next-step-4{
+    padding: 0;
+    text-align: center;
+  }
+
+  .recommendations__tasker_schedule_modal--select{
+    margin: 1rem auto;
+    padding:0 3px;
+    width: 100%;
+  }
+
+  .iPhoneNumber {
+    width: 100% !important;
+  }
+  .iPhoneNumber::placeholder{
+    font-size: 14px;
+  }
+  .confirm-avatar-tasker{
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .task-box{
+    border-radius: 0px !important;
+  }
+}
+
+

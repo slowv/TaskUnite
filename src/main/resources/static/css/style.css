@@ -154,12 +154,12 @@ a:hover {
 }
 
 .site-section {
-  padding: 3em 0;
+  padding: 3em 3em;
 }
 
 @media (min-width: 768px) {
   .site-section {
-    padding: 3em 0;
+    padding: 3em 3em;
   }
 }
 
@@ -1504,11 +1504,16 @@ a:hover {
 }
 
 .box-step .step:nth-child(3) .name-step {
-  margin-left: -5%;
+  margin-left: -25%;
 }
 
+
 .box-step .step:nth-child(4) .name-step {
-  margin-left: -10%;
+  margin-left: -25%;
+}
+
+.box-step .step.active .name-step{
+  color: #414141;
 }
 
 .build-progress__sub-bar {
@@ -1611,6 +1616,7 @@ a:hover {
   border: 1px solid #9c9c9c;
   border-radius: 3px;
   height: 40px;
+  margin-right: 5px;
 }
 
 .box-filter{
@@ -1829,7 +1835,6 @@ a:hover {
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
-    max-width: 350px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
@@ -2232,11 +2237,10 @@ i.recommendations__badge-info {
 
 .modal-choose-date {
   position: absolute;
-  height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-height: 450px;
+  height: 450px;
   border-radius: 5px;
   color: #272727;
 }
@@ -2515,7 +2519,7 @@ i.recommendations__badge-info {
   }
 }
 
-input.iBanking {
+input.iPhoneNumber {
   height: 40px;
 }
 
@@ -2531,6 +2535,7 @@ input.iBanking {
   position: absolute;
   top: 50%;
   left: 50%;
+  margin-left: 7px;
   transform: translate(-50%, -50%);
   height: 60px;
   width: 60px;
@@ -2600,8 +2605,17 @@ div.name {
   border-right: 1px solid #dce0e6;
 }
 
+.view-pc{
+  display: block;
+}
 
+.view-mobile {
+  display: none;
+}
 
+.step-3-responsive {
+  height: 100vh;position: absolute;top: 0;left: 0; z-index: 1000;
+}
 
 /*.btn-task-done {*/
 /*  position: relative;*/
