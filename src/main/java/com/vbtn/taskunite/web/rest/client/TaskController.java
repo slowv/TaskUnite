@@ -44,8 +44,10 @@ public class TaskController {
     @RequestMapping("/create/step1")
     public String createStep1(HttpSession session, Model model, Principal principal){
         Task taskInfo = new Task();
-        UserInformation userInformation = customUserInformationService.findOneByUsername(principal.getName()).get();
-        taskInfo.setMaster(userInformation.getMaster());
+        if(null != principal){
+            UserInformation userInformation = customUserInformationService.findOneByUsername(principal.getName()).get();
+            taskInfo.setMaster(userInformation.getMaster());
+        }
         if(null != session.getAttribute("step1")){
             HashMap step1 = (HashMap) session.getAttribute("step1");
             taskInfo = (Task) step1.get("taskInfo");
@@ -78,17 +80,33 @@ public class TaskController {
 
     @RequestMapping(value = "/create/step2", method = RequestMethod.POST)
     public String updateStep2(HttpSession session, Task taskInfo){
-        session.setAttribute("step2", taskInfo);
+        HashMap<String, Object> step2 = new HashMap<>();
+        step2.put("taskInfo", taskInfo);
+        session.setAttribute("step2", step2);
         return "redirect:/task/create/step3";
     }
 
     @RequestMapping("/create/step3")
-    public String createStep3(){
+    public String createStep3(HttpSession session){
+//        HashMap step2 = (HashMap) session.getAttribute("step2");
+//        if(null == step2){
+//            return "redirect:/task/create/step1";
+//        }
+        return "task/create/step3";
+    }
+
+    @RequestMapping(value = "/create/step3", method = RequestMethod.POST)
+    public String updateStep3(){
         return "task/create/step3";
     }
 
     @RequestMapping("/create/step4")
     public String createStep4(){
+        return "task/create/step4";
+    }
+
+    @RequestMapping(value = "/create/step4", method = RequestMethod.POST)
+    public String updateStep4(){
         return "task/create/step4";
     }
 }

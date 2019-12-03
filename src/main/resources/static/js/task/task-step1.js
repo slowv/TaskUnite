@@ -104,6 +104,7 @@ function onClick() {
         taskBox.description = strDescription;
         // $('#next-step2').attr('href', '/task/create/step2').find('button').attr('disabled', false);
         $('#next-step2').attr('disabled', false);
+        $('#next-step2').attr('href', '/task/create/step2').find('button').attr('disabled', false);
         break;
     }
     parent.attr('data-editing', false).attr('data-state', 'summary').find('span.status-task-box').removeClass('d-none');
