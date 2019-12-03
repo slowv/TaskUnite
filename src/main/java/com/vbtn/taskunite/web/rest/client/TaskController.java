@@ -3,9 +3,11 @@ package com.vbtn.taskunite.web.rest.client;
 import com.vbtn.taskunite.domain.Task;
 import com.vbtn.taskunite.domain.TaskCategory;
 import com.vbtn.taskunite.domain.Tasker;
+import com.vbtn.taskunite.domain.UserInformation;
 import com.vbtn.taskunite.repository.custom.CustomTaskCategoryRepository;
 import com.vbtn.taskunite.repository.custom.CustomTaskerRepository;
 import com.vbtn.taskunite.service.TaskCategoryService;
+import com.vbtn.taskunite.service.api.account.CustomUserInformationService;
 import com.vbtn.taskunite.service.api.task.CustomTaskCategoryService;
 import com.vbtn.taskunite.service.api.task.CustomTaskerService;
 import com.vbtn.taskunite.service.dto.TaskCategoryDTO;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 
@@ -33,12 +36,16 @@ public class TaskController {
     CustomTaskCategoryService customTaskCategoryService;
     @Autowired
     CustomTaskerService customTaskerService;
+    @Autowired
+    CustomUserInformationService customUserInformationService;
 
     Logger logger = LoggerFactory.getLogger(TaskController.class);
 
     @RequestMapping("/create/step1")
-    public String createStep1(HttpSession session, Model model){
+    public String createStep1(HttpSession session, Model model, Principal principal){
         Task taskInfo = new Task();
+        UserInformation userInformation = customUserInformationService.findOneByUsername(principal.getName()).get();
+        taskInfo.setMaster(userInformation.getMaster());
         if(null != session.getAttribute("step1")){
             HashMap step1 = (HashMap) session.getAttribute("step1");
             taskInfo = (Task) step1.get("taskInfo");
