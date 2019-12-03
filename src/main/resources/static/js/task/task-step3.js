@@ -5,6 +5,7 @@ var calendar__container;
 // Hàm để khởi tạo func
 function init() {
   start();
+  selectDate()
 }
 
 // Hàm để fixed UI ngay lúc vừa vào page và khởi tạo biến trong này
@@ -25,10 +26,10 @@ function start() {
 // Truong hop lien quan den date pahi cho vao day.
 $(document).ready(function () {
   var date = new Date();
+  date.setHours(0,0,0,0);
   var endDate = date.getDate() + 4;
   $('#calendar-value').datepicker({
     language: 'vi',
-    // format: 'yyyy/mm/dd',
     format: {
       /*
        * Say our UI should display a week ahead,
@@ -38,25 +39,41 @@ $(document).ready(function () {
        */
       toDisplay: function (date, format, language) {
         var d = new Date(date);
+        d.setHours(0,0,0,0);
         return d.toISOString();
       },
       toValue: function (date, format, language) {
         var d = new Date(date);
-        return new Date(d);
+        d.setHours(0,0,0,0);
+        return d;
       }
     },
     startDate: date,
   }).datepicker('setDate', date);
+
   $('#calendar-value').on('changeDate', function() {
     $('#selected-date').val(
-      $('#calendar-value').datepicker('getDate')
+      selectDate($('#calendar-value').datepicker('getFormattedDate'))
     );
-    var selectedDate = moment($('#selected-date').val()).format("DD/MM/YYYY");
-    var hours = $('#select-time').val();
-    $('.pre-datetime').html(`${selectedDate}, ${hours}`);
   });
+
+  $('#selected-time').on('change', function () {
+    selectDate($('#calendar-value').datepicker('getStartDate'));
+  })
+
+  $('#selected-date').val(
+    selectDate($('#calendar-value').datepicker('getFormattedDate'))
+  );
 });
 
+function selectDate(date) {
+  var selectedDate = moment(date).format("DD/MM/YYYY");
+  var time = $('#selected-time').val();
+  var hour = time.split(":")[0];
+  var minute = time.split(":")[1];
+  $('.pre-datetime').html(`${selectedDate}, ${time}`);
+  return moment(date).add(hour, "hours").add(minute, "minutes");
+}
 
 
 
