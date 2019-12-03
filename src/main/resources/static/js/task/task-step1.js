@@ -63,7 +63,7 @@ function onClick() {
             return;
           }
           parent.find('.content').html(inputAddress.val());
-          task.address = inputAddress.val();
+          taskBox.address = inputAddress.val();
         } else {
           var addressStart = parent.find('#addressStart');
           var addressEnd = parent.find('#addressEnd');
@@ -74,21 +74,24 @@ function onClick() {
           }
           var rangeAddress = `${parent.find('#addressStart').val()} - ${parent.find('#addressEnd').val()} `;
           parent.find('.content').html(rangeAddress);
-          task.address = rangeAddress;
+          taskBox.address = rangeAddress;
         }
         parent.find('select[name="option-address"]').addClass('d-none');
         break;
       case 'title':
         var title = parent.find('#title-task').val();
         parent.find('.content').html(title);
-        task.title = title;
+        taskBox.title = title;
         break;
       case 'category':
         var content = parent.find('.content');
         var contentStr = [];
         parent.find('input[type="checkbox"]:checked').each(function (index, value) {
-          contentStr.push($(this).val());
-          task.category.push($(this).attr('id'));
+          contentStr.push($(this).siblings("label").text());
+          if(!taskBox.category){
+            taskBox.category = [];
+          }
+          taskBox.category.push($(this).attr('id').replace("cateId-", ""));
         });
         content.html(contentStr.join(", "));
         break;
@@ -98,9 +101,10 @@ function onClick() {
       case 'description':
         var strDescription = parent.find('textarea').val();
         parent.find('.content').html(strDescription);
-        task.description = strDescription;
+        taskBox.description = strDescription;
+        // $('#next-step2').attr('href', '/task/create/step2').find('button').attr('disabled', false);
+        $('#next-step2').attr('disabled', false);
         $('#next-step2').attr('href', '/task/create/step2').find('button').attr('disabled', false);
-        console.log(JSON.stringify(task));
         break;
     }
     parent.attr('data-editing', false).attr('data-state', 'summary').find('span.status-task-box').removeClass('d-none');
@@ -133,7 +137,7 @@ function onClick() {
         parent.find('.content').html('');
         break;
       case 'description' :
-        $('#next-step2').attr('href', 'javascript:void(0)').find('button').attr('disabled', true);
+        $('#next-step2').attr('disabled', true);
         break;
     }
     $('.task-box').attr('data-editing', false);
