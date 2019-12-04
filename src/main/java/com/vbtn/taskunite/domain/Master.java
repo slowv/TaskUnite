@@ -1,8 +1,5 @@
 package com.vbtn.taskunite.domain;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -27,11 +24,9 @@ public class Master implements Serializable {
     private Integer status;
 
     @Column(name = "created_at")
-    @CreationTimestamp
     private Instant createdAt;
 
     @Column(name = "updated_at")
-    @UpdateTimestamp
     private Instant updatedAt;
 
     @Column(name = "deleted_at")
@@ -43,6 +38,9 @@ public class Master implements Serializable {
 
     @OneToMany(mappedBy = "master")
     private Set<Room> rooms = new HashSet<>();
+
+    @OneToMany(mappedBy = "master")
+    private Set<Address> workingAddresses = new HashSet<>();
 
     @OneToMany(mappedBy = "master")
     private Set<Task> tasks = new HashSet<>();
@@ -144,6 +142,31 @@ public class Master implements Serializable {
 
     public void setRooms(Set<Room> rooms) {
         this.rooms = rooms;
+    }
+
+    public Set<Address> getWorkingAddresses() {
+        return workingAddresses;
+    }
+
+    public Master workingAddresses(Set<Address> addresses) {
+        this.workingAddresses = addresses;
+        return this;
+    }
+
+    public Master addWorkingAddresses(Address address) {
+        this.workingAddresses.add(address);
+        address.setMaster(this);
+        return this;
+    }
+
+    public Master removeWorkingAddresses(Address address) {
+        this.workingAddresses.remove(address);
+        address.setMaster(null);
+        return this;
+    }
+
+    public void setWorkingAddresses(Set<Address> addresses) {
+        this.workingAddresses = addresses;
     }
 
     public Set<Task> getTasks() {

@@ -24,9 +24,6 @@ public class UserInformation implements Serializable {
     @Column(name = "gender")
     private Integer gender;
 
-    @Column(name = "address")
-    private String address;
-
     @Column(name = "phone")
     private String phone;
 
@@ -46,8 +43,9 @@ public class UserInformation implements Serializable {
     @JoinColumn(unique = true)
     private User user;
 
-    @OneToMany(mappedBy = "user")
-    private Set<Address> workingAddresses = new HashSet<>();
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Address address;
 
     @OneToMany(mappedBy = "user")
     private Set<Review> reviews = new HashSet<>();
@@ -87,19 +85,6 @@ public class UserInformation implements Serializable {
 
     public void setGender(Integer gender) {
         this.gender = gender;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public UserInformation address(String address) {
-        this.address = address;
-        return this;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getPhone() {
@@ -180,29 +165,17 @@ public class UserInformation implements Serializable {
         this.user = user;
     }
 
-    public Set<Address> getWorkingAddresses() {
-        return workingAddresses;
+    public Address getAddress() {
+        return address;
     }
 
-    public UserInformation workingAddresses(Set<Address> addresses) {
-        this.workingAddresses = addresses;
+    public UserInformation address(Address address) {
+        this.address = address;
         return this;
     }
 
-    public UserInformation addWorkingAddresses(Address address) {
-        this.workingAddresses.add(address);
-        address.setUser(this);
-        return this;
-    }
-
-    public UserInformation removeWorkingAddresses(Address address) {
-        this.workingAddresses.remove(address);
-        address.setUser(null);
-        return this;
-    }
-
-    public void setWorkingAddresses(Set<Address> addresses) {
-        this.workingAddresses = addresses;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public Set<Review> getReviews() {
@@ -316,7 +289,6 @@ public class UserInformation implements Serializable {
         return "UserInformation{" +
             "id=" + getId() +
             ", gender=" + getGender() +
-            ", address='" + getAddress() + "'" +
             ", phone='" + getPhone() + "'" +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +

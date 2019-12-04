@@ -10,7 +10,7 @@ public class AddressDTO implements Serializable {
 
     private Long id;
 
-    private String street;
+    private String content;
 
     private Integer status;
 
@@ -23,7 +23,9 @@ public class AddressDTO implements Serializable {
 
     private Long dictrictId;
 
-    private Long userId;
+    private Long taskerId;
+
+    private Long masterId;
 
     public Long getId() {
         return id;
@@ -33,12 +35,12 @@ public class AddressDTO implements Serializable {
         this.id = id;
     }
 
-    public String getStreet() {
-        return street;
+    public String getContent() {
+        return content;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Integer getStatus() {
@@ -81,12 +83,20 @@ public class AddressDTO implements Serializable {
         this.dictrictId = districtId;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getTaskerId() {
+        return taskerId;
     }
 
-    public void setUserId(Long userInformationId) {
-        this.userId = userInformationId;
+    public void setTaskerId(Long taskerId) {
+        this.taskerId = taskerId;
+    }
+
+    public Long getMasterId() {
+        return masterId;
+    }
+
+    public void setMasterId(Long masterId) {
+        this.masterId = masterId;
     }
 
     @Override
@@ -114,13 +124,14 @@ public class AddressDTO implements Serializable {
     public String toString() {
         return "AddressDTO{" +
             "id=" + getId() +
-            ", street='" + getStreet() + "'" +
+            ", content='" + getContent() + "'" +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
             ", dictrict=" + getDictrictId() +
-            ", user=" + getUserId() +
+            ", tasker=" + getTaskerId() +
+            ", master=" + getMasterId() +
             "}";
     }
 }

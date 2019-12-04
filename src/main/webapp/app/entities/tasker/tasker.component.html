@@ -19,7 +19,8 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="price"><span jhiTranslate="taskUniteApp.tasker.price">Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="image"><span jhiTranslate="taskUniteApp.tasker.image">Image</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="description"><span jhiTranslate="taskUniteApp.tasker.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="status"><span jhiTranslate="taskUniteApp.tasker.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="createdAt"><span jhiTranslate="taskUniteApp.tasker.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.tasker.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -31,7 +32,8 @@
             <tbody>
             <tr *ngFor="let tasker of taskers ;trackBy: trackId">
                 <td><a [routerLink]="['/tasker', tasker.id, 'view' ]">{{tasker.id}}</a></td>
-                <td>{{tasker.price}}</td>
+                <td>{{tasker.image}}</td>
+                <td>{{tasker.description}}</td>
                 <td>{{tasker.status}}</td>
                 <td>{{tasker.createdAt | date:'medium'}}</td>
                 <td>{{tasker.updatedAt | date:'medium'}}</td>

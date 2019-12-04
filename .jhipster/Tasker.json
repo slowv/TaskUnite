@@ -2,8 +2,12 @@
     "name": "Tasker",
     "fields": [
         {
-            "fieldName": "price",
-            "fieldType": "Double"
+            "fieldName": "image",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
         },
         {
             "fieldName": "status",
@@ -45,15 +49,21 @@
         },
         {
             "relationshipType": "one-to-many",
+            "otherEntityName": "address",
+            "otherEntityRelationshipName": "tasker",
+            "relationshipName": "workingAddresses"
+        },
+        {
+            "relationshipType": "one-to-many",
             "otherEntityName": "task",
             "otherEntityRelationshipName": "tasker",
             "relationshipName": "tasks"
         },
         {
             "relationshipType": "many-to-many",
-            "otherEntityName": "taskCategory",
+            "otherEntityName": "taskerCategory",
             "otherEntityRelationshipName": "taskers",
-            "relationshipName": "taskCategories",
+            "relationshipName": "taskerCategories",
             "otherEntityField": "id",
             "ownerSide": true
         }

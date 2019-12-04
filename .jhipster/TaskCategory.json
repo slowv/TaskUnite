@@ -36,18 +36,18 @@
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "taskerCategory",
+            "otherEntityRelationshipName": "taskCategory",
+            "relationshipName": "taskerCategory",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
             "relationshipType": "many-to-many",
             "otherEntityName": "task",
             "otherEntityRelationshipName": "taskCategories",
             "relationshipName": "tasks",
-            "otherEntityField": "id",
-            "ownerSide": false
-        },
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityName": "tasker",
-            "otherEntityRelationshipName": "taskCategories",
-            "relationshipName": "taskers",
             "otherEntityField": "id",
             "ownerSide": false
         }

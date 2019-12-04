@@ -1,7 +1,5 @@
 package com.vbtn.taskunite.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 
@@ -39,23 +37,21 @@ public class TaskCategory implements Serializable {
     private Integer status;
 
     @Column(name = "created_at")
-    @CreationTimestamp
     private Instant createdAt;
 
     @Column(name = "updated_at")
-    @UpdateTimestamp
     private Instant updatedAt;
 
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
-    @ManyToMany(mappedBy = "taskCategories")
-    @JsonIgnore
-    private Set<Task> tasks = new HashSet<>();
+    @OneToOne
+    @JoinColumn(unique = true)
+    private TaskerCategory taskerCategory;
 
     @ManyToMany(mappedBy = "taskCategories")
     @JsonIgnore
-    private Set<Tasker> taskers = new HashSet<>();
+    private Set<Task> tasks = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -170,6 +166,19 @@ public class TaskCategory implements Serializable {
         this.deletedAt = deletedAt;
     }
 
+    public TaskerCategory getTaskerCategory() {
+        return taskerCategory;
+    }
+
+    public TaskCategory taskerCategory(TaskerCategory taskerCategory) {
+        this.taskerCategory = taskerCategory;
+        return this;
+    }
+
+    public void setTaskerCategory(TaskerCategory taskerCategory) {
+        this.taskerCategory = taskerCategory;
+    }
+
     public Set<Task> getTasks() {
         return tasks;
     }
@@ -193,31 +202,6 @@ public class TaskCategory implements Serializable {
 
     public void setTasks(Set<Task> tasks) {
         this.tasks = tasks;
-    }
-
-    public Set<Tasker> getTaskers() {
-        return taskers;
-    }
-
-    public TaskCategory taskers(Set<Tasker> taskers) {
-        this.taskers = taskers;
-        return this;
-    }
-
-    public TaskCategory addTaskers(Tasker tasker) {
-        this.taskers.add(tasker);
-        tasker.getTaskCategories().add(this);
-        return this;
-    }
-
-    public TaskCategory removeTaskers(Tasker tasker) {
-        this.taskers.remove(tasker);
-        tasker.getTaskCategories().remove(this);
-        return this;
-    }
-
-    public void setTaskers(Set<Tasker> taskers) {
-        this.taskers = taskers;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

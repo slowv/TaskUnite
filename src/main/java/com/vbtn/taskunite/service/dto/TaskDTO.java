@@ -14,6 +14,8 @@ public class TaskDTO implements Serializable {
 
     private String description;
 
+    private Double estimatedTime;
+
     private Double price;
 
     private Integer status;
@@ -47,6 +49,14 @@ public class TaskDTO implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Double getEstimatedTime() {
+        return estimatedTime;
+    }
+
+    public void setEstimatedTime(Double estimatedTime) {
+        this.estimatedTime = estimatedTime;
     }
 
     public Double getPrice() {
@@ -147,6 +157,7 @@ public class TaskDTO implements Serializable {
         return "TaskDTO{" +
             "id=" + getId() +
             ", description='" + getDescription() + "'" +
+            ", estimatedTime=" + getEstimatedTime() +
             ", price=" + getPrice() +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +

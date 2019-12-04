@@ -2,7 +2,7 @@
     "name": "Address",
     "fields": [
         {
-            "fieldName": "street",
+            "fieldName": "content",
             "fieldType": "String"
         },
         {
@@ -24,6 +24,13 @@
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "userInformation",
+            "otherEntityRelationshipName": "address",
+            "relationshipName": "user",
+            "ownerSide": false
+        },
+        {
             "relationshipType": "many-to-one",
             "otherEntityName": "district",
             "otherEntityRelationshipName": "addresses",
@@ -32,9 +39,16 @@
         },
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "userInformation",
+            "otherEntityName": "tasker",
             "otherEntityRelationshipName": "workingAddresses",
-            "relationshipName": "user",
+            "relationshipName": "tasker",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "master",
+            "otherEntityRelationshipName": "workingAddresses",
+            "relationshipName": "master",
             "otherEntityField": "id"
         }
     ],

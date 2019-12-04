@@ -59,6 +59,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'review',
         loadChildren: () => import('./review/review.module').then(m => m.TaskUniteReviewModule)
+      },
+      {
+        path: 'tasker-category',
+        loadChildren: () => import('./tasker-category/tasker-category.module').then(m => m.TaskUniteTaskerCategoryModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

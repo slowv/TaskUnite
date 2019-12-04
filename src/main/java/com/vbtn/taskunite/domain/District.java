@@ -36,7 +36,7 @@ public class District implements Serializable {
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
-    @OneToMany(mappedBy = "dictrict")
+    @OneToMany(mappedBy = "district")
     private Set<Address> addresses = new HashSet<>();
 
     @ManyToOne

@@ -5,9 +5,9 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="taskUniteApp.address.street">Street</span></dt>
+                <dt><span jhiTranslate="taskUniteApp.address.content">Content</span></dt>
                 <dd>
-                    <span>{{address.street}}</span>
+                    <span>{{address.content}}</span>
                 </dd>
                 <dt><span jhiTranslate="taskUniteApp.address.status">Status</span></dt>
                 <dd>
@@ -31,10 +31,16 @@
                         <a [routerLink]="['/district', address.dictrictId, 'view']">{{address.dictrictId}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="taskUniteApp.address.user">User</span></dt>
+                <dt><span jhiTranslate="taskUniteApp.address.tasker">Tasker</span></dt>
                 <dd>
-                    <div *ngIf="address.userId">
-                        <a [routerLink]="['/user-information', address.userId, 'view']">{{address.userId}}</a>
+                    <div *ngIf="address.taskerId">
+                        <a [routerLink]="['/tasker', address.taskerId, 'view']">{{address.taskerId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.address.master">Master</span></dt>
+                <dd>
+                    <div *ngIf="address.masterId">
+                        <a [routerLink]="['/master', address.masterId, 'view']">{{address.masterId}}</a>
                     </div>
                 </dd>
             </dl>

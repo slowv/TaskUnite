@@ -41,9 +41,6 @@ public class UserInformationResourceIT {
     private static final Integer DEFAULT_GENDER = 1;
     private static final Integer UPDATED_GENDER = 2;
 
-    private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
-    private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
-
     private static final String DEFAULT_PHONE = "AAAAAAAAAA";
     private static final String UPDATED_PHONE = "BBBBBBBBBB";
 
@@ -108,7 +105,6 @@ public class UserInformationResourceIT {
     public static UserInformation createEntity(EntityManager em) {
         UserInformation userInformation = new UserInformation()
             .gender(DEFAULT_GENDER)
-            .address(DEFAULT_ADDRESS)
             .phone(DEFAULT_PHONE)
             .status(DEFAULT_STATUS)
             .createdAt(DEFAULT_CREATED_AT)
@@ -125,7 +121,6 @@ public class UserInformationResourceIT {
     public static UserInformation createUpdatedEntity(EntityManager em) {
         UserInformation userInformation = new UserInformation()
             .gender(UPDATED_GENDER)
-            .address(UPDATED_ADDRESS)
             .phone(UPDATED_PHONE)
             .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
@@ -156,7 +151,6 @@ public class UserInformationResourceIT {
         assertThat(userInformationList).hasSize(databaseSizeBeforeCreate + 1);
         UserInformation testUserInformation = userInformationList.get(userInformationList.size() - 1);
         assertThat(testUserInformation.getGender()).isEqualTo(DEFAULT_GENDER);
-        assertThat(testUserInformation.getAddress()).isEqualTo(DEFAULT_ADDRESS);
         assertThat(testUserInformation.getPhone()).isEqualTo(DEFAULT_PHONE);
         assertThat(testUserInformation.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testUserInformation.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
@@ -197,7 +191,6 @@ public class UserInformationResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(userInformation.getId().intValue())))
             .andExpect(jsonPath("$.[*].gender").value(hasItem(DEFAULT_GENDER)))
-            .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS)))
             .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
@@ -217,7 +210,6 @@ public class UserInformationResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(userInformation.getId().intValue()))
             .andExpect(jsonPath("$.gender").value(DEFAULT_GENDER))
-            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS))
             .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
@@ -247,7 +239,6 @@ public class UserInformationResourceIT {
         em.detach(updatedUserInformation);
         updatedUserInformation
             .gender(UPDATED_GENDER)
-            .address(UPDATED_ADDRESS)
             .phone(UPDATED_PHONE)
             .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
@@ -265,7 +256,6 @@ public class UserInformationResourceIT {
         assertThat(userInformationList).hasSize(databaseSizeBeforeUpdate);
         UserInformation testUserInformation = userInformationList.get(userInformationList.size() - 1);
         assertThat(testUserInformation.getGender()).isEqualTo(UPDATED_GENDER);
-        assertThat(testUserInformation.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testUserInformation.getPhone()).isEqualTo(UPDATED_PHONE);
         assertThat(testUserInformation.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testUserInformation.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);

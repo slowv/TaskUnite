@@ -16,7 +16,8 @@
       "detail": {
         "title": "Tasker"
       },
-      "price": "Price",
+      "image": "Image",
+      "description": "Description",
       "status": "Status",
       "createdAt": "Created At",
       "updatedAt": "Updated At",
@@ -24,8 +25,9 @@
       "user": "User",
       "schedule": "Schedule",
       "rooms": "Rooms",
+      "workingAddresses": "Working Addresses",
       "tasks": "Tasks",
-      "taskCategories": "Task Categories"
+      "taskerCategories": "Tasker Categories"
     }
   }
 }

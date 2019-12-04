@@ -10,10 +10,14 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { IAddress, Address } from 'app/shared/model/address.model';
 import { AddressService } from './address.service';
-import { IDistrict } from 'app/shared/model/district.model';
-import { DistrictService } from 'app/entities/district/district.service';
 import { IUserInformation } from 'app/shared/model/user-information.model';
 import { UserInformationService } from 'app/entities/user-information/user-information.service';
+import { IDistrict } from 'app/shared/model/district.model';
+import { DistrictService } from 'app/entities/district/district.service';
+import { ITasker } from 'app/shared/model/tasker.model';
+import { TaskerService } from 'app/entities/tasker/tasker.service';
+import { IMaster } from 'app/shared/model/master.model';
+import { MasterService } from 'app/entities/master/master.service';
 
 @Component({
   selector: 'jhi-address-update',
@@ -22,26 +26,33 @@ import { UserInformationService } from 'app/entities/user-information/user-infor
 export class AddressUpdateComponent implements OnInit {
   isSaving: boolean;
 
+  userinformations: IUserInformation[];
+
   districts: IDistrict[];
 
-  userinformations: IUserInformation[];
+  taskers: ITasker[];
+
+  masters: IMaster[];
 
   editForm = this.fb.group({
     id: [],
-    street: [],
+    content: [],
     status: [],
     createdAt: [],
     updatedAt: [],
     deletedAt: [],
     dictrictId: [],
-    userId: []
+    taskerId: [],
+    masterId: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected addressService: AddressService,
-    protected districtService: DistrictService,
     protected userInformationService: UserInformationService,
+    protected districtService: DistrictService,
+    protected taskerService: TaskerService,
+    protected masterService: MasterService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -51,27 +62,34 @@ export class AddressUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ address }) => {
       this.updateForm(address);
     });
-    this.districtService
-      .query()
-      .subscribe((res: HttpResponse<IDistrict[]>) => (this.districts = res.body), (res: HttpErrorResponse) => this.onError(res.message));
     this.userInformationService
       .query()
       .subscribe(
         (res: HttpResponse<IUserInformation[]>) => (this.userinformations = res.body),
         (res: HttpErrorResponse) => this.onError(res.message)
       );
+    this.districtService
+      .query()
+      .subscribe((res: HttpResponse<IDistrict[]>) => (this.districts = res.body), (res: HttpErrorResponse) => this.onError(res.message));
+    this.taskerService
+      .query()
+      .subscribe((res: HttpResponse<ITasker[]>) => (this.taskers = res.body), (res: HttpErrorResponse) => this.onError(res.message));
+    this.masterService
+      .query()
+      .subscribe((res: HttpResponse<IMaster[]>) => (this.masters = res.body), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(address: IAddress) {
     this.editForm.patchValue({
       id: address.id,
-      street: address.street,
+      content: address.content,
       status: address.status,
       createdAt: address.createdAt != null ? address.createdAt.format(DATE_TIME_FORMAT) : null,
       updatedAt: address.updatedAt != null ? address.updatedAt.format(DATE_TIME_FORMAT) : null,
       deletedAt: address.deletedAt != null ? address.deletedAt.format(DATE_TIME_FORMAT) : null,
       dictrictId: address.dictrictId,
-      userId: address.userId
+      taskerId: address.taskerId,
+      masterId: address.masterId
     });
   }
 
@@ -93,7 +111,7 @@ export class AddressUpdateComponent implements OnInit {
     return {
       ...new Address(),
       id: this.editForm.get(['id']).value,
-      street: this.editForm.get(['street']).value,
+      content: this.editForm.get(['content']).value,
       status: this.editForm.get(['status']).value,
       createdAt:
         this.editForm.get(['createdAt']).value != null ? moment(this.editForm.get(['createdAt']).value, DATE_TIME_FORMAT) : undefined,
@@ -102,7 +120,8 @@ export class AddressUpdateComponent implements OnInit {
       deletedAt:
         this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
       dictrictId: this.editForm.get(['dictrictId']).value,
-      userId: this.editForm.get(['userId']).value
+      taskerId: this.editForm.get(['taskerId']).value,
+      masterId: this.editForm.get(['masterId']).value
     };
   }
 
@@ -122,11 +141,19 @@ export class AddressUpdateComponent implements OnInit {
     this.jhiAlertService.error(errorMessage, null, null);
   }
 
+  trackUserInformationById(index: number, item: IUserInformation) {
+    return item.id;
+  }
+
   trackDistrictById(index: number, item: IDistrict) {
     return item.id;
   }
 
-  trackUserInformationById(index: number, item: IUserInformation) {
+  trackTaskerById(index: number, item: ITasker) {
+    return item.id;
+  }
+
+  trackMasterById(index: number, item: IMaster) {
     return item.id;
   }
 }

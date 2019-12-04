@@ -17,6 +17,8 @@ public interface MasterMapper extends EntityMapper<MasterDTO, Master> {
     @Mapping(source = "userId", target = "user")
     @Mapping(target = "rooms", ignore = true)
     @Mapping(target = "removeRooms", ignore = true)
+    @Mapping(target = "workingAddresses", ignore = true)
+    @Mapping(target = "removeWorkingAddresses", ignore = true)
     @Mapping(target = "tasks", ignore = true)
     @Mapping(target = "removeTasks", ignore = true)
     Master toEntity(MasterDTO masterDTO);

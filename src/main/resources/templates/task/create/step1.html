@@ -3,20 +3,21 @@
 <head>
     <title>Create Task</title>
     <th:block th:include="fragment/layout :: head"> </th:block>
+    <link rel="stylesheet" th:href="@{~/css/task/create.css}">
 </head>
 <body>
 
 <div class="site-wrap">
     <div class="mt-4 mb-3">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row border-bottom pb-3">
-                <div class="col-md-1 box-logo-step">
+                <div class="col-md-1 box-logo-step col-xl-12">
                     <a th:href="@{/}">
                         <img alt="TaskUnite" class="logo-step" th:src="@{~/images/favicon.png}">
                     </a>
                 </div>
-                <div class="col-md-9 offset-md-2">
-                    <div class="box-step">
+                <div class="col-lg-9 col-md-12 offset-lg-2">
+                    <div class="box-step ">
                         <div class="step active st1">
                             <div class="box-circle">
                                 <div class="circle">1</div>
@@ -72,9 +73,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-lg-12 mb-5">
-                    <form action="#" id="form-task">
+                    <form th:action="@{/task/create/step1}" th:object="${taskInfo}" id="form-task" method="post">
                         <div class="row form-group">
-                            <div class="col-md-12 mb-3 mb-md-0 task-box bg-white border" data-editing=true
+                            <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=true
                                  data-state="summary">
                                 <span class="status-task-box">
                                     <i class="icon-done text-primary"></i>
@@ -105,7 +106,7 @@
                                                    th:placeholder="#{task-create.step1.placeholder-end-address}">
                                         </div>
                                     </div>
-                                    <div class="mt-5 form-group text-center">
+                                    <div class="mt-lg-5 form-group text-center">
                                         <button class="btn btn-success btn-continue px-4 " data-type="address"
                                                 th:type="button" th:text="#{task-create.next-btn}"></button>
                                     </div>
@@ -116,7 +117,7 @@
                             </div>
                         </div>
                         <div class="row form-group">
-                            <div class="col-md-12 mb-3 mb-md-0 task-box bg-white border" data-editing=false
+                            <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=false
                                  data-state="empty">
                                 <span class="status-task-box">
                                     <i class="icon-done text-primary"></i>
@@ -128,7 +129,7 @@
                                         <input type="text" class="form-control" id="title-task"
                                                th:placeholder="#{task-create.step1.placeholder-work-name}">
                                     </div>
-                                    <div class="mt-5 form-group text-center">
+                                    <div class="mt-lg-5 form-group text-center">
                                         <button class="btn btn-success btn-continue px-4" data-type="title"
                                                 th:type="button" th:text="#{task-create.next-btn}">
                                         </button>
@@ -144,7 +145,7 @@
                         </div>
 
                         <div class="row form-group">
-                            <div class="col-md-12 mb-3 mb-md-0 task-box bg-white border" data-editing=false
+                            <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=false
                                  data-state="empty">
                                 <span class="status-task-box">
                                     <i class="icon-done text-primary"></i>
@@ -153,37 +154,40 @@
                                     class="text-danger error-msg d-none"></span></div>
                                 <div class="box-input">
                                     <div class="form-group">
-                                        <div class="custom-control custom-checkbox custom-control-inline">
-                                            <input type="checkbox" class="custom-control-input" id="cateId1"
-                                                   th:value="#{task-create.step1.categories-housework}">
-                                            <label class="custom-control-label d-inline" for="cateId1" th:text="#{task-create.step1.categories-housework}"></label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox custom-control-inline">
-                                            <input type="checkbox" class="custom-control-input" id="cateId2"
-                                                   value="Thợ điện">
-                                            <label class="custom-control-label d-inline" for="cateId2">Thợ điện</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox custom-control-inline">
-                                            <input type="checkbox" class="custom-control-input" id="cateId3"
-                                                   value="Vận chuyển">
-                                            <label class="custom-control-label d-inline" for="cateId3">Vận
-                                                chuyển</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox custom-control-inline">
-                                            <input type="checkbox" class="custom-control-input" id="cateId4"
-                                                   value="Thợ mộc">
-                                            <label class="custom-control-label d-inline" for="cateId4">Vận
-                                                chuyển</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox custom-control-inline">
-                                            <input type="checkbox" class="custom-control-input" id="cateId5"
-                                                   value="Sửa chữa nội thất">
-                                            <label class="custom-control-label d-inline" for="cateId5">Sửa chữa nội
-                                                thất
-                                            </label>
-                                        </div>
+                                        <!--<div class="custom-control custom-checkbox custom-control-inline">-->
+                                            <!--<input type="checkbox" class="custom-control-input" id="cateId1"-->
+                                                   <!--th:value="#{task-create.step1.categories-housework}">-->
+                                            <!--<label class="custom-control-label d-inline" for="cateId1" th:text="#{task-create.step1.categories-housework}"></label>-->
+                                        <!--</div>-->
+                                        <th:block th:each="category: ${taskCategories}">
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                <input type="checkbox" name="taskCategories" class="custom-control-input" th:id="'cateId-' + ${category.id}"
+                                                       th:value="${category.id}" th:field="*{taskCategories}">
+                                                <label class="custom-control-label d-inline" th:for="'cateId-' + ${category.id}" th:text="${category.name}"></label>
+                                            </div>
+                                        </th:block>
+
+                                        <!--<div class="custom-control custom-checkbox custom-control-inline">-->
+                                            <!--<input type="checkbox" class="custom-control-input" id="cateId3"-->
+                                                   <!--value="Vận chuyển">-->
+                                            <!--<label class="custom-control-label d-inline" for="cateId3">Vận-->
+                                                <!--chuyển</label>-->
+                                        <!--</div>-->
+                                        <!--<div class="custom-control custom-checkbox custom-control-inline">-->
+                                            <!--<input type="checkbox" class="custom-control-input" id="cateId4"-->
+                                                   <!--value="Thợ mộc">-->
+                                            <!--<label class="custom-control-label d-inline" for="cateId4">Vận-->
+                                                <!--chuyển</label>-->
+                                        <!--</div>-->
+                                        <!--<div class="custom-control custom-checkbox custom-control-inline">-->
+                                            <!--<input type="checkbox" class="custom-control-input" id="cateId5"-->
+                                                   <!--value="Sửa chữa nội thất">-->
+                                            <!--<label class="custom-control-label d-inline" for="cateId5">Sửa chữa nội-->
+                                                <!--thất-->
+                                            <!--</label>-->
+                                        <!--</div>-->
                                     </div>
-                                    <div class="mt-5 form-group text-center">
+                                    <div class="mt-lg-5 form-group text-center">
                                         <button class="btn btn-success btn-continue px-4" data-type="category"
                                                 th:type="button">Tiếp tục
                                         </button>
@@ -198,7 +202,7 @@
                             </div>
                         </div>
                         <div class="row form-group">
-                            <div class="col-md-12 mb-3 mb-md-0 task-box bg-white border" data-editing=false
+                            <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=false
                                  data-state="empty">
                                 <span class="status-task-box">
                                     <i class="icon-done text-primary"></i>
@@ -207,9 +211,9 @@
                                     class="text-danger error-msg d-none"></span></div>
                                 <div class="box-input">
                                     <div class="form-group">
-                                        <input type="number" class="form-control w-25" id="estimated-time">
+                                        <input type="number" th:value="${estimateTime}" name="estimateTime" class="form-control w-25" id="estimated-time">
                                     </div>
-                                    <div class="mt-5 form-group text-center">
+                                    <div class="mt-lg-5 form-group text-center">
                                         <button class="btn btn-success btn-continue px-4" data-type="estimated-time"
                                                 th:type="button" th:text="#{task-create.next-btn}">
                                         </button>
@@ -222,7 +226,7 @@
                             </div>
                         </div>
                         <div class="row form-group">
-                            <div class="col-md-12 mb-3 mb-md-0 task-box bg-white border" data-editing=false
+                            <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=false
                                  data-state="empty">
                                 <span class="status-task-box">
                                     <i class="icon-done text-primary"></i>
@@ -231,11 +235,11 @@
                                     class="text-danger error-msg d-none"></span></div>
                                 <div class="box-input">
                                     <div class="form-group">
-                                        <textarea class="form-control" style="min-height: 150px"
+                                        <textarea th:field="*{description}" class="form-control" style="min-height: 150px"
                                                   name="description"
                                                   th:placeholder="#{task-create.step1.task-des-placehoder}"></textarea>
                                     </div>
-                                    <div class="mt-5 form-group text-center">
+                                    <div class="mt-lg-5 form-group text-center">
                                         <button class="btn btn-success btn-continue px-4" data-type="description"
                                                 th:type="button" th:text="#{task-create.next-btn}">
                                         </button>
@@ -249,9 +253,9 @@
                         </div>
                         <div class="row form-group">
                             <div class="col-md-12 text-right">
-                                <a href="javascript:void (0)" id="next-step2">
-                                    <button type="button" class="btn btn-success py-2 px-5" disabled="disabled" th:text="#{task-create.next-btn}"></button>
-                                </a>
+                                <!--<a href="javascript:void (0)" id="next-step2">-->
+                                    <button type="submit" id="next-step2" class="btn btn-success py-2 px-5" disabled="disabled" th:text="#{task-create.next-btn}"></button>
+                                <!--</a>-->
                             </div>
                         </div>
                     </form>

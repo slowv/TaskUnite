@@ -2,24 +2,28 @@ import { Moment } from 'moment';
 
 export interface IAddress {
   id?: number;
-  street?: string;
+  content?: string;
   status?: number;
   createdAt?: Moment;
   updatedAt?: Moment;
   deletedAt?: Moment;
-  dictrictId?: number;
   userId?: number;
+  dictrictId?: number;
+  taskerId?: number;
+  masterId?: number;
 }
 
 export class Address implements IAddress {
   constructor(
     public id?: number,
-    public street?: string,
+    public content?: string,
     public status?: number,
     public createdAt?: Moment,
     public updatedAt?: Moment,
     public deletedAt?: Moment,
+    public userId?: number,
     public dictrictId?: number,
-    public userId?: number
+    public taskerId?: number,
+    public masterId?: number
   ) {}
 }

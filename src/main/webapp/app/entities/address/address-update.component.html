@@ -10,9 +10,9 @@
                         readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskUniteApp.address.street" for="field_street">Street</label>
-                    <input type="text" class="form-control" name="street" id="field_street"
-                           formControlName="street"/>
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.address.content" for="field_content">Content</label>
+                    <input type="text" class="form-control" name="content" id="field_content"
+                           formControlName="content"/>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskUniteApp.address.status" for="field_status">Status</label>
@@ -46,10 +46,17 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskUniteApp.address.user" for="field_user">User</label>
-                    <select class="form-control" id="field_user" name="user" formControlName="userId">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.address.tasker" for="field_tasker">Tasker</label>
+                    <select class="form-control" id="field_tasker" name="tasker" formControlName="taskerId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="userInformationOption.id" *ngFor="let userInformationOption of userinformations; trackBy: trackUserInformationById">{{userInformationOption.id}}</option>
+                        <option [ngValue]="taskerOption.id" *ngFor="let taskerOption of taskers; trackBy: trackTaskerById">{{taskerOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.address.master" for="field_master">Master</label>
+                    <select class="form-control" id="field_master" name="master" formControlName="masterId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="masterOption.id" *ngFor="let masterOption of masters; trackBy: trackMasterById">{{masterOption.id}}</option>
                     </select>
                 </div>
             </div>

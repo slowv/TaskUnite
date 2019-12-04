@@ -6,6 +6,7 @@ import { ITaskCategory } from 'app/shared/model/task-category.model';
 export interface ITask {
   id?: number;
   description?: string;
+  estimatedTime?: number;
   price?: number;
   status?: number;
   createdAt?: Moment;
@@ -23,6 +24,7 @@ export class Task implements ITask {
   constructor(
     public id?: number,
     public description?: string,
+    public estimatedTime?: number,
     public price?: number,
     public status?: number,
     public createdAt?: Moment,

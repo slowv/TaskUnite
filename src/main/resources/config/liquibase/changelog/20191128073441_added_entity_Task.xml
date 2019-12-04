@@ -19,6 +19,9 @@
             <column name="description" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="estimated_time" type="double">
+                <constraints nullable="true" />
+            </column>
             <column name="price" type="double">
                 <constraints nullable="true" />
             </column>
@@ -81,6 +84,7 @@
                   tableName="task">
             <column name="id" type="numeric"/>
             <column name="description" type="string"/>
+            <column name="estimated_time" type="numeric"/>
             <column name="price" type="numeric"/>
             <column name="status" type="numeric"/>
             <column name="created_at" type="datetime"/>

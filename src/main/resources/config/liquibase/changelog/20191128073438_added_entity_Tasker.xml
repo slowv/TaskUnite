@@ -16,7 +16,10 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="price" type="double">
+            <column name="image" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="description" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="status" type="integer">
@@ -43,8 +46,8 @@
 
     <changeSet id="20191128073438-1-relations" author="jhipster">
 
-        <createTable tableName="tasker_task_categories">
-            <column name="task_categories_id" type="bigint">
+        <createTable tableName="tasker_tasker_categories">
+            <column name="tasker_categories_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="tasker_id" type="bigint">
@@ -52,7 +55,7 @@
             </column>
         </createTable>
 
-        <addPrimaryKey columnNames="tasker_id, task_categories_id" tableName="tasker_task_categories"/>
+        <addPrimaryKey columnNames="tasker_id, tasker_categories_id" tableName="tasker_tasker_categories"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
@@ -71,7 +74,8 @@
                   separator=";"
                   tableName="tasker">
             <column name="id" type="numeric"/>
-            <column name="price" type="numeric"/>
+            <column name="image" type="string"/>
+            <column name="description" type="string"/>
             <column name="status" type="numeric"/>
             <column name="created_at" type="datetime"/>
             <column name="updated_at" type="datetime"/>

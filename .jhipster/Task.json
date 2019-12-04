@@ -6,6 +6,10 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "estimatedTime",
+            "fieldType": "Double"
+        },
+        {
             "fieldName": "price",
             "fieldType": "Double"
         },

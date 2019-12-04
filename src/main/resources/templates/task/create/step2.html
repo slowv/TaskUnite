@@ -3,6 +3,7 @@
 <head>
     <title>Create Task</title>
     <th:block th:include="fragment/layout :: head"></th:block>
+    <link rel="stylesheet" th:href="@{~/css/task/create.css}">
 </head>
 <body>
 
@@ -73,20 +74,9 @@
     </div>
 
     <div class="site-section bg-dark-light">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12 col-md-12 text-right">
-                    <label class="text-uppercase mr-1" th:text="#{task-create.step2.sorted-by}"></label>
-                    <select id="filter-option" class="">
-                        <option value="0" selected th:text="#{task-create.step2.sorted-by-recommended}"></option>
-                        <option value="1" th:text="#{task-create.step2.sorted-by-price-lowest-to-highest}"></option>
-                        <option value="2" th:text="#{task-create.step2.sorted-by-price-highest-to-lowest}"></option>
-                        <option value="3" th:text="#{task-create.step2.sorted-by-recommended}"></option>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 col-lg-4 p-2">
+                <div class="col-md-12 col-lg-4 p-2 box-filter">
                     <div class="recommendations__trust-safety__box panel panel--spaced ">
                         <img class="recommendations__trust-safety__box__icon"
                              th:src="@{~/images/protected.svg}" alt="shield">
@@ -96,7 +86,8 @@
                     </div>
                     <div class="panel panel--spaced panel--with-overflow">
                         <div class="title-date text-uppercase text-bold">
-                            <span class="icon-calendar mr-2" th:text="#{task-create.step2.task-date}"></span>
+                            <span class="icon-calendar mr-2"></span>
+                            <span th:text="#{task-create.step2.task-date}"></span>
                             <span class="icon-chevron-up iconSlideUp"></span>
                         </div>
                         <div class="box-option mt-3">
@@ -120,7 +111,7 @@
                     </div>
                     <div class="panel panel--spaced panel--with-overflow">
                         <div class="title-date text-uppercase text-bold">
-                            <span class="icon-clock-o mr-2" th:text="#{task-create.step2.task-time}"> </span>
+                            <span class="icon-clock-o mr-2"> </span> <span th:text="#{task-create.step2.task-time}"></span>
                             <span class="icon-chevron-up iconSlideUp"></span>
                         </div>
                         <div class="mt-3">
@@ -143,17 +134,17 @@
                                        th:text="#{task-create.step2.task-time-evening}"></label>
                             </div>
                             <div class="row my-2 p-3">
-                                <div class="col-lg-3 p-0">
+                                <div class="col-lg-3 p-0 col-xs-1">
                                     <div class="h-20 line-mid">
                                         <div class="line"></div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 text-center p-0">
+                                <div class="col-lg-6 text-center p-0 col-xs-10">
                                     <div class="h-20" style="font-size: 13px; color: #3f3f3f"
                                          th:text="#{task-create.step2.task-time-choose-a-specific-time}">s
                                     </div>
                                 </div>
-                                <div class="col-lg-3 p-0">
+                                <div class="col-lg-3 p-0 col-xs-1">
                                     <div class="h-20 line-mid">
                                         <div class="line"></div>
                                     </div>
@@ -196,6 +187,17 @@
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-8 p-2">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 text-right">
+                            <label class="text-uppercase mr-1" th:text="#{task-create.step2.sorted-by}"></label>
+                            <select class="filter-option">
+                                <option value="0" selected th:text="#{task-create.step2.sorted-by-recommended}"></option>
+                                <option value="1" th:text="#{task-create.step2.sorted-by-price-lowest-to-highest}"></option>
+                                <option value="2" th:text="#{task-create.step2.sorted-by-price-highest-to-lowest}"></option>
+                                <option value="3" th:text="#{task-create.step2.sorted-by-recommended}"></option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="recommendations__result panel panel--spaced ">
                         <div class="recommendations__result-figure">
                             <div>
@@ -203,15 +205,20 @@
                                      th:src="@{~/images/person_3.jpg}"
                                      alt="Tasker">
                             </div>
-                            <div class="recommendations__result-actions">
+                            <div class="recommendations__result-actions view-pc">
                                 <a class="recommendations__review-link d-block"
                                    tabindex="0" role="button">
                                     <span th:text="#{task-create.step2.view-profile-reviews}"></span>
                                 </a>
-                                <a class="recommendations__hire-btn btn btn-primary btn-block "
-                                   th:href="@{/task/create/step3}">
-                                    <span th:text="#{task-create.step2.select-continue-btn}"></span>
-                                </a>
+                                <form th:action="@{/task/create/step2}" method="post">
+                                     <!--Temporary set tasker ID = 1 -->
+                                    <!--<input type="text" th:value="*{description}">-->
+                                    <input type="hidden" id="tasker" name="tasker" th:value="1">
+                                    <button type="submit" class="recommendations__hire-btn btn btn-primary btn-block">
+                                        <span th:text="#{task-create.step2.select-continue-btn}"></span>
+                                    </button>
+                                </form>
+
                                 <div class="u-hidden--sm">
                                     <span class="whisper">
                                         <span th:text="#{task-create.step2.notification-3}"></span>
@@ -271,83 +278,15 @@
                                     <div class="u-muted">Xuân Thứ - 7/11/2019</div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="recommendations__result panel panel--spaced ">
-                        <div class="recommendations__result-figure">
-                            <div>
-                                <img class="recommendations__avatar__circular"
-                                     th:src="@{~/images/person_3.jpg}"
-                                     alt="Tasker">
-                            </div>
-                            <div class="recommendations__result-actions">
-                                <a class="recommendations__review-link d-block"
-                                   tabindex="0" role="button">
-                                    <span>Thông tin &amp; Nhận xét</span>
-                                </a>
+                            <div class="recommendations__result-actions view-mobile">
                                 <a class="recommendations__hire-btn btn btn-primary btn-block "
-                                   role="button">
-                                    <span>Chọn &amp; Tiếp tục</span>
+                                   th:href="@{/task/create/step3}">
+                                    <span th:text="#{task-create.step2.select-continue-btn}"></span>
                                 </a>
                                 <div class="u-hidden--sm">
                                     <span class="whisper">
-                                        <span>
-                                        Bạn có thể trò chuyện với Nhân viên, điều chỉnh chi tiết công việc hoặc thay đổi thời gian thực hiện công việc sau khi đặt chỗ
-                                        </span>
+                                        <span th:text="#{task-create.step2.notification-3}"></span>
                                     </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="recommendations__result-content">
-                            <div class="recommendations__result-name" tabindex="0" role="button">Trần Hiểu Đông</div>
-                            <span>
-                                <div class="recommendations__result-price-container priceChange-appear-active">
-                                    <div class="recommendations__result-price recommendations__pill">
-                                        <strong>80.000 vnđ<span>/h</span></strong>
-                                    </div>
-                                </div>
-                            </span>
-                            <ul class="recommendations__badge-list">
-                                <li class="recommendations__pill--elite">
-                                    <i class="icon-sentiment_very_satisfied"></i><span>Nhân viên ưu tú</span>
-                                </li>
-                            </ul>
-                            <ul class="recommendations__result-info">
-                                <li><i class="icon-check-circle-o"></i><span>66 Công việc nhà</span></li>
-                                <li><i class="icon-star-o"></i>
-                                    <span>
-                                        100% Nhận xét tích cực
-                                        <span class="tooltip-tether">
-                                            <i class="icon-info_outline recommendations__badge-info"></i>
-                                            <span class="tooltip">
-                                                <div class="tooltip-triangle"></div>
-                                                <div class="tooltip-inner">
-                                                    <span>Đánh giá tích cực dựa trên tất cả các công việc đã hoàn thành. Giúp bạn sáng suốt hơn khi chọn một nhân viên.</span>
-                                                </div>
-                                            </span>
-                                        </span>
-                                    </span>
-
-                                </li>
-                                <li><i class="icon-beenhere"></i><span>100% Tin cậy</span> <i
-                                    class="icon-info_outline"></i></li>
-                            </ul>
-                            <div class="recommendations__blurb-title"><span>Tôi có thể giúp bạn:</span></div>
-                            <div class="recommendations__blurb">
-                                Đếm rất khéo léo và hiệu quả với các công cụ phù hợp để hoàn thành công việc, mọi cài
-                                đặt AC của các đơn vị AC có cùng giá mỗi giờ cho mỗi đơn vị (ví dụ: một đơn vị AC một
-                                giờ hai đơn vị AC hai giờ, v.v. Tối thiểu là 2 giờ cho sửa chữa nhà khác
-                            </div>
-                            <div class="recommendations__review media--object">
-                                <div class="media--figure">
-                                    <img class="avatar-new-72" th:src="@{~/images/person_1.jpg}"
-                                         alt="Reviewer">
-                                </div>
-                                <div class="media--content">
-                                    <div class="recommendations__review-content">"Công việc tuyệt vời. Đúng giờ, thân
-                                        thiện, nhanh chóng và lành nghề."
-                                    </div>
-                                    <div class="u-muted">Xuân Thứ - 7/11/2019</div>
                                 </div>
                             </div>
                         </div>
