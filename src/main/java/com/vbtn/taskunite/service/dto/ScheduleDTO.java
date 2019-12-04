@@ -20,8 +20,6 @@ public class ScheduleDTO implements Serializable {
 
     private Long taskerId;
 
-    private Long taskId;
-
     public Long getId() {
         return id;
     }
@@ -62,14 +60,6 @@ public class ScheduleDTO implements Serializable {
         this.taskerId = taskerId;
     }
 
-    public Long getTaskId() {
-        return taskId;
-    }
-
-    public void setTaskId(Long taskId) {
-        this.taskId = taskId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -99,7 +89,6 @@ public class ScheduleDTO implements Serializable {
             ", to='" + getTo() + "'" +
             ", duration='" + getDuration() + "'" +
             ", tasker=" + getTaskerId() +
-            ", task=" + getTaskId() +
             "}";
     }
 }

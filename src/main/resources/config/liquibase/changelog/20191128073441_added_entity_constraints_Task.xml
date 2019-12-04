@@ -14,6 +14,12 @@
                                  referencedColumnNames="id"
                                  referencedTableName="room"/>
 
+        <addForeignKeyConstraint baseColumnNames="schedule_id"
+                                 baseTableName="task"
+                                 constraintName="fk_task_schedule_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="schedule"/>
+
         <addForeignKeyConstraint baseColumnNames="tasker_id"
                                  baseTableName="task"
                                  constraintName="fk_task_tasker_id"

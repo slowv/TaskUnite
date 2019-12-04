@@ -52,8 +52,9 @@ public class Task implements Serializable {
     @JoinColumn(unique = true)
     private Room room;
 
-    @OneToMany(mappedBy = "task")
-    private Set<Schedule> schedules = new HashSet<>();
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(unique = true)
+    private Schedule schedule;
 
     @OneToMany(mappedBy = "task")
     private Set<Review> reviews = new HashSet<>();
@@ -209,29 +210,17 @@ public class Task implements Serializable {
         this.room = room;
     }
 
-    public Set<Schedule> getSchedules() {
-        return schedules;
+    public Schedule getSchedule() {
+        return schedule;
     }
 
-    public Task schedules(Set<Schedule> schedules) {
-        this.schedules = schedules;
+    public Task schedule(Schedule schedule) {
+        this.schedule = schedule;
         return this;
     }
 
-    public Task addSchedule(Schedule schedule) {
-        this.schedules.add(schedule);
-        schedule.setTask(this);
-        return this;
-    }
-
-    public Task removeSchedule(Schedule schedule) {
-        this.schedules.remove(schedule);
-        schedule.setTask(null);
-        return this;
-    }
-
-    public void setSchedules(Set<Schedule> schedules) {
-        this.schedules = schedules;
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
     }
 
     public Set<Review> getReviews() {

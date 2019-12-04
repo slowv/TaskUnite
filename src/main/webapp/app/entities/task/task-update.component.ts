@@ -12,6 +12,8 @@ import { ITask, Task } from 'app/shared/model/task.model';
 import { TaskService } from './task.service';
 import { IRoom } from 'app/shared/model/room.model';
 import { RoomService } from 'app/entities/room/room.service';
+import { ISchedule } from 'app/shared/model/schedule.model';
+import { ScheduleService } from 'app/entities/schedule/schedule.service';
 import { ITasker } from 'app/shared/model/tasker.model';
 import { TaskerService } from 'app/entities/tasker/tasker.service';
 import { IMaster } from 'app/shared/model/master.model';
@@ -27,6 +29,8 @@ export class TaskUpdateComponent implements OnInit {
   isSaving: boolean;
 
   rooms: IRoom[];
+
+  schedules: ISchedule[];
 
   taskers: ITasker[];
 
@@ -46,6 +50,7 @@ export class TaskUpdateComponent implements OnInit {
     updatedAt: [],
     deletedAt: [],
     roomId: [],
+    scheduleId: [],
     taskerId: [],
     masterId: [],
     taskCategoryId: []
@@ -55,6 +60,7 @@ export class TaskUpdateComponent implements OnInit {
     protected jhiAlertService: JhiAlertService,
     protected taskService: TaskService,
     protected roomService: RoomService,
+    protected scheduleService: ScheduleService,
     protected taskerService: TaskerService,
     protected masterService: MasterService,
     protected taskCategoryService: TaskCategoryService,
@@ -76,6 +82,21 @@ export class TaskUpdateComponent implements OnInit {
             .find(this.editForm.get('roomId').value)
             .subscribe(
               (subRes: HttpResponse<IRoom>) => (this.rooms = [subRes.body].concat(res.body)),
+              (subRes: HttpErrorResponse) => this.onError(subRes.message)
+            );
+        }
+      },
+      (res: HttpErrorResponse) => this.onError(res.message)
+    );
+    this.scheduleService.query({ filter: 'task-is-null' }).subscribe(
+      (res: HttpResponse<ISchedule[]>) => {
+        if (!this.editForm.get('scheduleId').value) {
+          this.schedules = res.body;
+        } else {
+          this.scheduleService
+            .find(this.editForm.get('scheduleId').value)
+            .subscribe(
+              (subRes: HttpResponse<ISchedule>) => (this.schedules = [subRes.body].concat(res.body)),
               (subRes: HttpErrorResponse) => this.onError(subRes.message)
             );
         }
@@ -109,6 +130,7 @@ export class TaskUpdateComponent implements OnInit {
       updatedAt: task.updatedAt != null ? task.updatedAt.format(DATE_TIME_FORMAT) : null,
       deletedAt: task.deletedAt != null ? task.deletedAt.format(DATE_TIME_FORMAT) : null,
       roomId: task.roomId,
+      scheduleId: task.scheduleId,
       taskerId: task.taskerId,
       masterId: task.masterId,
       taskCategoryId: task.taskCategoryId
@@ -146,6 +168,7 @@ export class TaskUpdateComponent implements OnInit {
       deletedAt:
         this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
       roomId: this.editForm.get(['roomId']).value,
+      scheduleId: this.editForm.get(['scheduleId']).value,
       taskerId: this.editForm.get(['taskerId']).value,
       masterId: this.editForm.get(['masterId']).value,
       taskCategoryId: this.editForm.get(['taskCategoryId']).value
@@ -169,6 +192,10 @@ export class TaskUpdateComponent implements OnInit {
   }
 
   trackRoomById(index: number, item: IRoom) {
+    return item.id;
+  }
+
+  trackScheduleById(index: number, item: ISchedule) {
     return item.id;
   }
 

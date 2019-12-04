@@ -1,4 +1,5 @@
 package com.vbtn.taskunite.domain;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -29,13 +30,13 @@ public class Schedule implements Serializable {
     @Column(name = "duration")
     private Duration duration;
 
-    @ManyToOne
-    @JsonIgnoreProperties("schedules")
-    private Tasker tasker;
+    @OneToOne(mappedBy = "schedule", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JsonIgnore
+    private Task task;
 
     @ManyToOne
     @JsonIgnoreProperties("schedules")
-    private Task task;
+    private Tasker tasker;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -85,19 +86,6 @@ public class Schedule implements Serializable {
         this.duration = duration;
     }
 
-    public Tasker getTasker() {
-        return tasker;
-    }
-
-    public Schedule tasker(Tasker tasker) {
-        this.tasker = tasker;
-        return this;
-    }
-
-    public void setTasker(Tasker tasker) {
-        this.tasker = tasker;
-    }
-
     public Task getTask() {
         return task;
     }
@@ -109,6 +97,19 @@ public class Schedule implements Serializable {
 
     public void setTask(Task task) {
         this.task = task;
+    }
+
+    public Tasker getTasker() {
+        return tasker;
+    }
+
+    public Schedule tasker(Tasker tasker) {
+        this.tasker = tasker;
+        return this;
+    }
+
+    public void setTasker(Tasker tasker) {
+        this.tasker = tasker;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

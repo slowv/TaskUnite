@@ -31,6 +31,8 @@ public class TaskDTO implements Serializable {
 
     private Long roomId;
 
+    private Long scheduleId;
+
     private Long taskerId;
 
     private Long masterId;
@@ -125,6 +127,14 @@ public class TaskDTO implements Serializable {
         this.roomId = roomId;
     }
 
+    public Long getScheduleId() {
+        return scheduleId;
+    }
+
+    public void setScheduleId(Long scheduleId) {
+        this.scheduleId = scheduleId;
+    }
+
     public Long getTaskerId() {
         return taskerId;
     }
@@ -184,6 +194,7 @@ public class TaskDTO implements Serializable {
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
             ", room=" + getRoomId() +
+            ", schedule=" + getScheduleId() +
             ", tasker=" + getTaskerId() +
             ", master=" + getMasterId() +
             ", taskCategory=" + getTaskCategoryId() +

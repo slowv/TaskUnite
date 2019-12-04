@@ -47,6 +47,12 @@
                         <a [routerLink]="['/room', task.roomId, 'view']">{{task.roomId}}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="taskUniteApp.task.schedule">Schedule</span></dt>
+                <dd>
+                    <div *ngIf="task.scheduleId">
+                        <a [routerLink]="['/schedule', task.scheduleId, 'view']">{{task.scheduleId}}</a>
+                    </div>
+                </dd>
                 <dt><span jhiTranslate="taskUniteApp.task.tasker">Tasker</span></dt>
                 <dd>
                     <div *ngIf="task.taskerId">
