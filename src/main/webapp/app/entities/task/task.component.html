@@ -29,6 +29,7 @@
             <th scope="col"  jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.task.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.task.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="roomId"><span jhiTranslate="taskUniteApp.task.room">Room</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="scheduleId"><span jhiTranslate="taskUniteApp.task.schedule">Schedule</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="taskerId"><span jhiTranslate="taskUniteApp.task.tasker">Tasker</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="masterId"><span jhiTranslate="taskUniteApp.task.master">Master</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="taskCategoryId"><span jhiTranslate="taskUniteApp.task.taskCategory">Task Category</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -50,6 +51,11 @@
                 <td>
                     <div *ngIf="task.roomId">
                         <a [routerLink]="['/room', task.roomId , 'view' ]" >{{task.roomId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="task.scheduleId">
+                        <a [routerLink]="['/schedule', task.scheduleId , 'view' ]" >{{task.scheduleId}}</a>
                     </div>
                 </td>
                 <td>

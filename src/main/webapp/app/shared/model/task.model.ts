@@ -1,5 +1,4 @@
 import { Moment } from 'moment';
-import { ISchedule } from 'app/shared/model/schedule.model';
 import { IReview } from 'app/shared/model/review.model';
 
 export interface ITask {
@@ -14,7 +13,7 @@ export interface ITask {
   updatedAt?: Moment;
   deletedAt?: Moment;
   roomId?: number;
-  schedules?: ISchedule[];
+  scheduleId?: number;
   reviews?: IReview[];
   taskerId?: number;
   masterId?: number;
@@ -34,7 +33,7 @@ export class Task implements ITask {
     public updatedAt?: Moment,
     public deletedAt?: Moment,
     public roomId?: number,
-    public schedules?: ISchedule[],
+    public scheduleId?: number,
     public reviews?: IReview[],
     public taskerId?: number,
     public masterId?: number,

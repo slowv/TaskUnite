@@ -10,10 +10,10 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { ISchedule, Schedule } from 'app/shared/model/schedule.model';
 import { ScheduleService } from './schedule.service';
-import { ITasker } from 'app/shared/model/tasker.model';
-import { TaskerService } from 'app/entities/tasker/tasker.service';
 import { ITask } from 'app/shared/model/task.model';
 import { TaskService } from 'app/entities/task/task.service';
+import { ITasker } from 'app/shared/model/tasker.model';
+import { TaskerService } from 'app/entities/tasker/tasker.service';
 
 @Component({
   selector: 'jhi-schedule-update',
@@ -22,24 +22,23 @@ import { TaskService } from 'app/entities/task/task.service';
 export class ScheduleUpdateComponent implements OnInit {
   isSaving: boolean;
 
-  taskers: ITasker[];
-
   tasks: ITask[];
+
+  taskers: ITasker[];
 
   editForm = this.fb.group({
     id: [],
     from: [],
     to: [],
     duration: [],
-    taskerId: [],
-    taskId: []
+    taskerId: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected scheduleService: ScheduleService,
-    protected taskerService: TaskerService,
     protected taskService: TaskService,
+    protected taskerService: TaskerService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -49,12 +48,12 @@ export class ScheduleUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ schedule }) => {
       this.updateForm(schedule);
     });
-    this.taskerService
-      .query()
-      .subscribe((res: HttpResponse<ITasker[]>) => (this.taskers = res.body), (res: HttpErrorResponse) => this.onError(res.message));
     this.taskService
       .query()
       .subscribe((res: HttpResponse<ITask[]>) => (this.tasks = res.body), (res: HttpErrorResponse) => this.onError(res.message));
+    this.taskerService
+      .query()
+      .subscribe((res: HttpResponse<ITasker[]>) => (this.taskers = res.body), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(schedule: ISchedule) {
@@ -63,8 +62,7 @@ export class ScheduleUpdateComponent implements OnInit {
       from: schedule.from != null ? schedule.from.format(DATE_TIME_FORMAT) : null,
       to: schedule.to != null ? schedule.to.format(DATE_TIME_FORMAT) : null,
       duration: schedule.duration,
-      taskerId: schedule.taskerId,
-      taskId: schedule.taskId
+      taskerId: schedule.taskerId
     });
   }
 
@@ -89,8 +87,7 @@ export class ScheduleUpdateComponent implements OnInit {
       from: this.editForm.get(['from']).value != null ? moment(this.editForm.get(['from']).value, DATE_TIME_FORMAT) : undefined,
       to: this.editForm.get(['to']).value != null ? moment(this.editForm.get(['to']).value, DATE_TIME_FORMAT) : undefined,
       duration: this.editForm.get(['duration']).value,
-      taskerId: this.editForm.get(['taskerId']).value,
-      taskId: this.editForm.get(['taskId']).value
+      taskerId: this.editForm.get(['taskerId']).value
     };
   }
 
@@ -110,11 +107,11 @@ export class ScheduleUpdateComponent implements OnInit {
     this.jhiAlertService.error(errorMessage, null, null);
   }
 
-  trackTaskerById(index: number, item: ITasker) {
+  trackTaskById(index: number, item: ITask) {
     return item.id;
   }
 
-  trackTaskById(index: number, item: ITask) {
+  trackTaskerById(index: number, item: ITasker) {
     return item.id;
   }
 }

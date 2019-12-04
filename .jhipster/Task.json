@@ -48,10 +48,12 @@
             "ownerSide": true
         },
         {
-            "relationshipType": "one-to-many",
+            "relationshipType": "one-to-one",
             "otherEntityName": "schedule",
             "otherEntityRelationshipName": "task",
-            "relationshipName": "schedule"
+            "relationshipName": "schedule",
+            "otherEntityField": "id",
+            "ownerSide": true
         },
         {
             "relationshipType": "one-to-many",

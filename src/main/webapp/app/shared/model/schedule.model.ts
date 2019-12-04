@@ -5,8 +5,8 @@ export interface ISchedule {
   from?: Moment;
   to?: Moment;
   duration?: number;
-  taskerId?: number;
   taskId?: number;
+  taskerId?: number;
 }
 
 export class Schedule implements ISchedule {
@@ -15,7 +15,7 @@ export class Schedule implements ISchedule {
     public from?: Moment,
     public to?: Moment,
     public duration?: number,
-    public taskerId?: number,
-    public taskId?: number
+    public taskId?: number,
+    public taskerId?: number
   ) {}
 }

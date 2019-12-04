@@ -113,7 +113,7 @@ public class TaskController {
         schedule.setFrom(selectedDate.toInstant());
         schedule.setTo(selectedDate.toInstant().plus(2, ChronoUnit.HOURS));
         Task taskInfo = (Task)step2.get("taskInfo");
-        taskInfo.addSchedule(schedule);
+        taskInfo.setSchedule(schedule);
 
         HashMap<String, Object> step3 = new HashMap<>();
         step3.put("taskInfo", taskInfo);
