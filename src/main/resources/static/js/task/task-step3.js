@@ -58,7 +58,7 @@ $(document).ready(function () {
   });
 
   $('#selected-time').on('change', function () {
-    selectDate($('#calendar-value').datepicker('getStartDate'));
+    selectDate($('#calendar-value').datepicker('getFormattedDate'));
   })
 
   $('#selected-date').val(
