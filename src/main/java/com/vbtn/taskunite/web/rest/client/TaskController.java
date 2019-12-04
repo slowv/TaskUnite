@@ -50,16 +50,15 @@ public class TaskController {
         if(null != session.getAttribute("step1")){
             HashMap step1 = (HashMap) session.getAttribute("step1");
             taskInfo = (Task) step1.get("taskInfo");
-            model.addAttribute("estimateTime", step1.get("estimateTime"));
         }
-        Page<TaskCategoryDTO> taskCategories = customTaskCategoryService.findAll(PageRequest.of(0, 5));
-        model.addAttribute("taskCategories", taskCategories.getContent());
+        List<TaskCategoryDTO> taskCategories = customTaskCategoryService.findAll();
+        model.addAttribute("taskCategories", taskCategories);
         model.addAttribute("taskInfo", taskInfo);
         return "task/create/step1";
     }
 
     @RequestMapping(value = "/create/step1", method = RequestMethod.POST)
-    public String updateStep1(HttpSession session, Principal principal, Task taskInfo, @RequestParam("estimateTime") int estimateTime){
+    public String updateStep1(HttpSession session, Principal principal, Task taskInfo){
         HashMap<String, Object> step1 = new HashMap<>();
         if(null != principal){
             Optional<UserInformation> userInfo = customUserInformationService.findOneByUsername(principal.getName());
@@ -69,7 +68,6 @@ public class TaskController {
             }
         }
         step1.put("taskInfo", taskInfo);
-        step1.put("estimateTime", estimateTime);
         session.setAttribute("step1", step1);
         return "redirect:/task/create/step2";
     }
@@ -105,7 +103,6 @@ public class TaskController {
         if(null == step2){
             return "redirect:/task/create/step1";
         }
-//        model.addAttribute("taskInfo", (Task)step2.get("taskInfo"));
         return "task/create/step3";
     }
 

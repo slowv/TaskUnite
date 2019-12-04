@@ -48,7 +48,7 @@ public class Task implements Serializable {
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(unique = true)
     private Room room;
 
