@@ -35,6 +35,11 @@ public class CustomTaskService {
     }
 
     @Transactional
+    public Task findTaskByRoomId(Long id){
+        return customTaskRepository.findByRoomId(id).orElse(null);
+    }
+
+    @Transactional
     public Task save(Task task) {
         Room room = new Room();
         room.setMaster(task.getMaster());

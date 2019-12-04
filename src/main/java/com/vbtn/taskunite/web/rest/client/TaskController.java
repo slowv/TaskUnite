@@ -137,7 +137,8 @@ public class TaskController {
         HashMap step3 = (HashMap) session.getAttribute("step3");
         Task taskInfo = (Task)step3.get("taskInfo");
         taskInfo.setDescription(description);
-        customTaskService.save(taskInfo);
-        return "redirect:/";
+        taskInfo = customTaskService.save(taskInfo);
+        logger.info(taskInfo.getRoom().toString());
+        return "redirect:/room/" + taskInfo.getRoom().getId();
     }
 }
