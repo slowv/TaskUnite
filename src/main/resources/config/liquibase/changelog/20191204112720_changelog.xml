@@ -1,52 +1,53 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
-    <changeSet author="Anh Dang (generated)" id="1574927619582-1">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-1">
         <createTable tableName="address">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="addressPK"/>
             </column>
-            <column name="created_at" type="date"/>
-            <column name="deleted_at" type="date"/>
+            <column name="content" type="VARCHAR(255)"/>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="deleted_at" type="datetime(6)"/>
             <column name="status" type="INT"/>
-            <column name="street" type="VARCHAR(255)"/>
-            <column name="updated_at" type="date"/>
-            <column name="dictrict_id" type="BIGINT"/>
-            <column name="user_id" type="BIGINT"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="district_id" type="BIGINT"/>
+            <column name="master_id" type="BIGINT"/>
+            <column name="tasker_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-2">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-2">
         <createTable tableName="city">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="cityPK"/>
             </column>
-            <column name="created_at" type="date"/>
-            <column name="deleted_at" type="date"/>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="deleted_at" type="datetime(6)"/>
             <column name="name" type="VARCHAR(255)"/>
             <column name="status" type="INT"/>
-            <column name="updated_at" type="date"/>
+            <column name="updated_at" type="datetime(6)"/>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-3">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-3">
         <createTable tableName="district">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="districtPK"/>
             </column>
-            <column name="created_at" type="date"/>
-            <column name="deleted_at" type="date"/>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="deleted_at" type="datetime(6)"/>
             <column name="name" type="VARCHAR(255)"/>
             <column name="status" type="INT"/>
-            <column name="updated_at" type="date"/>
+            <column name="updated_at" type="datetime(6)"/>
             <column name="city_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-4">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-4">
         <createTable tableName="jhi_authority">
             <column name="name" type="VARCHAR(50)">
                 <constraints primaryKey="true" primaryKeyName="jhi_authorityPK"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-5">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-5">
         <createTable tableName="jhi_persistent_audit_event">
             <column autoIncrement="true" name="event_id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="jhi_persistent_audit_eventPK"/>
@@ -58,7 +59,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-6">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-6">
         <createTable tableName="jhi_persistent_audit_evt_data">
             <column name="event_id" type="BIGINT">
                 <constraints primaryKey="true"/>
@@ -69,7 +70,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-7">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-7">
         <createTable tableName="jhi_persistent_token">
             <column name="series" type="VARCHAR(255)">
                 <constraints primaryKey="true" primaryKeyName="jhi_persistent_tokenPK"/>
@@ -83,7 +84,7 @@
             <column name="user_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-8">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-8">
         <createTable tableName="jhi_user">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="jhi_userPK"/>
@@ -113,7 +114,7 @@
             <column name="reset_key" type="VARCHAR(20)"/>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-9">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-9">
         <createTable tableName="jhi_user_authority">
             <column name="user_id" type="BIGINT">
                 <constraints primaryKey="true"/>
@@ -123,144 +124,136 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-10">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-10">
         <createTable tableName="master">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="masterPK"/>
             </column>
-            <column name="created_at" type="date"/>
-            <column name="deleted_at" type="date"/>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="deleted_at" type="datetime(6)"/>
             <column name="status" type="INT"/>
-            <column name="updated_at" type="date"/>
+            <column name="updated_at" type="datetime(6)"/>
             <column name="user_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-11">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-11">
         <createTable tableName="notification">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="notificationPK"/>
             </column>
             <column name="content" type="VARCHAR(255)"/>
-            <column name="created_at" type="date"/>
-            <column name="deleted_at" type="date"/>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="deleted_at" type="datetime(6)"/>
             <column name="status" type="INT"/>
-            <column name="updated_at" type="date"/>
+            <column name="updated_at" type="datetime(6)"/>
             <column name="user_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-12">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-12">
         <createTable tableName="payment_information">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="payment_informationPK"/>
             </column>
             <column name="balance" type="DOUBLE"/>
-            <column name="created_at" type="date"/>
-            <column name="deleted_at" type="date"/>
-            <column name="updated_at" type="date"/>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="deleted_at" type="datetime(6)"/>
+            <column name="updated_at" type="datetime(6)"/>
             <column name="user_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-13">
-        <createTable tableName="plan">
-            <column autoIncrement="true" name="id" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="planPK"/>
-            </column>
-            <column name="duration" type="BIGINT"/>
-            <column name="jhi_from" type="date"/>
-            <column name="jhi_to" type="date"/>
-            <column name="task_id" type="BIGINT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-14">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-13">
         <createTable tableName="review">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="reviewPK"/>
             </column>
             <column name="content" type="VARCHAR(255)"/>
-            <column name="created_at" type="date"/>
-            <column name="deleted_at" type="date"/>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="deleted_at" type="datetime(6)"/>
             <column name="point" type="DOUBLE"/>
             <column name="status" type="INT"/>
-            <column name="updated_at" type="date"/>
+            <column name="updated_at" type="datetime(6)"/>
             <column name="task_id" type="BIGINT"/>
             <column name="user_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-15">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-14">
         <createTable tableName="room">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="roomPK"/>
             </column>
-            <column name="created_at" type="date"/>
-            <column name="deleted_at" type="date"/>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="deleted_at" type="datetime(6)"/>
             <column name="message_id" type="VARCHAR(255)"/>
             <column name="status" type="INT"/>
-            <column name="updated_at" type="date"/>
+            <column name="updated_at" type="datetime(6)"/>
             <column name="master_id" type="BIGINT"/>
             <column name="tasker_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-16">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-15">
         <createTable tableName="schedule">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="schedulePK"/>
             </column>
             <column name="duration" type="BIGINT"/>
-            <column name="jhi_from" type="date"/>
-            <column name="jhi_to" type="date"/>
+            <column name="jhi_from" type="datetime(6)"/>
+            <column name="jhi_to" type="datetime(6)"/>
+            <column name="task_id" type="BIGINT"/>
             <column name="tasker_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-17">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-16">
         <createTable tableName="statistic">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="statisticPK"/>
             </column>
             <column name="bonus" type="DOUBLE"/>
             <column name="completed_task" type="INT"/>
-            <column name="created_at" type="date"/>
-            <column name="deleted_at" type="date"/>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="deleted_at" type="datetime(6)"/>
             <column name="experience" type="INT"/>
             <column name="incompleted_task" type="INT"/>
             <column name="level" type="INT"/>
             <column name="ranking" type="INT"/>
             <column name="rating" type="INT"/>
-            <column name="updated_at" type="date"/>
+            <column name="updated_at" type="datetime(6)"/>
             <column name="user_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-18">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-17">
         <createTable tableName="task">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="taskPK"/>
             </column>
-            <column name="created_at" type="date"/>
-            <column name="deleted_at" type="date"/>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="deleted_at" type="datetime(6)"/>
             <column name="description" type="VARCHAR(255)"/>
+            <column name="estimated_time" type="DOUBLE"/>
             <column name="price" type="DOUBLE"/>
             <column name="status" type="INT"/>
-            <column name="updated_at" type="date"/>
+            <column name="updated_at" type="datetime(6)"/>
             <column name="master_id" type="BIGINT"/>
             <column name="room_id" type="BIGINT"/>
             <column name="tasker_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-19">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-18">
         <createTable tableName="task_category">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="task_categoryPK"/>
             </column>
-            <column name="created_at" type="date"/>
-            <column name="deleted_at" type="date"/>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="deleted_at" type="datetime(6)"/>
             <column name="description" type="VARCHAR(255)"/>
             <column name="image" type="VARCHAR(255)"/>
             <column name="min_price" type="DOUBLE"/>
             <column name="name" type="VARCHAR(255)"/>
             <column name="status" type="INT"/>
-            <column name="updated_at" type="date"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="tasker_category_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-20">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-19">
         <createTable tableName="task_task_categories">
             <column name="task_id" type="BIGINT">
                 <constraints primaryKey="true"/>
@@ -270,143 +263,173 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-21">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-20">
         <createTable tableName="tasker">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="taskerPK"/>
             </column>
-            <column name="created_at" type="date"/>
-            <column name="deleted_at" type="date"/>
-            <column name="price" type="DOUBLE"/>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="deleted_at" type="datetime(6)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="image" type="VARCHAR(255)"/>
             <column name="status" type="INT"/>
-            <column name="updated_at" type="date"/>
+            <column name="updated_at" type="datetime(6)"/>
             <column name="user_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-22">
-        <createTable tableName="tasker_task_categories">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-21">
+        <createTable tableName="tasker_category">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="tasker_categoryPK"/>
+            </column>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="deleted_at" type="datetime(6)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="price" type="DOUBLE"/>
+            <column name="status" type="INT"/>
+            <column name="updated_at" type="datetime(6)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575458851397-22">
+        <createTable tableName="tasker_tasker_categories">
             <column name="tasker_id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="task_categories_id" type="BIGINT">
+            <column name="tasker_categories_id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-23">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-23">
         <createTable tableName="user_information">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="user_informationPK"/>
             </column>
-            <column name="address" type="VARCHAR(255)"/>
-            <column name="created_at" type="date"/>
-            <column name="deleted_at" type="date"/>
+            <column name="created_at" type="datetime(6)"/>
+            <column name="deleted_at" type="datetime(6)"/>
+            <column name="gender" type="INT"/>
             <column name="phone" type="VARCHAR(255)"/>
             <column name="status" type="INT"/>
-            <column name="updated_at" type="date"/>
+            <column name="updated_at" type="datetime(6)"/>
+            <column name="address_id" type="BIGINT"/>
             <column name="user_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-24">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-24">
         <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-25">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-25">
         <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-26">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-26">
         <addUniqueConstraint columnNames="user_id" constraintName="UC_MASTERUSER_ID_COL" tableName="master"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-27">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-27">
         <addUniqueConstraint columnNames="user_id" constraintName="UC_PAYMENT_INFORMATIONUSER_ID_COL" tableName="payment_information"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-28">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-28">
         <addUniqueConstraint columnNames="user_id" constraintName="UC_STATISTICUSER_ID_COL" tableName="statistic"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-29">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-29">
         <addUniqueConstraint columnNames="user_id" constraintName="UC_TASKERUSER_ID_COL" tableName="tasker"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-30">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-30">
         <addUniqueConstraint columnNames="room_id" constraintName="UC_TASKROOM_ID_COL" tableName="task"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-31">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-31">
+        <addUniqueConstraint columnNames="tasker_category_id" constraintName="UC_TASK_CATEGORYTASKER_CATEGORY_ID_COL" tableName="task_category"/>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575458851397-32">
+        <addUniqueConstraint columnNames="address_id" constraintName="UC_USER_INFORMATIONADDRESS_ID_COL" tableName="user_information"/>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575458851397-33">
         <addUniqueConstraint columnNames="user_id" constraintName="UC_USER_INFORMATIONUSER_ID_COL" tableName="user_information"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-32">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-34">
+        <addForeignKeyConstraint baseColumnNames="tasker_category_id" baseTableName="task_category" constraintName="FK22u391q06ogi7yp8byhtnr2dr" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="tasker_category" validate="true"/>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575458851397-35">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_user_authority" constraintName="FK290okww5jujghp4el5i7mgwu0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-33">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-36">
         <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="jhi_persistent_audit_evt_data" constraintName="FK2ehnyx2si4tjd2nt4q7y40v8m" deferrable="false" initiallyDeferred="false" referencedColumnNames="event_id" referencedTableName="jhi_persistent_audit_event" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-34">
-        <addForeignKeyConstraint baseColumnNames="task_id" baseTableName="plan" constraintName="FK2y7owr4tuc6opyjfk1qk52c9u" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="task" validate="true"/>
+    <changeSet author="quanganh9x (generated)" id="1575458851397-37">
+        <addForeignKeyConstraint baseColumnNames="tasker_id" baseTableName="tasker_tasker_categories" constraintName="FK2eoktdfataxux3nh7gc0c5ig8" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="tasker" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-35">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-38">
+        <addForeignKeyConstraint baseColumnNames="tasker_id" baseTableName="address" constraintName="FK2mb85531ciymt5na3p8sjl4yv" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="tasker" validate="true"/>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575458851397-39">
+        <addForeignKeyConstraint baseColumnNames="tasker_categories_id" baseTableName="tasker_tasker_categories" constraintName="FK30yoagy5ij46jfc25p4rmm1fu" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="tasker_category" validate="true"/>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575458851397-40">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_information" constraintName="FK36im86a40fwdtdh57qmrne61" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-36">
-        <addForeignKeyConstraint baseColumnNames="tasker_id" baseTableName="tasker_task_categories" constraintName="FK4nckihuvs43y32dxnwli5vjgt" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="tasker" validate="true"/>
+    <changeSet author="quanganh9x (generated)" id="1575458851397-41">
+        <addForeignKeyConstraint baseColumnNames="task_id" baseTableName="schedule" constraintName="FK3bcyktkt076ioqv5vm1vnltxh" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="task" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-37">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-42">
         <addForeignKeyConstraint baseColumnNames="authority_name" baseTableName="jhi_user_authority" constraintName="FK4psxl0jtx6nr7rhqbynr6itoc" deferrable="false" initiallyDeferred="false" referencedColumnNames="name" referencedTableName="jhi_authority" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-38">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-43">
         <addForeignKeyConstraint baseColumnNames="tasker_id" baseTableName="schedule" constraintName="FK4sfmklvqrxu8ki2m97hxkdfra" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="tasker" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-39">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-44">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="notification" constraintName="FK5do7yo0hthngo48xtlr8wkvoj" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="user_information" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-40">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-45">
         <addForeignKeyConstraint baseColumnNames="task_id" baseTableName="review" constraintName="FK5fw7qm8yxob1sdf77mvguthif" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="task" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-41">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-46">
+        <addForeignKeyConstraint baseColumnNames="master_id" baseTableName="address" constraintName="FK5tht3689gjbypdvttiwunceck" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="master" validate="true"/>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575458851397-47">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="payment_information" constraintName="FK93bdh4wq6ucto11nbve81pdl2" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-42">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-48">
         <addForeignKeyConstraint baseColumnNames="tasker_id" baseTableName="room" constraintName="FKaulnon9l5u8qmajvqt50bqbjq" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="tasker" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-43">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-49">
         <addForeignKeyConstraint baseColumnNames="tasker_id" baseTableName="task" constraintName="FKbl6w9yovhlechrgywkaguerry" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="tasker" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-44">
-        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="address" constraintName="FKbp6ixt0knndsum6rv8kjwcbbs" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="user_information" validate="true"/>
+    <changeSet author="quanganh9x (generated)" id="1575458851397-50">
+        <addForeignKeyConstraint baseColumnNames="address_id" baseTableName="user_information" constraintName="FKc7knsmqtfuwr1ib3e2bp8v6f3" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="address" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-45">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-51">
         <addForeignKeyConstraint baseColumnNames="master_id" baseTableName="room" constraintName="FKgj2w4y4d3xm6ad3vo42xe43uk" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="master" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-46">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-52">
         <addForeignKeyConstraint baseColumnNames="master_id" baseTableName="task" constraintName="FKj850w0weghjb5lw3kfe45wcq5" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="master" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-47">
-        <addForeignKeyConstraint baseColumnNames="dictrict_id" baseTableName="address" constraintName="FKm0t73yeya0mv0m122uypk9w3k" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="district" validate="true"/>
-    </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-48">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-53">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_persistent_token" constraintName="FKmogh0vmv89yg5kofe6n3t77ud" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-49">
-        <addForeignKeyConstraint baseColumnNames="task_categories_id" baseTableName="tasker_task_categories" constraintName="FKnhhdy6g8b8emwhhwhaddtj48h" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="task_category" validate="true"/>
-    </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-50">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-54">
         <addForeignKeyConstraint baseColumnNames="room_id" baseTableName="task" constraintName="FKnlls5sa473lcqof7ll7aw2iv1" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="room" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-51">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-55">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="tasker" constraintName="FKordd3gkkhu0waxq1svhjc81mq" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="user_information" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-52">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-56">
         <addForeignKeyConstraint baseColumnNames="task_id" baseTableName="task_task_categories" constraintName="FKp4w1n5teyhpnsa0bnl8ls2mg6" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="task" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-53">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-57">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="master" constraintName="FKp8vl4ah50nvi3nab2bjqe82eo" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="user_information" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-54">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-58">
         <addForeignKeyConstraint baseColumnNames="task_categories_id" baseTableName="task_task_categories" constraintName="FKqac1rae5vr8b07mryobpdi3ho" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="task_category" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-55">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-59">
+        <addForeignKeyConstraint baseColumnNames="district_id" baseTableName="address" constraintName="FKqbjwfi50pdenou8j14knnffrh" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="district" validate="true"/>
+    </changeSet>
+    <changeSet author="quanganh9x (generated)" id="1575458851397-60">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="statistic" constraintName="FKqn598x86yvsgndi4ck75r8qlv" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="user_information" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-56">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-61">
         <addForeignKeyConstraint baseColumnNames="city_id" baseTableName="district" constraintName="FKsgx09prp6sk2f0we38bf2dtal" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="city" validate="true"/>
     </changeSet>
-    <changeSet author="Anh Dang (generated)" id="1574927619582-57">
+    <changeSet author="quanganh9x (generated)" id="1575458851397-62">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="review" constraintName="FKsj99gjha04he68coao3qqqo8u" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="user_information" validate="true"/>
     </changeSet>
 </databaseChangeLog>

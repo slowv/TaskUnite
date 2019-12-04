@@ -26,9 +26,9 @@
       "room": "Room",
       "schedule": "Schedule",
       "reviews": "Reviews",
-      "taskCategories": "Task Categories",
       "tasker": "Tasker",
-      "master": "Master"
+      "master": "Master",
+      "taskCategory": "Task Category"
     }
   }
 }

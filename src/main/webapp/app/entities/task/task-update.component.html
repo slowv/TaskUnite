@@ -56,12 +56,6 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label jhiTranslate="taskUniteApp.task.taskCategories" for="field_taskCategories">Task Categories</label>
-                    <select class="form-control" id="field_taskCategories" multiple name="taskCategories" formControlName="taskCategories">
-                        <option [ngValue]="getSelected(editForm.get('taskCategories').value, taskCategoryOption)" *ngFor="let taskCategoryOption of taskcategories; trackBy: trackTaskCategoryById">{{taskCategoryOption.id}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskUniteApp.task.tasker" for="field_tasker">Tasker</label>
                     <select class="form-control" id="field_tasker" name="tasker" formControlName="taskerId">
                         <option [ngValue]="null"></option>
@@ -73,6 +67,13 @@
                     <select class="form-control" id="field_master" name="master" formControlName="masterId">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="masterOption.id" *ngFor="let masterOption of masters; trackBy: trackMasterById">{{masterOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.task.taskCategory" for="field_taskCategory">Task Category</label>
+                    <select class="form-control" id="field_taskCategory" name="taskCategory" formControlName="taskCategoryId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="taskCategoryOption.id" *ngFor="let taskCategoryOption of taskcategories; trackBy: trackTaskCategoryById">{{taskCategoryOption.id}}</option>
                     </select>
                 </div>
             </div>

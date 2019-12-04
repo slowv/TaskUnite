@@ -1,7 +1,6 @@
 import { Moment } from 'moment';
 import { ISchedule } from 'app/shared/model/schedule.model';
 import { IRoom } from 'app/shared/model/room.model';
-import { IAddress } from 'app/shared/model/address.model';
 import { ITask } from 'app/shared/model/task.model';
 import { ITaskerCategory } from 'app/shared/model/tasker-category.model';
 
@@ -16,7 +15,6 @@ export interface ITasker {
   userId?: number;
   schedules?: ISchedule[];
   rooms?: IRoom[];
-  workingAddresses?: IAddress[];
   tasks?: ITask[];
   taskerCategories?: ITaskerCategory[];
 }
@@ -33,7 +31,6 @@ export class Tasker implements ITasker {
     public userId?: number,
     public schedules?: ISchedule[],
     public rooms?: IRoom[],
-    public workingAddresses?: IAddress[],
     public tasks?: ITask[],
     public taskerCategories?: ITaskerCategory[]
   ) {}

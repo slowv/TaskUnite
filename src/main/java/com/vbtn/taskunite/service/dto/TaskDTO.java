@@ -1,8 +1,6 @@
 package com.vbtn.taskunite.service.dto;
 import java.time.Instant;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -29,11 +27,11 @@ public class TaskDTO implements Serializable {
 
     private Long roomId;
 
-    private Set<TaskCategoryDTO> taskCategories = new HashSet<>();
-
     private Long taskerId;
 
     private Long masterId;
+
+    private Long taskCategoryId;
 
     public Long getId() {
         return id;
@@ -107,14 +105,6 @@ public class TaskDTO implements Serializable {
         this.roomId = roomId;
     }
 
-    public Set<TaskCategoryDTO> getTaskCategories() {
-        return taskCategories;
-    }
-
-    public void setTaskCategories(Set<TaskCategoryDTO> taskCategories) {
-        this.taskCategories = taskCategories;
-    }
-
     public Long getTaskerId() {
         return taskerId;
     }
@@ -129,6 +119,14 @@ public class TaskDTO implements Serializable {
 
     public void setMasterId(Long masterId) {
         this.masterId = masterId;
+    }
+
+    public Long getTaskCategoryId() {
+        return taskCategoryId;
+    }
+
+    public void setTaskCategoryId(Long taskCategoryId) {
+        this.taskCategoryId = taskCategoryId;
     }
 
     @Override
@@ -166,6 +164,7 @@ public class TaskDTO implements Serializable {
             ", room=" + getRoomId() +
             ", tasker=" + getTaskerId() +
             ", master=" + getMasterId() +
+            ", taskCategory=" + getTaskCategoryId() +
             "}";
     }
 }

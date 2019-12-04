@@ -31,16 +31,10 @@
                         <a [routerLink]="['/district', address.districtId, 'view']">{{address.districtId}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="taskUniteApp.address.tasker">Tasker</span></dt>
+                <dt><span jhiTranslate="taskUniteApp.address.user">User</span></dt>
                 <dd>
-                    <div *ngIf="address.taskerId">
-                        <a [routerLink]="['/tasker', address.taskerId, 'view']">{{address.taskerId}}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="taskUniteApp.address.master">Master</span></dt>
-                <dd>
-                    <div *ngIf="address.masterId">
-                        <a [routerLink]="['/master', address.masterId, 'view']">{{address.masterId}}</a>
+                    <div *ngIf="address.userId">
+                        <a [routerLink]="['/user-information', address.userId, 'view']">{{address.userId}}</a>
                     </div>
                 </dd>
             </dl>

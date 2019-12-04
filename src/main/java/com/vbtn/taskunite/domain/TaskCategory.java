@@ -1,5 +1,4 @@
 package com.vbtn.taskunite.domain;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -49,8 +48,7 @@ public class TaskCategory implements Serializable {
     @JoinColumn(unique = true)
     private TaskerCategory taskerCategory;
 
-    @ManyToMany(mappedBy = "taskCategories")
-    @JsonIgnore
+    @OneToMany(mappedBy = "taskCategory")
     private Set<Task> tasks = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -190,13 +188,13 @@ public class TaskCategory implements Serializable {
 
     public TaskCategory addTasks(Task task) {
         this.tasks.add(task);
-        task.getTaskCategories().add(this);
+        task.setTaskCategory(this);
         return this;
     }
 
     public TaskCategory removeTasks(Task task) {
         this.tasks.remove(task);
-        task.getTaskCategories().remove(this);
+        task.setTaskCategory(null);
         return this;
     }
 

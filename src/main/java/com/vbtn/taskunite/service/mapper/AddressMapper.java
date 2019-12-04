@@ -8,18 +8,15 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Address} and its DTO {@link AddressDTO}.
  */
-@Mapper(componentModel = "spring", uses = {DistrictMapper.class, TaskerMapper.class, MasterMapper.class})
+@Mapper(componentModel = "spring", uses = {DistrictMapper.class, UserInformationMapper.class})
 public interface AddressMapper extends EntityMapper<AddressDTO, Address> {
 
     @Mapping(source = "district.id", target = "districtId")
-    @Mapping(source = "tasker.id", target = "taskerId")
-    @Mapping(source = "master.id", target = "masterId")
+    @Mapping(source = "user.id", target = "userId")
     AddressDTO toDto(Address address);
 
-    @Mapping(target = "user", ignore = true)
     @Mapping(source = "districtId", target = "district")
-    @Mapping(source = "taskerId", target = "tasker")
-    @Mapping(source = "masterId", target = "master")
+    @Mapping(source = "userId", target = "user")
     Address toEntity(AddressDTO addressDTO);
 
     default Address fromId(Long id) {

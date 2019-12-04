@@ -10,12 +10,9 @@ import com.vbtn.taskunite.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -27,13 +24,11 @@ import org.springframework.validation.Validator;
 import javax.persistence.EntityManager;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.vbtn.taskunite.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
-import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -67,14 +62,8 @@ public class TaskResourceIT {
     @Autowired
     private TaskRepository taskRepository;
 
-    @Mock
-    private TaskRepository taskRepositoryMock;
-
     @Autowired
     private TaskMapper taskMapper;
-
-    @Mock
-    private TaskService taskServiceMock;
 
     @Autowired
     private TaskService taskService;
@@ -216,39 +205,6 @@ public class TaskResourceIT {
             .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())));
     }
     
-    @SuppressWarnings({"unchecked"})
-    public void getAllTasksWithEagerRelationshipsIsEnabled() throws Exception {
-        TaskResource taskResource = new TaskResource(taskServiceMock);
-        when(taskServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-
-        MockMvc restTaskMockMvc = MockMvcBuilders.standaloneSetup(taskResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
-
-        restTaskMockMvc.perform(get("/api/tasks?eagerload=true"))
-        .andExpect(status().isOk());
-
-        verify(taskServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
-    @SuppressWarnings({"unchecked"})
-    public void getAllTasksWithEagerRelationshipsIsNotEnabled() throws Exception {
-        TaskResource taskResource = new TaskResource(taskServiceMock);
-            when(taskServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-            MockMvc restTaskMockMvc = MockMvcBuilders.standaloneSetup(taskResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
-
-        restTaskMockMvc.perform(get("/api/tasks?eagerload=true"))
-        .andExpect(status().isOk());
-
-            verify(taskServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
     @Test
     @Transactional
     public void getTask() throws Exception {

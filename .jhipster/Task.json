@@ -52,14 +52,6 @@
             "relationshipName": "reviews"
         },
         {
-            "relationshipType": "many-to-many",
-            "otherEntityName": "taskCategory",
-            "otherEntityRelationshipName": "tasks",
-            "relationshipName": "taskCategories",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
             "relationshipType": "many-to-one",
             "otherEntityName": "tasker",
             "otherEntityRelationshipName": "tasks",
@@ -71,6 +63,13 @@
             "otherEntityName": "master",
             "otherEntityRelationshipName": "tasks",
             "relationshipName": "master",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "taskCategory",
+            "otherEntityRelationshipName": "tasks",
+            "relationshipName": "taskCategory",
             "otherEntityField": "id"
         }
     ],

@@ -12,8 +12,6 @@ import { ITaskCategory, TaskCategory } from 'app/shared/model/task-category.mode
 import { TaskCategoryService } from './task-category.service';
 import { ITaskerCategory } from 'app/shared/model/tasker-category.model';
 import { TaskerCategoryService } from 'app/entities/tasker-category/tasker-category.service';
-import { ITask } from 'app/shared/model/task.model';
-import { TaskService } from 'app/entities/task/task.service';
 
 @Component({
   selector: 'jhi-task-category-update',
@@ -23,8 +21,6 @@ export class TaskCategoryUpdateComponent implements OnInit {
   isSaving: boolean;
 
   taskercategories: ITaskerCategory[];
-
-  tasks: ITask[];
 
   editForm = this.fb.group({
     id: [],
@@ -43,7 +39,6 @@ export class TaskCategoryUpdateComponent implements OnInit {
     protected jhiAlertService: JhiAlertService,
     protected taskCategoryService: TaskCategoryService,
     protected taskerCategoryService: TaskerCategoryService,
-    protected taskService: TaskService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -68,9 +63,6 @@ export class TaskCategoryUpdateComponent implements OnInit {
       },
       (res: HttpErrorResponse) => this.onError(res.message)
     );
-    this.taskService
-      .query()
-      .subscribe((res: HttpResponse<ITask[]>) => (this.tasks = res.body), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(taskCategory: ITaskCategory) {
@@ -139,20 +131,5 @@ export class TaskCategoryUpdateComponent implements OnInit {
 
   trackTaskerCategoryById(index: number, item: ITaskerCategory) {
     return item.id;
-  }
-
-  trackTaskById(index: number, item: ITask) {
-    return item.id;
-  }
-
-  getSelected(selectedVals: any[], option: any) {
-    if (selectedVals) {
-      for (let i = 0; i < selectedVals.length; i++) {
-        if (option.id === selectedVals[i].id) {
-          return selectedVals[i];
-        }
-      }
-    }
-    return option;
   }
 }

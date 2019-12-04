@@ -46,17 +46,10 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskUniteApp.address.tasker" for="field_tasker">Tasker</label>
-                    <select class="form-control" id="field_tasker" name="tasker" formControlName="taskerId">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.address.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="userId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="taskerOption.id" *ngFor="let taskerOption of taskers; trackBy: trackTaskerById">{{taskerOption.id}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskUniteApp.address.master" for="field_master">Master</label>
-                    <select class="form-control" id="field_master" name="master" formControlName="masterId">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="masterOption.id" *ngFor="let masterOption of masters; trackBy: trackMasterById">{{masterOption.id}}</option>
+                        <option [ngValue]="userInformationOption.id" *ngFor="let userInformationOption of userinformations; trackBy: trackUserInformationById">{{userInformationOption.id}}</option>
                     </select>
                 </div>
             </div>

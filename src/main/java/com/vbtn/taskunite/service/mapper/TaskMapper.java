@@ -8,12 +8,13 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Task} and its DTO {@link TaskDTO}.
  */
-@Mapper(componentModel = "spring", uses = {RoomMapper.class, TaskCategoryMapper.class, TaskerMapper.class, MasterMapper.class})
+@Mapper(componentModel = "spring", uses = {RoomMapper.class, TaskerMapper.class, MasterMapper.class, TaskCategoryMapper.class})
 public interface TaskMapper extends EntityMapper<TaskDTO, Task> {
 
     @Mapping(source = "room.id", target = "roomId")
     @Mapping(source = "tasker.id", target = "taskerId")
     @Mapping(source = "master.id", target = "masterId")
+    @Mapping(source = "taskCategory.id", target = "taskCategoryId")
     TaskDTO toDto(Task task);
 
     @Mapping(source = "roomId", target = "room")
@@ -21,9 +22,9 @@ public interface TaskMapper extends EntityMapper<TaskDTO, Task> {
     @Mapping(target = "removeSchedule", ignore = true)
     @Mapping(target = "reviews", ignore = true)
     @Mapping(target = "removeReviews", ignore = true)
-    @Mapping(target = "removeTaskCategories", ignore = true)
     @Mapping(source = "taskerId", target = "tasker")
     @Mapping(source = "masterId", target = "master")
+    @Mapping(source = "taskCategoryId", target = "taskCategory")
     Task toEntity(TaskDTO taskDTO);
 
     default Task fromId(Long id) {

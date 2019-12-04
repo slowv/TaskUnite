@@ -44,12 +44,10 @@
             "ownerSide": true
         },
         {
-            "relationshipType": "many-to-many",
+            "relationshipType": "one-to-many",
             "otherEntityName": "task",
-            "otherEntityRelationshipName": "taskCategories",
-            "relationshipName": "tasks",
-            "otherEntityField": "id",
-            "ownerSide": false
+            "otherEntityRelationshipName": "taskCategory",
+            "relationshipName": "tasks"
         }
     ],
     "changelogDate": "20191128073445",

@@ -35,12 +35,6 @@
         },
         {
             "relationshipType": "one-to-many",
-            "otherEntityName": "address",
-            "otherEntityRelationshipName": "master",
-            "relationshipName": "workingAddresses"
-        },
-        {
-            "relationshipType": "one-to-many",
             "otherEntityName": "task",
             "otherEntityRelationshipName": "master",
             "relationshipName": "tasks"

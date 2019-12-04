@@ -2,6 +2,10 @@
     "name": "UserInformation",
     "fields": [
         {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "gender",
             "fieldType": "Integer"
         },
@@ -30,18 +34,16 @@
         {
             "relationshipType": "one-to-one",
             "otherEntityName": "user",
-            "otherEntityRelationshipName": "info",
+            "otherEntityRelationshipName": "userInformation",
             "relationshipName": "user",
             "otherEntityField": "id",
             "ownerSide": true
         },
         {
-            "relationshipType": "one-to-one",
+            "relationshipType": "one-to-many",
             "otherEntityName": "address",
             "otherEntityRelationshipName": "user",
-            "relationshipName": "address",
-            "otherEntityField": "id",
-            "ownerSide": true
+            "relationshipName": "workingAddresses"
         },
         {
             "relationshipType": "one-to-many",

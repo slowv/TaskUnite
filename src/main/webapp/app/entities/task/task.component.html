@@ -29,6 +29,7 @@
             <th scope="col"  jhiSortBy="roomId"><span jhiTranslate="taskUniteApp.task.room">Room</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="taskerId"><span jhiTranslate="taskUniteApp.task.tasker">Tasker</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="masterId"><span jhiTranslate="taskUniteApp.task.master">Master</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="taskCategoryId"><span jhiTranslate="taskUniteApp.task.taskCategory">Task Category</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -55,6 +56,11 @@
                 <td>
                     <div *ngIf="task.masterId">
                         <a [routerLink]="['/master', task.masterId , 'view' ]" >{{task.masterId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="task.taskCategoryId">
+                        <a [routerLink]="['/task-category', task.taskCategoryId , 'view' ]" >{{task.taskCategoryId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

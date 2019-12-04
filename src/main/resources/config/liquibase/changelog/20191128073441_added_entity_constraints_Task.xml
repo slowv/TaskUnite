@@ -14,18 +14,6 @@
                                  referencedColumnNames="id"
                                  referencedTableName="room"/>
 
-        <addForeignKeyConstraint baseColumnNames="task_id"
-                                 baseTableName="task_task_categories"
-                                 constraintName="fk_task_task_categories_task_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="task"/>
-
-        <addForeignKeyConstraint baseColumnNames="task_categories_id"
-                                 baseTableName="task_task_categories"
-                                 constraintName="fk_task_task_categories_task_categories_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="task_category"/>
-        
         <addForeignKeyConstraint baseColumnNames="tasker_id"
                                  baseTableName="task"
                                  constraintName="fk_task_tasker_id"
@@ -37,6 +25,12 @@
                                  constraintName="fk_task_master_id"
                                  referencedColumnNames="id"
                                  referencedTableName="master"/>
+
+        <addForeignKeyConstraint baseColumnNames="task_category_id"
+                                 baseTableName="task"
+                                 constraintName="fk_task_task_category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="task_category"/>
 
     </changeSet>
 </databaseChangeLog>

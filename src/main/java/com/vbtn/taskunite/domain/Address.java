@@ -1,5 +1,4 @@
 package com.vbtn.taskunite.domain;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -35,21 +34,13 @@ public class Address implements Serializable {
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
-    @OneToOne(mappedBy = "address")
-    @JsonIgnore
-    private UserInformation user;
-
     @ManyToOne
     @JsonIgnoreProperties("addresses")
     private District district;
 
     @ManyToOne
     @JsonIgnoreProperties("workingAddresses")
-    private Tasker tasker;
-
-    @ManyToOne
-    @JsonIgnoreProperties("workingAddresses")
-    private Master master;
+    private UserInformation user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -125,19 +116,6 @@ public class Address implements Serializable {
         this.deletedAt = deletedAt;
     }
 
-    public UserInformation getUser() {
-        return user;
-    }
-
-    public Address user(UserInformation userInformation) {
-        this.user = userInformation;
-        return this;
-    }
-
-    public void setUser(UserInformation userInformation) {
-        this.user = userInformation;
-    }
-
     public District getDistrict() {
         return district;
     }
@@ -151,30 +129,17 @@ public class Address implements Serializable {
         this.district = district;
     }
 
-    public Tasker getTasker() {
-        return tasker;
+    public UserInformation getUser() {
+        return user;
     }
 
-    public Address tasker(Tasker tasker) {
-        this.tasker = tasker;
+    public Address user(UserInformation userInformation) {
+        this.user = userInformation;
         return this;
     }
 
-    public void setTasker(Tasker tasker) {
-        this.tasker = tasker;
-    }
-
-    public Master getMaster() {
-        return master;
-    }
-
-    public Address master(Master master) {
-        this.master = master;
-        return this;
-    }
-
-    public void setMaster(Master master) {
-        this.master = master;
+    public void setUser(UserInformation userInformation) {
+        this.user = userInformation;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

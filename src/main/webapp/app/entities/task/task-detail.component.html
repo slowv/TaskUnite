@@ -39,12 +39,6 @@
                         <a [routerLink]="['/room', task.roomId, 'view']">{{task.roomId}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="taskUniteApp.task.taskCategories">Task Categories</span></dt>
-                <dd>
-                    <span *ngFor="let taskCategories of task.taskCategories; let last = last">
-                        <a [routerLink]="['/task-category', taskCategories?.id, 'view' ]">{{taskCategories.id}}</a>{{last ? '' : ', '}}
-                    </span>
-                </dd>
                 <dt><span jhiTranslate="taskUniteApp.task.tasker">Tasker</span></dt>
                 <dd>
                     <div *ngIf="task.taskerId">
@@ -55,6 +49,12 @@
                 <dd>
                     <div *ngIf="task.masterId">
                         <a [routerLink]="['/master', task.masterId, 'view']">{{task.masterId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.task.taskCategory">Task Category</span></dt>
+                <dd>
+                    <div *ngIf="task.taskCategoryId">
+                        <a [routerLink]="['/task-category', task.taskCategoryId, 'view']">{{task.taskCategoryId}}</a>
                     </div>
                 </dd>
             </dl>

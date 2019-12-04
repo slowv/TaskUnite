@@ -23,9 +23,7 @@ public class AddressDTO implements Serializable {
 
     private Long districtId;
 
-    private Long taskerId;
-
-    private Long masterId;
+    private Long userId;
 
     public Long getId() {
         return id;
@@ -83,20 +81,12 @@ public class AddressDTO implements Serializable {
         this.districtId = districtId;
     }
 
-    public Long getTaskerId() {
-        return taskerId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setTaskerId(Long taskerId) {
-        this.taskerId = taskerId;
-    }
-
-    public Long getMasterId() {
-        return masterId;
-    }
-
-    public void setMasterId(Long masterId) {
-        this.masterId = masterId;
+    public void setUserId(Long userInformationId) {
+        this.userId = userInformationId;
     }
 
     @Override
@@ -130,8 +120,7 @@ public class AddressDTO implements Serializable {
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
             ", district=" + getDistrictId() +
-            ", tasker=" + getTaskerId() +
-            ", master=" + getMasterId() +
+            ", user=" + getUserId() +
             "}";
     }
 }
