@@ -41,7 +41,7 @@ public class Address implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("addresses")
-    private District dictrict;
+    private District district;
 
     @ManyToOne
     @JsonIgnoreProperties("workingAddresses")
@@ -138,17 +138,17 @@ public class Address implements Serializable {
         this.user = userInformation;
     }
 
-    public District getDictrict() {
-        return dictrict;
+    public District getDistrict() {
+        return district;
     }
 
-    public Address dictrict(District district) {
-        this.dictrict = district;
+    public Address district(District district) {
+        this.district = district;
         return this;
     }
 
-    public void setDictrict(District district) {
-        this.dictrict = district;
+    public void setDistrict(District district) {
+        this.district = district;
     }
 
     public Tasker getTasker() {

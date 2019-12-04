@@ -21,7 +21,7 @@ public class AddressDTO implements Serializable {
     private Instant deletedAt;
 
 
-    private Long dictrictId;
+    private Long districtId;
 
     private Long taskerId;
 
@@ -75,12 +75,12 @@ public class AddressDTO implements Serializable {
         this.deletedAt = deletedAt;
     }
 
-    public Long getDictrictId() {
-        return dictrictId;
+    public Long getDistrictId() {
+        return districtId;
     }
 
-    public void setDictrictId(Long districtId) {
-        this.dictrictId = districtId;
+    public void setDistrictId(Long districtId) {
+        this.districtId = districtId;
     }
 
     public Long getTaskerId() {
@@ -129,7 +129,7 @@ public class AddressDTO implements Serializable {
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
-            ", dictrict=" + getDictrictId() +
+            ", district=" + getDistrictId() +
             ", tasker=" + getTaskerId() +
             ", master=" + getMasterId() +
             "}";

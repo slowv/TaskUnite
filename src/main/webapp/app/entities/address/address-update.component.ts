@@ -41,7 +41,7 @@ export class AddressUpdateComponent implements OnInit {
     createdAt: [],
     updatedAt: [],
     deletedAt: [],
-    dictrictId: [],
+    districtId: [],
     taskerId: [],
     masterId: []
   });
@@ -87,7 +87,7 @@ export class AddressUpdateComponent implements OnInit {
       createdAt: address.createdAt != null ? address.createdAt.format(DATE_TIME_FORMAT) : null,
       updatedAt: address.updatedAt != null ? address.updatedAt.format(DATE_TIME_FORMAT) : null,
       deletedAt: address.deletedAt != null ? address.deletedAt.format(DATE_TIME_FORMAT) : null,
-      dictrictId: address.dictrictId,
+      districtId: address.districtId,
       taskerId: address.taskerId,
       masterId: address.masterId
     });
@@ -119,7 +119,7 @@ export class AddressUpdateComponent implements OnInit {
         this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
       deletedAt:
         this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
-      dictrictId: this.editForm.get(['dictrictId']).value,
+      districtId: this.editForm.get(['districtId']).value,
       taskerId: this.editForm.get(['taskerId']).value,
       masterId: this.editForm.get(['masterId']).value
     };
