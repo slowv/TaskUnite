@@ -10,6 +10,10 @@ public class TaskDTO implements Serializable {
 
     private Long id;
 
+    private String address;
+
+    private String title;
+
     private String description;
 
     private Double estimatedTime;
@@ -39,6 +43,22 @@ public class TaskDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -154,6 +174,8 @@ public class TaskDTO implements Serializable {
     public String toString() {
         return "TaskDTO{" +
             "id=" + getId() +
+            ", address='" + getAddress() + "'" +
+            ", title='" + getTitle() + "'" +
             ", description='" + getDescription() + "'" +
             ", estimatedTime=" + getEstimatedTime() +
             ", price=" + getPrice() +

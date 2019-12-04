@@ -16,6 +16,8 @@
       "detail": {
         "title": "Task"
       },
+      "address": "Address",
+      "title": "Title",
       "description": "Description",
       "estimatedTime": "Estimated Time",
       "price": "Price",

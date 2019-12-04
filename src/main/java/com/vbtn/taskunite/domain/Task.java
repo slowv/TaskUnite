@@ -21,6 +21,12 @@ public class Task implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "title")
+    private String title;
+
     @Column(name = "description")
     private String description;
 
@@ -71,6 +77,32 @@ public class Task implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public Task address(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Task title(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -287,6 +319,8 @@ public class Task implements Serializable {
     public String toString() {
         return "Task{" +
             "id=" + getId() +
+            ", address='" + getAddress() + "'" +
+            ", title='" + getTitle() + "'" +
             ", description='" + getDescription() + "'" +
             ", estimatedTime=" + getEstimatedTime() +
             ", price=" + getPrice() +

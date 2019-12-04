@@ -38,6 +38,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = TaskUniteApp.class)
 public class TaskResourceIT {
 
+    private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
+    private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TITLE = "AAAAAAAAAA";
+    private static final String UPDATED_TITLE = "BBBBBBBBBB";
+
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
@@ -107,6 +113,8 @@ public class TaskResourceIT {
      */
     public static Task createEntity(EntityManager em) {
         Task task = new Task()
+            .address(DEFAULT_ADDRESS)
+            .title(DEFAULT_TITLE)
             .description(DEFAULT_DESCRIPTION)
             .estimatedTime(DEFAULT_ESTIMATED_TIME)
             .price(DEFAULT_PRICE)
@@ -124,6 +132,8 @@ public class TaskResourceIT {
      */
     public static Task createUpdatedEntity(EntityManager em) {
         Task task = new Task()
+            .address(UPDATED_ADDRESS)
+            .title(UPDATED_TITLE)
             .description(UPDATED_DESCRIPTION)
             .estimatedTime(UPDATED_ESTIMATED_TIME)
             .price(UPDATED_PRICE)
@@ -155,6 +165,8 @@ public class TaskResourceIT {
         List<Task> taskList = taskRepository.findAll();
         assertThat(taskList).hasSize(databaseSizeBeforeCreate + 1);
         Task testTask = taskList.get(taskList.size() - 1);
+        assertThat(testTask.getAddress()).isEqualTo(DEFAULT_ADDRESS);
+        assertThat(testTask.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testTask.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testTask.getEstimatedTime()).isEqualTo(DEFAULT_ESTIMATED_TIME);
         assertThat(testTask.getPrice()).isEqualTo(DEFAULT_PRICE);
@@ -196,6 +208,8 @@ public class TaskResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(task.getId().intValue())))
+            .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS)))
+            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].estimatedTime").value(hasItem(DEFAULT_ESTIMATED_TIME.doubleValue())))
             .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
@@ -216,6 +230,8 @@ public class TaskResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(task.getId().intValue()))
+            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS))
+            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.estimatedTime").value(DEFAULT_ESTIMATED_TIME.doubleValue()))
             .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
@@ -246,6 +262,8 @@ public class TaskResourceIT {
         // Disconnect from session so that the updates on updatedTask are not directly saved in db
         em.detach(updatedTask);
         updatedTask
+            .address(UPDATED_ADDRESS)
+            .title(UPDATED_TITLE)
             .description(UPDATED_DESCRIPTION)
             .estimatedTime(UPDATED_ESTIMATED_TIME)
             .price(UPDATED_PRICE)
@@ -264,6 +282,8 @@ public class TaskResourceIT {
         List<Task> taskList = taskRepository.findAll();
         assertThat(taskList).hasSize(databaseSizeBeforeUpdate);
         Task testTask = taskList.get(taskList.size() - 1);
+        assertThat(testTask.getAddress()).isEqualTo(UPDATED_ADDRESS);
+        assertThat(testTask.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testTask.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testTask.getEstimatedTime()).isEqualTo(UPDATED_ESTIMATED_TIME);
         assertThat(testTask.getPrice()).isEqualTo(UPDATED_PRICE);

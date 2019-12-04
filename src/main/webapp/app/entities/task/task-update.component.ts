@@ -36,6 +36,8 @@ export class TaskUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
+    address: [],
+    title: [],
     description: [],
     estimatedTime: [],
     price: [],
@@ -97,6 +99,8 @@ export class TaskUpdateComponent implements OnInit {
   updateForm(task: ITask) {
     this.editForm.patchValue({
       id: task.id,
+      address: task.address,
+      title: task.title,
       description: task.description,
       estimatedTime: task.estimatedTime,
       price: task.price,
@@ -129,6 +133,8 @@ export class TaskUpdateComponent implements OnInit {
     return {
       ...new Task(),
       id: this.editForm.get(['id']).value,
+      address: this.editForm.get(['address']).value,
+      title: this.editForm.get(['title']).value,
       description: this.editForm.get(['description']).value,
       estimatedTime: this.editForm.get(['estimatedTime']).value,
       price: this.editForm.get(['price']).value,

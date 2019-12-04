@@ -2,6 +2,14 @@
     "name": "Task",
     "fields": [
         {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "description",
             "fieldType": "String"
         },

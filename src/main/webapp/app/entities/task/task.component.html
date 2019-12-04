@@ -19,6 +19,8 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="address"><span jhiTranslate="taskUniteApp.task.address">Address</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="title"><span jhiTranslate="taskUniteApp.task.title">Title</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="description"><span jhiTranslate="taskUniteApp.task.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="estimatedTime"><span jhiTranslate="taskUniteApp.task.estimatedTime">Estimated Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="price"><span jhiTranslate="taskUniteApp.task.price">Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -36,6 +38,8 @@
             <tbody>
             <tr *ngFor="let task of tasks ;trackBy: trackId">
                 <td><a [routerLink]="['/task', task.id, 'view' ]">{{task.id}}</a></td>
+                <td>{{task.address}}</td>
+                <td>{{task.title}}</td>
                 <td>{{task.description}}</td>
                 <td>{{task.estimatedTime}}</td>
                 <td>{{task.price}}</td>
