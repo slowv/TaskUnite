@@ -29,6 +29,8 @@
     <include file="config/liquibase/changelog/20191128073449_added_entity_Notification.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191128073450_added_entity_Review.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191204023021_added_entity_TaskerCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191204110207_added_entity_District.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191204110208_added_entity_Address.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20191128073436_added_entity_constraints_PaymentInformation.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191128073437_added_entity_constraints_UserInformation.xml" relativeToChangelogFile="false"/>
@@ -43,5 +45,7 @@
     <include file="config/liquibase/changelog/20191128073449_added_entity_constraints_Notification.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191128073450_added_entity_constraints_Review.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191128073445_added_entity_constraints_TaskCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191204110207_added_entity_constraints_District.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191204110208_added_entity_constraints_Address.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

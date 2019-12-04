@@ -128,13 +128,13 @@ public class District implements Serializable {
 
     public District addAddresses(Address address) {
         this.addresses.add(address);
-        address.setDictrict(this);
+        address.setDistrict(this);
         return this;
     }
 
     public District removeAddresses(Address address) {
         this.addresses.remove(address);
-        address.setDictrict(null);
+        address.setDistrict(null);
         return this;
     }
 

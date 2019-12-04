@@ -34,7 +34,7 @@
             "relationshipType": "many-to-one",
             "otherEntityName": "district",
             "otherEntityRelationshipName": "addresses",
-            "relationshipName": "dictrict",
+            "relationshipName": "district",
             "otherEntityField": "id"
         },
         {
@@ -52,7 +52,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20191128073448",
+    "changelogDate": "20191204110208",
     "entityTableName": "address",
     "dto": "mapstruct",
     "pagination": "pagination",

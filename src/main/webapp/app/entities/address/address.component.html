@@ -24,7 +24,7 @@
             <th scope="col"  jhiSortBy="createdAt"><span jhiTranslate="taskUniteApp.address.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.address.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.address.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="dictrictId"><span jhiTranslate="taskUniteApp.address.dictrict">Dictrict</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="districtId"><span jhiTranslate="taskUniteApp.address.district">District</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="taskerId"><span jhiTranslate="taskUniteApp.address.tasker">Tasker</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="masterId"><span jhiTranslate="taskUniteApp.address.master">Master</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
@@ -39,8 +39,8 @@
                 <td>{{address.updatedAt | date:'medium'}}</td>
                 <td>{{address.deletedAt | date:'medium'}}</td>
                 <td>
-                    <div *ngIf="address.dictrictId">
-                        <a [routerLink]="['/district', address.dictrictId , 'view' ]" >{{address.dictrictId}}</a>
+                    <div *ngIf="address.districtId">
+                        <a [routerLink]="['/district', address.districtId , 'view' ]" >{{address.districtId}}</a>
                     </div>
                 </td>
                 <td>

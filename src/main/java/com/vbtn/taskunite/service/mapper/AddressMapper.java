@@ -11,13 +11,13 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {DistrictMapper.class, TaskerMapper.class, MasterMapper.class})
 public interface AddressMapper extends EntityMapper<AddressDTO, Address> {
 
-    @Mapping(source = "dictrict.id", target = "dictrictId")
+    @Mapping(source = "district.id", target = "districtId")
     @Mapping(source = "tasker.id", target = "taskerId")
     @Mapping(source = "master.id", target = "masterId")
     AddressDTO toDto(Address address);
 
     @Mapping(target = "user", ignore = true)
-    @Mapping(source = "dictrictId", target = "dictrict")
+    @Mapping(source = "districtId", target = "district")
     @Mapping(source = "taskerId", target = "tasker")
     @Mapping(source = "masterId", target = "master")
     Address toEntity(AddressDTO addressDTO);

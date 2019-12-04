@@ -25,10 +25,10 @@
                 <dd>
                     <span>{{address.deletedAt}}</span>
                 </dd>
-                <dt><span jhiTranslate="taskUniteApp.address.dictrict">Dictrict</span></dt>
+                <dt><span jhiTranslate="taskUniteApp.address.district">District</span></dt>
                 <dd>
-                    <div *ngIf="address.dictrictId">
-                        <a [routerLink]="['/district', address.dictrictId, 'view']">{{address.dictrictId}}</a>
+                    <div *ngIf="address.districtId">
+                        <a [routerLink]="['/district', address.districtId, 'view']">{{address.districtId}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="taskUniteApp.address.tasker">Tasker</span></dt>
