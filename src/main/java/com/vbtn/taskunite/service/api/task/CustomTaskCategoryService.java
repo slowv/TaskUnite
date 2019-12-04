@@ -11,6 +11,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @Transactional
 public class CustomTaskCategoryService {
@@ -26,9 +29,9 @@ public class CustomTaskCategoryService {
     }
 
     @Transactional(readOnly = true)
-    public Page<TaskCategoryDTO> findAll(Pageable pageable) {
+    public List<TaskCategoryDTO> findAll() {
         log.debug("Request to get all Task category");
-        return customTaskCategoryRepository.findAll(pageable)
-            .map(taskCategoryMapper::toDto);
+        return customTaskCategoryRepository.findAll().stream()
+            .map(taskCategoryMapper::toDto).collect(Collectors.toList());
     }
 }

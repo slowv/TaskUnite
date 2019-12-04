@@ -34,8 +34,14 @@ public class CustomTaskService {
             .map(taskMapper::toDto);
     }
 
+    @Transactional
     public Task save(Task task) {
+        Room room = new Room();
+        room.setMaster(task.getMaster());
+        room.setTasker(task.getTasker());
+        room.setStatus(1);
         task.setRoom(new Room());
+
         task = customTaskRepository.save(task);
         return task;
     }

@@ -86,12 +86,12 @@ function onClick() {
       case 'category':
         var content = parent.find('.content');
         var contentStr = [];
-        parent.find('input[type="checkbox"]:checked').each(function (index, value) {
+        parent.find('input[type="radio"]:checked').each(function (index, value) {
           contentStr.push($(this).siblings("label").text());
           if(!taskBox.category){
-            taskBox.category = [];
+            taskBox.category = 0;
           }
-          taskBox.category.push($(this).attr('id').replace("cateId-", ""));
+          taskBox.category = $(this).attr('id').replace("cateId-", "");
         });
         content.html(contentStr.join(", "));
         break;
