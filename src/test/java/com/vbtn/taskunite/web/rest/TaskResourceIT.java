@@ -46,6 +46,9 @@ public class TaskResourceIT {
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
+    private static final Double DEFAULT_ESTIMATED_TIME = 1D;
+    private static final Double UPDATED_ESTIMATED_TIME = 2D;
+
     private static final Double DEFAULT_PRICE = 1D;
     private static final Double UPDATED_PRICE = 2D;
 
@@ -116,6 +119,7 @@ public class TaskResourceIT {
     public static Task createEntity(EntityManager em) {
         Task task = new Task()
             .description(DEFAULT_DESCRIPTION)
+            .estimatedTime(DEFAULT_ESTIMATED_TIME)
             .price(DEFAULT_PRICE)
             .status(DEFAULT_STATUS)
             .createdAt(DEFAULT_CREATED_AT)
@@ -132,6 +136,7 @@ public class TaskResourceIT {
     public static Task createUpdatedEntity(EntityManager em) {
         Task task = new Task()
             .description(UPDATED_DESCRIPTION)
+            .estimatedTime(UPDATED_ESTIMATED_TIME)
             .price(UPDATED_PRICE)
             .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
@@ -162,6 +167,7 @@ public class TaskResourceIT {
         assertThat(taskList).hasSize(databaseSizeBeforeCreate + 1);
         Task testTask = taskList.get(taskList.size() - 1);
         assertThat(testTask.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testTask.getEstimatedTime()).isEqualTo(DEFAULT_ESTIMATED_TIME);
         assertThat(testTask.getPrice()).isEqualTo(DEFAULT_PRICE);
         assertThat(testTask.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testTask.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
@@ -202,6 +208,7 @@ public class TaskResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(task.getId().intValue())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].estimatedTime").value(hasItem(DEFAULT_ESTIMATED_TIME.doubleValue())))
             .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
@@ -254,6 +261,7 @@ public class TaskResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(task.getId().intValue()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
+            .andExpect(jsonPath("$.estimatedTime").value(DEFAULT_ESTIMATED_TIME.doubleValue()))
             .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
@@ -283,6 +291,7 @@ public class TaskResourceIT {
         em.detach(updatedTask);
         updatedTask
             .description(UPDATED_DESCRIPTION)
+            .estimatedTime(UPDATED_ESTIMATED_TIME)
             .price(UPDATED_PRICE)
             .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
@@ -300,6 +309,7 @@ public class TaskResourceIT {
         assertThat(taskList).hasSize(databaseSizeBeforeUpdate);
         Task testTask = taskList.get(taskList.size() - 1);
         assertThat(testTask.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testTask.getEstimatedTime()).isEqualTo(UPDATED_ESTIMATED_TIME);
         assertThat(testTask.getPrice()).isEqualTo(UPDATED_PRICE);
         assertThat(testTask.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testTask.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);

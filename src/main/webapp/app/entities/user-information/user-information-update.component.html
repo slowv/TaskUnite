@@ -15,11 +15,6 @@
                            formControlName="gender"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskUniteApp.userInformation.address" for="field_address">Address</label>
-                    <input type="text" class="form-control" name="address" id="field_address"
-                           formControlName="address"/>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskUniteApp.userInformation.phone" for="field_phone">Phone</label>
                     <input type="text" class="form-control" name="phone" id="field_phone"
                            formControlName="phone"/>
@@ -53,6 +48,13 @@
                     <select class="form-control" id="field_user" name="user" formControlName="userId">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.userInformation.address" for="field_address">Address</label>
+                    <select class="form-control" id="field_address" name="address" formControlName="addressId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="addressOption.id" *ngFor="let addressOption of addresses; trackBy: trackAddressById">{{addressOption.id}}</option>
                     </select>
                 </div>
             </div>

@@ -77,7 +77,7 @@ describe('Service Tests', () => {
       it('should update a Address', () => {
         const returnedFromService = Object.assign(
           {
-            street: 'BBBBBB',
+            content: 'BBBBBB',
             status: 1,
             createdAt: currentDate.format(DATE_TIME_FORMAT),
             updatedAt: currentDate.format(DATE_TIME_FORMAT),
@@ -106,7 +106,7 @@ describe('Service Tests', () => {
       it('should return a list of Address', () => {
         const returnedFromService = Object.assign(
           {
-            street: 'BBBBBB',
+            content: 'BBBBBB',
             status: 1,
             createdAt: currentDate.format(DATE_TIME_FORMAT),
             updatedAt: currentDate.format(DATE_TIME_FORMAT),

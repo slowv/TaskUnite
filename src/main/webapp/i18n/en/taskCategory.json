@@ -24,8 +24,8 @@
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
-      "tasks": "Tasks",
-      "taskers": "Taskers"
+      "taskerCategory": "Tasker Category",
+      "tasks": "Tasks"
     }
   }
 }

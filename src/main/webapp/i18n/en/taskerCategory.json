@@ -1,0 +1,29 @@
+{
+  "taskUniteApp": {
+    "taskerCategory": {
+      "home": {
+        "title": "Tasker Categories",
+        "createLabel": "Create a new Tasker Category",
+        "createOrEditLabel": "Create or edit a Tasker Category",
+        "notFound": "No Tasker Categories found"
+      },
+      "created": "A new Tasker Category is created with identifier {{ param }}",
+      "updated": "A Tasker Category is updated with identifier {{ param }}",
+      "deleted": "A Tasker Category is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Tasker Category {{ id }}?"
+      },
+      "detail": {
+        "title": "Tasker Category"
+      },
+      "description": "Description",
+      "price": "Price",
+      "status": "Status",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "deletedAt": "Deleted At",
+      "taskCategory": "Task Category",
+      "taskers": "Taskers"
+    }
+  }
+}

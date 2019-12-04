@@ -16,13 +16,15 @@
       "detail": {
         "title": "Address"
       },
-      "street": "Street",
+      "content": "Content",
       "status": "Status",
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
+      "user": "User",
       "dictrict": "Dictrict",
-      "user": "User"
+      "tasker": "Tasker",
+      "master": "Master"
     }
   }
 }

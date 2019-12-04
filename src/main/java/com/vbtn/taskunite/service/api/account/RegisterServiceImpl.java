@@ -81,7 +81,6 @@ public class RegisterServiceImpl implements RegisterService {
         // attach user information
         UserInformation userExtend = new UserInformation();
         userExtend.setGender(userDTO.getGender());
-        userExtend.setAddress(userDTO.getAddress());
         userExtend.setPhone(userDTO.getPhone());
         userExtend.setStatus(0);
         userExtend.setUser(newUser);

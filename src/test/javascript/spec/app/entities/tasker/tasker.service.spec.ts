@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Tasker(0, 0, 0, currentDate, currentDate, currentDate);
+      elemDefault = new Tasker(0, 'AAAAAAA', 'AAAAAAA', 0, currentDate, currentDate, currentDate);
     });
 
     describe('Service methods', () => {
@@ -77,7 +77,8 @@ describe('Service Tests', () => {
       it('should update a Tasker', () => {
         const returnedFromService = Object.assign(
           {
-            price: 1,
+            image: 'BBBBBB',
+            description: 'BBBBBB',
             status: 1,
             createdAt: currentDate.format(DATE_TIME_FORMAT),
             updatedAt: currentDate.format(DATE_TIME_FORMAT),
@@ -106,7 +107,8 @@ describe('Service Tests', () => {
       it('should return a list of Tasker', () => {
         const returnedFromService = Object.assign(
           {
-            price: 1,
+            image: 'BBBBBB',
+            description: 'BBBBBB',
             status: 1,
             createdAt: currentDate.format(DATE_TIME_FORMAT),
             updatedAt: currentDate.format(DATE_TIME_FORMAT),

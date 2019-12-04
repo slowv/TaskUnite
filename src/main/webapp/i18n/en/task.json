@@ -17,6 +17,7 @@
         "title": "Task"
       },
       "description": "Description",
+      "estimatedTime": "Estimated Time",
       "price": "Price",
       "status": "Status",
       "createdAt": "Created At",

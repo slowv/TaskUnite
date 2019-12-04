@@ -15,14 +15,14 @@ import java.util.Optional;
 @Repository
 public interface TaskerRepository extends JpaRepository<Tasker, Long> {
 
-    @Query(value = "select distinct tasker from Tasker tasker left join fetch tasker.taskCategories",
+    @Query(value = "select distinct tasker from Tasker tasker left join fetch tasker.taskerCategories",
         countQuery = "select count(distinct tasker) from Tasker tasker")
     Page<Tasker> findAllWithEagerRelationships(Pageable pageable);
 
-    @Query("select distinct tasker from Tasker tasker left join fetch tasker.taskCategories")
+    @Query("select distinct tasker from Tasker tasker left join fetch tasker.taskerCategories")
     List<Tasker> findAllWithEagerRelationships();
 
-    @Query("select tasker from Tasker tasker left join fetch tasker.taskCategories where tasker.id =:id")
+    @Query("select tasker from Tasker tasker left join fetch tasker.taskerCategories where tasker.id =:id")
     Optional<Tasker> findOneWithEagerRelationships(@Param("id") Long id);
 
 }

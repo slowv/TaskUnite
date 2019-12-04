@@ -1,19 +1,17 @@
 import { Moment } from 'moment';
-import { IAddress } from 'app/shared/model/address.model';
 import { IReview } from 'app/shared/model/review.model';
 import { INotification } from 'app/shared/model/notification.model';
 
 export interface IUserInformation {
   id?: number;
   gender?: number;
-  address?: string;
   phone?: string;
   status?: number;
   createdAt?: Moment;
   updatedAt?: Moment;
   deletedAt?: Moment;
   userId?: number;
-  workingAddresses?: IAddress[];
+  addressId?: number;
   reviews?: IReview[];
   notifications?: INotification[];
   taskerId?: number;
@@ -25,14 +23,13 @@ export class UserInformation implements IUserInformation {
   constructor(
     public id?: number,
     public gender?: number,
-    public address?: string,
     public phone?: string,
     public status?: number,
     public createdAt?: Moment,
     public updatedAt?: Moment,
     public deletedAt?: Moment,
     public userId?: number,
-    public workingAddresses?: IAddress[],
+    public addressId?: number,
     public reviews?: IReview[],
     public notifications?: INotification[],
     public taskerId?: number,

@@ -3,6 +3,7 @@ package com.vbtn.taskunite.specification;
 import com.vbtn.taskunite.domain.TaskCategory;
 import com.vbtn.taskunite.domain.TaskCategory_;
 import com.vbtn.taskunite.domain.Tasker;
+import com.vbtn.taskunite.domain.TaskerCategory;
 import com.vbtn.taskunite.domain.Tasker_;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -43,7 +44,7 @@ public class TaskerSpecification implements Specification<Tasker> {
         return new Specification<Tasker>() {
             @Override
             public Predicate toPredicate(Root<Tasker> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-                SetJoin<Tasker, TaskCategory> taskerTaskCategoryListJoin =  root.join(Tasker_.taskCategories);
+                SetJoin<Tasker, TaskerCategory> taskerTaskCategoryListJoin =  root.join(Tasker_.taskerCategories);
                 Predicate equalPredicate = criteriaBuilder.equal(taskerTaskCategoryListJoin.get(TaskCategory_.ID), taskCategoryId);
                 criteriaQuery.distinct(true);
                 return equalPredicate;

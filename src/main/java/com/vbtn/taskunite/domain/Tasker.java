@@ -1,8 +1,5 @@
 package com.vbtn.taskunite.domain;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -23,18 +20,19 @@ public class Tasker implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "price")
-    private Double price;
+    @Column(name = "image")
+    private String image;
+
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "status")
     private Integer status;
 
     @Column(name = "created_at")
-    @CreationTimestamp
     private Instant createdAt;
 
     @Column(name = "updated_at")
-    @UpdateTimestamp
     private Instant updatedAt;
 
     @Column(name = "deleted_at")
@@ -51,13 +49,16 @@ public class Tasker implements Serializable {
     private Set<Room> rooms = new HashSet<>();
 
     @OneToMany(mappedBy = "tasker")
+    private Set<Address> workingAddresses = new HashSet<>();
+
+    @OneToMany(mappedBy = "tasker")
     private Set<Task> tasks = new HashSet<>();
 
     @ManyToMany
-    @JoinTable(name = "tasker_task_categories",
+    @JoinTable(name = "tasker_tasker_categories",
                joinColumns = @JoinColumn(name = "tasker_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "task_categories_id", referencedColumnName = "id"))
-    private Set<TaskCategory> taskCategories = new HashSet<>();
+               inverseJoinColumns = @JoinColumn(name = "tasker_categories_id", referencedColumnName = "id"))
+    private Set<TaskerCategory> taskerCategories = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -68,17 +69,30 @@ public class Tasker implements Serializable {
         this.id = id;
     }
 
-    public Double getPrice() {
-        return price;
+    public String getImage() {
+        return image;
     }
 
-    public Tasker price(Double price) {
-        this.price = price;
+    public Tasker image(String image) {
+        this.image = image;
         return this;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Tasker description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getStatus() {
@@ -196,6 +210,31 @@ public class Tasker implements Serializable {
         this.rooms = rooms;
     }
 
+    public Set<Address> getWorkingAddresses() {
+        return workingAddresses;
+    }
+
+    public Tasker workingAddresses(Set<Address> addresses) {
+        this.workingAddresses = addresses;
+        return this;
+    }
+
+    public Tasker addWorkingAddresses(Address address) {
+        this.workingAddresses.add(address);
+        address.setTasker(this);
+        return this;
+    }
+
+    public Tasker removeWorkingAddresses(Address address) {
+        this.workingAddresses.remove(address);
+        address.setTasker(null);
+        return this;
+    }
+
+    public void setWorkingAddresses(Set<Address> addresses) {
+        this.workingAddresses = addresses;
+    }
+
     public Set<Task> getTasks() {
         return tasks;
     }
@@ -221,29 +260,29 @@ public class Tasker implements Serializable {
         this.tasks = tasks;
     }
 
-    public Set<TaskCategory> getTaskCategories() {
-        return taskCategories;
+    public Set<TaskerCategory> getTaskerCategories() {
+        return taskerCategories;
     }
 
-    public Tasker taskCategories(Set<TaskCategory> taskCategories) {
-        this.taskCategories = taskCategories;
+    public Tasker taskerCategories(Set<TaskerCategory> taskerCategories) {
+        this.taskerCategories = taskerCategories;
         return this;
     }
 
-    public Tasker addTaskCategories(TaskCategory taskCategory) {
-        this.taskCategories.add(taskCategory);
-        taskCategory.getTaskers().add(this);
+    public Tasker addTaskerCategories(TaskerCategory taskerCategory) {
+        this.taskerCategories.add(taskerCategory);
+        taskerCategory.getTaskers().add(this);
         return this;
     }
 
-    public Tasker removeTaskCategories(TaskCategory taskCategory) {
-        this.taskCategories.remove(taskCategory);
-        taskCategory.getTaskers().remove(this);
+    public Tasker removeTaskerCategories(TaskerCategory taskerCategory) {
+        this.taskerCategories.remove(taskerCategory);
+        taskerCategory.getTaskers().remove(this);
         return this;
     }
 
-    public void setTaskCategories(Set<TaskCategory> taskCategories) {
-        this.taskCategories = taskCategories;
+    public void setTaskerCategories(Set<TaskerCategory> taskerCategories) {
+        this.taskerCategories = taskerCategories;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -267,7 +306,8 @@ public class Tasker implements Serializable {
     public String toString() {
         return "Tasker{" +
             "id=" + getId() +
-            ", price=" + getPrice() +
+            ", image='" + getImage() + "'" +
+            ", description='" + getDescription() + "'" +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +

@@ -1,7 +1,6 @@
 package com.vbtn.taskunite.domain;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 
@@ -21,22 +20,24 @@ public class Address implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "street")
-    private String street;
+    @Column(name = "content")
+    private String content;
 
     @Column(name = "status")
     private Integer status;
 
     @Column(name = "created_at")
-    @CreationTimestamp
     private Instant createdAt;
 
     @Column(name = "updated_at")
-    @UpdateTimestamp
     private Instant updatedAt;
 
     @Column(name = "deleted_at")
     private Instant deletedAt;
+
+    @OneToOne(mappedBy = "address")
+    @JsonIgnore
+    private UserInformation user;
 
     @ManyToOne
     @JsonIgnoreProperties("addresses")
@@ -44,7 +45,11 @@ public class Address implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("workingAddresses")
-    private UserInformation user;
+    private Tasker tasker;
+
+    @ManyToOne
+    @JsonIgnoreProperties("workingAddresses")
+    private Master master;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -55,17 +60,17 @@ public class Address implements Serializable {
         this.id = id;
     }
 
-    public String getStreet() {
-        return street;
+    public String getContent() {
+        return content;
     }
 
-    public Address street(String street) {
-        this.street = street;
+    public Address content(String content) {
+        this.content = content;
         return this;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Integer getStatus() {
@@ -120,6 +125,19 @@ public class Address implements Serializable {
         this.deletedAt = deletedAt;
     }
 
+    public UserInformation getUser() {
+        return user;
+    }
+
+    public Address user(UserInformation userInformation) {
+        this.user = userInformation;
+        return this;
+    }
+
+    public void setUser(UserInformation userInformation) {
+        this.user = userInformation;
+    }
+
     public District getDictrict() {
         return dictrict;
     }
@@ -133,17 +151,30 @@ public class Address implements Serializable {
         this.dictrict = district;
     }
 
-    public UserInformation getUser() {
-        return user;
+    public Tasker getTasker() {
+        return tasker;
     }
 
-    public Address user(UserInformation userInformation) {
-        this.user = userInformation;
+    public Address tasker(Tasker tasker) {
+        this.tasker = tasker;
         return this;
     }
 
-    public void setUser(UserInformation userInformation) {
-        this.user = userInformation;
+    public void setTasker(Tasker tasker) {
+        this.tasker = tasker;
+    }
+
+    public Master getMaster() {
+        return master;
+    }
+
+    public Address master(Master master) {
+        this.master = master;
+        return this;
+    }
+
+    public void setMaster(Master master) {
+        this.master = master;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -167,7 +198,7 @@ public class Address implements Serializable {
     public String toString() {
         return "Address{" +
             "id=" + getId() +
-            ", street='" + getStreet() + "'" +
+            ", content='" + getContent() + "'" +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +

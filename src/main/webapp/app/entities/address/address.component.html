@@ -19,20 +19,21 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="street"><span jhiTranslate="taskUniteApp.address.street">Street</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="content"><span jhiTranslate="taskUniteApp.address.content">Content</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="status"><span jhiTranslate="taskUniteApp.address.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="createdAt"><span jhiTranslate="taskUniteApp.address.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.address.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.address.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="dictrictId"><span jhiTranslate="taskUniteApp.address.dictrict">Dictrict</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="userId"><span jhiTranslate="taskUniteApp.address.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="taskerId"><span jhiTranslate="taskUniteApp.address.tasker">Tasker</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="masterId"><span jhiTranslate="taskUniteApp.address.master">Master</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let address of addresses ;trackBy: trackId">
                 <td><a [routerLink]="['/address', address.id, 'view' ]">{{address.id}}</a></td>
-                <td>{{address.street}}</td>
+                <td>{{address.content}}</td>
                 <td>{{address.status}}</td>
                 <td>{{address.createdAt | date:'medium'}}</td>
                 <td>{{address.updatedAt | date:'medium'}}</td>
@@ -43,8 +44,13 @@
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="address.userId">
-                        <a [routerLink]="['/user-information', address.userId , 'view' ]" >{{address.userId}}</a>
+                    <div *ngIf="address.taskerId">
+                        <a [routerLink]="['/tasker', address.taskerId , 'view' ]" >{{address.taskerId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="address.masterId">
+                        <a [routerLink]="['/master', address.masterId , 'view' ]" >{{address.masterId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

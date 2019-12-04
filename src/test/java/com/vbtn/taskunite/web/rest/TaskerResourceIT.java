@@ -43,8 +43,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = TaskUniteApp.class)
 public class TaskerResourceIT {
 
-    private static final Double DEFAULT_PRICE = 1D;
-    private static final Double UPDATED_PRICE = 2D;
+    private static final String DEFAULT_IMAGE = "AAAAAAAAAA";
+    private static final String UPDATED_IMAGE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
     private static final Integer DEFAULT_STATUS = 1;
     private static final Integer UPDATED_STATUS = 2;
@@ -112,7 +115,8 @@ public class TaskerResourceIT {
      */
     public static Tasker createEntity(EntityManager em) {
         Tasker tasker = new Tasker()
-            .price(DEFAULT_PRICE)
+            .image(DEFAULT_IMAGE)
+            .description(DEFAULT_DESCRIPTION)
             .status(DEFAULT_STATUS)
             .createdAt(DEFAULT_CREATED_AT)
             .updatedAt(DEFAULT_UPDATED_AT)
@@ -127,7 +131,8 @@ public class TaskerResourceIT {
      */
     public static Tasker createUpdatedEntity(EntityManager em) {
         Tasker tasker = new Tasker()
-            .price(UPDATED_PRICE)
+            .image(UPDATED_IMAGE)
+            .description(UPDATED_DESCRIPTION)
             .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
@@ -156,7 +161,8 @@ public class TaskerResourceIT {
         List<Tasker> taskerList = taskerRepository.findAll();
         assertThat(taskerList).hasSize(databaseSizeBeforeCreate + 1);
         Tasker testTasker = taskerList.get(taskerList.size() - 1);
-        assertThat(testTasker.getPrice()).isEqualTo(DEFAULT_PRICE);
+        assertThat(testTasker.getImage()).isEqualTo(DEFAULT_IMAGE);
+        assertThat(testTasker.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testTasker.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testTasker.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testTasker.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
@@ -195,7 +201,8 @@ public class TaskerResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(tasker.getId().intValue())))
-            .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
+            .andExpect(jsonPath("$.[*].image").value(hasItem(DEFAULT_IMAGE)))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
@@ -246,7 +253,8 @@ public class TaskerResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(tasker.getId().intValue()))
-            .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
+            .andExpect(jsonPath("$.image").value(DEFAULT_IMAGE))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
@@ -274,7 +282,8 @@ public class TaskerResourceIT {
         // Disconnect from session so that the updates on updatedTasker are not directly saved in db
         em.detach(updatedTasker);
         updatedTasker
-            .price(UPDATED_PRICE)
+            .image(UPDATED_IMAGE)
+            .description(UPDATED_DESCRIPTION)
             .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
@@ -290,7 +299,8 @@ public class TaskerResourceIT {
         List<Tasker> taskerList = taskerRepository.findAll();
         assertThat(taskerList).hasSize(databaseSizeBeforeUpdate);
         Tasker testTasker = taskerList.get(taskerList.size() - 1);
-        assertThat(testTasker.getPrice()).isEqualTo(UPDATED_PRICE);
+        assertThat(testTasker.getImage()).isEqualTo(UPDATED_IMAGE);
+        assertThat(testTasker.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testTasker.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testTasker.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testTasker.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);

@@ -1,7 +1,5 @@
 package com.vbtn.taskunite.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 
@@ -26,6 +24,9 @@ public class Task implements Serializable {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "estimated_time")
+    private Double estimatedTime;
+
     @Column(name = "price")
     private Double price;
 
@@ -33,11 +34,9 @@ public class Task implements Serializable {
     private Integer status;
 
     @Column(name = "created_at")
-    @CreationTimestamp
     private Instant createdAt;
 
     @Column(name = "updated_at")
-    @UpdateTimestamp
     private Instant updatedAt;
 
     @Column(name = "deleted_at")
@@ -87,6 +86,19 @@ public class Task implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Double getEstimatedTime() {
+        return estimatedTime;
+    }
+
+    public Task estimatedTime(Double estimatedTime) {
+        this.estimatedTime = estimatedTime;
+        return this;
+    }
+
+    public void setEstimatedTime(Double estimatedTime) {
+        this.estimatedTime = estimatedTime;
     }
 
     public Double getPrice() {
@@ -290,6 +302,7 @@ public class Task implements Serializable {
         return "Task{" +
             "id=" + getId() +
             ", description='" + getDescription() + "'" +
+            ", estimatedTime=" + getEstimatedTime() +
             ", price=" + getPrice() +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +

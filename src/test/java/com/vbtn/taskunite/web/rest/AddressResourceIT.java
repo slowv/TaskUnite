@@ -38,8 +38,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = TaskUniteApp.class)
 public class AddressResourceIT {
 
-    private static final String DEFAULT_STREET = "AAAAAAAAAA";
-    private static final String UPDATED_STREET = "BBBBBBBBBB";
+    private static final String DEFAULT_CONTENT = "AAAAAAAAAA";
+    private static final String UPDATED_CONTENT = "BBBBBBBBBB";
 
     private static final Integer DEFAULT_STATUS = 1;
     private static final Integer UPDATED_STATUS = 2;
@@ -101,7 +101,7 @@ public class AddressResourceIT {
      */
     public static Address createEntity(EntityManager em) {
         Address address = new Address()
-            .street(DEFAULT_STREET)
+            .content(DEFAULT_CONTENT)
             .status(DEFAULT_STATUS)
             .createdAt(DEFAULT_CREATED_AT)
             .updatedAt(DEFAULT_UPDATED_AT)
@@ -116,7 +116,7 @@ public class AddressResourceIT {
      */
     public static Address createUpdatedEntity(EntityManager em) {
         Address address = new Address()
-            .street(UPDATED_STREET)
+            .content(UPDATED_CONTENT)
             .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
@@ -145,7 +145,7 @@ public class AddressResourceIT {
         List<Address> addressList = addressRepository.findAll();
         assertThat(addressList).hasSize(databaseSizeBeforeCreate + 1);
         Address testAddress = addressList.get(addressList.size() - 1);
-        assertThat(testAddress.getStreet()).isEqualTo(DEFAULT_STREET);
+        assertThat(testAddress.getContent()).isEqualTo(DEFAULT_CONTENT);
         assertThat(testAddress.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testAddress.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testAddress.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
@@ -184,7 +184,7 @@ public class AddressResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(address.getId().intValue())))
-            .andExpect(jsonPath("$.[*].street").value(hasItem(DEFAULT_STREET)))
+            .andExpect(jsonPath("$.[*].content").value(hasItem(DEFAULT_CONTENT)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
@@ -202,7 +202,7 @@ public class AddressResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(address.getId().intValue()))
-            .andExpect(jsonPath("$.street").value(DEFAULT_STREET))
+            .andExpect(jsonPath("$.content").value(DEFAULT_CONTENT))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
@@ -230,7 +230,7 @@ public class AddressResourceIT {
         // Disconnect from session so that the updates on updatedAddress are not directly saved in db
         em.detach(updatedAddress);
         updatedAddress
-            .street(UPDATED_STREET)
+            .content(UPDATED_CONTENT)
             .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
@@ -246,7 +246,7 @@ public class AddressResourceIT {
         List<Address> addressList = addressRepository.findAll();
         assertThat(addressList).hasSize(databaseSizeBeforeUpdate);
         Address testAddress = addressList.get(addressList.size() - 1);
-        assertThat(testAddress.getStreet()).isEqualTo(UPDATED_STREET);
+        assertThat(testAddress.getContent()).isEqualTo(UPDATED_CONTENT);
         assertThat(testAddress.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testAddress.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testAddress.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);

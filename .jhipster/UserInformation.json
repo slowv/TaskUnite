@@ -6,10 +6,6 @@
             "fieldType": "Integer"
         },
         {
-            "fieldName": "address",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "phone",
             "fieldType": "String"
         },
@@ -40,10 +36,12 @@
             "ownerSide": true
         },
         {
-            "relationshipType": "one-to-many",
+            "relationshipType": "one-to-one",
             "otherEntityName": "address",
             "otherEntityRelationshipName": "user",
-            "relationshipName": "workingAddresses"
+            "relationshipName": "address",
+            "otherEntityField": "id",
+            "ownerSide": true
         },
         {
             "relationshipType": "one-to-many",

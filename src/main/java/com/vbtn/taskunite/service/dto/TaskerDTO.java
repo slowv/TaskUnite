@@ -12,7 +12,9 @@ public class TaskerDTO implements Serializable {
 
     private Long id;
 
-    private Double price;
+    private String image;
+
+    private String description;
 
     private Integer status;
 
@@ -25,7 +27,7 @@ public class TaskerDTO implements Serializable {
 
     private Long userId;
 
-    private Set<TaskCategoryDTO> taskCategories = new HashSet<>();
+    private Set<TaskerCategoryDTO> taskerCategories = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -35,12 +37,20 @@ public class TaskerDTO implements Serializable {
         this.id = id;
     }
 
-    public Double getPrice() {
-        return price;
+    public String getImage() {
+        return image;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getStatus() {
@@ -83,12 +93,12 @@ public class TaskerDTO implements Serializable {
         this.userId = userInformationId;
     }
 
-    public Set<TaskCategoryDTO> getTaskCategories() {
-        return taskCategories;
+    public Set<TaskerCategoryDTO> getTaskerCategories() {
+        return taskerCategories;
     }
 
-    public void setTaskCategories(Set<TaskCategoryDTO> taskCategories) {
-        this.taskCategories = taskCategories;
+    public void setTaskerCategories(Set<TaskerCategoryDTO> taskerCategories) {
+        this.taskerCategories = taskerCategories;
     }
 
     @Override
@@ -116,7 +126,8 @@ public class TaskerDTO implements Serializable {
     public String toString() {
         return "TaskerDTO{" +
             "id=" + getId() +
-            ", price=" + getPrice() +
+            ", image='" + getImage() + "'" +
+            ", description='" + getDescription() + "'" +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +

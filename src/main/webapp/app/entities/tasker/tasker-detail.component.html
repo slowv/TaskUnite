@@ -5,9 +5,13 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="taskUniteApp.tasker.price">Price</span></dt>
+                <dt><span jhiTranslate="taskUniteApp.tasker.image">Image</span></dt>
                 <dd>
-                    <span>{{tasker.price}}</span>
+                    <span>{{tasker.image}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.tasker.description">Description</span></dt>
+                <dd>
+                    <span>{{tasker.description}}</span>
                 </dd>
                 <dt><span jhiTranslate="taskUniteApp.tasker.status">Status</span></dt>
                 <dd>
@@ -31,10 +35,10 @@
                         <a [routerLink]="['/user-information', tasker.userId, 'view']">{{tasker.userId}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="taskUniteApp.tasker.taskCategories">Task Categories</span></dt>
+                <dt><span jhiTranslate="taskUniteApp.tasker.taskerCategories">Tasker Categories</span></dt>
                 <dd>
-                    <span *ngFor="let taskCategories of tasker.taskCategories; let last = last">
-                        <a [routerLink]="['/task-category', taskCategories?.id, 'view' ]">{{taskCategories.id}}</a>{{last ? '' : ', '}}
+                    <span *ngFor="let taskerCategories of tasker.taskerCategories; let last = last">
+                        <a [routerLink]="['/tasker-category', taskerCategories?.id, 'view' ]">{{taskerCategories.id}}</a>{{last ? '' : ', '}}
                     </span>
                 </dd>
             </dl>

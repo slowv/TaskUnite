@@ -9,10 +9,6 @@
                 <dd>
                     <span>{{userInformation.gender}}</span>
                 </dd>
-                <dt><span jhiTranslate="taskUniteApp.userInformation.address">Address</span></dt>
-                <dd>
-                    <span>{{userInformation.address}}</span>
-                </dd>
                 <dt><span jhiTranslate="taskUniteApp.userInformation.phone">Phone</span></dt>
                 <dd>
                     <span>{{userInformation.phone}}</span>
@@ -36,6 +32,12 @@
                 <dt><span jhiTranslate="taskUniteApp.userInformation.user">User</span></dt>
                 <dd>
                     {{userInformation.userId}}
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.userInformation.address">Address</span></dt>
+                <dd>
+                    <div *ngIf="userInformation.addressId">
+                        <a [routerLink]="['/address', userInformation.addressId, 'view']">{{userInformation.addressId}}</a>
+                    </div>
                 </dd>
             </dl>
 

@@ -12,8 +12,6 @@ public class UserInformationDTO implements Serializable {
 
     private Integer gender;
 
-    private String address;
-
     private String phone;
 
     private Integer status;
@@ -26,6 +24,8 @@ public class UserInformationDTO implements Serializable {
 
 
     private Long userId;
+
+    private Long addressId;
 
     public Long getId() {
         return id;
@@ -41,14 +41,6 @@ public class UserInformationDTO implements Serializable {
 
     public void setGender(Integer gender) {
         this.gender = gender;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getPhone() {
@@ -99,6 +91,14 @@ public class UserInformationDTO implements Serializable {
         this.userId = userId;
     }
 
+    public Long getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Long addressId) {
+        this.addressId = addressId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -125,13 +125,13 @@ public class UserInformationDTO implements Serializable {
         return "UserInformationDTO{" +
             "id=" + getId() +
             ", gender=" + getGender() +
-            ", address='" + getAddress() + "'" +
             ", phone='" + getPhone() + "'" +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
             ", user=" + getUserId() +
+            ", address=" + getAddressId() +
             "}";
     }
 }

@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
 public interface CustomTaskerRepository extends JpaRepository<Tasker, Long> {
-    @Query("select tasker from Tasker tasker left join fetch tasker.taskCategories where tasker.id =:id")
+    @Query("select tasker from Tasker tasker left join fetch tasker.taskerCategories where tasker.id =:id")
     Optional<Tasker> findOneWithEagerRelationships(@Param("id") Long id);
 }
