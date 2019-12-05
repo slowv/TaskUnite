@@ -58,7 +58,7 @@ $(document).ready(function () {
   });
 
   $('#selected-time').on('change', function () {
-    selectDate($('#calendar-value').datepicker('getStartDate'));
+    selectDate($('#calendar-value').datepicker('getFormattedDate'));
   })
 
   $('#selected-date').val(
@@ -67,7 +67,7 @@ $(document).ready(function () {
 });
 
 function selectDate(date) {
-  var selectedDate = moment(date).format("DD/MM/YYYY");
+  var selectedDate = moment(date).format("DD-MM-YYYY");
   var time = $('#selected-time').val();
   var hour = time.split(":")[0];
   var minute = time.split(":")[1];
