@@ -12,52 +12,42 @@
         <div class="mt-4 mb-3">
             <div class="container">
                 <div class="row border-bottom pb-3">
-                    <div class="col-md-1 box-logo-step">
-                        <a th:href="@{/}">
-                            <img alt="TaskUnite" class="logo-step" th:src="@{~/images/favicon.png}">
-                        </a>
-                    </div>
-                    <div class="col-md-9 offset-md-2">
-                        <div class="box-step ">
-                            <div class="step active st1">
-                                <a th:href="@{/task/create/step1(action='back')}">
-                                    <div class="box-circle">
-                                        <div class="circle"><i class="icon-done"></i></div>
-                                    </div>
-                                </a>
-                                <div class="box-line">
-                                    <div class="line"></div>
-                                </div>
-                                <div class="name-step" th:text="#{task-create.step1.task-infor}"></div>
+                    <div class="box-step col-12">
+                        <div class="step active st1">
+                            <div class="box-circle">
+                                <div class="circle">1</div>
                             </div>
-                            <div class="step active st2">
-                                <a th:href="@{/task/create/step2(action='back')}">
-                                    <div class="box-circle">
-                                        <div class="circle"><i class="icon-done"></i></div>
-                                    </div>
-                                </a>
-                                <div class="box-line ">
-                                    <div class="line"></div>
-                                </div>
-                                <div class="name-step" th:text="#{task-create.step2.task-prices}"></div>
+                            <div class="box-line">
+                                <div class="line"></div>
                             </div>
-                            <div class="step active st3">
-                                <a th:href="@{/task/create/step3(action='back')}">
-                                    <div class="box-circle">
-                                        <div class="circle"><i class="icon-done"></i></div>
-                                    </div>
-                                </a>
-                                <div class="box-line">
-                                    <div class="line"></div>
-                                </div>
-                                <div class="name-step" th:text="#{task-create.step3.choose-date-time}"></div>
+                            <div class="name-step">Mô tả công việc</div>
+                        </div>
+                        <div class="step st2">
+                            <div class="box-circle">
+                                <div class="circle">2</div>
                             </div>
-                            <div class="step active st4">
-                                <div class="box-circle">
-                                    <div class="circle">4</div>
-                                </div>
-                                <div class="name-step" th:text="#{task-create.step4.confirm-details}"></div>
+                            <div class="box-line ">
+                                <div class="line"></div>
                             </div>
+                            <div class="name-step">Chon lựa Tasker & giá</div>
+                        </div>
+                        <div class="step st3">
+                            <div class="box-circle">
+                                <div class="circle">3</div>
+                            </div>
+                            <div class="box-line">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step">Đặt lịch hẹn</div>
+                        </div>
+                        <div class="step st4">
+                            <div class="box-circle">
+                                <div class="circle">4</div>
+                            </div>
+                            <div class="box-line">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step">Xác nhận lại</div>
                         </div>
                     </div>
                 </div>

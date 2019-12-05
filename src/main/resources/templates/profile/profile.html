@@ -3,6 +3,21 @@
 <head>
     <title>Trang cá nhân</title>
     <th:block th:replace="fragment/layout :: head"></th:block>
+    <style>
+        .panel,
+        .panel--with-overflow {
+            background: white;
+            border: 1px solid #dce0e6;
+            border-radius: 4px;
+            padding: 1rem 1.5rem;
+            -webkit-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+            overflow: hidden;
+            position: relative;
+            margin: 5px;
+            color: #505050;
+        }
+    </style>
 </head>
 <body>
 
@@ -25,7 +40,7 @@
     <div class="site-section bg-light">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 col-lg-4">
+                <div class="col-md-12 col-lg-4 mb-3">
                     <div class="panel panel--spaced panel--with-overflow" style="margin: 0;">
                         <div class="row" style="height: 150px;">
                             <div class="col-12 text-center">
@@ -68,53 +83,65 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 col-lg-8">
+                <div class="col-md-12 col-lg-8 mb-3">
                     <div class="col-md-12 block-16" data-aos="fade-up" data-aos-delay="200">
                         <div class="nonloop-block-profile owl-carousel">
 
                             <div class="border rounded p-4 bg-white">
-                                <label class="font-weight-bold">Balance</label>
-                                <h3>VND 70000</h3>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi neque fugit tempora, numquam voluptate veritatis odit id, iste eum culpa alias, ut officiis omnis itaque ad, rem sunt doloremque molestias.</p>
+                                <label class="font-weight-bold">Tài khoản</label>
+                                <h3 class="mb-5">VND 70000</h3>
+                                <div>
+                                    <button class="btn btn-primary py-2 px-5">Nạp</button>
+                                    <button class="btn btn-primary py-2 px-5">Rút</button>
+                                </div>
                             </div>
 
                             <div class="border rounded p-4 bg-white">
-                                <h2 class="h5">Javascript Fullstack Developer</h2>
-                                <p><span class="border border-warning rounded p-1 px-2 text-warning">Freelance</span></p>
-                                <p>
-                                    <span class="d-block"><span class="icon-suitcase"></span> Resto Bar</span>
-                                    <span class="d-block"><span class="icon-room"></span> Florida</span>
-                                    <span class="d-block"><span class="icon-money mr-1"></span> $55000 &mdash; 70000</span>
+                                <label class="font-weight-bold">Thống kê</label>
+                                <p><span class="border border-warning rounded p-1 px-2 text-warning">Beta</span>
                                 </p>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus accusamus necessitatibus praesentium voluptate natus excepturi rerum, autem. Magnam laboriosam, quam sapiente laudantium iure sit ea! Tenetur, quasi, praesentium. Architecto, eum.</p>
+                                <p>
+                                    <span class="d-block"><span class="icon-suitcase"></span>&nbsp;&nbsp;<strong>3 công việc đã hoàn thành</strong></span>
+                                    <span class="d-block"><span class="icon-suitcase"></span>&nbsp;&nbsp;<strong>4 công việc chưa hoàn thành</strong></span>
+                                    <span class="d-block"><span
+                                        class="icon-money mr-1"></span> <span
+                                        class="icon-star mr-1"></span></span>
+                                </p>
+                                <p class="mb-0">Bạn đang làm rất tốt!</p>
                             </div>
 
                             <div class="border rounded p-4 bg-white">
-                                <h2 class="h5">Assistant Brooker, Real Estate</h2>
-                                <p><span class="border border-warning rounded p-1 px-2 text-warning">Freelance</span></p>
-                                <p>
-                                    <span class="d-block"><span class="icon-suitcase"></span> Resto Bar</span>
-                                    <span class="d-block"><span class="icon-room"></span> Florida</span>
-                                    <span class="d-block"><span class="icon-money mr-1"></span> $55000 &mdash; 70000</span>
-                                </p>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus esse, quam consectetur ipsum quibusdam ullam ab nesciunt, doloribus voluptatum neque iure perspiciatis vel vero illo consequatur facilis, fuga nobis corporis.</p>
+                                <label class="font-weight-bold">Tiến độ</label>
+                                <h3 class="mb-5">EXP 70000</h3>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width:80%"></div>
+                                </div>
+                                <p class="mb-3">Còn 7 tới cấp tiếp theo</p>
+                                <label class="font-weight-bold">Quyền lợi</label>&nbsp;&nbsp;<small>Cấp càng cao, bạn càng tiết kiệm chi phí!</small>
+                                <p class="mb-0">Hiện bạn được giảm <strong>5%</strong> phí. Cảm ơn rất nhiều!</p>
+                                <p class="mb-0">Bạn thuộc hàng chờ ưu tiên <strong>cao</strong></p>
                             </div>
 
                             <div class="border rounded p-4 bg-white">
                                 <h2 class="h5">Telecommunication Manager</h2>
-                                <p><span class="border border-warning rounded p-1 px-2 text-warning">Freelance</span></p>
+                                <p><span class="border border-warning rounded p-1 px-2 text-warning">Freelance</span>
+                                </p>
                                 <p>
                                     <span class="d-block"><span class="icon-suitcase"></span> Resto Bar</span>
                                     <span class="d-block"><span class="icon-room"></span> Florida</span>
-                                    <span class="d-block"><span class="icon-money mr-1"></span> $55000 &mdash; 70000</span>
+                                    <span class="d-block"><span
+                                        class="icon-money mr-1"></span> $55000 &mdash; 70000</span>
                                 </p>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at ipsum commodi hic, cum esse asperiores libero molestiae, perferendis consectetur assumenda iusto, dolorem nemo maiores magnam illo laborum sit, dicta.</p>
+                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at
+                                    ipsum commodi hic, cum esse asperiores libero molestiae, perferendis consectetur
+                                    assumenda iusto, dolorem nemo maiores magnam illo laborum sit, dicta.</p>
                             </div>
 
                         </div>
 
                     </div>
-                    <div class="panel panel--spaced panel--with-overflow tab-content" id="v-pills-tabContent">
+                    <div class=" col-md-12 panel panel--spaced panel--with-overflow tab-content"
+                         id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                              aria-labelledby="v-pills-home-tab">...
                         </div>
