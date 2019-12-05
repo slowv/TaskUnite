@@ -1,0 +1,17 @@
+@media screen and (max-width: 500px) {
+  .btn-task-done{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 576px){
+  .confirm-avatar-tasker{
+    position: static;
+    transform: translate(0, 0);
+    width: 100px;
+    height: 100px;
+  }
+  .box-img-tasker{
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}

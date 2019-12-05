@@ -3,6 +3,8 @@
 <head>
     <title>Thông tin công việc</title>
     <th:block th:include="fragment/layout :: head"></th:block>
+    <link rel="stylesheet" th:href="@{~/css/responsive/task/create.css}">
+    <link rel="stylesheet" th:href="@{~/css/responsive/room/room.css}">
 </head>
 <body>
 
@@ -28,7 +30,10 @@
                 <div class="col-md-12 col-lg-5">
                     <div class="panel panel--spaced panel--with-overflow">
                         <div class="row">
-                            <div class="col-lg-9">
+                            <div class="col-lg-3 col-sm-3 col-12 box-img-tasker">
+                                <img th:src="@{~/images/person_1.jpg}" alt="" class="confirm-avatar-tasker">
+                            </div>
+                            <div class="col-lg-9 col-12 col-sm-9">
                                 <div class="task-name text-bold" style="font-size: 18px">
                                     <div th:title="'Công việc nhà'" class="name" th:text="'Công việc nhà'"></div>
                                     <!--Trạng thái công việc-->
@@ -40,9 +45,6 @@
                                 <div class="tasker-name mt-1">
                                     Trần Hiểu Đông
                                 </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <img th:src="@{~/images/person_1.jpg}" alt="" class="confirm-avatar-tasker">
                             </div>
                         </div>
                         <div style="height: 1px;background: #dadada" class="my-3"></div>
@@ -66,23 +68,23 @@
                                 <div class="box-option mt-3">
                                     <div class="form-group w-100">
                                         <i class="icon-clock-o t-green mr-lg-1"></i> Thời gian dự kiến:
-                                        <div class="t-14 px-lg-3 mt-1">2 Giờ</div>
+                                        <div class="t-14 px-lg-3 mt-1 px-3">- 2 Giờ</div>
                                     </div>
                                     <div class="form-group w-100">
                                         <i class="icon-book t-green mr-lg-1"></i> Danh mục:
-                                        <div class="t-14 px-lg-3 mt-1">Việc nhà, Thợ điện</div>
+                                        <div class="t-14 px-lg-3 mt-1 px-3">- Việc nhà, Thợ điện</div>
                                     </div>
                                     <div class="form-group w-100">
                                         <i class="icon-phone  t-green mr-lg-1"></i> Số điện thoại:
                                         <div class="row px-3">
-                                            <div class="col-lg-4 t-14">- Khách hàng</div>
-                                            <div class="col-lg-1 p-0 t-14">:</div>
-                                            <div class="col-lg-7 t-14">0349555602</div>
+                                            <div class="col-lg-4 t-14 col-6">- Khách hàng</div>
+                                            <div class="col-lg-1 p-0 t-14 col-1">:</div>
+                                            <div class="col-lg-7 t-14 col-5">0349555602</div>
                                         </div>
                                         <div class="row px-3">
-                                            <div class="col-lg-4 t-14">- Nhân viên</div>
-                                            <div class="col-lg-1 p-0 t-14">:</div>
-                                            <div class="col-lg-7 t-14">0349555602</div>
+                                            <div class="col-lg-4 t-14 col-6">- Nhân viên</div>
+                                            <div class="col-lg-1 p-0 t-14 col-1">:</div>
+                                            <div class="col-lg-7 t-14 col-5">0349555602</div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -104,7 +106,7 @@
                             <div class="col-lg-6 text-bold t-20">
                                 Giá tiền (vnđ/giờ):
                             </div>
-                            <div class="col-lg-6 text-right t-20 t-green">
+                            <div class="col-lg-6 t-20 t-green">
                                 80.000 vnđ/1h
                             </div>
                         </div>
@@ -165,6 +167,6 @@
     <!--END MODAL-->
 </div>
 <th:block th:include="fragment/layout :: javascript"></th:block>
-<script th:src="@{~/js/task/room-tasker.js}"></script>
+<script th:src="@{~/js/task/room-task.js}"></script>
 </body>
 </html>
