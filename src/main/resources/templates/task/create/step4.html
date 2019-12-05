@@ -83,14 +83,14 @@
                         <div class="panel panel--spaced panel--with-overflow">
                             <div class="row">
                                 <div class="col-lg-2 col-sm-3 col-3">
-                                    <img th:src="@{~/images/person_1.jpg}" alt="" class="confirm-avatar-tasker">
+                                    <img th:src="${taskInfo.tasker.user.user.imageUrl}" alt="" class="confirm-avatar-tasker">
                                 </div>
                                 <div class="col-lg-10 col-sm-9 col-9">
                                     <div class="task-name text-bold" style="font-size: 18px">
-                                        Công việc nhà
+                                        <span th:text="${taskInfo.title}">Công việc nhà</span>
                                     </div>
                                     <div class="tasker-name mt-1">
-                                        Trần Hiểu Đông
+                                        <span th:text="${taskInfo.tasker.user.user.firstName + ' ' + taskInfo.tasker.user.user.lastName}">Trần Hiểu Đông</span>
                                     </div>
                                 </div>
                             </div>
@@ -98,20 +98,20 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <span class="icon-calendar-o mr-lg-3"></span>
-                                    <span>22 - T11, 8:30 </span>
+                                    <span th:text="${#dates.format(taskInfo.schedule.from, 'dd-MM-yyyy, HH:mm')}">22 - T11, 8:30 </span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <span class="icon-room mr-lg-3"></span>
-                                    <span>Hà Nội - Từ Liêm </span>
+                                    <span th:text="${taskInfo.address}">Hà Nội - Từ Liêm </span>
                                 </div>
                             </div>
                             <div style="height: 1px;background: #dadada" class="my-3"></div>
                             <div class="row">
                                 <div class="col-lg-7 col-md-12 text-bold t-20" th:text="#{task-create.step4.price-vnd-hour}"></div>
                                 <div class="col-lg-5 col-md-12 t-20 t-green">
-                                    80.000 vnđ/1h
+                                    <span th:text="${#numbers.formatDecimal(taskInfo.taskCategory.minPrice, 0, 'COMMA', 0, 'POINT')}"></span> <span> vnđ/1h</span>
                                 </div>
                             </div>
                             <div class="my-3 t-14">

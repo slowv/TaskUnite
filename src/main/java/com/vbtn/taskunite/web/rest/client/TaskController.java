@@ -80,7 +80,7 @@ public class TaskController {
         if(null == step1){
             return "redirect:/task/create/step1";
         }
-        model.addAttribute("taskInfo", (Task) ((HashMap) session.getAttribute("step1")).get("taskInfo"));
+        model.addAttribute("taskInfo", (Task) step1.get("taskInfo"));
         return "task/create/step2";
     }
 
@@ -106,6 +106,7 @@ public class TaskController {
         if(null == step2){
             return "redirect:/task/create/step1";
         }
+        model.addAttribute("taskInfo", (Task) step2.get("taskInfo"));
         return "task/create/step3";
     }
 
