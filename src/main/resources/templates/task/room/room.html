@@ -49,13 +49,14 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <span class="icon-calendar-o mr-lg-3 t-green"></span>
-                                <span th:text="${task.schedule.from}">22 - T11, 8:30 </span>
+                                <!--<span th:text="${task.schedule.from}">22 - T11, 8:30 </span>-->
+                                <span th:text="${#dates.format(task.schedule.from, 'dd-MM-yyyy, HH:mm')}">22 - T11, 8:30 </span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <span class="icon-room mr-lg-3 t-green"></span>
-                                <span>Hà Nội - Từ Liêm </span>
+                                <span th:text="${task.address}">Hà Nội - Từ Liêm </span>
                             </div>
                         </div>
                         <div style="height: 1px;background: #dadada" class="my-3"></div>
@@ -66,34 +67,44 @@
                                 <div class="box-option mt-3">
                                     <div class="form-group w-100">
                                         <i class="icon-clock-o t-green mr-lg-1"></i> Thời gian dự kiến:
-                                        <div class="t-14 px-lg-3 mt-1">2 Giờ</div>
+                                        <div class="t-14 px-lg-3 mt-1" >
+                                            <span th:text="${task.estimatedTime + ' Giờ'}">2 Giờ</span>
+                                        </div>
                                     </div>
                                     <div class="form-group w-100">
                                         <i class="icon-book t-green mr-lg-1"></i> Danh mục:
-                                        <div class="t-14 px-lg-3 mt-1">Việc nhà, Thợ điện</div>
+                                        <div class="t-14 px-lg-3 mt-1">
+                                            <span th:text="${task.taskCategory.name}">Việc nhà, Thợ điện</span>
+                                        </div>
                                     </div>
                                     <div class="form-group w-100">
                                         <i class="icon-phone  t-green mr-lg-1"></i> Số điện thoại:
                                         <div class="row px-3">
                                             <div class="col-lg-4 t-14">- Khách hàng</div>
                                             <div class="col-lg-1 p-0 t-14">:</div>
-                                            <div class="col-lg-7 t-14">0349555602</div>
+                                            <div class="col-lg-7 t-14">
+                                                <span th:text="${task.master.user.phone}">0349555602</span>
+                                            </div>
                                         </div>
                                         <div class="row px-3">
                                             <div class="col-lg-4 t-14">- Nhân viên</div>
                                             <div class="col-lg-1 p-0 t-14">:</div>
-                                            <div class="col-lg-7 t-14">0349555602</div>
+                                            <div class="col-lg-7 t-14">
+                                                <span th:text="${task.tasker.user.phone}">0349555602</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <i class="icon-details t-green mr-lg-1"></i> Nôi dung công việc:
                                         <div class="px-3 t-14 mt-2">
-                                            - Vấn đề lớn nhất trong cuộc sống là cuộc sống luôn tồn tại những vấn đề.
-                                            <br>
-                                            - Theo thống kê của NASA thì loài người là động vật nhiều sừng nhất trên thế
-                                            giới.<br>
-                                            - Nếu bạn ngu mà biết mình ngu có nghĩa bạn người có trí tuệ nhưng ngay khi
-                                            bạn có trí tuệ mà biết mình ngu thì đúng là bạn ngu rồi.
+                                            <span th:text="${task.description}">
+                                                - Vấn đề lớn nhất trong cuộc sống là cuộc sống luôn tồn tại những vấn đề.
+                                                <br>
+                                                - Theo thống kê của NASA thì loài người là động vật nhiều sừng nhất trên thế
+                                                giới.<br>
+                                                - Nếu bạn ngu mà biết mình ngu có nghĩa bạn người có trí tuệ nhưng ngay khi
+                                                bạn có trí tuệ mà biết mình ngu thì đúng là bạn ngu rồi.
+                                            </span>
                                         </div>
                                     </div>
                                 </div>

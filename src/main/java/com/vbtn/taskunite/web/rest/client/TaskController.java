@@ -74,10 +74,13 @@ public class TaskController {
 
     @RequestMapping("/create/step2")
     public String createStep2(HttpSession session, Model model){
+        Page<Tasker> taskers = customTaskerService.findAll(PageRequest.of(0,2));
+        model.addAttribute("taskers", taskers.getContent());
         HashMap step1 = (HashMap) session.getAttribute("step1");
         if(null == step1){
             return "redirect:/task/create/step1";
         }
+        model.addAttribute("taskInfo", (Task) ((HashMap) session.getAttribute("step1")).get("taskInfo"));
         return "task/create/step2";
     }
 
@@ -138,7 +141,13 @@ public class TaskController {
         Task taskInfo = (Task)step3.get("taskInfo");
         taskInfo.setDescription(description);
         taskInfo = customTaskService.save(taskInfo);
-        logger.info(taskInfo.getRoom().toString());
+        if(null == taskInfo){
+            // do something;
+        }
+        session.removeAttribute("step1");
+        session.removeAttribute("step2");
+        session.removeAttribute("step3");
+        session.removeAttribute("step4");
         return "redirect:/room/" + taskInfo.getRoom().getId();
     }
 }

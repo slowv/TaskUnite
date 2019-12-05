@@ -48,6 +48,7 @@ public class CustomTaskService {
         task.setRoom(new Room());
 
         task = customTaskRepository.save(task);
+
         return task;
     }
 }
