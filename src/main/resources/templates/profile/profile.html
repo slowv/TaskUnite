@@ -3,22 +3,19 @@
 <head>
     <title>Trang cá nhân</title>
     <th:block th:replace="fragment/layout :: head"></th:block>
+    <link rel="stylesheet" th:href="@{~/css/responsive/profile/profile.css}">
 </head>
 <body>
 
 <div class="site-wrap">
 
     <th:block th:replace="fragment/layout :: site-mobile-memu"></th:block>
-
-
     <th:block th:replace="fragment/layout :: site-navbar"></th:block>
-
     <div style="height: 113px;"></div>
-
     <div class="unit-5 overlay" style="background-image: url('/images/hero_1.jpg');">
         <div class="container text-center">
-            <h2 class="mb-0">Profile</h2>
-            <p class="mb-0 unit-6"><a th:href="@{/}">Home</a> <span class="sep">></span> <span>Profile</span></p>
+            <h2 class="mb-0">Thông tin</h2>
+            <p class="mb-0 unit-6"><a th:href="@{/}">Trang chủ</a> <span class="sep">></span> <span>Thông tin</span></p>
         </div>
     </div>
 
