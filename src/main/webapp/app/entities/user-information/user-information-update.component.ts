@@ -12,8 +12,6 @@ import { IUserInformation, UserInformation } from 'app/shared/model/user-informa
 import { UserInformationService } from './user-information.service';
 import { IUser } from 'app/core/user/user.model';
 import { UserService } from 'app/core/user/user.service';
-import { IAddress } from 'app/shared/model/address.model';
-import { AddressService } from 'app/entities/address/address.service';
 import { ITasker } from 'app/shared/model/tasker.model';
 import { TaskerService } from 'app/entities/tasker/tasker.service';
 import { IMaster } from 'app/shared/model/master.model';
@@ -30,8 +28,6 @@ export class UserInformationUpdateComponent implements OnInit {
 
   users: IUser[];
 
-  addresses: IAddress[];
-
   taskers: ITasker[];
 
   masters: IMaster[];
@@ -40,21 +36,20 @@ export class UserInformationUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
+    address: [],
     gender: [],
     phone: [],
     status: [],
     createdAt: [],
     updatedAt: [],
     deletedAt: [],
-    userId: [],
-    addressId: []
+    userId: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected userInformationService: UserInformationService,
     protected userService: UserService,
-    protected addressService: AddressService,
     protected taskerService: TaskerService,
     protected masterService: MasterService,
     protected statisticService: StatisticService,
@@ -70,21 +65,6 @@ export class UserInformationUpdateComponent implements OnInit {
     this.userService
       .query()
       .subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body), (res: HttpErrorResponse) => this.onError(res.message));
-    this.addressService.query({ filter: 'user-is-null' }).subscribe(
-      (res: HttpResponse<IAddress[]>) => {
-        if (!this.editForm.get('addressId').value) {
-          this.addresses = res.body;
-        } else {
-          this.addressService
-            .find(this.editForm.get('addressId').value)
-            .subscribe(
-              (subRes: HttpResponse<IAddress>) => (this.addresses = [subRes.body].concat(res.body)),
-              (subRes: HttpErrorResponse) => this.onError(subRes.message)
-            );
-        }
-      },
-      (res: HttpErrorResponse) => this.onError(res.message)
-    );
     this.taskerService
       .query()
       .subscribe((res: HttpResponse<ITasker[]>) => (this.taskers = res.body), (res: HttpErrorResponse) => this.onError(res.message));
@@ -99,14 +79,14 @@ export class UserInformationUpdateComponent implements OnInit {
   updateForm(userInformation: IUserInformation) {
     this.editForm.patchValue({
       id: userInformation.id,
+      address: userInformation.address,
       gender: userInformation.gender,
       phone: userInformation.phone,
       status: userInformation.status,
       createdAt: userInformation.createdAt != null ? userInformation.createdAt.format(DATE_TIME_FORMAT) : null,
       updatedAt: userInformation.updatedAt != null ? userInformation.updatedAt.format(DATE_TIME_FORMAT) : null,
       deletedAt: userInformation.deletedAt != null ? userInformation.deletedAt.format(DATE_TIME_FORMAT) : null,
-      userId: userInformation.userId,
-      addressId: userInformation.addressId
+      userId: userInformation.userId
     });
   }
 
@@ -128,6 +108,7 @@ export class UserInformationUpdateComponent implements OnInit {
     return {
       ...new UserInformation(),
       id: this.editForm.get(['id']).value,
+      address: this.editForm.get(['address']).value,
       gender: this.editForm.get(['gender']).value,
       phone: this.editForm.get(['phone']).value,
       status: this.editForm.get(['status']).value,
@@ -137,8 +118,7 @@ export class UserInformationUpdateComponent implements OnInit {
         this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
       deletedAt:
         this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
-      userId: this.editForm.get(['userId']).value,
-      addressId: this.editForm.get(['addressId']).value
+      userId: this.editForm.get(['userId']).value
     };
   }
 
@@ -159,10 +139,6 @@ export class UserInformationUpdateComponent implements OnInit {
   }
 
   trackUserById(index: number, item: IUser) {
-    return item.id;
-  }
-
-  trackAddressById(index: number, item: IAddress) {
     return item.id;
   }
 

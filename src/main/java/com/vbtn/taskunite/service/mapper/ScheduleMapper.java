@@ -8,15 +8,14 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Schedule} and its DTO {@link ScheduleDTO}.
  */
-@Mapper(componentModel = "spring", uses = {TaskerMapper.class, TaskMapper.class})
+@Mapper(componentModel = "spring", uses = {TaskerMapper.class})
 public interface ScheduleMapper extends EntityMapper<ScheduleDTO, Schedule> {
 
     @Mapping(source = "tasker.id", target = "taskerId")
-    @Mapping(source = "task.id", target = "taskId")
     ScheduleDTO toDto(Schedule schedule);
 
+    @Mapping(target = "task", ignore = true)
     @Mapping(source = "taskerId", target = "tasker")
-    @Mapping(source = "taskId", target = "task")
     Schedule toEntity(ScheduleDTO scheduleDTO);
 
     default Schedule fromId(Long id) {

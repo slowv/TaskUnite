@@ -25,8 +25,7 @@
             <th scope="col"  jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.address.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.address.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="districtId"><span jhiTranslate="taskUniteApp.address.district">District</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="taskerId"><span jhiTranslate="taskUniteApp.address.tasker">Tasker</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="masterId"><span jhiTranslate="taskUniteApp.address.master">Master</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="userId"><span jhiTranslate="taskUniteApp.address.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -44,13 +43,8 @@
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="address.taskerId">
-                        <a [routerLink]="['/tasker', address.taskerId , 'view' ]" >{{address.taskerId}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="address.masterId">
-                        <a [routerLink]="['/master', address.masterId , 'view' ]" >{{address.masterId}}</a>
+                    <div *ngIf="address.userId">
+                        <a [routerLink]="['/user-information', address.userId , 'view' ]" >{{address.userId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

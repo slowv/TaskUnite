@@ -13,7 +13,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 /**
  * Service Implementation for managing {@link Schedule}.
@@ -61,6 +65,21 @@ public class ScheduleServiceImpl implements ScheduleService {
             .map(scheduleMapper::toDto);
     }
 
+
+
+    /**
+    *  Get all the schedules where Task is {@code null}.
+     *  @return the list of entities.
+     */
+    @Transactional(readOnly = true) 
+    public List<ScheduleDTO> findAllWhereTaskIsNull() {
+        log.debug("Request to get all schedules where Task is null");
+        return StreamSupport
+            .stream(scheduleRepository.findAll().spliterator(), false)
+            .filter(schedule -> schedule.getTask() == null)
+            .map(scheduleMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
 
     /**
      * Get one schedule by id.

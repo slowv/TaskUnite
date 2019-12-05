@@ -21,6 +21,9 @@ public class UserInformation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "address")
+    private String address;
+
     @Column(name = "gender")
     private Integer gender;
 
@@ -43,9 +46,8 @@ public class UserInformation implements Serializable {
     @JoinColumn(unique = true)
     private User user;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Address address;
+    @OneToMany(mappedBy = "user")
+    private Set<Address> workingAddresses = new HashSet<>();
 
     @OneToMany(mappedBy = "user")
     private Set<Review> reviews = new HashSet<>();
@@ -72,6 +74,19 @@ public class UserInformation implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public UserInformation address(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Integer getGender() {
@@ -165,17 +180,29 @@ public class UserInformation implements Serializable {
         this.user = user;
     }
 
-    public Address getAddress() {
-        return address;
+    public Set<Address> getWorkingAddresses() {
+        return workingAddresses;
     }
 
-    public UserInformation address(Address address) {
-        this.address = address;
+    public UserInformation workingAddresses(Set<Address> addresses) {
+        this.workingAddresses = addresses;
         return this;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public UserInformation addWorkingAddresses(Address address) {
+        this.workingAddresses.add(address);
+        address.setUser(this);
+        return this;
+    }
+
+    public UserInformation removeWorkingAddresses(Address address) {
+        this.workingAddresses.remove(address);
+        address.setUser(null);
+        return this;
+    }
+
+    public void setWorkingAddresses(Set<Address> addresses) {
+        this.workingAddresses = addresses;
     }
 
     public Set<Review> getReviews() {
@@ -288,6 +315,7 @@ public class UserInformation implements Serializable {
     public String toString() {
         return "UserInformation{" +
             "id=" + getId() +
+            ", address='" + getAddress() + "'" +
             ", gender=" + getGender() +
             ", phone='" + getPhone() + "'" +
             ", status=" + getStatus() +

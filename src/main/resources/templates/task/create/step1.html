@@ -3,7 +3,7 @@
 <head>
     <title>Create Task</title>
     <th:block th:include="fragment/layout :: head"> </th:block>
-    <link rel="stylesheet" th:href="@{~/css/task/create.css}">
+    <link rel="stylesheet" th:href="@{~/css/responsive/task/create.css}">
 </head>
 <body>
 
@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="box-input">
                                     <div class="form-group box-input-address-single">
-                                        <input type="text" class="form-control" id="address"
+                                        <input type="text" class="form-control" id="address" th:field="*{address}"
                                                th:placeholder="#{task-create.step1.placeholder-address}">
                                     </div>
                                     <div class="box-input-address-multi d-none">
@@ -126,7 +126,7 @@
                                 </div>
                                 <div class="box-input">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="title-task"
+                                        <input type="text" class="form-control" id="title-task" th:field="*{title}"
                                                th:placeholder="#{task-create.step1.placeholder-work-name}">
                                     </div>
                                     <div class="mt-lg-5 form-group text-center">
@@ -161,8 +161,8 @@
                                         <!--</div>-->
                                         <th:block th:each="category: ${taskCategories}">
                                             <div class="custom-control custom-checkbox custom-control-inline">
-                                                <input type="checkbox" name="taskCategories" class="custom-control-input" th:id="'cateId-' + ${category.id}"
-                                                       th:value="${category.id}" th:field="*{taskCategories}">
+                                                <input type="radio" name="taskCategories" class="custom-control-input" th:id="'cateId-' + ${category.id}"
+                                                       th:value="${category.id}" th:field="*{taskCategory}">
                                                 <label class="custom-control-label d-inline" th:for="'cateId-' + ${category.id}" th:text="${category.name}"></label>
                                             </div>
                                         </th:block>
@@ -211,7 +211,7 @@
                                     class="text-danger error-msg d-none"></span></div>
                                 <div class="box-input">
                                     <div class="form-group">
-                                        <input type="number" th:value="${estimateTime}" name="estimateTime" class="form-control w-25" id="estimated-time">
+                                        <input type="number" th:field="*{estimatedTime}"  class="form-control w-25" id="estimated-time">
                                     </div>
                                     <div class="mt-lg-5 form-group text-center">
                                         <button class="btn btn-success btn-continue px-4" data-type="estimated-time"

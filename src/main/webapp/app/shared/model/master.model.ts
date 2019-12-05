@@ -1,6 +1,5 @@
 import { Moment } from 'moment';
 import { IRoom } from 'app/shared/model/room.model';
-import { IAddress } from 'app/shared/model/address.model';
 import { ITask } from 'app/shared/model/task.model';
 
 export interface IMaster {
@@ -11,7 +10,6 @@ export interface IMaster {
   deletedAt?: Moment;
   userId?: number;
   rooms?: IRoom[];
-  workingAddresses?: IAddress[];
   tasks?: ITask[];
 }
 
@@ -24,7 +22,6 @@ export class Master implements IMaster {
     public deletedAt?: Moment,
     public userId?: number,
     public rooms?: IRoom[],
-    public workingAddresses?: IAddress[],
     public tasks?: ITask[]
   ) {}
 }

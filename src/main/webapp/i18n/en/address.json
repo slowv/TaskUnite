@@ -21,10 +21,8 @@
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
-      "user": "User",
       "district": "District",
-      "tasker": "Tasker",
-      "master": "Master"
+      "user": "User"
     }
   }
 }

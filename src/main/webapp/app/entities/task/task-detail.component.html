@@ -5,6 +5,14 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="taskUniteApp.task.address">Address</span></dt>
+                <dd>
+                    <span>{{task.address}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.task.title">Title</span></dt>
+                <dd>
+                    <span>{{task.title}}</span>
+                </dd>
                 <dt><span jhiTranslate="taskUniteApp.task.description">Description</span></dt>
                 <dd>
                     <span>{{task.description}}</span>
@@ -39,11 +47,11 @@
                         <a [routerLink]="['/room', task.roomId, 'view']">{{task.roomId}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="taskUniteApp.task.taskCategories">Task Categories</span></dt>
+                <dt><span jhiTranslate="taskUniteApp.task.schedule">Schedule</span></dt>
                 <dd>
-                    <span *ngFor="let taskCategories of task.taskCategories; let last = last">
-                        <a [routerLink]="['/task-category', taskCategories?.id, 'view' ]">{{taskCategories.id}}</a>{{last ? '' : ', '}}
-                    </span>
+                    <div *ngIf="task.scheduleId">
+                        <a [routerLink]="['/schedule', task.scheduleId, 'view']">{{task.scheduleId}}</a>
+                    </div>
                 </dd>
                 <dt><span jhiTranslate="taskUniteApp.task.tasker">Tasker</span></dt>
                 <dd>
@@ -55,6 +63,12 @@
                 <dd>
                     <div *ngIf="task.masterId">
                         <a [routerLink]="['/master', task.masterId, 'view']">{{task.masterId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.task.taskCategory">Task Category</span></dt>
+                <dd>
+                    <div *ngIf="task.taskCategoryId">
+                        <a [routerLink]="['/task-category', task.taskCategoryId, 'view']">{{task.taskCategoryId}}</a>
                     </div>
                 </dd>
             </dl>

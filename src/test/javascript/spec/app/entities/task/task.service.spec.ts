@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Task(0, 'AAAAAAA', 0, 0, 0, currentDate, currentDate, currentDate);
+      elemDefault = new Task(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 0, 0, 0, currentDate, currentDate, currentDate);
     });
 
     describe('Service methods', () => {
@@ -77,6 +77,8 @@ describe('Service Tests', () => {
       it('should update a Task', () => {
         const returnedFromService = Object.assign(
           {
+            address: 'BBBBBB',
+            title: 'BBBBBB',
             description: 'BBBBBB',
             estimatedTime: 1,
             price: 1,
@@ -108,6 +110,8 @@ describe('Service Tests', () => {
       it('should return a list of Task', () => {
         const returnedFromService = Object.assign(
           {
+            address: 'BBBBBB',
+            title: 'BBBBBB',
             description: 'BBBBBB',
             estimatedTime: 1,
             price: 1,

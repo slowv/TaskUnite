@@ -16,6 +16,8 @@
       "detail": {
         "title": "Task"
       },
+      "address": "Address",
+      "title": "Title",
       "description": "Description",
       "estimatedTime": "Estimated Time",
       "price": "Price",
@@ -26,9 +28,9 @@
       "room": "Room",
       "schedule": "Schedule",
       "reviews": "Reviews",
-      "taskCategories": "Task Categories",
       "tasker": "Tasker",
-      "master": "Master"
+      "master": "Master",
+      "taskCategory": "Task Category"
     }
   }
 }

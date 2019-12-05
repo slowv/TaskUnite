@@ -21,6 +21,12 @@ public class Task implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "title")
+    private String title;
+
     @Column(name = "description")
     private String description;
 
@@ -42,21 +48,16 @@ public class Task implements Serializable {
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(unique = true)
     private Room room;
 
-    @OneToMany(mappedBy = "task")
-    private Set<Schedule> schedules = new HashSet<>();
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(unique = true)
+    private Schedule schedule;
 
     @OneToMany(mappedBy = "task")
     private Set<Review> reviews = new HashSet<>();
-
-    @ManyToMany
-    @JoinTable(name = "task_task_categories",
-               joinColumns = @JoinColumn(name = "task_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "task_categories_id", referencedColumnName = "id"))
-    private Set<TaskCategory> taskCategories = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties("tasks")
@@ -66,6 +67,10 @@ public class Task implements Serializable {
     @JsonIgnoreProperties("tasks")
     private Master master;
 
+    @ManyToOne
+    @JsonIgnoreProperties("tasks")
+    private TaskCategory taskCategory;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -73,6 +78,32 @@ public class Task implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public Task address(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Task title(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -179,29 +210,17 @@ public class Task implements Serializable {
         this.room = room;
     }
 
-    public Set<Schedule> getSchedules() {
-        return schedules;
+    public Schedule getSchedule() {
+        return schedule;
     }
 
-    public Task schedules(Set<Schedule> schedules) {
-        this.schedules = schedules;
+    public Task schedule(Schedule schedule) {
+        this.schedule = schedule;
         return this;
     }
 
-    public Task addSchedule(Schedule schedule) {
-        this.schedules.add(schedule);
-        schedule.setTask(this);
-        return this;
-    }
-
-    public Task removeSchedule(Schedule schedule) {
-        this.schedules.remove(schedule);
-        schedule.setTask(null);
-        return this;
-    }
-
-    public void setSchedules(Set<Schedule> schedules) {
-        this.schedules = schedules;
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
     }
 
     public Set<Review> getReviews() {
@@ -229,31 +248,6 @@ public class Task implements Serializable {
         this.reviews = reviews;
     }
 
-    public Set<TaskCategory> getTaskCategories() {
-        return taskCategories;
-    }
-
-    public Task taskCategories(Set<TaskCategory> taskCategories) {
-        this.taskCategories = taskCategories;
-        return this;
-    }
-
-    public Task addTaskCategories(TaskCategory taskCategory) {
-        this.taskCategories.add(taskCategory);
-        taskCategory.getTasks().add(this);
-        return this;
-    }
-
-    public Task removeTaskCategories(TaskCategory taskCategory) {
-        this.taskCategories.remove(taskCategory);
-        taskCategory.getTasks().remove(this);
-        return this;
-    }
-
-    public void setTaskCategories(Set<TaskCategory> taskCategories) {
-        this.taskCategories = taskCategories;
-    }
-
     public Tasker getTasker() {
         return tasker;
     }
@@ -279,6 +273,19 @@ public class Task implements Serializable {
     public void setMaster(Master master) {
         this.master = master;
     }
+
+    public TaskCategory getTaskCategory() {
+        return taskCategory;
+    }
+
+    public Task taskCategory(TaskCategory taskCategory) {
+        this.taskCategory = taskCategory;
+        return this;
+    }
+
+    public void setTaskCategory(TaskCategory taskCategory) {
+        this.taskCategory = taskCategory;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -301,6 +308,8 @@ public class Task implements Serializable {
     public String toString() {
         return "Task{" +
             "id=" + getId() +
+            ", address='" + getAddress() + "'" +
+            ", title='" + getTitle() + "'" +
             ", description='" + getDescription() + "'" +
             ", estimatedTime=" + getEstimatedTime() +
             ", price=" + getPrice() +

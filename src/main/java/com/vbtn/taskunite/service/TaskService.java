@@ -28,13 +28,7 @@ public interface TaskService {
      */
     Page<TaskDTO> findAll(Pageable pageable);
 
-    /**
-     * Get all the tasks with eager load of many-to-many relationships.
-     *
-     * @return the list of entities.
-     */
-    Page<TaskDTO> findAllWithEagerRelationships(Pageable pageable);
-    
+
     /**
      * Get the "id" task.
      *

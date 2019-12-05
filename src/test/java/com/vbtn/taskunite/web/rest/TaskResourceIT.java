@@ -10,12 +10,9 @@ import com.vbtn.taskunite.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -27,13 +24,11 @@ import org.springframework.validation.Validator;
 import javax.persistence.EntityManager;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.vbtn.taskunite.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
-import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -42,6 +37,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @SpringBootTest(classes = TaskUniteApp.class)
 public class TaskResourceIT {
+
+    private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
+    private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TITLE = "AAAAAAAAAA";
+    private static final String UPDATED_TITLE = "BBBBBBBBBB";
 
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
@@ -67,14 +68,8 @@ public class TaskResourceIT {
     @Autowired
     private TaskRepository taskRepository;
 
-    @Mock
-    private TaskRepository taskRepositoryMock;
-
     @Autowired
     private TaskMapper taskMapper;
-
-    @Mock
-    private TaskService taskServiceMock;
 
     @Autowired
     private TaskService taskService;
@@ -118,6 +113,8 @@ public class TaskResourceIT {
      */
     public static Task createEntity(EntityManager em) {
         Task task = new Task()
+            .address(DEFAULT_ADDRESS)
+            .title(DEFAULT_TITLE)
             .description(DEFAULT_DESCRIPTION)
             .estimatedTime(DEFAULT_ESTIMATED_TIME)
             .price(DEFAULT_PRICE)
@@ -135,6 +132,8 @@ public class TaskResourceIT {
      */
     public static Task createUpdatedEntity(EntityManager em) {
         Task task = new Task()
+            .address(UPDATED_ADDRESS)
+            .title(UPDATED_TITLE)
             .description(UPDATED_DESCRIPTION)
             .estimatedTime(UPDATED_ESTIMATED_TIME)
             .price(UPDATED_PRICE)
@@ -166,6 +165,8 @@ public class TaskResourceIT {
         List<Task> taskList = taskRepository.findAll();
         assertThat(taskList).hasSize(databaseSizeBeforeCreate + 1);
         Task testTask = taskList.get(taskList.size() - 1);
+        assertThat(testTask.getAddress()).isEqualTo(DEFAULT_ADDRESS);
+        assertThat(testTask.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testTask.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testTask.getEstimatedTime()).isEqualTo(DEFAULT_ESTIMATED_TIME);
         assertThat(testTask.getPrice()).isEqualTo(DEFAULT_PRICE);
@@ -207,6 +208,8 @@ public class TaskResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(task.getId().intValue())))
+            .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS)))
+            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].estimatedTime").value(hasItem(DEFAULT_ESTIMATED_TIME.doubleValue())))
             .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
@@ -216,39 +219,6 @@ public class TaskResourceIT {
             .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())));
     }
     
-    @SuppressWarnings({"unchecked"})
-    public void getAllTasksWithEagerRelationshipsIsEnabled() throws Exception {
-        TaskResource taskResource = new TaskResource(taskServiceMock);
-        when(taskServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-
-        MockMvc restTaskMockMvc = MockMvcBuilders.standaloneSetup(taskResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
-
-        restTaskMockMvc.perform(get("/api/tasks?eagerload=true"))
-        .andExpect(status().isOk());
-
-        verify(taskServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
-    @SuppressWarnings({"unchecked"})
-    public void getAllTasksWithEagerRelationshipsIsNotEnabled() throws Exception {
-        TaskResource taskResource = new TaskResource(taskServiceMock);
-            when(taskServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-            MockMvc restTaskMockMvc = MockMvcBuilders.standaloneSetup(taskResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
-
-        restTaskMockMvc.perform(get("/api/tasks?eagerload=true"))
-        .andExpect(status().isOk());
-
-            verify(taskServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
     @Test
     @Transactional
     public void getTask() throws Exception {
@@ -260,6 +230,8 @@ public class TaskResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(task.getId().intValue()))
+            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS))
+            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.estimatedTime").value(DEFAULT_ESTIMATED_TIME.doubleValue()))
             .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
@@ -290,6 +262,8 @@ public class TaskResourceIT {
         // Disconnect from session so that the updates on updatedTask are not directly saved in db
         em.detach(updatedTask);
         updatedTask
+            .address(UPDATED_ADDRESS)
+            .title(UPDATED_TITLE)
             .description(UPDATED_DESCRIPTION)
             .estimatedTime(UPDATED_ESTIMATED_TIME)
             .price(UPDATED_PRICE)
@@ -308,6 +282,8 @@ public class TaskResourceIT {
         List<Task> taskList = taskRepository.findAll();
         assertThat(taskList).hasSize(databaseSizeBeforeUpdate);
         Task testTask = taskList.get(taskList.size() - 1);
+        assertThat(testTask.getAddress()).isEqualTo(UPDATED_ADDRESS);
+        assertThat(testTask.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testTask.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testTask.getEstimatedTime()).isEqualTo(UPDATED_ESTIMATED_TIME);
         assertThat(testTask.getPrice()).isEqualTo(UPDATED_PRICE);

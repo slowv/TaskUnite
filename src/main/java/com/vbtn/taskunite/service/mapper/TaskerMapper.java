@@ -19,8 +19,6 @@ public interface TaskerMapper extends EntityMapper<TaskerDTO, Tasker> {
     @Mapping(target = "removeSchedule", ignore = true)
     @Mapping(target = "rooms", ignore = true)
     @Mapping(target = "removeRooms", ignore = true)
-    @Mapping(target = "workingAddresses", ignore = true)
-    @Mapping(target = "removeWorkingAddresses", ignore = true)
     @Mapping(target = "tasks", ignore = true)
     @Mapping(target = "removeTasks", ignore = true)
     @Mapping(target = "removeTaskerCategories", ignore = true)

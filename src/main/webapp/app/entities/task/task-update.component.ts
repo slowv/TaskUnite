@@ -12,12 +12,14 @@ import { ITask, Task } from 'app/shared/model/task.model';
 import { TaskService } from './task.service';
 import { IRoom } from 'app/shared/model/room.model';
 import { RoomService } from 'app/entities/room/room.service';
-import { ITaskCategory } from 'app/shared/model/task-category.model';
-import { TaskCategoryService } from 'app/entities/task-category/task-category.service';
+import { ISchedule } from 'app/shared/model/schedule.model';
+import { ScheduleService } from 'app/entities/schedule/schedule.service';
 import { ITasker } from 'app/shared/model/tasker.model';
 import { TaskerService } from 'app/entities/tasker/tasker.service';
 import { IMaster } from 'app/shared/model/master.model';
 import { MasterService } from 'app/entities/master/master.service';
+import { ITaskCategory } from 'app/shared/model/task-category.model';
+import { TaskCategoryService } from 'app/entities/task-category/task-category.service';
 
 @Component({
   selector: 'jhi-task-update',
@@ -28,14 +30,18 @@ export class TaskUpdateComponent implements OnInit {
 
   rooms: IRoom[];
 
-  taskcategories: ITaskCategory[];
+  schedules: ISchedule[];
 
   taskers: ITasker[];
 
   masters: IMaster[];
 
+  taskcategories: ITaskCategory[];
+
   editForm = this.fb.group({
     id: [],
+    address: [],
+    title: [],
     description: [],
     estimatedTime: [],
     price: [],
@@ -44,18 +50,20 @@ export class TaskUpdateComponent implements OnInit {
     updatedAt: [],
     deletedAt: [],
     roomId: [],
-    taskCategories: [],
+    scheduleId: [],
     taskerId: [],
-    masterId: []
+    masterId: [],
+    taskCategoryId: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected taskService: TaskService,
     protected roomService: RoomService,
-    protected taskCategoryService: TaskCategoryService,
+    protected scheduleService: ScheduleService,
     protected taskerService: TaskerService,
     protected masterService: MasterService,
+    protected taskCategoryService: TaskCategoryService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -80,23 +88,40 @@ export class TaskUpdateComponent implements OnInit {
       },
       (res: HttpErrorResponse) => this.onError(res.message)
     );
-    this.taskCategoryService
-      .query()
-      .subscribe(
-        (res: HttpResponse<ITaskCategory[]>) => (this.taskcategories = res.body),
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
+    this.scheduleService.query({ filter: 'task-is-null' }).subscribe(
+      (res: HttpResponse<ISchedule[]>) => {
+        if (!this.editForm.get('scheduleId').value) {
+          this.schedules = res.body;
+        } else {
+          this.scheduleService
+            .find(this.editForm.get('scheduleId').value)
+            .subscribe(
+              (subRes: HttpResponse<ISchedule>) => (this.schedules = [subRes.body].concat(res.body)),
+              (subRes: HttpErrorResponse) => this.onError(subRes.message)
+            );
+        }
+      },
+      (res: HttpErrorResponse) => this.onError(res.message)
+    );
     this.taskerService
       .query()
       .subscribe((res: HttpResponse<ITasker[]>) => (this.taskers = res.body), (res: HttpErrorResponse) => this.onError(res.message));
     this.masterService
       .query()
       .subscribe((res: HttpResponse<IMaster[]>) => (this.masters = res.body), (res: HttpErrorResponse) => this.onError(res.message));
+    this.taskCategoryService
+      .query()
+      .subscribe(
+        (res: HttpResponse<ITaskCategory[]>) => (this.taskcategories = res.body),
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
   }
 
   updateForm(task: ITask) {
     this.editForm.patchValue({
       id: task.id,
+      address: task.address,
+      title: task.title,
       description: task.description,
       estimatedTime: task.estimatedTime,
       price: task.price,
@@ -105,9 +130,10 @@ export class TaskUpdateComponent implements OnInit {
       updatedAt: task.updatedAt != null ? task.updatedAt.format(DATE_TIME_FORMAT) : null,
       deletedAt: task.deletedAt != null ? task.deletedAt.format(DATE_TIME_FORMAT) : null,
       roomId: task.roomId,
-      taskCategories: task.taskCategories,
+      scheduleId: task.scheduleId,
       taskerId: task.taskerId,
-      masterId: task.masterId
+      masterId: task.masterId,
+      taskCategoryId: task.taskCategoryId
     });
   }
 
@@ -129,6 +155,8 @@ export class TaskUpdateComponent implements OnInit {
     return {
       ...new Task(),
       id: this.editForm.get(['id']).value,
+      address: this.editForm.get(['address']).value,
+      title: this.editForm.get(['title']).value,
       description: this.editForm.get(['description']).value,
       estimatedTime: this.editForm.get(['estimatedTime']).value,
       price: this.editForm.get(['price']).value,
@@ -140,9 +168,10 @@ export class TaskUpdateComponent implements OnInit {
       deletedAt:
         this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
       roomId: this.editForm.get(['roomId']).value,
-      taskCategories: this.editForm.get(['taskCategories']).value,
+      scheduleId: this.editForm.get(['scheduleId']).value,
       taskerId: this.editForm.get(['taskerId']).value,
-      masterId: this.editForm.get(['masterId']).value
+      masterId: this.editForm.get(['masterId']).value,
+      taskCategoryId: this.editForm.get(['taskCategoryId']).value
     };
   }
 
@@ -166,7 +195,7 @@ export class TaskUpdateComponent implements OnInit {
     return item.id;
   }
 
-  trackTaskCategoryById(index: number, item: ITaskCategory) {
+  trackScheduleById(index: number, item: ISchedule) {
     return item.id;
   }
 
@@ -178,14 +207,7 @@ export class TaskUpdateComponent implements OnInit {
     return item.id;
   }
 
-  getSelected(selectedVals: any[], option: any) {
-    if (selectedVals) {
-      for (let i = 0; i < selectedVals.length; i++) {
-        if (option.id === selectedVals[i].id) {
-          return selectedVals[i];
-        }
-      }
-    }
-    return option;
+  trackTaskCategoryById(index: number, item: ITaskCategory) {
+    return item.id;
   }
 }

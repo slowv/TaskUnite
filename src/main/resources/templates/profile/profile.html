@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="#{home.title}">Tìm công việc, uy tín, nhanh với TaskUnite</title>
+    <title>Trang cá nhân</title>
     <th:block th:replace="fragment/layout :: head"></th:block>
+    <link rel="stylesheet" th:href="@{~/css/responsive/profile/profile.css}">
 </head>
 <body>
 
 <div class="site-wrap">
 
     <th:block th:replace="fragment/layout :: site-mobile-memu"></th:block>
-
-
     <th:block th:replace="fragment/layout :: site-navbar"></th:block>
-
     <div style="height: 113px;"></div>
-
     <div class="unit-5 overlay" style="background-image: url('/images/hero_1.jpg');">
         <div class="container text-center">
-            <h2 class="mb-0">Profile</h2>
-            <p class="mb-0 unit-6"><a th:href="@{/}">Home</a> <span class="sep">></span> <span>Profile</span></p>
+            <h2 class="mb-0">Thông tin</h2>
+            <p class="mb-0 unit-6"><a th:href="@{/}">Trang chủ</a> <span class="sep">></span> <span>Thông tin</span></p>
         </div>
     </div>
 
     <div class="site-section bg-light">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-5 col-lg-5">
-                    <div class="panel panel--spaced panel--with-overflow">
+                <div class="col-md-12 col-lg-4">
+                    <div class="panel panel--spaced panel--with-overflow" style="margin: 0;">
                         <div class="row" style="height: 150px;">
                             <div class="col-12 text-center">
                                 <img src="/images/person_1.jpg" style="height: 150px; width: 150px" alt=""
@@ -68,7 +65,52 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-7 col-lg-7">
+                <div class="col-md-12 col-lg-8">
+                    <div class="col-md-12 block-16" data-aos="fade-up" data-aos-delay="200">
+                        <div class="nonloop-block-profile owl-carousel">
+
+                            <div class="border rounded p-4 bg-white">
+                                <label class="font-weight-bold">Balance</label>
+                                <h3>VND 70000</h3>
+                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi neque fugit tempora, numquam voluptate veritatis odit id, iste eum culpa alias, ut officiis omnis itaque ad, rem sunt doloremque molestias.</p>
+                            </div>
+
+                            <div class="border rounded p-4 bg-white">
+                                <h2 class="h5">Javascript Fullstack Developer</h2>
+                                <p><span class="border border-warning rounded p-1 px-2 text-warning">Freelance</span></p>
+                                <p>
+                                    <span class="d-block"><span class="icon-suitcase"></span> Resto Bar</span>
+                                    <span class="d-block"><span class="icon-room"></span> Florida</span>
+                                    <span class="d-block"><span class="icon-money mr-1"></span> $55000 &mdash; 70000</span>
+                                </p>
+                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus accusamus necessitatibus praesentium voluptate natus excepturi rerum, autem. Magnam laboriosam, quam sapiente laudantium iure sit ea! Tenetur, quasi, praesentium. Architecto, eum.</p>
+                            </div>
+
+                            <div class="border rounded p-4 bg-white">
+                                <h2 class="h5">Assistant Brooker, Real Estate</h2>
+                                <p><span class="border border-warning rounded p-1 px-2 text-warning">Freelance</span></p>
+                                <p>
+                                    <span class="d-block"><span class="icon-suitcase"></span> Resto Bar</span>
+                                    <span class="d-block"><span class="icon-room"></span> Florida</span>
+                                    <span class="d-block"><span class="icon-money mr-1"></span> $55000 &mdash; 70000</span>
+                                </p>
+                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus esse, quam consectetur ipsum quibusdam ullam ab nesciunt, doloribus voluptatum neque iure perspiciatis vel vero illo consequatur facilis, fuga nobis corporis.</p>
+                            </div>
+
+                            <div class="border rounded p-4 bg-white">
+                                <h2 class="h5">Telecommunication Manager</h2>
+                                <p><span class="border border-warning rounded p-1 px-2 text-warning">Freelance</span></p>
+                                <p>
+                                    <span class="d-block"><span class="icon-suitcase"></span> Resto Bar</span>
+                                    <span class="d-block"><span class="icon-room"></span> Florida</span>
+                                    <span class="d-block"><span class="icon-money mr-1"></span> $55000 &mdash; 70000</span>
+                                </p>
+                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at ipsum commodi hic, cum esse asperiores libero molestiae, perferendis consectetur assumenda iusto, dolorem nemo maiores magnam illo laborum sit, dicta.</p>
+                            </div>
+
+                        </div>
+
+                    </div>
                     <div class="panel panel--spaced panel--with-overflow tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                              aria-labelledby="v-pills-home-tab">...
@@ -94,5 +136,6 @@
 
 <th:block th:replace="fragment/layout :: javascript"></th:block>
 
+<script th:src="@{~/js/profile/profile.js}"></script>
 </body>
 </html>

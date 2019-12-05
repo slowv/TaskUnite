@@ -49,9 +49,6 @@ public class Tasker implements Serializable {
     private Set<Room> rooms = new HashSet<>();
 
     @OneToMany(mappedBy = "tasker")
-    private Set<Address> workingAddresses = new HashSet<>();
-
-    @OneToMany(mappedBy = "tasker")
     private Set<Task> tasks = new HashSet<>();
 
     @ManyToMany
@@ -208,31 +205,6 @@ public class Tasker implements Serializable {
 
     public void setRooms(Set<Room> rooms) {
         this.rooms = rooms;
-    }
-
-    public Set<Address> getWorkingAddresses() {
-        return workingAddresses;
-    }
-
-    public Tasker workingAddresses(Set<Address> addresses) {
-        this.workingAddresses = addresses;
-        return this;
-    }
-
-    public Tasker addWorkingAddresses(Address address) {
-        this.workingAddresses.add(address);
-        address.setTasker(this);
-        return this;
-    }
-
-    public Tasker removeWorkingAddresses(Address address) {
-        this.workingAddresses.remove(address);
-        address.setTasker(null);
-        return this;
-    }
-
-    public void setWorkingAddresses(Set<Address> addresses) {
-        this.workingAddresses = addresses;
     }
 
     public Set<Task> getTasks() {

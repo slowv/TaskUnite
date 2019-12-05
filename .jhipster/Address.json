@@ -24,13 +24,6 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "userInformation",
-            "otherEntityRelationshipName": "address",
-            "relationshipName": "user",
-            "ownerSide": false
-        },
-        {
             "relationshipType": "many-to-one",
             "otherEntityName": "district",
             "otherEntityRelationshipName": "addresses",
@@ -39,16 +32,9 @@
         },
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "tasker",
+            "otherEntityName": "userInformation",
             "otherEntityRelationshipName": "workingAddresses",
-            "relationshipName": "tasker",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "master",
-            "otherEntityRelationshipName": "workingAddresses",
-            "relationshipName": "master",
+            "relationshipName": "user",
             "otherEntityField": "id"
         }
     ],

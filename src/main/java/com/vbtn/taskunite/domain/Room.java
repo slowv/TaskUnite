@@ -39,7 +39,7 @@ public class Room implements Serializable {
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
-    @OneToOne(mappedBy = "room")
+    @OneToOne(mappedBy = "room", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JsonIgnore
     private Task task;
 

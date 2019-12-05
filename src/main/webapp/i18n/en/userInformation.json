@@ -16,6 +16,7 @@
       "detail": {
         "title": "User Information"
       },
+      "address": "Address",
       "gender": "Gender",
       "phone": "Phone",
       "status": "Status",
@@ -23,7 +24,7 @@
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
       "user": "User",
-      "address": "Address",
+      "workingAddresses": "Working Addresses",
       "reviews": "Reviews",
       "notifications": "Notifications",
       "tasker": "Tasker",

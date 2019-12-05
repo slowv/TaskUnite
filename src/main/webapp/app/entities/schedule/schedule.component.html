@@ -23,7 +23,6 @@
             <th scope="col"  jhiSortBy="to"><span jhiTranslate="taskUniteApp.schedule.to">To</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="duration"><span jhiTranslate="taskUniteApp.schedule.duration">Duration</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="taskerId"><span jhiTranslate="taskUniteApp.schedule.tasker">Tasker</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="taskId"><span jhiTranslate="taskUniteApp.schedule.task">Task</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -36,11 +35,6 @@
                 <td>
                     <div *ngIf="schedule.taskerId">
                         <a [routerLink]="['/tasker', schedule.taskerId , 'view' ]" >{{schedule.taskerId}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="schedule.taskId">
-                        <a [routerLink]="['/task', schedule.taskId , 'view' ]" >{{schedule.taskId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

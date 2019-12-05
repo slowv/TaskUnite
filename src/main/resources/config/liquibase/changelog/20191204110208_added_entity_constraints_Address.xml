@@ -14,17 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="district"/>
 
-        <addForeignKeyConstraint baseColumnNames="tasker_id"
+        <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="address"
-                                 constraintName="fk_address_tasker_id"
+                                 constraintName="fk_address_user_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="tasker"/>
-
-        <addForeignKeyConstraint baseColumnNames="master_id"
-                                 baseTableName="address"
-                                 constraintName="fk_address_master_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="master"/>
+                                 referencedTableName="user_information"/>
 
     </changeSet>
 </databaseChangeLog>

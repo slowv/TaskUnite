@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Job Finder &mdash; Colorlib Website Template</title>
+    <title>Đăng ký nhân viên - Bước 2</title>
     <th:block th:include="fragment/layout :: head"></th:block>
-
+    <style>
+        .addSignature2 img {
+            max-width: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
 
@@ -18,9 +23,9 @@
     <div class="unit-5 overlay" th:style="'background-image: url(' + @{~/images/hero_1.jpg} + ');'"
          style="background-image: url('images/hero_1.jpg');">
         <div class="container text-center">
-            <h2 class="mb-0">Get set</h2>
-            <p class="mb-0 unit-6"><a href="../index.html">Home</a> <span class="sep">></span>
-                <span>Become Tasker</span>
+            <h2 class="mb-0">Trở thành nhân viên</h2>
+            <p class="mb-0 unit-6"><a th:href="@{/}">Trang chủ</a> <span class="sep">></span>
+                <span>Trở thành nhân viên</span>
             </p>
         </div>
     </div>

@@ -2,6 +2,14 @@
     "name": "Task",
     "fields": [
         {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "description",
             "fieldType": "String"
         },
@@ -40,24 +48,18 @@
             "ownerSide": true
         },
         {
-            "relationshipType": "one-to-many",
+            "relationshipType": "one-to-one",
             "otherEntityName": "schedule",
             "otherEntityRelationshipName": "task",
-            "relationshipName": "schedule"
+            "relationshipName": "schedule",
+            "otherEntityField": "id",
+            "ownerSide": true
         },
         {
             "relationshipType": "one-to-many",
             "otherEntityName": "review",
             "otherEntityRelationshipName": "task",
             "relationshipName": "reviews"
-        },
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityName": "taskCategory",
-            "otherEntityRelationshipName": "tasks",
-            "relationshipName": "taskCategories",
-            "otherEntityField": "id",
-            "ownerSide": true
         },
         {
             "relationshipType": "many-to-one",
@@ -71,6 +73,13 @@
             "otherEntityName": "master",
             "otherEntityRelationshipName": "tasks",
             "relationshipName": "master",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "taskCategory",
+            "otherEntityRelationshipName": "tasks",
+            "relationshipName": "taskCategory",
             "otherEntityField": "id"
         }
     ],
