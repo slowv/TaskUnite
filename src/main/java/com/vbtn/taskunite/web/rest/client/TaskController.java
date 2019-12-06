@@ -25,10 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -76,9 +73,10 @@ public class TaskController {
     @RequestMapping("/create/step2")
     public String createStep2(HttpSession session, Model model){
         HashMap step1 = (HashMap) session.getAttribute("step1");
-        List<Tasker> taskers = customTaskerService.findAll(PageRequest.of(0,2)).getContent().stream().filter(item -> {
-            return item.getTaskerCategories().contains(((Task) step1.get("taskInfo")).getTaskCategory().getTaskerCategory());
-        }).collect(Collectors.toList());
+        List<Tasker> taskers = new ArrayList<>();
+        for (TaskerCategory t: ((Task) step1.get("taskInfo")).getTaskCategory().getTaskerCategories()) {
+            taskers.add(t.getTasker());
+        }
         model.addAttribute("taskers", taskers);
         if(null == step1){
             return "redirect:/task/create/step1";
