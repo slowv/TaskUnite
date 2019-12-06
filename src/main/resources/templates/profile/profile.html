@@ -54,7 +54,7 @@
                         <div style="height: 1px;background: #dadada" class="my-3"></div>
                         <div class="row">
                             <div class="col-12 text-center">
-                                <strong>MASTER</strong>
+                                <strong></strong>
                             </div>
                         </div>
                         <div style="height: 1px;background: #dadada" class="my-3"></div>
@@ -85,7 +85,7 @@
 
                             <div class="border rounded p-4 bg-white">
                                 <label class="font-weight-bold">Tài khoản</label>
-                                <h3 class="mb-5">VND <span th:text="${payment.getBalance().intValue()}"></span> </h3>
+                                <h3 class="mb-5">VND <span th:text="${#numbers.formatDecimal(payment.getBalance().intValue(), 0, 'COMMA', 0, 'POINT')}"></span> </h3>
                                 <div>
                                     <button class="btn btn-primary py-2 px-5">Nạp</button>
                                     <button class="btn btn-primary py-2 px-5">Rút</button>

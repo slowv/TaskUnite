@@ -28,49 +28,63 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 b-5">
-                    <form action="#" class="p-5 bg-white">
+                    <form method="post" th:action="@{/tasker/step1}" th:object="${tasker}" class="p-5 bg-white">
                         <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
                                 <label class="font-weight-bold" for="avatar"
                                        th:text="#{register-task.upload-avatar}"></label>
-                                <input type="file" id="avatar" class="form-control" placeholder="Avatar">
+                                <p>
+                                <input th:field="*{image}" type="file" id="avatar" placeholder="Avatar">
+                                </p>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
-                                <label for="city" th:text="#{register-task.what-work}"></label>
-                                <select class="custom-select" id="city">
-                                    <option selected>City</option>
-                                    <option value="1">Hoàn Kiếm</option>
-                                    <option value="2">Hai Bà Trưng</option>
-                                    <option value="3">Ba Đình</option>
-                                    <option value="4">Đống Đa</option>
-                                    <option value="5">Cầu Giấy</option>
-                                    <option value="6">Thanh Xuân</option>
-                                    <option value="7">Bac Tu Liem</option>
-                                    <option value="8">Bắc Từ Liêm</option>
-                                    <option value="9">Nam Từ Liêm</option>
-                                    <option value="9">Hà Đông</option>
+                                <label class="font-weight-bold" for="city" th:text="#{register-task.what-work}"></label>
+                                <select class="custom-select  mb-3" name="city" id="city">
+                                    <option selected>Thành phố</option>
+                                    <option th:each="city: ${cities}" th:value="${city.getId()}" th:text="${city.getName()}"></option>
                                 </select>
+                                <select class="custom-select mb-3" id="district" name="district">
+                                    <option selected>Quận</option>
+                                    <option th:each="district: ${districts}" th:value="${district.getId()}" th:text="${district.getName()}"></option>
+                                </select>
+                                <input type="text" name="address" class="form-control"
+                                                  placeholder="Địa chỉ"/>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
-                                <label class="font-weight-bold">Địa chỉ</label>
-                                <input type="text" class="form-control"
-                                       placeholder="Địa chỉ">
+                                <label class="font-weight-bold">Vì sao bạn muốn trở thành 1 Tasker ?</label>
+                                <textarea rows="3" th:field="*{description}" class="form-control"
+                                       placeholder="Mô tả về bạn">
+                                </textarea>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
-                                <label class="font-weight-bold" for="bday">Ngày/tháng/năm sinh</label>
-                                <input type="text" id="bday" class="form-control"
-                                       placeholder="Birthday">
+                                <label class="font-weight-bold">Ngày/tháng/năm sinh</label>
+                                <div class="row">
+                                    <div class="col-md-4 col-12">
+                                        <input type="text" name="day" id="bday" class="form-control"
+                                               placeholder="Ngày">
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <input type="text" name="month" id="bmonth" class="form-control"
+                                               placeholder="Tháng">
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <input type="text" name="year" id="byear" class="form-control"
+                                               placeholder="Năm">
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+                        <p class="mb-3">Từ bước này, bạn sẽ trở thành Tasker và không thể quay lại thành Master, vì vậy hãy cân nhắc thật kỹ!</p>
                         <div class="row form-group">
                             <div class="col-md-12 text-center">
-                                <input type="submit" value="Continue" class="btn btn-primary  py-2 px-5">
+                                <input type="submit" value="Tôi đồng ý" class="btn btn-primary  py-2 px-5">
                             </div>
                         </div>
                     </form>

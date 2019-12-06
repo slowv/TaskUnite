@@ -62,6 +62,7 @@ public class TaskController {
             Optional<UserInformation> userInfo = customUserInformationService.findOneByUsername(principal.getName());
             if(userInfo.isPresent()){
                 UserInformation userInformation = userInfo.get();
+                if (userInformation.getMaster() == null) return "redirect:/";
                 taskInfo.setMaster(userInformation.getMaster());
             }
         }
@@ -147,7 +148,7 @@ public class TaskController {
         taskInfo.setDescription(description);
         taskInfo = customTaskService.save(taskInfo);
         if(null == taskInfo){
-            // do something;
+            return "redirect:/";
         }
         session.removeAttribute("step1");
         session.removeAttribute("step2");
