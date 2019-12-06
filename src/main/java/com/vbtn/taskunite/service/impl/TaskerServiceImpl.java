@@ -61,15 +61,6 @@ public class TaskerServiceImpl implements TaskerService {
             .map(taskerMapper::toDto);
     }
 
-    /**
-     * Get all the taskers with eager load of many-to-many relationships.
-     *
-     * @return the list of entities.
-     */
-    public Page<TaskerDTO> findAllWithEagerRelationships(Pageable pageable) {
-        return taskerRepository.findAllWithEagerRelationships(pageable).map(taskerMapper::toDto);
-    }
-    
 
     /**
      * Get one tasker by id.
@@ -81,7 +72,7 @@ public class TaskerServiceImpl implements TaskerService {
     @Transactional(readOnly = true)
     public Optional<TaskerDTO> findOne(Long id) {
         log.debug("Request to get Tasker : {}", id);
-        return taskerRepository.findOneWithEagerRelationships(id)
+        return taskerRepository.findById(id)
             .map(taskerMapper::toDto);
     }
 

@@ -51,10 +51,7 @@ public class Tasker implements Serializable {
     @OneToMany(mappedBy = "tasker")
     private Set<Task> tasks = new HashSet<>();
 
-    @ManyToMany
-    @JoinTable(name = "tasker_tasker_categories",
-               joinColumns = @JoinColumn(name = "tasker_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "tasker_categories_id", referencedColumnName = "id"))
+    @OneToMany(mappedBy = "tasker")
     private Set<TaskerCategory> taskerCategories = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -243,13 +240,13 @@ public class Tasker implements Serializable {
 
     public Tasker addTaskerCategories(TaskerCategory taskerCategory) {
         this.taskerCategories.add(taskerCategory);
-        taskerCategory.getTaskers().add(this);
+        taskerCategory.setTasker(this);
         return this;
     }
 
     public Tasker removeTaskerCategories(TaskerCategory taskerCategory) {
         this.taskerCategories.remove(taskerCategory);
-        taskerCategory.getTaskers().remove(this);
+        taskerCategory.setTasker(null);
         return this;
     }
 

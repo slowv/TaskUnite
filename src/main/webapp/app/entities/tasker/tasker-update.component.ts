@@ -12,8 +12,6 @@ import { ITasker, Tasker } from 'app/shared/model/tasker.model';
 import { TaskerService } from './tasker.service';
 import { IUserInformation } from 'app/shared/model/user-information.model';
 import { UserInformationService } from 'app/entities/user-information/user-information.service';
-import { ITaskerCategory } from 'app/shared/model/tasker-category.model';
-import { TaskerCategoryService } from 'app/entities/tasker-category/tasker-category.service';
 
 @Component({
   selector: 'jhi-tasker-update',
@@ -24,8 +22,6 @@ export class TaskerUpdateComponent implements OnInit {
 
   users: IUserInformation[];
 
-  taskercategories: ITaskerCategory[];
-
   editForm = this.fb.group({
     id: [],
     image: [],
@@ -34,15 +30,13 @@ export class TaskerUpdateComponent implements OnInit {
     createdAt: [],
     updatedAt: [],
     deletedAt: [],
-    userId: [],
-    taskerCategories: []
+    userId: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected taskerService: TaskerService,
     protected userInformationService: UserInformationService,
-    protected taskerCategoryService: TaskerCategoryService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -67,12 +61,6 @@ export class TaskerUpdateComponent implements OnInit {
       },
       (res: HttpErrorResponse) => this.onError(res.message)
     );
-    this.taskerCategoryService
-      .query()
-      .subscribe(
-        (res: HttpResponse<ITaskerCategory[]>) => (this.taskercategories = res.body),
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
   }
 
   updateForm(tasker: ITasker) {
@@ -84,8 +72,7 @@ export class TaskerUpdateComponent implements OnInit {
       createdAt: tasker.createdAt != null ? tasker.createdAt.format(DATE_TIME_FORMAT) : null,
       updatedAt: tasker.updatedAt != null ? tasker.updatedAt.format(DATE_TIME_FORMAT) : null,
       deletedAt: tasker.deletedAt != null ? tasker.deletedAt.format(DATE_TIME_FORMAT) : null,
-      userId: tasker.userId,
-      taskerCategories: tasker.taskerCategories
+      userId: tasker.userId
     });
   }
 
@@ -116,8 +103,7 @@ export class TaskerUpdateComponent implements OnInit {
         this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
       deletedAt:
         this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
-      userId: this.editForm.get(['userId']).value,
-      taskerCategories: this.editForm.get(['taskerCategories']).value
+      userId: this.editForm.get(['userId']).value
     };
   }
 
@@ -139,20 +125,5 @@ export class TaskerUpdateComponent implements OnInit {
 
   trackUserInformationById(index: number, item: IUserInformation) {
     return item.id;
-  }
-
-  trackTaskerCategoryById(index: number, item: ITaskerCategory) {
-    return item.id;
-  }
-
-  getSelected(selectedVals: any[], option: any) {
-    if (selectedVals) {
-      for (let i = 0; i < selectedVals.length; i++) {
-        if (option.id === selectedVals[i].id) {
-          return selectedVals[i];
-        }
-      }
-    }
-    return option;
   }
 }

@@ -46,17 +46,6 @@
 
     <changeSet id="20191128073438-1-relations" author="jhipster">
 
-        <createTable tableName="tasker_tasker_categories">
-            <column name="tasker_categories_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="tasker_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="tasker_id, tasker_categories_id" tableName="tasker_tasker_categories"/>
-        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 

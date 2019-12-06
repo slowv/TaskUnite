@@ -1,8 +1,6 @@
 package com.vbtn.taskunite.service.dto;
 import java.time.Instant;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -26,8 +24,6 @@ public class TaskerDTO implements Serializable {
 
 
     private Long userId;
-
-    private Set<TaskerCategoryDTO> taskerCategories = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -91,14 +87,6 @@ public class TaskerDTO implements Serializable {
 
     public void setUserId(Long userInformationId) {
         this.userId = userInformationId;
-    }
-
-    public Set<TaskerCategoryDTO> getTaskerCategories() {
-        return taskerCategories;
-    }
-
-    public void setTaskerCategories(Set<TaskerCategoryDTO> taskerCategories) {
-        this.taskerCategories = taskerCategories;
     }
 
     @Override
