@@ -44,11 +44,10 @@ public class TaskCategory implements Serializable {
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private TaskerCategory taskerCategory;
+    @OneToMany(mappedBy = "taskCategory", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
+    private Set<TaskerCategory> taskerCategories = new HashSet<>();
 
-    @OneToMany(mappedBy = "taskCategory")
+    @OneToMany(mappedBy = "taskCategory", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Set<Task> tasks = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -164,17 +163,29 @@ public class TaskCategory implements Serializable {
         this.deletedAt = deletedAt;
     }
 
-    public TaskerCategory getTaskerCategory() {
-        return taskerCategory;
+    public Set<TaskerCategory> getTaskerCategories() {
+        return taskerCategories;
     }
 
-    public TaskCategory taskerCategory(TaskerCategory taskerCategory) {
-        this.taskerCategory = taskerCategory;
+    public TaskCategory taskerCategories(Set<TaskerCategory> taskerCategories) {
+        this.taskerCategories = taskerCategories;
         return this;
     }
 
-    public void setTaskerCategory(TaskerCategory taskerCategory) {
-        this.taskerCategory = taskerCategory;
+    public TaskCategory addTaskerCategories(TaskerCategory taskerCategory) {
+        this.taskerCategories.add(taskerCategory);
+        taskerCategory.setTaskCategory(this);
+        return this;
+    }
+
+    public TaskCategory removeTaskerCategories(TaskerCategory taskerCategory) {
+        this.taskerCategories.remove(taskerCategory);
+        taskerCategory.setTaskCategory(null);
+        return this;
+    }
+
+    public void setTaskerCategories(Set<TaskerCategory> taskerCategories) {
+        this.taskerCategories = taskerCategories;
     }
 
     public Set<Task> getTasks() {

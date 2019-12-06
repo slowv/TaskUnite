@@ -3,8 +3,12 @@
 <head>
     <title>Thông tin công việc</title>
     <th:block th:include="fragment/layout :: head"></th:block>
+<<<<<<< HEAD
     <link rel="stylesheet" th:href="@{~/css/responsive/task/create.css}">
     <link rel="stylesheet" th:href="@{~/css/responsive/room/room.css}">
+=======
+    <link rel="stylesheet" th:href="@{~/css/task/create.css}"/>
+>>>>>>> e765a2a4ecb9e0f446e2e45473de1f22683aae75
 </head>
 <body>
 
@@ -46,6 +50,12 @@
                                     Trần Hiểu Đông
                                 </div>
                             </div>
+<<<<<<< HEAD
+=======
+                            <div class="col-lg-3">
+                                <img th:src="${task.tasker.user.user.imageUrl}" alt="" class="confirm-avatar-tasker">
+                            </div>
+>>>>>>> e765a2a4ecb9e0f446e2e45473de1f22683aae75
                         </div>
                         <div style="height: 1px;background: #dadada" class="my-3"></div>
                         <div class="row">
@@ -117,8 +127,13 @@
                             <div class="col-lg-6 text-bold t-20">
                                 Giá tiền (vnđ/giờ):
                             </div>
+<<<<<<< HEAD
                             <div class="col-lg-6 t-20 t-green">
                                 80.000 vnđ/1h
+=======
+                            <div class="col-lg-6 text-right t-20 t-green">
+                                <span th:text="${#numbers.formatDecimal(task.taskCategory.minPrice, 0, 'COMMA', 0, 'POINT')}">80.000</span><span> vnđ/1h</span>
+>>>>>>> e765a2a4ecb9e0f446e2e45473de1f22683aae75
                             </div>
                         </div>
                     </div>
@@ -178,6 +193,10 @@
     <!--END MODAL-->
 </div>
 <th:block th:include="fragment/layout :: javascript"></th:block>
+<<<<<<< HEAD
 <script th:src="@{~/js/task/room-task.js}"></script>
+=======
+<script th:src="@{/js/task/room-task.js}"></script>
+>>>>>>> e765a2a4ecb9e0f446e2e45473de1f22683aae75
 </body>
 </html>

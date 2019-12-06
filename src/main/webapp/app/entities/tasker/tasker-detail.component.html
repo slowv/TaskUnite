@@ -35,12 +35,6 @@
                         <a [routerLink]="['/user-information', tasker.userId, 'view']">{{tasker.userId}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="taskUniteApp.tasker.taskerCategories">Tasker Categories</span></dt>
-                <dd>
-                    <span *ngFor="let taskerCategories of tasker.taskerCategories; let last = last">
-                        <a [routerLink]="['/tasker-category', taskerCategories?.id, 'view' ]">{{taskerCategories.id}}</a>{{last ? '' : ', '}}
-                    </span>
-                </dd>
             </dl>
 
             <button type="submit"

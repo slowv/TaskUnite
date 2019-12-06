@@ -5,7 +5,6 @@ import com.vbtn.taskunite.service.dto.TaskerCategoryDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -28,12 +27,6 @@ public interface TaskerCategoryService {
      * @return the list of entities.
      */
     Page<TaskerCategoryDTO> findAll(Pageable pageable);
-    /**
-     * Get all the TaskerCategoryDTO where TaskCategory is {@code null}.
-     *
-     * @return the list of entities.
-     */
-    List<TaskerCategoryDTO> findAllWhereTaskCategoryIsNull();
 
 
     /**

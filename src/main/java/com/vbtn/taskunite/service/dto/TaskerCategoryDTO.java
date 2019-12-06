@@ -23,6 +23,10 @@ public class TaskerCategoryDTO implements Serializable {
     private Instant deletedAt;
 
 
+    private Long taskCategoryId;
+
+    private Long taskerId;
+
     public Long getId() {
         return id;
     }
@@ -79,6 +83,22 @@ public class TaskerCategoryDTO implements Serializable {
         this.deletedAt = deletedAt;
     }
 
+    public Long getTaskCategoryId() {
+        return taskCategoryId;
+    }
+
+    public void setTaskCategoryId(Long taskCategoryId) {
+        this.taskCategoryId = taskCategoryId;
+    }
+
+    public Long getTaskerId() {
+        return taskerId;
+    }
+
+    public void setTaskerId(Long taskerId) {
+        this.taskerId = taskerId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -110,6 +130,8 @@ public class TaskerCategoryDTO implements Serializable {
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
+            ", taskCategory=" + getTaskCategoryId() +
+            ", tasker=" + getTaskerId() +
             "}";
     }
 }

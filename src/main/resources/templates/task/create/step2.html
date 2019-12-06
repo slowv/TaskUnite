@@ -198,7 +198,7 @@
                             </select>
                         </div>
                     </div>
-                    <th:block th:each="tasker: ${taskers}">
+                    <th:block th:each="tasker, iter: ${taskers}">
                         <div class="recommendations__result panel panel--spaced ">
                             <div class="recommendations__result-figure">
                                 <div>
@@ -237,7 +237,7 @@
                                 <span>
                                 <div class="recommendations__result-price-container priceChange-appear-active">
                                     <div class="recommendations__result-price recommendations__pill">
-                                        <strong><span th:text="${#numbers.formatDecimal(taskInfo.taskCategory.minPrice, 0, 'COMMA', 0, 'POINT')}">80.000</span> vnđ<span>/h</span></strong>
+                                        <strong><span th:text="${#numbers.formatDecimal(prices.get(iter.index), 0, 'COMMA', 0, 'POINT')}">80.000</span> vnđ<span>/h</span></strong>
                                     </div>
                                 </div>
                             </span>
