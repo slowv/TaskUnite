@@ -23,7 +23,7 @@
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
       "taskCategory": "Task Category",
-      "taskers": "Taskers"
+      "tasker": "Tasker"
     }
   }
 }

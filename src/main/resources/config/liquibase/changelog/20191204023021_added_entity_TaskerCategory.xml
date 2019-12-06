@@ -34,6 +34,12 @@
             <column name="deleted_at" type="datetime">
                 <constraints nullable="true" />
             </column>
+            <column name="task_category_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="tasker_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="tasker_category" columnName="created_at" columnDataType="datetime"/>

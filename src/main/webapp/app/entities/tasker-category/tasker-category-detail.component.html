@@ -29,6 +29,18 @@
                 <dd>
                     <span>{{taskerCategory.deletedAt}}</span>
                 </dd>
+                <dt><span jhiTranslate="taskUniteApp.taskerCategory.taskCategory">Task Category</span></dt>
+                <dd>
+                    <div *ngIf="taskerCategory.taskCategoryId">
+                        <a [routerLink]="['/task-category', taskerCategory.taskCategoryId, 'view']">{{taskerCategory.taskCategoryId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.taskerCategory.tasker">Tasker</span></dt>
+                <dd>
+                    <div *ngIf="taskerCategory.taskerId">
+                        <a [routerLink]="['/tasker', taskerCategory.taskerId, 'view']">{{taskerCategory.taskerId}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

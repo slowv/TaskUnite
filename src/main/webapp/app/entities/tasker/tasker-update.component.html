@@ -50,12 +50,6 @@
                         <option [ngValue]="userInformationOption.id" *ngFor="let userInformationOption of users; trackBy: trackUserInformationById">{{userInformationOption.id}}</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label jhiTranslate="taskUniteApp.tasker.taskerCategories" for="field_taskerCategories">Tasker Categories</label>
-                    <select class="form-control" id="field_taskerCategories" multiple name="taskerCategories" formControlName="taskerCategories">
-                        <option [ngValue]="getSelected(editForm.get('taskerCategories').value, taskerCategoryOption)" *ngFor="let taskerCategoryOption of taskercategories; trackBy: trackTaskerCategoryById">{{taskerCategoryOption.id}}</option>
-                    </select>
-                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

@@ -89,18 +89,13 @@ public class TaskerResource {
      *
 
      * @param pageable the pagination information.
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
+
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of taskers in body.
      */
     @GetMapping("/taskers")
-    public ResponseEntity<List<TaskerDTO>> getAllTaskers(Pageable pageable, @RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public ResponseEntity<List<TaskerDTO>> getAllTaskers(Pageable pageable) {
         log.debug("REST request to get a page of Taskers");
-        Page<TaskerDTO> page;
-        if (eagerload) {
-            page = taskerService.findAllWithEagerRelationships(pageable);
-        } else {
-            page = taskerService.findAll(pageable);
-        }
+        Page<TaskerDTO> page = taskerService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

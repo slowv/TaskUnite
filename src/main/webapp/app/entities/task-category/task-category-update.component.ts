@@ -7,11 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
-import { JhiAlertService } from 'ng-jhipster';
 import { ITaskCategory, TaskCategory } from 'app/shared/model/task-category.model';
 import { TaskCategoryService } from './task-category.service';
-import { ITaskerCategory } from 'app/shared/model/tasker-category.model';
-import { TaskerCategoryService } from 'app/entities/tasker-category/tasker-category.service';
 
 @Component({
   selector: 'jhi-task-category-update',
@@ -19,8 +16,6 @@ import { TaskerCategoryService } from 'app/entities/tasker-category/tasker-categ
 })
 export class TaskCategoryUpdateComponent implements OnInit {
   isSaving: boolean;
-
-  taskercategories: ITaskerCategory[];
 
   editForm = this.fb.group({
     id: [],
@@ -31,38 +26,16 @@ export class TaskCategoryUpdateComponent implements OnInit {
     status: [],
     createdAt: [],
     updatedAt: [],
-    deletedAt: [],
-    taskerCategoryId: []
+    deletedAt: []
   });
 
-  constructor(
-    protected jhiAlertService: JhiAlertService,
-    protected taskCategoryService: TaskCategoryService,
-    protected taskerCategoryService: TaskerCategoryService,
-    protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+  constructor(protected taskCategoryService: TaskCategoryService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ taskCategory }) => {
       this.updateForm(taskCategory);
     });
-    this.taskerCategoryService.query({ filter: 'taskcategory-is-null' }).subscribe(
-      (res: HttpResponse<ITaskerCategory[]>) => {
-        if (!this.editForm.get('taskerCategoryId').value) {
-          this.taskercategories = res.body;
-        } else {
-          this.taskerCategoryService
-            .find(this.editForm.get('taskerCategoryId').value)
-            .subscribe(
-              (subRes: HttpResponse<ITaskerCategory>) => (this.taskercategories = [subRes.body].concat(res.body)),
-              (subRes: HttpErrorResponse) => this.onError(subRes.message)
-            );
-        }
-      },
-      (res: HttpErrorResponse) => this.onError(res.message)
-    );
   }
 
   updateForm(taskCategory: ITaskCategory) {
@@ -75,8 +48,7 @@ export class TaskCategoryUpdateComponent implements OnInit {
       status: taskCategory.status,
       createdAt: taskCategory.createdAt != null ? taskCategory.createdAt.format(DATE_TIME_FORMAT) : null,
       updatedAt: taskCategory.updatedAt != null ? taskCategory.updatedAt.format(DATE_TIME_FORMAT) : null,
-      deletedAt: taskCategory.deletedAt != null ? taskCategory.deletedAt.format(DATE_TIME_FORMAT) : null,
-      taskerCategoryId: taskCategory.taskerCategoryId
+      deletedAt: taskCategory.deletedAt != null ? taskCategory.deletedAt.format(DATE_TIME_FORMAT) : null
     });
   }
 
@@ -108,8 +80,7 @@ export class TaskCategoryUpdateComponent implements OnInit {
       updatedAt:
         this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
       deletedAt:
-        this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
-      taskerCategoryId: this.editForm.get(['taskerCategoryId']).value
+        this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined
     };
   }
 
@@ -124,12 +95,5 @@ export class TaskCategoryUpdateComponent implements OnInit {
 
   protected onSaveError() {
     this.isSaving = false;
-  }
-  protected onError(errorMessage: string) {
-    this.jhiAlertService.error(errorMessage, null, null);
-  }
-
-  trackTaskerCategoryById(index: number, item: ITaskerCategory) {
-    return item.id;
   }
 }

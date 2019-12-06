@@ -8,7 +8,7 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Tasker} and its DTO {@link TaskerDTO}.
  */
-@Mapper(componentModel = "spring", uses = {UserInformationMapper.class, TaskerCategoryMapper.class})
+@Mapper(componentModel = "spring", uses = {UserInformationMapper.class})
 public interface TaskerMapper extends EntityMapper<TaskerDTO, Tasker> {
 
     @Mapping(source = "user.id", target = "userId")
@@ -21,6 +21,7 @@ public interface TaskerMapper extends EntityMapper<TaskerDTO, Tasker> {
     @Mapping(target = "removeRooms", ignore = true)
     @Mapping(target = "tasks", ignore = true)
     @Mapping(target = "removeTasks", ignore = true)
+    @Mapping(target = "taskerCategories", ignore = true)
     @Mapping(target = "removeTaskerCategories", ignore = true)
     Tasker toEntity(TaskerDTO taskerDTO);
 
