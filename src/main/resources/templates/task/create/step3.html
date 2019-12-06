@@ -3,139 +3,88 @@
 <head>
     <title>Create Task</title>
     <th:block th:include="fragment/layout :: head"></th:block>
+    <link rel="stylesheet" th:href="@{~/css/task/create.css}">
     <link rel="stylesheet" th:href="@{~/css/responsive/task/create.css}">
 </head>
-<body style="overflow: hidden">
+<body>
 
 <div class="site-wrap">
-    <div class="mt-4 mb-3">
+    <div class="site-section">
         <div class="container">
-            <div class="row border-bottom pb-3">
-                <div class="box-step col-12">
-                    <div class="step active st1">
-                        <div class="box-circle">
-                            <div class="circle">1</div>
-                        </div>
-                        <div class="box-line">
-                            <div class="line"></div>
-                        </div>
-                        <div class="name-step">Mô tả công việc</div>
-                    </div>
-                    <div class="step st2">
-                        <div class="box-circle">
-                            <div class="circle">2</div>
-                        </div>
-                        <div class="box-line ">
-                            <div class="line"></div>
-                        </div>
-                        <div class="name-step">Chon lựa Tasker & giá</div>
-                    </div>
-                    <div class="step st3">
-                        <div class="box-circle">
-                            <div class="circle">3</div>
-                        </div>
-                        <div class="box-line">
-                            <div class="line"></div>
-                        </div>
-                        <div class="name-step">Đặt lịch hẹn</div>
-                    </div>
-                    <div class="step st4">
-                        <div class="box-circle">
-                            <div class="circle">4</div>
-                        </div>
-                        <div class="box-line">
-                            <div class="line"></div>
-                        </div>
-                        <div class="name-step">Xác nhận lại</div>
-                    </div>
-                </div>
-            </div>
             <div class="row">
-                <div class="col-md-12 p-0 mt-1">
-                    <div class="build-progress__sub-bar">
-                        <div class="build-progress__sub-bar__container">
-                            <img alt="form" class="build-progress__sub-bar__icon" th:src="@{~/images/user-plus.svg}">
-                            <div class="build-progress__sub-bar__message">
-                                <span th:text="#{task-create.step2.notification-1}"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 bg-dark-light step-3-responsive">
-                <div class="row">
-                    <div class="col-lg-7 modal-choose-date p-4 bg-white">
-                        <a th:href="@{/task/create/step2(action='backStep2')}">
-                            <span class="icon-close2 close"></span>
-                        </a>
-                        <div class="f-w-300 text-center my-2 t-25" th:text="#{task-create.step3.choose-task-date-and-start-time}"></div>
+                <div class="col-md-12 bg-dark-light step-3-responsive">
+                    <div class="row">
+                        <div class="col-lg-7 modal-choose-date p-4 bg-white">
+                            <a th:href="@{/task/create/step2(action='backStep2')}">
+                                <span class="icon-close2 close"></span>
+                            </a>
+                            <div class="f-w-300 text-center my-2 t-25" th:text="#{task-create.step3.choose-task-date-and-start-time}"></div>
                             <div class="row mt-2">
-                            <div class="col-lg-7 p-0">
-                                <div class="recommendations__tasker_schedule_modal_tasker">
-                                    <img th:src="@{~/images/person_1.jpg}"
-                                         alt="Mahendra B.">
-                                    <div><span>Trần Hiểu Đông</span></div>
-                                </div>
-                                <div class="border-right box-date">
-                                    <div class="calendar__container">
-                                        <div id="calendar-value"></div>
+                                <div class="col-lg-7 p-0">
+                                    <div class="recommendations__tasker_schedule_modal_tasker">
+                                        <img th:src="@{~/images/person_1.jpg}"
+                                             alt="Mahendra B.">
+                                        <div><span>Trần Hiểu Đông</span></div>
                                     </div>
+                                    <div class="border-right box-date">
+                                        <div class="calendar__container">
+                                            <div id="calendar-value"></div>
+                                        </div>
 
-                                    <div class="exterior__bottom--lg recommendations__tasker_schedule_modal--select">
-                                        <select name="selected-time" style="width: 100%;" id="selected-time">
-                                            <option value="8:30">8:30</option>
-                                            <option value="9:00">9:00</option>
-                                            <option value="9:30">9:30</option>
-                                            <option value="10:00">10:00</option>
-                                            <option value="10:30">10:30</option>
-                                            <option value="11:00">11:00</option>
-                                            <option value="11:30">11:30</option>
-                                            <option value="12:00">12:00</option>
-                                            <option value="12:30">12:30</option>
-                                            <option value="13:00">13:00</option>
-                                            <option value="13:30">13:30</option>
-                                            <option value="14:00">14:00</option>
-                                            <option value="14:30">14:30</option>
-                                            <option value="15:00">15:00</option>
-                                            <option value="15:30">15:30</option>
-                                        </select>
-                                        <div class="recommendations__tasker_schedule_modal_can_chat u-hidden--sm">
-                                            <span th:text="#{task-create.step3.notification-1}"></span>
+                                        <div class="exterior__bottom--lg recommendations__tasker_schedule_modal--select">
+                                            <select name="selected-time" style="width: 100%;" id="selected-time">
+                                                <option value="8:30">8:30</option>
+                                                <option value="9:00">9:00</option>
+                                                <option value="9:30">9:30</option>
+                                                <option value="10:00">10:00</option>
+                                                <option value="10:30">10:30</option>
+                                                <option value="11:00">11:00</option>
+                                                <option value="11:30">11:30</option>
+                                                <option value="12:00">12:00</option>
+                                                <option value="12:30">12:30</option>
+                                                <option value="13:00">13:00</option>
+                                                <option value="13:30">13:30</option>
+                                                <option value="14:00">14:00</option>
+                                                <option value="14:30">14:30</option>
+                                                <option value="15:00">15:00</option>
+                                                <option value="15:30">15:30</option>
+                                            </select>
+                                            <div class="recommendations__tasker_schedule_modal_can_chat u-hidden--sm">
+                                                <span th:text="#{task-create.step3.notification-1}"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 p-0">
+                                    <div class="box-next-step-4 mt-lg-5 mt-xl-1">
+                                        <div class="t-30 f-w-300" th:text="#{task-create.step3.request-for}"></div>
+                                        <div class="pre-datetime t-25">
+                                            22 - T11, 8:30
+                                        </div>
+                                        <div>
+                                            <form th:action="@{/task/create/step3}" method="post">
+                                                <input type="hidden" id="selected-date" name="selected-date">
+                                                <button type="submit" class="btn-reset-css btn-svg-UI fill-green mt-2" >
+                                                    <svg><rect></rect></svg>
+                                                    <span th:text="#{task-create.step2.select-continue-btn}"></span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="recommendations__tasker_schedule_modal_next_step">
+                                        <img th:src="@{~/images/confirm.svg}" alt="Confirm">
+                                        <div>
+                                            <span th:text="#{task-create.step3.notification-2}"></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-5 p-0">
-                                <div class="box-next-step-4 mt-lg-5 mt-xl-1">
-                                    <div class="t-30 f-w-300" th:text="#{task-create.step3.request-for}"></div>
-                                    <div class="pre-datetime t-25">
-                                        22 - T11, 8:30
-                                    </div>
-                                    <div>
-                                        <form th:action="@{/task/create/step3}" method="post">
-                                            <input type="hidden" id="selected-date" name="selected-date">
-                                            <button type="submit" class="btn btn-primary w-100 my-3 py-2" th:text="#{task-create.step2.select-continue-btn}"></button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="recommendations__tasker_schedule_modal_next_step">
-                                    <img th:src="@{~/images/confirm.svg}" alt="Confirm">
-                                    <div>
-                                        <span th:text="#{task-create.step3.notification-2}"></span>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <th:block th:include="fragment/layout :: footer"></th:block>
 </div>
 <th:block th:include="fragment/layout :: javascript"></th:block>
