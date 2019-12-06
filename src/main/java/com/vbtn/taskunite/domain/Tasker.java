@@ -51,7 +51,7 @@ public class Tasker implements Serializable {
     @OneToMany(mappedBy = "tasker")
     private Set<Task> tasks = new HashSet<>();
 
-    @OneToMany(mappedBy = "tasker")
+    @OneToMany(mappedBy = "tasker", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Set<TaskerCategory> taskerCategories = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

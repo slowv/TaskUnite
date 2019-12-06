@@ -44,10 +44,10 @@ public class TaskCategory implements Serializable {
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
-    @OneToMany(mappedBy = "taskCategory")
+    @OneToMany(mappedBy = "taskCategory", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
     private Set<TaskerCategory> taskerCategories = new HashSet<>();
 
-    @OneToMany(mappedBy = "taskCategory")
+    @OneToMany(mappedBy = "taskCategory", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Set<Task> tasks = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

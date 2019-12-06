@@ -37,11 +37,11 @@ public class TaskerCategory implements Serializable {
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JsonIgnoreProperties("taskerCategories")
     private TaskCategory taskCategory;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JsonIgnoreProperties("taskerCategories")
     private Tasker tasker;
 
