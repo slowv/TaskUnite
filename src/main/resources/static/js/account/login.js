@@ -21,7 +21,8 @@ $("#loginForm").on("submit", function(e) {
     type: "POST",
     url: "/api/authentication",
     data: $(this).serialize()
-  }).done(data => {
-    if (data.status === 200) window.location.replace("http://localhost:8080");
+  }).done((data, statusText, xhr) => {
+    console.log(xhr);
+    if (xhr.status === 200) window.location.replace("/");
   });
-})
+});

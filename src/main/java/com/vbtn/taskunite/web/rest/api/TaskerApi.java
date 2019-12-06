@@ -17,7 +17,8 @@ import java.util.*;
 
 @RestController
 @RequestMapping(value = "/rest/tasker")
-public class TaskerApi {
+public class
+TaskerApi {
     @Autowired
     private TaskerApiService taskerApiService;
 

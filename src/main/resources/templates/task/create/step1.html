@@ -9,15 +9,9 @@
 
 <div class="site-wrap">
     <div class="mt-4 mb-3">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row border-bottom pb-3">
-                <div class="col-md-1 box-logo-step col-xl-12">
-                    <a th:href="@{/}">
-                        <img alt="TaskUnite" class="logo-step" th:src="@{~/images/favicon.png}">
-                    </a>
-                </div>
-                <div class="col-lg-9 col-md-12 offset-lg-2">
-                    <div class="box-step ">
+                    <div class="box-step col-12">
                         <div class="step active st1">
                             <div class="box-circle">
                                 <div class="circle">1</div>
@@ -25,7 +19,7 @@
                             <div class="box-line">
                                 <div class="line"></div>
                             </div>
-                            <div class="name-step" th:text="#{task-create.step1.task-infor}"></div>
+                            <div class="name-step">Mô tả công việc</div>
                         </div>
                         <div class="step st2">
                             <div class="box-circle">
@@ -34,7 +28,7 @@
                             <div class="box-line ">
                                 <div class="line"></div>
                             </div>
-                        <div class="name-step" th:text="#{task-create.step2.task-prices}"></div>
+                        <div class="name-step">Chon lựa Tasker & giá</div>
                         </div>
                         <div class="step st3">
                             <div class="box-circle">
@@ -43,16 +37,18 @@
                             <div class="box-line">
                                 <div class="line"></div>
                             </div>
-                            <div class="name-step" th:text="#{task-create.step3.choose-date-time}"></div>
+                            <div class="name-step">Đặt lịch hẹn</div>
                         </div>
                         <div class="step st4">
                             <div class="box-circle">
                                 <div class="circle">4</div>
                             </div>
-                            <div class="name-step" th:text="#{task-create.step4.confirm-details}"></div>
+                            <div class="box-line">
+                                <div class="line"></div>
+                            </div>
+                            <div class="name-step">Xác nhận lại</div>
                         </div>
                     </div>
-                </div>
             </div>
             <div class="row">
                 <div class="col-md-12 p-0 mt-1">
@@ -211,7 +207,7 @@
                                     class="text-danger error-msg d-none"></span></div>
                                 <div class="box-input">
                                     <div class="form-group">
-                                        <input type="number" th:field="*{estimatedTime}"  class="form-control w-25" id="estimated-time">
+                                        <input type="number" step="0.1" th:field="*{estimatedTime}"  class="form-control w-25">
                                     </div>
                                     <div class="mt-lg-5 form-group text-center">
                                         <button class="btn btn-success btn-continue px-4" data-type="estimated-time"
