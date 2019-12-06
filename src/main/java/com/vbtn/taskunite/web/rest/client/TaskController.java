@@ -29,6 +29,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/task")
@@ -74,9 +75,11 @@ public class TaskController {
 
     @RequestMapping("/create/step2")
     public String createStep2(HttpSession session, Model model){
-        Page<Tasker> taskers = customTaskerService.findAll(PageRequest.of(0,2));
-        model.addAttribute("taskers", taskers.getContent());
         HashMap step1 = (HashMap) session.getAttribute("step1");
+        List<Tasker> taskers = customTaskerService.findAll(PageRequest.of(0,2)).getContent().stream().filter(item -> {
+            return item.getTaskerCategories().contains(((Task) step1.get("taskInfo")).getTaskCategory().getTaskerCategory());
+        }).collect(Collectors.toList());
+        model.addAttribute("taskers", taskers);
         if(null == step1){
             return "redirect:/task/create/step1";
         }

@@ -3,6 +3,7 @@
 <head>
     <title>Thông tin công việc</title>
     <th:block th:include="fragment/layout :: head"></th:block>
+    <link rel="stylesheet" th:href="@{~/css/task/create.css}"/>
 </head>
 <body>
 
@@ -42,7 +43,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-3">
-                                <img th:src="@{~/images/person_1.jpg}" alt="" class="confirm-avatar-tasker">
+                                <img th:src="${task.tasker.user.user.imageUrl}" alt="" class="confirm-avatar-tasker">
                             </div>
                         </div>
                         <div style="height: 1px;background: #dadada" class="my-3"></div>
@@ -116,7 +117,7 @@
                                 Giá tiền (vnđ/giờ):
                             </div>
                             <div class="col-lg-6 text-right t-20 t-green">
-                                80.000 vnđ/1h
+                                <span th:text="${#numbers.formatDecimal(task.taskCategory.minPrice, 0, 'COMMA', 0, 'POINT')}">80.000</span><span> vnđ/1h</span>
                             </div>
                         </div>
                     </div>
@@ -176,6 +177,6 @@
     <!--END MODAL-->
 </div>
 <th:block th:include="fragment/layout :: javascript"></th:block>
-<script th:src="@{~/js/task/room-tasker.js}"></script>
+<script th:src="@{/js/task/room-task.js}"></script>
 </body>
 </html>

@@ -3,5 +3,7 @@ id;login;password_hash;first_name;last_name;email;image_url;activated;lang_key;c
 2;user;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;User;User;user@localhost;;true;vi;system;system
 3;quanganh9x;$2a$10$6yGWNHDSdZ2lDDMXBKjXzeNBP77lPpvGRhN0B5cJcRZijOw4a629W;Anh;Dang;quanganhpro9x@gmail.com;;true;vi;anonymousUser;anonymousUser
 4;congdoan176;$2a$10$ybmLfdRHJN53RUpKETT0ZuuqcfMOO5flNPJ38Hi4kz6HQqHSIKWX2;doan;;doancong1706@gmail.com;;true;vi;anonymousUser;anonymousUser
-5;tasker01;$2a$10$qcnitoNegp7R8BCcQmuZIu2clN.9hD1hVOHWu5QCfyTqe0mlO57OG;;;tasker@vbtn.wtf;;true;vi;anonymousUser;anonymousUser
-6;master01;$2a$10$151l6agL1RdXkr7nj88E7u8FCUeV2ehR16OxB8g1VVKhUUS.MCYAy;;;master@vbtn.wtf;;true;vi;anonymousUser;anonymousUser
+5;tasker01;$2a$10$qcnitoNegp7R8BCcQmuZIu2clN.9hD1hVOHWu5QCfyTqe0mlO57OG;Trinh;Linda;LindaTrinh@gmail.com;https://images.pexels.com/photos/1308885/pexels-photo-1308885.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500;true;vi;anonymousUser;anonymousUser
+6;master01;$2a$10$151l6agL1RdXkr7nj88E7u8FCUeV2ehR16OxB8g1VVKhUUS.MCYAy;Ly;Jennifer;JenniferHuongLy@gmail.com;https://i.pinimg.com/originals/9a/ea/84/9aea84eb5a1ee5c1f16b7e05499ac71d.jpg;true;vi;anonymousUser;anonymousUser
+7;tasker02;$2a$10$qcnitoNegp7R8BCcQmuZIu2clN.9hD1hVOHWu5QCfyTqe0mlO57OG;Tai;Kenny;KennySangTai@gmail.com;https://i.pinimg.com/originals/9b/9a/a9/9b9aa96ed3102ff5aa6a7939efc11429.jpg;true;vi;anonymousUser;anonymousUser
+8;tasker03;$2a$10$qcnitoNegp7R8BCcQmuZIu2clN.9hD1hVOHWu5QCfyTqe0mlO57OG;Linh;Jasper;JasperLinh@gmail.com;https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnQQ46fFa34dpQ3rZAxpM8uJLZNnr1K-tN7JI701dXySU1voR3zg&s;true;vi;anonymousUser;anonymousUser
