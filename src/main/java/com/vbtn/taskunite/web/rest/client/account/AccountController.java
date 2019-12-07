@@ -18,17 +18,11 @@ public class AccountController {
 
     @GetMapping("")
     public String intro() {
-        if (!userService.getUserWithAuthorities().isPresent()) {
-            return "redirect:/login";
-        }
         return "account/intro";
     }
 
     @GetMapping("/master")
     public String saveMaster() {
-        if (!userService.getUserWithAuthorities().isPresent()) {
-            return "redirect:/login";
-        }
         introService.promoteMaster(userService.getUserWithAuthorities().get());
         return "redirect:/?master=success";
     }
