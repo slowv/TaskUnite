@@ -79,62 +79,59 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 col-lg-8 mb-3">
-                    <div class="col-md-12 block-16" data-aos="fade-up" data-aos-delay="200">
-                        <div class="nonloop-block-profile owl-carousel">
+                <div class="col-md-12 col-lg-8 mb-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="nonloop-block-profile owl-carousel">
 
-                            <div class="border rounded p-4 bg-white">
-                                <label class="font-weight-bold">Tài khoản</label>
-                                <h3 class="mb-5">VND <span th:text="${#numbers.formatDecimal(payment.getBalance().intValue(), 0, 'COMMA', 0, 'POINT')}"></span> </h3>
-                                <div>
-                                    <button class="btn btn-primary py-2 px-5">Nạp</button>
-                                    <button class="btn btn-primary py-2 px-5">Rút</button>
-                                </div>
+                        <div class="border rounded p-4 bg-white">
+                            <label class="font-weight-bold">Tài khoản</label>
+                            <h3 class="mb-5">VND <span th:text="${#numbers.formatDecimal(payment.getBalance().intValue(), 0, 'COMMA', 0, 'POINT')}"></span> </h3>
+                            <div class="text-center">
+                                <button class="btn btn-primary py-2 px-5 mx-1">Nạp</button>
+                                <button class="btn btn-warning py-2 px-5 text-white mx-1">Rút</button>
                             </div>
+                        </div>
 
-                            <div class="border rounded p-4 bg-white">
-                                <label class="font-weight-bold">Đánh giá & Phân loại</label>
-                                <span class="border border-warning rounded p-1 px-2 text-warning">Beta</span>
-                                <p>
+                        <div class="border rounded p-4 bg-white">
+                            <label class="font-weight-bold">Đánh giá & Phân loại</label>
+                            <span class="border border-warning rounded p-1 px-2 text-warning">Beta</span>
+                            <p>
                                     <span class="d-block"><span
                                         class="icon-money mr-1"></span> <span
                                         class="icon-star mr-1"></span></span>
-                                </p>
-                                <p class="mb-0">Bạn đang làm rất tốt!</p>
-                            </div>
-
-                            <div class="border rounded p-4 bg-white">
-                                <label class="font-weight-bold">Tiến độ</label>
-                                <h3 class="mb-5">LVL <span th:text="${statistic.getLevel()}"></span></h3>
-                                <div class="progress">
-                                    <div class="progress-bar" style="width:0%"></div>
-                                </div>
-                                <p class="mb-3">Còn <span th:text="${100 - statistic.getExperience()}"></span> tới cấp tiếp theo</p>
-                                <label class="font-weight-bold">Quyền lợi</label>&nbsp;&nbsp;<small>Cấp càng cao, bạn
-                                càng tiết kiệm chi phí!</small>
-                                <p class="mb-0">Hiện bạn được giảm <strong><span th:text="${statistic.getLevel() - 1}"></span>%</strong> phí. Cảm ơn rất nhiều!</p>
-                                <p class="mb-0">Bạn thuộc hàng chờ ưu tiên <strong>cao</strong></p>
-                            </div>
-
-<!--                            <div class="border rounded p-4 bg-white">-->
-<!--                                <h2 class="h5">Telecommunication Manager</h2>-->
-<!--                                <p><span class="border border-warning rounded p-1 px-2 text-warning">Freelance</span>-->
-<!--                                </p>-->
-<!--                                <p>-->
-<!--                                    <span class="d-block"><span class="icon-suitcase"></span> Resto Bar</span>-->
-<!--                                    <span class="d-block"><span class="icon-room"></span> Florida</span>-->
-<!--                                    <span class="d-block"><span-->
-<!--                                        class="icon-money mr-1"></span> $55000 &mdash; 70000</span>-->
-<!--                                </p>-->
-<!--                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at-->
-<!--                                    ipsum commodi hic, cum esse asperiores libero molestiae, perferendis consectetur-->
-<!--                                    assumenda iusto, dolorem nemo maiores magnam illo laborum sit, dicta.</p>-->
-<!--                            </div>-->
-
+                            </p>
+                            <p class="mb-0">Bạn đang làm rất tốt!</p>
                         </div>
 
+                        <div class="border rounded p-4 bg-white">
+                            <label class="font-weight-bold">Tiến độ</label>
+                            <h3 class="mb-5">LVL <span th:text="${statistic.getLevel()}"></span></h3>
+                            <div class="progress">
+                                <div class="progress-bar" style="width:0%"></div>
+                            </div>
+                            <p class="mb-3">Còn <span th:text="${100 - statistic.getExperience()}"></span> tới cấp tiếp theo</p>
+                            <label class="font-weight-bold">Quyền lợi</label>&nbsp;&nbsp;<small>Cấp càng cao, bạn
+                            càng tiết kiệm chi phí!</small>
+                            <p class="mb-0">Hiện bạn được giảm <strong><span th:text="${statistic.getLevel() - 1}"></span>%</strong> phí. Cảm ơn rất nhiều!</p>
+                            <p class="mb-0">Bạn thuộc hàng chờ ưu tiên <strong>cao</strong></p>
+                        </div>
+
+                        <!--                            <div class="border rounded p-4 bg-white">-->
+                        <!--                                <h2 class="h5">Telecommunication Manager</h2>-->
+                        <!--                                <p><span class="border border-warning rounded p-1 px-2 text-warning">Freelance</span>-->
+                        <!--                                </p>-->
+                        <!--                                <p>-->
+                        <!--                                    <span class="d-block"><span class="icon-suitcase"></span> Resto Bar</span>-->
+                        <!--                                    <span class="d-block"><span class="icon-room"></span> Florida</span>-->
+                        <!--                                    <span class="d-block"><span-->
+                        <!--                                        class="icon-money mr-1"></span> $55000 &mdash; 70000</span>-->
+                        <!--                                </p>-->
+                        <!--                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at-->
+                        <!--                                    ipsum commodi hic, cum esse asperiores libero molestiae, perferendis consectetur-->
+                        <!--                                    assumenda iusto, dolorem nemo maiores magnam illo laborum sit, dicta.</p>-->
+                        <!--                            </div>-->
+
                     </div>
-                    <div class=" col-md-12 panel panel--spaced panel--with-overflow tab-content"
+                    <div style="margin: 15px 0 0 0" class="panel panel--spaced panel--with-overflow tab-content"
                          id="v-pills-tabContent">
                         <div class="tab-pane fade show active row" id="v-pills-home" role="tabpanel"
                              aria-labelledby="v-pills-home-tab">
@@ -219,7 +216,7 @@
                                         <div class="card-header" id="headingTwo">
                                             <h5 class="mb-0">
                                                 <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                                    Thông báo
+                                                    Ngôn ngữ
                                                 </button>
                                             </h5>
                                         </div>
@@ -227,10 +224,10 @@
                                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                             <div class="card-body row">
                                                 <div class="col-md-6">
-                                                    <label class="font-weight-bold" for="notifyEmail">Ngôn ngữ</label>
+                                                    <label class="font-weight-bold" for="notifyEmail">Chuyển ngôn ngữ</label>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <select class="select" id="lang">
+                                                    <select class="select form-control" id="lang">
                                                         <option value="vi">Việt Nam</option>
                                                         <option value="en">English</option>
                                                     </select>
