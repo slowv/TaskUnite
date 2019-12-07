@@ -19,6 +19,9 @@
             <column name="balance" type="double">
                 <constraints nullable="true" />
             </column>
+            <column name="hold" type="double">
+                <constraints nullable="true" />
+            </column>
             <column name="created_at" type="datetime">
                 <constraints nullable="true" />
             </column>
@@ -58,6 +61,7 @@
                   tableName="payment_information">
             <column name="id" type="numeric"/>
             <column name="balance" type="numeric"/>
+            <column name="hold" type="numeric"/>
             <column name="created_at" type="datetime"/>
             <column name="updated_at" type="datetime"/>
             <column name="deleted_at" type="datetime"/>

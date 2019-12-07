@@ -4,12 +4,12 @@ export interface ITaskerCategory {
   id?: number;
   description?: string;
   price?: number;
-  status?: number;
+  type?: number;
   createdAt?: Moment;
   updatedAt?: Moment;
   deletedAt?: Moment;
   taskCategoryId?: number;
-  taskerId?: number;
+  userId?: number;
 }
 
 export class TaskerCategory implements ITaskerCategory {
@@ -17,11 +17,11 @@ export class TaskerCategory implements ITaskerCategory {
     public id?: number,
     public description?: string,
     public price?: number,
-    public status?: number,
+    public type?: number,
     public createdAt?: Moment,
     public updatedAt?: Moment,
     public deletedAt?: Moment,
     public taskCategoryId?: number,
-    public taskerId?: number
+    public userId?: number
   ) {}
 }

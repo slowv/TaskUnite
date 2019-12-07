@@ -6,6 +6,10 @@
             "fieldType": "Double"
         },
         {
+            "fieldName": "hold",
+            "fieldType": "Double"
+        },
+        {
             "fieldName": "createdAt",
             "fieldType": "Instant"
         },
@@ -21,11 +25,17 @@
     "relationships": [
         {
             "relationshipType": "one-to-one",
-            "otherEntityName": "user",
+            "otherEntityName": "userInformation",
             "otherEntityRelationshipName": "payment",
             "relationshipName": "user",
             "otherEntityField": "id",
             "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "adminTransaction",
+            "otherEntityRelationshipName": "payment",
+            "relationshipName": "adminTransactions"
         }
     ],
     "changelogDate": "20191128073436",

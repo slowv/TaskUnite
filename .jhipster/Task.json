@@ -6,7 +6,7 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "title",
+            "fieldName": "name",
             "fieldType": "String"
         },
         {
@@ -14,12 +14,24 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "estimatedTime",
+            "fieldName": "totalPrice",
             "fieldType": "Double"
         },
         {
-            "fieldName": "price",
-            "fieldType": "Double"
+            "fieldName": "from",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "to",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "duration",
+            "fieldType": "Duration"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "Integer"
         },
         {
             "fieldName": "status",
@@ -40,39 +52,22 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "room",
-            "otherEntityRelationshipName": "task",
-            "relationshipName": "room",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "schedule",
-            "otherEntityRelationshipName": "task",
-            "relationshipName": "schedule",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
             "relationshipType": "one-to-many",
             "otherEntityName": "review",
             "otherEntityRelationshipName": "task",
             "relationshipName": "reviews"
         },
         {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "tasker",
-            "otherEntityRelationshipName": "tasks",
-            "relationshipName": "tasker",
-            "otherEntityField": "id"
+            "relationshipType": "one-to-many",
+            "otherEntityName": "adminProfit",
+            "otherEntityRelationshipName": "task",
+            "relationshipName": "adminProfits"
         },
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "master",
+            "otherEntityName": "userInformation",
             "otherEntityRelationshipName": "tasks",
-            "relationshipName": "master",
+            "relationshipName": "user",
             "otherEntityField": "id"
         },
         {

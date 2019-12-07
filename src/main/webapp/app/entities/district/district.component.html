@@ -20,7 +20,6 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="name"><span jhiTranslate="taskUniteApp.district.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="status"><span jhiTranslate="taskUniteApp.district.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="createdAt"><span jhiTranslate="taskUniteApp.district.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.district.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.district.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -32,7 +31,6 @@
             <tr *ngFor="let district of districts ;trackBy: trackId">
                 <td><a [routerLink]="['/district', district.id, 'view' ]">{{district.id}}</a></td>
                 <td>{{district.name}}</td>
-                <td>{{district.status}}</td>
                 <td>{{district.createdAt | date:'medium'}}</td>
                 <td>{{district.updatedAt | date:'medium'}}</td>
                 <td>{{district.deletedAt | date:'medium'}}</td>

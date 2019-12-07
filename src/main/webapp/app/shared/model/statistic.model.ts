@@ -5,10 +5,7 @@ export interface IStatistic {
   level?: number;
   experience?: number;
   completedTask?: number;
-  incompletedTask?: number;
   rating?: number;
-  ranking?: number;
-  bonus?: number;
   createdAt?: Moment;
   updatedAt?: Moment;
   deletedAt?: Moment;
@@ -21,10 +18,7 @@ export class Statistic implements IStatistic {
     public level?: number,
     public experience?: number,
     public completedTask?: number,
-    public incompletedTask?: number,
     public rating?: number,
-    public ranking?: number,
-    public bonus?: number,
     public createdAt?: Moment,
     public updatedAt?: Moment,
     public deletedAt?: Moment,

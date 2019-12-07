@@ -206,7 +206,7 @@
                                          <!--th:src="@{~/images/person_3.jpg}"-->
                                          <!--alt="Tasker">-->
                                     <img class="recommendations__avatar__circular"
-                                         th:src="${tasker.user.user.imageUrl}"
+                                         th:src="${tasker.user.imageUrl}"
                                          alt="Tasker">
                                 </div>
                                 <div class="recommendations__result-actions view-pc">
@@ -232,7 +232,7 @@
                             </div>
                             <div class="recommendations__result-content">
                                 <div class="recommendations__result-name" tabindex="0" role="button">
-                                    <span th:text="${tasker.user.user.firstName  + ' ' + tasker.user.user.lastName}">Trần Hiểu Đông</span>
+                                    <span th:text="${tasker.user.firstName  + ' ' + tasker.user.lastName}">Trần Hiểu Đông</span>
                                 </div>
                                 <span>
                                 <div class="recommendations__result-price-container priceChange-appear-active">

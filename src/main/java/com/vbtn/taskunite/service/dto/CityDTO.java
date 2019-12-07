@@ -12,8 +12,6 @@ public class CityDTO implements Serializable {
 
     private String name;
 
-    private Integer status;
-
     private Instant createdAt;
 
     private Instant updatedAt;
@@ -35,14 +33,6 @@ public class CityDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
     public Instant getCreatedAt() {
@@ -95,7 +85,6 @@ public class CityDTO implements Serializable {
         return "CityDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +

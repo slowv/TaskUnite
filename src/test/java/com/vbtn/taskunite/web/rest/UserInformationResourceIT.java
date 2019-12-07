@@ -41,11 +41,26 @@ public class UserInformationResourceIT {
     private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
     private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
 
+    private static final Integer DEFAULT_BDAY = 1;
+    private static final Integer UPDATED_BDAY = 2;
+
+    private static final Integer DEFAULT_BMONTH = 1;
+    private static final Integer UPDATED_BMONTH = 2;
+
+    private static final Integer DEFAULT_BYEAR = 1;
+    private static final Integer UPDATED_BYEAR = 2;
+
     private static final Integer DEFAULT_GENDER = 1;
     private static final Integer UPDATED_GENDER = 2;
 
     private static final String DEFAULT_PHONE = "AAAAAAAAAA";
     private static final String UPDATED_PHONE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_IMAGE = "AAAAAAAAAA";
+    private static final String UPDATED_IMAGE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
     private static final Integer DEFAULT_STATUS = 1;
     private static final Integer UPDATED_STATUS = 2;
@@ -108,8 +123,13 @@ public class UserInformationResourceIT {
     public static UserInformation createEntity(EntityManager em) {
         UserInformation userInformation = new UserInformation()
             .address(DEFAULT_ADDRESS)
+            .bday(DEFAULT_BDAY)
+            .bmonth(DEFAULT_BMONTH)
+            .byear(DEFAULT_BYEAR)
             .gender(DEFAULT_GENDER)
             .phone(DEFAULT_PHONE)
+            .image(DEFAULT_IMAGE)
+            .description(DEFAULT_DESCRIPTION)
             .status(DEFAULT_STATUS)
             .createdAt(DEFAULT_CREATED_AT)
             .updatedAt(DEFAULT_UPDATED_AT)
@@ -125,8 +145,13 @@ public class UserInformationResourceIT {
     public static UserInformation createUpdatedEntity(EntityManager em) {
         UserInformation userInformation = new UserInformation()
             .address(UPDATED_ADDRESS)
+            .bday(UPDATED_BDAY)
+            .bmonth(UPDATED_BMONTH)
+            .byear(UPDATED_BYEAR)
             .gender(UPDATED_GENDER)
             .phone(UPDATED_PHONE)
+            .image(UPDATED_IMAGE)
+            .description(UPDATED_DESCRIPTION)
             .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
@@ -156,8 +181,13 @@ public class UserInformationResourceIT {
         assertThat(userInformationList).hasSize(databaseSizeBeforeCreate + 1);
         UserInformation testUserInformation = userInformationList.get(userInformationList.size() - 1);
         assertThat(testUserInformation.getAddress()).isEqualTo(DEFAULT_ADDRESS);
+        assertThat(testUserInformation.getBday()).isEqualTo(DEFAULT_BDAY);
+        assertThat(testUserInformation.getBmonth()).isEqualTo(DEFAULT_BMONTH);
+        assertThat(testUserInformation.getByear()).isEqualTo(DEFAULT_BYEAR);
         assertThat(testUserInformation.getGender()).isEqualTo(DEFAULT_GENDER);
         assertThat(testUserInformation.getPhone()).isEqualTo(DEFAULT_PHONE);
+        assertThat(testUserInformation.getImage()).isEqualTo(DEFAULT_IMAGE);
+        assertThat(testUserInformation.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testUserInformation.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testUserInformation.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testUserInformation.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
@@ -197,8 +227,13 @@ public class UserInformationResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(userInformation.getId().intValue())))
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS)))
+            .andExpect(jsonPath("$.[*].bday").value(hasItem(DEFAULT_BDAY)))
+            .andExpect(jsonPath("$.[*].bmonth").value(hasItem(DEFAULT_BMONTH)))
+            .andExpect(jsonPath("$.[*].byear").value(hasItem(DEFAULT_BYEAR)))
             .andExpect(jsonPath("$.[*].gender").value(hasItem(DEFAULT_GENDER)))
             .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE)))
+            .andExpect(jsonPath("$.[*].image").value(hasItem(DEFAULT_IMAGE)))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
@@ -217,8 +252,13 @@ public class UserInformationResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(userInformation.getId().intValue()))
             .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS))
+            .andExpect(jsonPath("$.bday").value(DEFAULT_BDAY))
+            .andExpect(jsonPath("$.bmonth").value(DEFAULT_BMONTH))
+            .andExpect(jsonPath("$.byear").value(DEFAULT_BYEAR))
             .andExpect(jsonPath("$.gender").value(DEFAULT_GENDER))
             .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE))
+            .andExpect(jsonPath("$.image").value(DEFAULT_IMAGE))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
@@ -247,8 +287,13 @@ public class UserInformationResourceIT {
         em.detach(updatedUserInformation);
         updatedUserInformation
             .address(UPDATED_ADDRESS)
+            .bday(UPDATED_BDAY)
+            .bmonth(UPDATED_BMONTH)
+            .byear(UPDATED_BYEAR)
             .gender(UPDATED_GENDER)
             .phone(UPDATED_PHONE)
+            .image(UPDATED_IMAGE)
+            .description(UPDATED_DESCRIPTION)
             .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
@@ -265,8 +310,13 @@ public class UserInformationResourceIT {
         assertThat(userInformationList).hasSize(databaseSizeBeforeUpdate);
         UserInformation testUserInformation = userInformationList.get(userInformationList.size() - 1);
         assertThat(testUserInformation.getAddress()).isEqualTo(UPDATED_ADDRESS);
+        assertThat(testUserInformation.getBday()).isEqualTo(UPDATED_BDAY);
+        assertThat(testUserInformation.getBmonth()).isEqualTo(UPDATED_BMONTH);
+        assertThat(testUserInformation.getByear()).isEqualTo(UPDATED_BYEAR);
         assertThat(testUserInformation.getGender()).isEqualTo(UPDATED_GENDER);
         assertThat(testUserInformation.getPhone()).isEqualTo(UPDATED_PHONE);
+        assertThat(testUserInformation.getImage()).isEqualTo(UPDATED_IMAGE);
+        assertThat(testUserInformation.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testUserInformation.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testUserInformation.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testUserInformation.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);

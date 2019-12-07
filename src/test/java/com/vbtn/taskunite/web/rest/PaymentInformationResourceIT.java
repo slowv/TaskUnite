@@ -41,6 +41,9 @@ public class PaymentInformationResourceIT {
     private static final Double DEFAULT_BALANCE = 1D;
     private static final Double UPDATED_BALANCE = 2D;
 
+    private static final Double DEFAULT_HOLD = 1D;
+    private static final Double UPDATED_HOLD = 2D;
+
     private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
@@ -99,6 +102,7 @@ public class PaymentInformationResourceIT {
     public static PaymentInformation createEntity(EntityManager em) {
         PaymentInformation paymentInformation = new PaymentInformation()
             .balance(DEFAULT_BALANCE)
+            .hold(DEFAULT_HOLD)
             .createdAt(DEFAULT_CREATED_AT)
             .updatedAt(DEFAULT_UPDATED_AT)
             .deletedAt(DEFAULT_DELETED_AT);
@@ -113,6 +117,7 @@ public class PaymentInformationResourceIT {
     public static PaymentInformation createUpdatedEntity(EntityManager em) {
         PaymentInformation paymentInformation = new PaymentInformation()
             .balance(UPDATED_BALANCE)
+            .hold(UPDATED_HOLD)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
             .deletedAt(UPDATED_DELETED_AT);
@@ -141,6 +146,7 @@ public class PaymentInformationResourceIT {
         assertThat(paymentInformationList).hasSize(databaseSizeBeforeCreate + 1);
         PaymentInformation testPaymentInformation = paymentInformationList.get(paymentInformationList.size() - 1);
         assertThat(testPaymentInformation.getBalance()).isEqualTo(DEFAULT_BALANCE);
+        assertThat(testPaymentInformation.getHold()).isEqualTo(DEFAULT_HOLD);
         assertThat(testPaymentInformation.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testPaymentInformation.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
         assertThat(testPaymentInformation.getDeletedAt()).isEqualTo(DEFAULT_DELETED_AT);
@@ -179,6 +185,7 @@ public class PaymentInformationResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(paymentInformation.getId().intValue())))
             .andExpect(jsonPath("$.[*].balance").value(hasItem(DEFAULT_BALANCE.doubleValue())))
+            .andExpect(jsonPath("$.[*].hold").value(hasItem(DEFAULT_HOLD.doubleValue())))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
             .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())));
@@ -196,6 +203,7 @@ public class PaymentInformationResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(paymentInformation.getId().intValue()))
             .andExpect(jsonPath("$.balance").value(DEFAULT_BALANCE.doubleValue()))
+            .andExpect(jsonPath("$.hold").value(DEFAULT_HOLD.doubleValue()))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
             .andExpect(jsonPath("$.deletedAt").value(DEFAULT_DELETED_AT.toString()));
@@ -223,6 +231,7 @@ public class PaymentInformationResourceIT {
         em.detach(updatedPaymentInformation);
         updatedPaymentInformation
             .balance(UPDATED_BALANCE)
+            .hold(UPDATED_HOLD)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
             .deletedAt(UPDATED_DELETED_AT);
@@ -238,6 +247,7 @@ public class PaymentInformationResourceIT {
         assertThat(paymentInformationList).hasSize(databaseSizeBeforeUpdate);
         PaymentInformation testPaymentInformation = paymentInformationList.get(paymentInformationList.size() - 1);
         assertThat(testPaymentInformation.getBalance()).isEqualTo(UPDATED_BALANCE);
+        assertThat(testPaymentInformation.getHold()).isEqualTo(UPDATED_HOLD);
         assertThat(testPaymentInformation.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testPaymentInformation.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
         assertThat(testPaymentInformation.getDeletedAt()).isEqualTo(UPDATED_DELETED_AT);

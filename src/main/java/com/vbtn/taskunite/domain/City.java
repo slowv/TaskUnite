@@ -1,8 +1,5 @@
 package com.vbtn.taskunite.domain;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -26,15 +23,10 @@ public class City implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "status")
-    private Integer status;
-
     @Column(name = "created_at")
-    @CreationTimestamp
     private Instant createdAt;
 
     @Column(name = "updated_at")
-    @UpdateTimestamp
     private Instant updatedAt;
 
     @Column(name = "deleted_at")
@@ -63,19 +55,6 @@ public class City implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public City status(Integer status) {
-        this.status = status;
-        return this;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
     public Instant getCreatedAt() {
@@ -164,7 +143,6 @@ public class City implements Serializable {
         return "City{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +

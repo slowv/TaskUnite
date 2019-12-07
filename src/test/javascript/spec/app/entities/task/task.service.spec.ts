@@ -24,13 +24,29 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Task(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 0, 0, 0, currentDate, currentDate, currentDate);
+      elemDefault = new Task(
+        0,
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        0,
+        currentDate,
+        currentDate,
+        0,
+        0,
+        0,
+        currentDate,
+        currentDate,
+        currentDate
+      );
     });
 
     describe('Service methods', () => {
       it('should find an element', () => {
         const returnedFromService = Object.assign(
           {
+            from: currentDate.format(DATE_TIME_FORMAT),
+            to: currentDate.format(DATE_TIME_FORMAT),
             createdAt: currentDate.format(DATE_TIME_FORMAT),
             updatedAt: currentDate.format(DATE_TIME_FORMAT),
             deletedAt: currentDate.format(DATE_TIME_FORMAT)
@@ -51,6 +67,8 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
+            from: currentDate.format(DATE_TIME_FORMAT),
+            to: currentDate.format(DATE_TIME_FORMAT),
             createdAt: currentDate.format(DATE_TIME_FORMAT),
             updatedAt: currentDate.format(DATE_TIME_FORMAT),
             deletedAt: currentDate.format(DATE_TIME_FORMAT)
@@ -59,6 +77,8 @@ describe('Service Tests', () => {
         );
         const expected = Object.assign(
           {
+            from: currentDate,
+            to: currentDate,
             createdAt: currentDate,
             updatedAt: currentDate,
             deletedAt: currentDate
@@ -78,10 +98,13 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             address: 'BBBBBB',
-            title: 'BBBBBB',
+            name: 'BBBBBB',
             description: 'BBBBBB',
-            estimatedTime: 1,
-            price: 1,
+            totalPrice: 1,
+            from: currentDate.format(DATE_TIME_FORMAT),
+            to: currentDate.format(DATE_TIME_FORMAT),
+            duration: 'BBBBBB',
+            type: 1,
             status: 1,
             createdAt: currentDate.format(DATE_TIME_FORMAT),
             updatedAt: currentDate.format(DATE_TIME_FORMAT),
@@ -92,6 +115,8 @@ describe('Service Tests', () => {
 
         const expected = Object.assign(
           {
+            from: currentDate,
+            to: currentDate,
             createdAt: currentDate,
             updatedAt: currentDate,
             deletedAt: currentDate
@@ -111,10 +136,13 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             address: 'BBBBBB',
-            title: 'BBBBBB',
+            name: 'BBBBBB',
             description: 'BBBBBB',
-            estimatedTime: 1,
-            price: 1,
+            totalPrice: 1,
+            from: currentDate.format(DATE_TIME_FORMAT),
+            to: currentDate.format(DATE_TIME_FORMAT),
+            duration: 'BBBBBB',
+            type: 1,
             status: 1,
             createdAt: currentDate.format(DATE_TIME_FORMAT),
             updatedAt: currentDate.format(DATE_TIME_FORMAT),
@@ -124,6 +152,8 @@ describe('Service Tests', () => {
         );
         const expected = Object.assign(
           {
+            from: currentDate,
+            to: currentDate,
             createdAt: currentDate,
             updatedAt: currentDate,
             deletedAt: currentDate

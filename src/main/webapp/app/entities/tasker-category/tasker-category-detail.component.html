@@ -13,9 +13,9 @@
                 <dd>
                     <span>{{taskerCategory.price}}</span>
                 </dd>
-                <dt><span jhiTranslate="taskUniteApp.taskerCategory.status">Status</span></dt>
+                <dt><span jhiTranslate="taskUniteApp.taskerCategory.type">Type</span></dt>
                 <dd>
-                    <span>{{taskerCategory.status}}</span>
+                    <span>{{taskerCategory.type}}</span>
                 </dd>
                 <dt><span jhiTranslate="taskUniteApp.taskerCategory.createdAt">Created At</span></dt>
                 <dd>
@@ -35,10 +35,10 @@
                         <a [routerLink]="['/task-category', taskerCategory.taskCategoryId, 'view']">{{taskerCategory.taskCategoryId}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="taskUniteApp.taskerCategory.tasker">Tasker</span></dt>
+                <dt><span jhiTranslate="taskUniteApp.taskerCategory.user">User</span></dt>
                 <dd>
-                    <div *ngIf="taskerCategory.taskerId">
-                        <a [routerLink]="['/tasker', taskerCategory.taskerId, 'view']">{{taskerCategory.taskerId}}</a>
+                    <div *ngIf="taskerCategory.userId">
+                        <a [routerLink]="['/user-information', taskerCategory.userId, 'view']">{{taskerCategory.userId}}</a>
                     </div>
                 </dd>
             </dl>

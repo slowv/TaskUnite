@@ -9,21 +9,33 @@
                 <dd>
                     <span>{{task.address}}</span>
                 </dd>
-                <dt><span jhiTranslate="taskUniteApp.task.title">Title</span></dt>
+                <dt><span jhiTranslate="taskUniteApp.task.name">Name</span></dt>
                 <dd>
-                    <span>{{task.title}}</span>
+                    <span>{{task.name}}</span>
                 </dd>
                 <dt><span jhiTranslate="taskUniteApp.task.description">Description</span></dt>
                 <dd>
                     <span>{{task.description}}</span>
                 </dd>
-                <dt><span jhiTranslate="taskUniteApp.task.estimatedTime">Estimated Time</span></dt>
+                <dt><span jhiTranslate="taskUniteApp.task.totalPrice">Total Price</span></dt>
                 <dd>
-                    <span>{{task.estimatedTime}}</span>
+                    <span>{{task.totalPrice}}</span>
                 </dd>
-                <dt><span jhiTranslate="taskUniteApp.task.price">Price</span></dt>
+                <dt><span jhiTranslate="taskUniteApp.task.from">From</span></dt>
                 <dd>
-                    <span>{{task.price}}</span>
+                    <span>{{task.from}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.task.to">To</span></dt>
+                <dd>
+                    <span>{{task.to}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.task.duration">Duration</span></dt>
+                <dd>
+                    <span>{{task.duration}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.task.type">Type</span></dt>
+                <dd>
+                    <span>{{task.type}}</span>
                 </dd>
                 <dt><span jhiTranslate="taskUniteApp.task.status">Status</span></dt>
                 <dd>
@@ -41,28 +53,10 @@
                 <dd>
                     <span>{{task.deletedAt}}</span>
                 </dd>
-                <dt><span jhiTranslate="taskUniteApp.task.room">Room</span></dt>
+                <dt><span jhiTranslate="taskUniteApp.task.user">User</span></dt>
                 <dd>
-                    <div *ngIf="task.roomId">
-                        <a [routerLink]="['/room', task.roomId, 'view']">{{task.roomId}}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="taskUniteApp.task.schedule">Schedule</span></dt>
-                <dd>
-                    <div *ngIf="task.scheduleId">
-                        <a [routerLink]="['/schedule', task.scheduleId, 'view']">{{task.scheduleId}}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="taskUniteApp.task.tasker">Tasker</span></dt>
-                <dd>
-                    <div *ngIf="task.taskerId">
-                        <a [routerLink]="['/tasker', task.taskerId, 'view']">{{task.taskerId}}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="taskUniteApp.task.master">Master</span></dt>
-                <dd>
-                    <div *ngIf="task.masterId">
-                        <a [routerLink]="['/master', task.masterId, 'view']">{{task.masterId}}</a>
+                    <div *ngIf="task.userId">
+                        <a [routerLink]="['/user-information', task.userId, 'view']">{{task.userId}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="taskUniteApp.task.taskCategory">Task Category</span></dt>

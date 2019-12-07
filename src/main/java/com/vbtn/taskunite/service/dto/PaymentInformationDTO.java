@@ -12,6 +12,8 @@ public class PaymentInformationDTO implements Serializable {
 
     private Double balance;
 
+    private Double hold;
+
     private Instant createdAt;
 
     private Instant updatedAt;
@@ -35,6 +37,14 @@ public class PaymentInformationDTO implements Serializable {
 
     public void setBalance(Double balance) {
         this.balance = balance;
+    }
+
+    public Double getHold() {
+        return hold;
+    }
+
+    public void setHold(Double hold) {
+        this.hold = hold;
     }
 
     public Instant getCreatedAt() {
@@ -65,8 +75,8 @@ public class PaymentInformationDTO implements Serializable {
         return userId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUserId(Long userInformationId) {
+        this.userId = userInformationId;
     }
 
     @Override
@@ -95,6 +105,7 @@ public class PaymentInformationDTO implements Serializable {
         return "PaymentInformationDTO{" +
             "id=" + getId() +
             ", balance=" + getBalance() +
+            ", hold=" + getHold() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +

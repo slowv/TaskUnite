@@ -13,28 +13,12 @@ import { RouterModule } from '@angular/router';
         loadChildren: () => import('./user-information/user-information.module').then(m => m.TaskUniteUserInformationModule)
       },
       {
-        path: 'tasker',
-        loadChildren: () => import('./tasker/tasker.module').then(m => m.TaskUniteTaskerModule)
-      },
-      {
-        path: 'master',
-        loadChildren: () => import('./master/master.module').then(m => m.TaskUniteMasterModule)
-      },
-      {
         path: 'statistic',
         loadChildren: () => import('./statistic/statistic.module').then(m => m.TaskUniteStatisticModule)
       },
       {
         path: 'task',
         loadChildren: () => import('./task/task.module').then(m => m.TaskUniteTaskModule)
-      },
-      {
-        path: 'room',
-        loadChildren: () => import('./room/room.module').then(m => m.TaskUniteRoomModule)
-      },
-      {
-        path: 'schedule',
-        loadChildren: () => import('./schedule/schedule.module').then(m => m.TaskUniteScheduleModule)
       },
       {
         path: 'task-category',
@@ -49,10 +33,6 @@ import { RouterModule } from '@angular/router';
         loadChildren: () => import('./district/district.module').then(m => m.TaskUniteDistrictModule)
       },
       {
-        path: 'address',
-        loadChildren: () => import('./address/address.module').then(m => m.TaskUniteAddressModule)
-      },
-      {
         path: 'notification',
         loadChildren: () => import('./notification/notification.module').then(m => m.TaskUniteNotificationModule)
       },
@@ -63,6 +43,14 @@ import { RouterModule } from '@angular/router';
       {
         path: 'tasker-category',
         loadChildren: () => import('./tasker-category/tasker-category.module').then(m => m.TaskUniteTaskerCategoryModule)
+      },
+      {
+        path: 'admin-transaction',
+        loadChildren: () => import('./admin-transaction/admin-transaction.module').then(m => m.TaskUniteAdminTransactionModule)
+      },
+      {
+        path: 'admin-profit',
+        loadChildren: () => import('./admin-profit/admin-profit.module').then(m => m.TaskUniteAdminProfitModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

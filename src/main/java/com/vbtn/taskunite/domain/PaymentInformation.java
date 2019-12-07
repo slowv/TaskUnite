@@ -1,12 +1,11 @@
 package com.vbtn.taskunite.domain;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A PaymentInformation.
@@ -24,12 +23,13 @@ public class PaymentInformation implements Serializable {
     @Column(name = "balance")
     private Double balance;
 
+    @Column(name = "hold")
+    private Double hold;
+
     @Column(name = "created_at")
-    @CreationTimestamp
     private Instant createdAt;
 
     @Column(name = "updated_at")
-    @UpdateTimestamp
     private Instant updatedAt;
 
     @Column(name = "deleted_at")
@@ -37,7 +37,10 @@ public class PaymentInformation implements Serializable {
 
     @OneToOne
     @JoinColumn(unique = true)
-    private User user;
+    private UserInformation user;
+
+    @OneToMany(mappedBy = "payment")
+    private Set<AdminTransaction> adminTransactions = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -59,6 +62,19 @@ public class PaymentInformation implements Serializable {
 
     public void setBalance(Double balance) {
         this.balance = balance;
+    }
+
+    public Double getHold() {
+        return hold;
+    }
+
+    public PaymentInformation hold(Double hold) {
+        this.hold = hold;
+        return this;
+    }
+
+    public void setHold(Double hold) {
+        this.hold = hold;
     }
 
     public Instant getCreatedAt() {
@@ -100,17 +116,42 @@ public class PaymentInformation implements Serializable {
         this.deletedAt = deletedAt;
     }
 
-    public User getUser() {
+    public UserInformation getUser() {
         return user;
     }
 
-    public PaymentInformation user(User user) {
-        this.user = user;
+    public PaymentInformation user(UserInformation userInformation) {
+        this.user = userInformation;
         return this;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(UserInformation userInformation) {
+        this.user = userInformation;
+    }
+
+    public Set<AdminTransaction> getAdminTransactions() {
+        return adminTransactions;
+    }
+
+    public PaymentInformation adminTransactions(Set<AdminTransaction> adminTransactions) {
+        this.adminTransactions = adminTransactions;
+        return this;
+    }
+
+    public PaymentInformation addAdminTransactions(AdminTransaction adminTransaction) {
+        this.adminTransactions.add(adminTransaction);
+        adminTransaction.setPayment(this);
+        return this;
+    }
+
+    public PaymentInformation removeAdminTransactions(AdminTransaction adminTransaction) {
+        this.adminTransactions.remove(adminTransaction);
+        adminTransaction.setPayment(null);
+        return this;
+    }
+
+    public void setAdminTransactions(Set<AdminTransaction> adminTransactions) {
+        this.adminTransactions = adminTransactions;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -135,6 +176,7 @@ public class PaymentInformation implements Serializable {
         return "PaymentInformation{" +
             "id=" + getId() +
             ", balance=" + getBalance() +
+            ", hold=" + getHold() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +

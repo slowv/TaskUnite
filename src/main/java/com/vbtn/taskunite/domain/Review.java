@@ -1,7 +1,5 @@
 package com.vbtn.taskunite.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 
@@ -27,15 +25,10 @@ public class Review implements Serializable {
     @Column(name = "point")
     private Double point;
 
-    @Column(name = "status")
-    private Integer status;
-
     @Column(name = "created_at")
-    @CreationTimestamp
     private Instant createdAt;
 
     @Column(name = "updated_at")
-    @UpdateTimestamp
     private Instant updatedAt;
 
     @Column(name = "deleted_at")
@@ -82,19 +75,6 @@ public class Review implements Serializable {
 
     public void setPoint(Double point) {
         this.point = point;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public Review status(Integer status) {
-        this.status = status;
-        return this;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
     public Instant getCreatedAt() {
@@ -185,7 +165,6 @@ public class Review implements Serializable {
             "id=" + getId() +
             ", content='" + getContent() + "'" +
             ", point=" + getPoint() +
-            ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +

@@ -1,0 +1,48 @@
+{
+    "name": "AdminProfit",
+    "fields": [
+        {
+            "fieldName": "taskerProfit",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "masterProfit",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "totalProfit",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "deletedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "adminProfits",
+            "relationshipName": "task",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191207161243",
+    "entityTableName": "admin_profit",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

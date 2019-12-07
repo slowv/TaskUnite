@@ -9,6 +9,18 @@
                 <dd>
                     <span>{{userInformation.address}}</span>
                 </dd>
+                <dt><span jhiTranslate="taskUniteApp.userInformation.bday">Bday</span></dt>
+                <dd>
+                    <span>{{userInformation.bday}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.userInformation.bmonth">Bmonth</span></dt>
+                <dd>
+                    <span>{{userInformation.bmonth}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.userInformation.byear">Byear</span></dt>
+                <dd>
+                    <span>{{userInformation.byear}}</span>
+                </dd>
                 <dt><span jhiTranslate="taskUniteApp.userInformation.gender">Gender</span></dt>
                 <dd>
                     <span>{{userInformation.gender}}</span>
@@ -16,6 +28,14 @@
                 <dt><span jhiTranslate="taskUniteApp.userInformation.phone">Phone</span></dt>
                 <dd>
                     <span>{{userInformation.phone}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.userInformation.image">Image</span></dt>
+                <dd>
+                    <span>{{userInformation.image}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.userInformation.description">Description</span></dt>
+                <dd>
+                    <span>{{userInformation.description}}</span>
                 </dd>
                 <dt><span jhiTranslate="taskUniteApp.userInformation.status">Status</span></dt>
                 <dd>
@@ -36,6 +56,12 @@
                 <dt><span jhiTranslate="taskUniteApp.userInformation.user">User</span></dt>
                 <dd>
                     {{userInformation.userId}}
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.userInformation.district">District</span></dt>
+                <dd>
+                    <div *ngIf="userInformation.districtId">
+                        <a [routerLink]="['/district', userInformation.districtId, 'view']">{{userInformation.districtId}}</a>
+                    </div>
                 </dd>
             </dl>
 

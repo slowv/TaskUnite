@@ -22,7 +22,7 @@
             <column name="price" type="double">
                 <constraints nullable="true" />
             </column>
-            <column name="status" type="integer">
+            <column name="type" type="integer">
                 <constraints nullable="true" />
             </column>
             <column name="created_at" type="datetime">
@@ -37,7 +37,7 @@
             <column name="task_category_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="tasker_id" type="bigint">
+            <column name="user_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
@@ -68,7 +68,7 @@
             <column name="id" type="numeric"/>
             <column name="description" type="string"/>
             <column name="price" type="numeric"/>
-            <column name="status" type="numeric"/>
+            <column name="type" type="numeric"/>
             <column name="created_at" type="datetime"/>
             <column name="updated_at" type="datetime"/>
             <column name="deleted_at" type="datetime"/>

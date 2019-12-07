@@ -21,12 +21,12 @@
             <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="description"><span jhiTranslate="taskUniteApp.taskerCategory.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="price"><span jhiTranslate="taskUniteApp.taskerCategory.price">Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="status"><span jhiTranslate="taskUniteApp.taskerCategory.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="type"><span jhiTranslate="taskUniteApp.taskerCategory.type">Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="createdAt"><span jhiTranslate="taskUniteApp.taskerCategory.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.taskerCategory.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.taskerCategory.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="taskCategoryId"><span jhiTranslate="taskUniteApp.taskerCategory.taskCategory">Task Category</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="taskerId"><span jhiTranslate="taskUniteApp.taskerCategory.tasker">Tasker</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="userId"><span jhiTranslate="taskUniteApp.taskerCategory.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -35,7 +35,7 @@
                 <td><a [routerLink]="['/tasker-category', taskerCategory.id, 'view' ]">{{taskerCategory.id}}</a></td>
                 <td>{{taskerCategory.description}}</td>
                 <td>{{taskerCategory.price}}</td>
-                <td>{{taskerCategory.status}}</td>
+                <td>{{taskerCategory.type}}</td>
                 <td>{{taskerCategory.createdAt | date:'medium'}}</td>
                 <td>{{taskerCategory.updatedAt | date:'medium'}}</td>
                 <td>{{taskerCategory.deletedAt | date:'medium'}}</td>
@@ -45,8 +45,8 @@
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="taskerCategory.taskerId">
-                        <a [routerLink]="['/tasker', taskerCategory.taskerId , 'view' ]" >{{taskerCategory.taskerId}}</a>
+                    <div *ngIf="taskerCategory.userId">
+                        <a [routerLink]="['/user-information', taskerCategory.userId , 'view' ]" >{{taskerCategory.userId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

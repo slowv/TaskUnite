@@ -22,9 +22,6 @@
             <column name="point" type="double">
                 <constraints nullable="true" />
             </column>
-            <column name="status" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="created_at" type="datetime">
                 <constraints nullable="true" />
             </column>
@@ -68,7 +65,6 @@
             <column name="id" type="numeric"/>
             <column name="content" type="string"/>
             <column name="point" type="numeric"/>
-            <column name="status" type="numeric"/>
             <column name="created_at" type="datetime"/>
             <column name="updated_at" type="datetime"/>
             <column name="deleted_at" type="datetime"/>

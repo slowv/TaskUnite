@@ -17,10 +17,12 @@
         "title": "Payment Information"
       },
       "balance": "Balance",
+      "hold": "Hold",
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
-      "user": "User"
+      "user": "User",
+      "adminTransactions": "Admin Transactions"
     }
   }
 }

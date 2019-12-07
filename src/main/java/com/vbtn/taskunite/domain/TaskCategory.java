@@ -32,9 +32,6 @@ public class TaskCategory implements Serializable {
     @Column(name = "min_price")
     private Double minPrice;
 
-    @Column(name = "status")
-    private Integer status;
-
     @Column(name = "created_at")
     private Instant createdAt;
 
@@ -44,11 +41,11 @@ public class TaskCategory implements Serializable {
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
-    @OneToMany(mappedBy = "taskCategory", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
-    private Set<TaskerCategory> taskerCategories = new HashSet<>();
-
-    @OneToMany(mappedBy = "taskCategory", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "taskCategory")
     private Set<Task> tasks = new HashSet<>();
+
+    @OneToMany(mappedBy = "taskCategory", fetch = FetchType.EAGER)
+    private Set<TaskerCategory> taskerCategories = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -111,19 +108,6 @@ public class TaskCategory implements Serializable {
         this.minPrice = minPrice;
     }
 
-    public Integer getStatus() {
-        return status;
-    }
-
-    public TaskCategory status(Integer status) {
-        this.status = status;
-        return this;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
     public Instant getCreatedAt() {
         return createdAt;
     }
@@ -163,31 +147,6 @@ public class TaskCategory implements Serializable {
         this.deletedAt = deletedAt;
     }
 
-    public Set<TaskerCategory> getTaskerCategories() {
-        return taskerCategories;
-    }
-
-    public TaskCategory taskerCategories(Set<TaskerCategory> taskerCategories) {
-        this.taskerCategories = taskerCategories;
-        return this;
-    }
-
-    public TaskCategory addTaskerCategories(TaskerCategory taskerCategory) {
-        this.taskerCategories.add(taskerCategory);
-        taskerCategory.setTaskCategory(this);
-        return this;
-    }
-
-    public TaskCategory removeTaskerCategories(TaskerCategory taskerCategory) {
-        this.taskerCategories.remove(taskerCategory);
-        taskerCategory.setTaskCategory(null);
-        return this;
-    }
-
-    public void setTaskerCategories(Set<TaskerCategory> taskerCategories) {
-        this.taskerCategories = taskerCategories;
-    }
-
     public Set<Task> getTasks() {
         return tasks;
     }
@@ -211,6 +170,31 @@ public class TaskCategory implements Serializable {
 
     public void setTasks(Set<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    public Set<TaskerCategory> getTaskerCategories() {
+        return taskerCategories;
+    }
+
+    public TaskCategory taskerCategories(Set<TaskerCategory> taskerCategories) {
+        this.taskerCategories = taskerCategories;
+        return this;
+    }
+
+    public TaskCategory addTaskerCategories(TaskerCategory taskerCategory) {
+        this.taskerCategories.add(taskerCategory);
+        taskerCategory.setTaskCategory(this);
+        return this;
+    }
+
+    public TaskCategory removeTaskerCategories(TaskerCategory taskerCategory) {
+        this.taskerCategories.remove(taskerCategory);
+        taskerCategory.setTaskCategory(null);
+        return this;
+    }
+
+    public void setTaskerCategories(Set<TaskerCategory> taskerCategories) {
+        this.taskerCategories = taskerCategories;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -238,7 +222,6 @@ public class TaskCategory implements Serializable {
             ", description='" + getDescription() + "'" +
             ", image='" + getImage() + "'" +
             ", minPrice=" + getMinPrice() +
-            ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +

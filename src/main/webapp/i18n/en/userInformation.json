@@ -17,19 +17,25 @@
         "title": "User Information"
       },
       "address": "Address",
+      "bday": "Bday",
+      "bmonth": "Bmonth",
+      "byear": "Byear",
       "gender": "Gender",
       "phone": "Phone",
+      "image": "Image",
+      "description": "Description",
       "status": "Status",
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
       "user": "User",
-      "workingAddresses": "Working Addresses",
+      "tasks": "Tasks",
       "reviews": "Reviews",
       "notifications": "Notifications",
-      "tasker": "Tasker",
-      "master": "Master",
-      "statistic": "Statistic"
+      "taskerCategories": "Tasker Categories",
+      "statistic": "Statistic",
+      "payment": "Payment",
+      "district": "District"
     }
   }
 }

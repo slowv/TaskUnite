@@ -79,7 +79,7 @@ describe('Service Tests', () => {
           {
             description: 'BBBBBB',
             price: 1,
-            status: 1,
+            type: 1,
             createdAt: currentDate.format(DATE_TIME_FORMAT),
             updatedAt: currentDate.format(DATE_TIME_FORMAT),
             deletedAt: currentDate.format(DATE_TIME_FORMAT)
@@ -109,7 +109,7 @@ describe('Service Tests', () => {
           {
             description: 'BBBBBB',
             price: 1,
-            status: 1,
+            type: 1,
             createdAt: currentDate.format(DATE_TIME_FORMAT),
             updatedAt: currentDate.format(DATE_TIME_FORMAT),
             deletedAt: currentDate.format(DATE_TIME_FORMAT)

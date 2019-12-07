@@ -12,9 +12,19 @@ public class UserInformationDTO implements Serializable {
 
     private String address;
 
+    private Integer bday;
+
+    private Integer bmonth;
+
+    private Integer byear;
+
     private Integer gender;
 
     private String phone;
+
+    private String image;
+
+    private String description;
 
     private Integer status;
 
@@ -26,6 +36,8 @@ public class UserInformationDTO implements Serializable {
 
 
     private Long userId;
+
+    private Long districtId;
 
     public Long getId() {
         return id;
@@ -43,6 +55,30 @@ public class UserInformationDTO implements Serializable {
         this.address = address;
     }
 
+    public Integer getBday() {
+        return bday;
+    }
+
+    public void setBday(Integer bday) {
+        this.bday = bday;
+    }
+
+    public Integer getBmonth() {
+        return bmonth;
+    }
+
+    public void setBmonth(Integer bmonth) {
+        this.bmonth = bmonth;
+    }
+
+    public Integer getByear() {
+        return byear;
+    }
+
+    public void setByear(Integer byear) {
+        this.byear = byear;
+    }
+
     public Integer getGender() {
         return gender;
     }
@@ -57,6 +93,22 @@ public class UserInformationDTO implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getStatus() {
@@ -99,6 +151,14 @@ public class UserInformationDTO implements Serializable {
         this.userId = userId;
     }
 
+    public Long getDistrictId() {
+        return districtId;
+    }
+
+    public void setDistrictId(Long districtId) {
+        this.districtId = districtId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -125,13 +185,19 @@ public class UserInformationDTO implements Serializable {
         return "UserInformationDTO{" +
             "id=" + getId() +
             ", address='" + getAddress() + "'" +
+            ", bday=" + getBday() +
+            ", bmonth=" + getBmonth() +
+            ", byear=" + getByear() +
             ", gender=" + getGender() +
             ", phone='" + getPhone() + "'" +
+            ", image='" + getImage() + "'" +
+            ", description='" + getDescription() + "'" +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
             ", user=" + getUserId() +
+            ", district=" + getDistrictId() +
             "}";
     }
 }

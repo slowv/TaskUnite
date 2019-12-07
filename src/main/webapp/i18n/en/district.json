@@ -17,11 +17,10 @@
         "title": "District"
       },
       "name": "Name",
-      "status": "Status",
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
-      "addresses": "Addresses",
+      "users": "Users",
       "city": "City"
     }
   }

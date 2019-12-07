@@ -28,9 +28,6 @@
             <column name="min_price" type="double">
                 <constraints nullable="true" />
             </column>
-            <column name="status" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="created_at" type="datetime">
                 <constraints nullable="true" />
             </column>
@@ -70,7 +67,6 @@
             <column name="description" type="string"/>
             <column name="image" type="string"/>
             <column name="min_price" type="numeric"/>
-            <column name="status" type="numeric"/>
             <column name="created_at" type="datetime"/>
             <column name="updated_at" type="datetime"/>
             <column name="deleted_at" type="datetime"/>

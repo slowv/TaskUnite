@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -41,17 +42,26 @@ public class TaskResourceIT {
     private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
     private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_TITLE = "AAAAAAAAAA";
-    private static final String UPDATED_TITLE = "BBBBBBBBBB";
+    private static final String DEFAULT_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_NAME = "BBBBBBBBBB";
 
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
-    private static final Double DEFAULT_ESTIMATED_TIME = 1D;
-    private static final Double UPDATED_ESTIMATED_TIME = 2D;
+    private static final Double DEFAULT_TOTAL_PRICE = 1D;
+    private static final Double UPDATED_TOTAL_PRICE = 2D;
 
-    private static final Double DEFAULT_PRICE = 1D;
-    private static final Double UPDATED_PRICE = 2D;
+    private static final Instant DEFAULT_FROM = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_FROM = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final Instant DEFAULT_TO = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_TO = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final Duration DEFAULT_DURATION = Duration.ofHours(6);
+    private static final Duration UPDATED_DURATION = Duration.ofHours(12);
+
+    private static final Integer DEFAULT_TYPE = 1;
+    private static final Integer UPDATED_TYPE = 2;
 
     private static final Integer DEFAULT_STATUS = 1;
     private static final Integer UPDATED_STATUS = 2;
@@ -114,10 +124,13 @@ public class TaskResourceIT {
     public static Task createEntity(EntityManager em) {
         Task task = new Task()
             .address(DEFAULT_ADDRESS)
-            .title(DEFAULT_TITLE)
+            .name(DEFAULT_NAME)
             .description(DEFAULT_DESCRIPTION)
-            .estimatedTime(DEFAULT_ESTIMATED_TIME)
-            .price(DEFAULT_PRICE)
+            .totalPrice(DEFAULT_TOTAL_PRICE)
+            .from(DEFAULT_FROM)
+            .to(DEFAULT_TO)
+            .duration(DEFAULT_DURATION)
+            .type(DEFAULT_TYPE)
             .status(DEFAULT_STATUS)
             .createdAt(DEFAULT_CREATED_AT)
             .updatedAt(DEFAULT_UPDATED_AT)
@@ -133,10 +146,13 @@ public class TaskResourceIT {
     public static Task createUpdatedEntity(EntityManager em) {
         Task task = new Task()
             .address(UPDATED_ADDRESS)
-            .title(UPDATED_TITLE)
+            .name(UPDATED_NAME)
             .description(UPDATED_DESCRIPTION)
-            .estimatedTime(UPDATED_ESTIMATED_TIME)
-            .price(UPDATED_PRICE)
+            .totalPrice(UPDATED_TOTAL_PRICE)
+            .from(UPDATED_FROM)
+            .to(UPDATED_TO)
+            .duration(UPDATED_DURATION)
+            .type(UPDATED_TYPE)
             .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
@@ -166,10 +182,13 @@ public class TaskResourceIT {
         assertThat(taskList).hasSize(databaseSizeBeforeCreate + 1);
         Task testTask = taskList.get(taskList.size() - 1);
         assertThat(testTask.getAddress()).isEqualTo(DEFAULT_ADDRESS);
-        assertThat(testTask.getTitle()).isEqualTo(DEFAULT_TITLE);
+        assertThat(testTask.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testTask.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
-        assertThat(testTask.getEstimatedTime()).isEqualTo(DEFAULT_ESTIMATED_TIME);
-        assertThat(testTask.getPrice()).isEqualTo(DEFAULT_PRICE);
+        assertThat(testTask.getTotalPrice()).isEqualTo(DEFAULT_TOTAL_PRICE);
+        assertThat(testTask.getFrom()).isEqualTo(DEFAULT_FROM);
+        assertThat(testTask.getTo()).isEqualTo(DEFAULT_TO);
+        assertThat(testTask.getDuration()).isEqualTo(DEFAULT_DURATION);
+        assertThat(testTask.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testTask.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testTask.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testTask.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
@@ -209,10 +228,13 @@ public class TaskResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(task.getId().intValue())))
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS)))
-            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].estimatedTime").value(hasItem(DEFAULT_ESTIMATED_TIME.doubleValue())))
-            .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
+            .andExpect(jsonPath("$.[*].totalPrice").value(hasItem(DEFAULT_TOTAL_PRICE.doubleValue())))
+            .andExpect(jsonPath("$.[*].from").value(hasItem(DEFAULT_FROM.toString())))
+            .andExpect(jsonPath("$.[*].to").value(hasItem(DEFAULT_TO.toString())))
+            .andExpect(jsonPath("$.[*].duration").value(hasItem(DEFAULT_DURATION.toString())))
+            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
@@ -231,10 +253,13 @@ public class TaskResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(task.getId().intValue()))
             .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS))
-            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
-            .andExpect(jsonPath("$.estimatedTime").value(DEFAULT_ESTIMATED_TIME.doubleValue()))
-            .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
+            .andExpect(jsonPath("$.totalPrice").value(DEFAULT_TOTAL_PRICE.doubleValue()))
+            .andExpect(jsonPath("$.from").value(DEFAULT_FROM.toString()))
+            .andExpect(jsonPath("$.to").value(DEFAULT_TO.toString()))
+            .andExpect(jsonPath("$.duration").value(DEFAULT_DURATION.toString()))
+            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
@@ -263,10 +288,13 @@ public class TaskResourceIT {
         em.detach(updatedTask);
         updatedTask
             .address(UPDATED_ADDRESS)
-            .title(UPDATED_TITLE)
+            .name(UPDATED_NAME)
             .description(UPDATED_DESCRIPTION)
-            .estimatedTime(UPDATED_ESTIMATED_TIME)
-            .price(UPDATED_PRICE)
+            .totalPrice(UPDATED_TOTAL_PRICE)
+            .from(UPDATED_FROM)
+            .to(UPDATED_TO)
+            .duration(UPDATED_DURATION)
+            .type(UPDATED_TYPE)
             .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
@@ -283,10 +311,13 @@ public class TaskResourceIT {
         assertThat(taskList).hasSize(databaseSizeBeforeUpdate);
         Task testTask = taskList.get(taskList.size() - 1);
         assertThat(testTask.getAddress()).isEqualTo(UPDATED_ADDRESS);
-        assertThat(testTask.getTitle()).isEqualTo(UPDATED_TITLE);
+        assertThat(testTask.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testTask.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testTask.getEstimatedTime()).isEqualTo(UPDATED_ESTIMATED_TIME);
-        assertThat(testTask.getPrice()).isEqualTo(UPDATED_PRICE);
+        assertThat(testTask.getTotalPrice()).isEqualTo(UPDATED_TOTAL_PRICE);
+        assertThat(testTask.getFrom()).isEqualTo(UPDATED_FROM);
+        assertThat(testTask.getTo()).isEqualTo(UPDATED_TO);
+        assertThat(testTask.getDuration()).isEqualTo(UPDATED_DURATION);
+        assertThat(testTask.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testTask.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testTask.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testTask.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);

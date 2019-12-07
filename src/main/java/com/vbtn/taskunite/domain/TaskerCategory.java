@@ -25,8 +25,8 @@ public class TaskerCategory implements Serializable {
     @Column(name = "price")
     private Double price;
 
-    @Column(name = "status")
-    private Integer status;
+    @Column(name = "type")
+    private Integer type;
 
     @Column(name = "created_at")
     private Instant createdAt;
@@ -37,13 +37,13 @@ public class TaskerCategory implements Serializable {
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne
     @JsonIgnoreProperties("taskerCategories")
     private TaskCategory taskCategory;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne
     @JsonIgnoreProperties("taskerCategories")
-    private Tasker tasker;
+    private UserInformation user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -80,17 +80,17 @@ public class TaskerCategory implements Serializable {
         this.price = price;
     }
 
-    public Integer getStatus() {
-        return status;
+    public Integer getType() {
+        return type;
     }
 
-    public TaskerCategory status(Integer status) {
-        this.status = status;
+    public TaskerCategory type(Integer type) {
+        this.type = type;
         return this;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public Instant getCreatedAt() {
@@ -145,17 +145,17 @@ public class TaskerCategory implements Serializable {
         this.taskCategory = taskCategory;
     }
 
-    public Tasker getTasker() {
-        return tasker;
+    public UserInformation getUser() {
+        return user;
     }
 
-    public TaskerCategory tasker(Tasker tasker) {
-        this.tasker = tasker;
+    public TaskerCategory user(UserInformation userInformation) {
+        this.user = userInformation;
         return this;
     }
 
-    public void setTasker(Tasker tasker) {
-        this.tasker = tasker;
+    public void setUser(UserInformation userInformation) {
+        this.user = userInformation;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -181,7 +181,7 @@ public class TaskerCategory implements Serializable {
             "id=" + getId() +
             ", description='" + getDescription() + "'" +
             ", price=" + getPrice() +
-            ", status=" + getStatus() +
+            ", type=" + getType() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +

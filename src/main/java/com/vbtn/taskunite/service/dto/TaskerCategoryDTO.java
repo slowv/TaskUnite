@@ -14,7 +14,7 @@ public class TaskerCategoryDTO implements Serializable {
 
     private Double price;
 
-    private Integer status;
+    private Integer type;
 
     private Instant createdAt;
 
@@ -25,7 +25,7 @@ public class TaskerCategoryDTO implements Serializable {
 
     private Long taskCategoryId;
 
-    private Long taskerId;
+    private Long userId;
 
     public Long getId() {
         return id;
@@ -51,12 +51,12 @@ public class TaskerCategoryDTO implements Serializable {
         this.price = price;
     }
 
-    public Integer getStatus() {
-        return status;
+    public Integer getType() {
+        return type;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public Instant getCreatedAt() {
@@ -91,12 +91,12 @@ public class TaskerCategoryDTO implements Serializable {
         this.taskCategoryId = taskCategoryId;
     }
 
-    public Long getTaskerId() {
-        return taskerId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setTaskerId(Long taskerId) {
-        this.taskerId = taskerId;
+    public void setUserId(Long userInformationId) {
+        this.userId = userInformationId;
     }
 
     @Override
@@ -126,12 +126,12 @@ public class TaskerCategoryDTO implements Serializable {
             "id=" + getId() +
             ", description='" + getDescription() + "'" +
             ", price=" + getPrice() +
-            ", status=" + getStatus() +
+            ", type=" + getType() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
             ", taskCategory=" + getTaskCategoryId() +
-            ", tasker=" + getTaskerId() +
+            ", user=" + getUserId() +
             "}";
     }
 }

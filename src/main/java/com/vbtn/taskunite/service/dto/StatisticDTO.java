@@ -16,13 +16,7 @@ public class StatisticDTO implements Serializable {
 
     private Integer completedTask;
 
-    private Integer incompletedTask;
-
     private Integer rating;
-
-    private Integer ranking;
-
-    private Double bonus;
 
     private Instant createdAt;
 
@@ -65,36 +59,12 @@ public class StatisticDTO implements Serializable {
         this.completedTask = completedTask;
     }
 
-    public Integer getIncompletedTask() {
-        return incompletedTask;
-    }
-
-    public void setIncompletedTask(Integer incompletedTask) {
-        this.incompletedTask = incompletedTask;
-    }
-
     public Integer getRating() {
         return rating;
     }
 
     public void setRating(Integer rating) {
         this.rating = rating;
-    }
-
-    public Integer getRanking() {
-        return ranking;
-    }
-
-    public void setRanking(Integer ranking) {
-        this.ranking = ranking;
-    }
-
-    public Double getBonus() {
-        return bonus;
-    }
-
-    public void setBonus(Double bonus) {
-        this.bonus = bonus;
     }
 
     public Instant getCreatedAt() {
@@ -157,10 +127,7 @@ public class StatisticDTO implements Serializable {
             ", level=" + getLevel() +
             ", experience=" + getExperience() +
             ", completedTask=" + getCompletedTask() +
-            ", incompletedTask=" + getIncompletedTask() +
             ", rating=" + getRating() +
-            ", ranking=" + getRanking() +
-            ", bonus=" + getBonus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +

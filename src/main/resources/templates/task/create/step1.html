@@ -4,69 +4,17 @@
     <title>Create Task</title>
     <th:block th:include="fragment/layout :: head"> </th:block>
     <link rel="stylesheet" th:href="@{~/css/task/create.css}">
-    <link rel="stylesheet" th:href="@{~/css/responsive/task/create.css}">
 </head>
 <body>
 
 <div class="site-wrap">
-    <div class="mt-4 mb-3">
-        <div class="container">
-            <div class="row border-bottom pb-3">
-                <div class="col-lg-1 col-md-1 box-logo-step col-xl-1">
-                    <a th:href="@{/}">
-                        <img alt="TaskUnite" class="logo-step" th:src="@{~/images/favicon.png}">
-                    </a>
-                </div>
-                <div class="col-lg-9 offset-lg-2 col-md-9 offset-md-2 col-xl-9 offset-xl-2">
-                    <div class="box-step ">
-                        <div class="step active st1">
-                            <div class="box-circle">
-                                <div class="circle text-bold">1</div>
-                            </div>
-                            <div class="box-line">
-                                <div class="line"></div>
-                            </div>
-                            <div class="name-step" th:text="#{task-create.step1.task-infor}"></div>
-                        </div>
-                        <div class="step st2">
-                            <div class="box-circle">
-                                <div class="circle text-bold">2</div>
-                            </div>
-                            <div class="box-line ">
-                                <div class="line"></div>
-                            </div>
-                            <div class="name-step" th:text="#{task-create.step2.task-prices}"></div>
-                        </div>
-                        <div class="step st3">
-                            <div class="box-circle">
-                                <div class="circle text-bold">3</div>
-                            </div>
-                            <div class="box-line">
-                                <div class="line"></div>
-                            </div>
-                            <div class="name-step" th:text="#{task-create.step3.choose-date-time}"></div>
-                        </div>
-                        <div class="step st4">
-                            <div class="box-circle">
-                                <div class="circle text-bold">4</div>
-                            </div>
-                            <div class="name-step" th:text="#{task-create.step4.confirm-details}"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 p-0 mt-1">
-                    <div class="build-progress__sub-bar">
-                        <div class="build-progress__sub-bar__container">
-                            <img alt="form" class="build-progress__sub-bar__icon" th:src="@{~/images/pen.svg}">
-                            <div class="build-progress__sub-bar__message">
-                                <span th:text="#{task-create.step1.task-notification}"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <th:block th:replace="fragment/layout :: site-mobile-memu"></th:block>
+    <th:block th:replace="fragment/layout :: site-navbar"></th:block>
+    <div style="height: 113px;"></div>
+    <div class="unit-5 overlay" style="background-image: url('/images/hero_1.jpg');">
+        <div class="container text-center">
+            <h2 class="mb-0">Tạo task</h2>
+            <p class="mb-0 unit-6"><a th:href="@{/}">Trang chủ</a> <span class="sep">></span> <span>Tạo task</span></p>
         </div>
     </div>
 
@@ -132,7 +80,7 @@
                                 </div>
                                 <div class="box-input">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="title-task" th:field="*{title}"
+                                        <input type="text" class="form-control" id="title-task" th:field="*{name}"
                                                th:placeholder="#{task-create.step1.placeholder-work-name}">
                                     </div>
                                     <div class="mt-lg-5 form-group text-center">
@@ -162,38 +110,13 @@
                                     class="text-danger error-msg d-none"></span></div>
                                 <div class="box-input">
                                     <div class="form-group">
-                                        <!--<div class="custom-control custom-checkbox custom-control-inline">-->
-                                            <!--<input type="checkbox" class="custom-control-input" id="cateId1"-->
-                                                   <!--th:value="#{task-create.step1.categories-housework}">-->
-                                            <!--<label class="custom-control-label d-inline" for="cateId1" th:text="#{task-create.step1.categories-housework}"></label>-->
-                                        <!--</div>-->
                                         <th:block th:each="category: ${taskCategories}">
-                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                            <div class="custom-control custom-control-inline">
                                                 <input type="radio" name="taskCategories" class="custom-control-input" th:id="'cateId-' + ${category.id}"
                                                        th:value="${category.id}" th:field="*{taskCategory}">
                                                 <label class="custom-control-label d-inline" th:for="'cateId-' + ${category.id}" th:text="${category.name}"></label>
                                             </div>
                                         </th:block>
-
-                                        <!--<div class="custom-control custom-checkbox custom-control-inline">-->
-                                            <!--<input type="checkbox" class="custom-control-input" id="cateId3"-->
-                                                   <!--value="Vận chuyển">-->
-                                            <!--<label class="custom-control-label d-inline" for="cateId3">Vận-->
-                                                <!--chuyển</label>-->
-                                        <!--</div>-->
-                                        <!--<div class="custom-control custom-checkbox custom-control-inline">-->
-                                            <!--<input type="checkbox" class="custom-control-input" id="cateId4"-->
-                                                   <!--value="Thợ mộc">-->
-                                            <!--<label class="custom-control-label d-inline" for="cateId4">Vận-->
-                                                <!--chuyển</label>-->
-                                        <!--</div>-->
-                                        <!--<div class="custom-control custom-checkbox custom-control-inline">-->
-                                            <!--<input type="checkbox" class="custom-control-input" id="cateId5"-->
-                                                   <!--value="Sửa chữa nội thất">-->
-                                            <!--<label class="custom-control-label d-inline" for="cateId5">Sửa chữa nội-->
-                                                <!--thất-->
-                                            <!--</label>-->
-                                        <!--</div>-->
                                     </div>
                                     <div class="mt-lg-5 form-group text-center">
                                         <button class="btn-reset-css btn-svg-UI btn-continue" data-type="category"
@@ -208,32 +131,6 @@
                                     <span class="content">
 
                                     </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=false
-                                 data-state="empty">
-                                <span class="status-task-box">
-                                    <i class="icon-done text-primary"></i>
-                                </span>
-                                <div class="form-group text-uppercase text-label text-bold" th:text="#{task-create.step1.estimate-time}"><span
-                                    class="text-danger error-msg d-none"></span></div>
-                                <div class="box-input">
-                                    <div class="form-group">
-                                        <input type="number" step="0.1" th:field="*{estimatedTime}"  class="form-control w-25">
-                                    </div>
-                                    <div class="mt-lg-5 form-group text-center">
-                                        <button class="btn-svg-UI btn-reset-css btn-continue" data-type="estimated-time"
-                                                th:type="button">
-                                            <svg><rect></rect></svg>
-                                            <span th:text="#{task-create.next-btn}"></span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="form-group preview-content d-none">
-                                    <i class="icon-clock-o text-secondary mr-1"></i>
-                                    <span class="content"></span>
                                 </div>
                             </div>
                         </div>
@@ -270,7 +167,7 @@
                                 <!--<a href="javascript:void (0)" id="next-step2">-->
                                     <button type="submit" id="next-step2" class="btn-reset-css btn-svg-UI animation-svg-infinite" disabled="disabled">
                                         <svg><rect></rect></svg>
-                                        Sang bước 2
+                                        Tiếp tục
                                     </button>
                                 <!--</a>-->
                             </div>

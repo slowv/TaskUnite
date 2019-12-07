@@ -18,8 +18,6 @@ public class TaskCategoryDTO implements Serializable {
 
     private Double minPrice;
 
-    private Integer status;
-
     private Instant createdAt;
 
     private Instant updatedAt;
@@ -65,14 +63,6 @@ public class TaskCategoryDTO implements Serializable {
 
     public void setMinPrice(Double minPrice) {
         this.minPrice = minPrice;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
     public Instant getCreatedAt() {
@@ -128,7 +118,6 @@ public class TaskCategoryDTO implements Serializable {
             ", description='" + getDescription() + "'" +
             ", image='" + getImage() + "'" +
             ", minPrice=" + getMinPrice() +
-            ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +

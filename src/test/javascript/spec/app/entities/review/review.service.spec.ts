@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Review(0, 'AAAAAAA', 0, 0, currentDate, currentDate, currentDate);
+      elemDefault = new Review(0, 'AAAAAAA', 0, currentDate, currentDate, currentDate);
     });
 
     describe('Service methods', () => {
@@ -79,7 +79,6 @@ describe('Service Tests', () => {
           {
             content: 'BBBBBB',
             point: 1,
-            status: 1,
             createdAt: currentDate.format(DATE_TIME_FORMAT),
             updatedAt: currentDate.format(DATE_TIME_FORMAT),
             deletedAt: currentDate.format(DATE_TIME_FORMAT)
@@ -109,7 +108,6 @@ describe('Service Tests', () => {
           {
             content: 'BBBBBB',
             point: 1,
-            status: 1,
             createdAt: currentDate.format(DATE_TIME_FORMAT),
             updatedAt: currentDate.format(DATE_TIME_FORMAT),
             deletedAt: currentDate.format(DATE_TIME_FORMAT)

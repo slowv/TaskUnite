@@ -20,6 +20,7 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="balance"><span jhiTranslate="taskUniteApp.paymentInformation.balance">Balance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="hold"><span jhiTranslate="taskUniteApp.paymentInformation.hold">Hold</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="createdAt"><span jhiTranslate="taskUniteApp.paymentInformation.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.paymentInformation.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.paymentInformation.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -31,11 +32,14 @@
             <tr *ngFor="let paymentInformation of paymentInformations ;trackBy: trackId">
                 <td><a [routerLink]="['/payment-information', paymentInformation.id, 'view' ]">{{paymentInformation.id}}</a></td>
                 <td>{{paymentInformation.balance}}</td>
+                <td>{{paymentInformation.hold}}</td>
                 <td>{{paymentInformation.createdAt | date:'medium'}}</td>
                 <td>{{paymentInformation.updatedAt | date:'medium'}}</td>
                 <td>{{paymentInformation.deletedAt | date:'medium'}}</td>
                 <td>
-                    {{paymentInformation.userId}}
+                    <div *ngIf="paymentInformation.userId">
+                        <a [routerLink]="['/user-information', paymentInformation.userId , 'view' ]" >{{paymentInformation.userId}}</a>
+                    </div>
                 </td>
                 <td class="text-right">
                     <div class="btn-group">

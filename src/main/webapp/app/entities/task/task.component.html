@@ -20,18 +20,18 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="address"><span jhiTranslate="taskUniteApp.task.address">Address</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="title"><span jhiTranslate="taskUniteApp.task.title">Title</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="name"><span jhiTranslate="taskUniteApp.task.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="description"><span jhiTranslate="taskUniteApp.task.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="estimatedTime"><span jhiTranslate="taskUniteApp.task.estimatedTime">Estimated Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="price"><span jhiTranslate="taskUniteApp.task.price">Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="totalPrice"><span jhiTranslate="taskUniteApp.task.totalPrice">Total Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="from"><span jhiTranslate="taskUniteApp.task.from">From</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="to"><span jhiTranslate="taskUniteApp.task.to">To</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="duration"><span jhiTranslate="taskUniteApp.task.duration">Duration</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="type"><span jhiTranslate="taskUniteApp.task.type">Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="status"><span jhiTranslate="taskUniteApp.task.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="createdAt"><span jhiTranslate="taskUniteApp.task.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.task.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.task.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="roomId"><span jhiTranslate="taskUniteApp.task.room">Room</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="scheduleId"><span jhiTranslate="taskUniteApp.task.schedule">Schedule</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="taskerId"><span jhiTranslate="taskUniteApp.task.tasker">Tasker</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="masterId"><span jhiTranslate="taskUniteApp.task.master">Master</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="userId"><span jhiTranslate="taskUniteApp.task.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="taskCategoryId"><span jhiTranslate="taskUniteApp.task.taskCategory">Task Category</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
@@ -40,32 +40,20 @@
             <tr *ngFor="let task of tasks ;trackBy: trackId">
                 <td><a [routerLink]="['/task', task.id, 'view' ]">{{task.id}}</a></td>
                 <td>{{task.address}}</td>
-                <td>{{task.title}}</td>
+                <td>{{task.name}}</td>
                 <td>{{task.description}}</td>
-                <td>{{task.estimatedTime}}</td>
-                <td>{{task.price}}</td>
+                <td>{{task.totalPrice}}</td>
+                <td>{{task.from | date:'medium'}}</td>
+                <td>{{task.to | date:'medium'}}</td>
+                <td>{{task.duration}}</td>
+                <td>{{task.type}}</td>
                 <td>{{task.status}}</td>
                 <td>{{task.createdAt | date:'medium'}}</td>
                 <td>{{task.updatedAt | date:'medium'}}</td>
                 <td>{{task.deletedAt | date:'medium'}}</td>
                 <td>
-                    <div *ngIf="task.roomId">
-                        <a [routerLink]="['/room', task.roomId , 'view' ]" >{{task.roomId}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="task.scheduleId">
-                        <a [routerLink]="['/schedule', task.scheduleId , 'view' ]" >{{task.scheduleId}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="task.taskerId">
-                        <a [routerLink]="['/tasker', task.taskerId , 'view' ]" >{{task.taskerId}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="task.masterId">
-                        <a [routerLink]="['/master', task.masterId , 'view' ]" >{{task.masterId}}</a>
+                    <div *ngIf="task.userId">
+                        <a [routerLink]="['/user-information', task.userId , 'view' ]" >{{task.userId}}</a>
                     </div>
                 </td>
                 <td>

@@ -96,19 +96,14 @@ public class UserInformationResource {
      */
     @GetMapping("/user-informations")
     public ResponseEntity<List<UserInformationDTO>> getAllUserInformations(Pageable pageable, @RequestParam(required = false) String filter) {
-        if ("tasker-is-null".equals(filter)) {
-            log.debug("REST request to get all UserInformations where tasker is null");
-            return new ResponseEntity<>(userInformationService.findAllWhereTaskerIsNull(),
-                    HttpStatus.OK);
-        }
-        if ("master-is-null".equals(filter)) {
-            log.debug("REST request to get all UserInformations where master is null");
-            return new ResponseEntity<>(userInformationService.findAllWhereMasterIsNull(),
-                    HttpStatus.OK);
-        }
         if ("statistic-is-null".equals(filter)) {
             log.debug("REST request to get all UserInformations where statistic is null");
             return new ResponseEntity<>(userInformationService.findAllWhereStatisticIsNull(),
+                    HttpStatus.OK);
+        }
+        if ("payment-is-null".equals(filter)) {
+            log.debug("REST request to get all UserInformations where payment is null");
+            return new ResponseEntity<>(userInformationService.findAllWherePaymentIsNull(),
                     HttpStatus.OK);
         }
         log.debug("REST request to get a page of UserInformations");
