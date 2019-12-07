@@ -33,14 +33,4 @@ public class RegisterTaskerApi {
         }
         return "true";
     }
-
-    @PostMapping("/step2/complete")
-    public String promoteTasker() {
-        if (!userService.getUserWithAuthorities().isPresent()) {
-            return null;
-        } else {
-            registerTaskerService.promoteTasker(userService.getUserWithAuthorities().get());
-        }
-        return "true";
-    }
 }

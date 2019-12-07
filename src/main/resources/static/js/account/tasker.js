@@ -35,14 +35,4 @@ $(document).ready(function () {
     $('.addSignature').attr("style","display:none");
     $('.addSignature2').removeAttr("style");
   });
-
-  $("#completeTasker").click(function () {
-    $.post({
-      type: "POST",
-      url: "/tasker/step2/complete",
-      data: $("#csrfuck").serializeObject()
-    }).done((data, statusText, xhr) => {
-      if (data === "true") window.location.replace("/?tasker=success");
-    });
-  });
 });
