@@ -2,16 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="#{home.title}">Tìm công việc, uy tín, nhanh với TaskUnite</title>
-    <th:block th:replace="fragment/layout :: head"> </th:block>
+    <th:block th:replace="fragment/layout :: head"></th:block>
+    <link rel="stylesheet" th:href="@{~/css/home/home.css}">
 </head>
 <body>
 
 <div class="site-wrap">
 
-    <th:block th:replace="fragment/layout :: site-mobile-memu"> </th:block>
+    <th:block th:replace="fragment/layout :: site-mobile-memu"></th:block>
 
 
-    <th:block th:replace="fragment/layout :: site-navbar"> </th:block>
+    <th:block th:replace="fragment/layout :: site-navbar"></th:block>
 
     <div style="height: 113px;"></div>
 
@@ -21,9 +22,11 @@
             <div class="row align-items-center">
                 <div class="col-12 text-center" data-aos="fade">
                     <h1>Không cần phải tự tay hoàn thành hết mọi công việc</h1>
-                    <h3 style="color: whitesmoke">
-                        Hãy để mạng lưới hàng ngàn Tasker đáng tin cậy giúp đỡ bạn, từ lau dọn đến sửa chữa
-                    </h3>
+                    <a th:href="@{#}" id="btn-register-done">
+                        <!--                        <button class="btn btn-success">Hoàn thành đăng ký</button>-->
+                        <span>Hoàn thành đăng ký</span>
+                        <div class="wave"></div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -40,57 +43,76 @@
                 <div class="col-sm-6 col-md-4 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="100">
                     <a href="#" class="h-100 feature-item">
                         <span class="d-block icon flaticon-calculator mb-3 text-primary"></span>
-                        <h2>Accounting / Finanace</h2>
-                        <span class="counting">10,391</span>
+                        <h2 class="slv-text-category">Giao hàng</h2>
+                        <svg class="svg-box-category">
+                            <rect></rect>
+                        </svg>
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="200">
                     <a href="#" class="h-100 feature-item">
                         <span class="d-block icon flaticon-wrench mb-3 text-primary"></span>
-                        <h2>Automotive Jobs</h2>
-                        <span class="counting">192</span>
+                        <h2 class="slv-text-category">Lắp ráp nội thất</h2>
+                        <svg class="svg-box-category">
+                            <rect></rect>
+                        </svg>
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="300">
                     <a href="#" class="h-100 feature-item">
                         <span class="d-block icon flaticon-worker mb-3 text-primary"></span>
-                        <h2>Construction / Facilities</h2>
-                        <span class="counting">1,021</span>
+                        <h2 class="slv-text-category">
+                            Làm mộc
+                        </h2>
+                        <svg class="svg-box-category">
+                            <rect></rect>
+                        </svg>
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="400">
                     <a href="#" class="h-100 feature-item">
                         <span class="d-block icon flaticon-telecommunications mb-3 text-primary"></span>
-                        <h2>Telecommunications</h2>
-                        <span class="counting">1,219</span>
+                        <h2 class="slv-text-category">Sửa chữa điện</h2>
+                        <svg class="svg-box-category">
+                            <rect></rect>
+                        </svg>
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="500">
                     <a href="#" class="h-100 feature-item">
                         <span class="d-block icon flaticon-stethoscope mb-3 text-primary"></span>
-                        <h2>Healthcare</h2>
-                        <span class="counting">482</span>
+                        <h2 class="slv-text-category">Mang vác nặng</h2>
+                        <svg class="svg-box-category">
+                            <rect></rect>
+                        </svg>
                     </a>
+
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="600">
                     <a href="#" class="h-100 feature-item">
                         <span class="d-block icon flaticon-computer-graphic mb-3 text-primary"></span>
-                        <h2>Design, Art &amp; Multimedia</h2>
-                        <span class="counting">5,409</span>
+                        <h2 class="slv-text-category">Mua hàng hộ</h2>
+                        <svg class="svg-box-category">
+                            <rect></rect>
+                        </svg>
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="700">
                     <a href="#" class="h-100 feature-item">
                         <span class="d-block icon flaticon-trolley mb-3 text-primary"></span>
-                        <h2>Transportation &amp; Logistics</h2>
-                        <span class="counting">291</span>
+                        <h2 class="slv-text-category">Chuyển nhà</h2>
+                        <svg class="svg-box-category">
+                            <rect></rect>
+                        </svg>
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="800">
                     <a href="#" class="h-100 feature-item">
                         <span class="d-block icon flaticon-restaurant mb-3 text-primary"></span>
-                        <h2>Restaurant / Food Service</h2>
-                        <span class="counting">329</span>
+                        <h2 class="slv-text-category">Quét dọn</h2>
+                        <svg class="svg-box-category">
+                            <rect></rect>
+                        </svg>
                     </a>
                 </div>
             </div>
@@ -103,9 +125,11 @@
                 <div class="col-md-12 mb-5 mb-md-0" data-aos="fade-up" data-aos-delay="100">
                     <h2 class="mb-5 h3" th:text="#{home.recent-job}">Recent Jobs</h2>
                     <div class="rounded border jobs-wrap">
-                        <a href="job-single.html" class="job-item d-block d-md-flex align-items-center  border-bottom fulltime">
+                        <a href="job-single.html"
+                           class="job-item d-block d-md-flex align-items-center  border-bottom fulltime">
                             <div class="company-logo blank-logo text-center text-md-left pl-3">
-                                <img th:src="@{~/images/company_logo_blank.png}" alt="Avatar master" class="img-fluid mx-auto">
+                                <img th:src="@{~/images/company_logo_blank.png}" alt="Avatar master"
+                                     class="img-fluid mx-auto">
                             </div>
                             <div class="job-details h-100">
                                 <div class="p-3 align-self-center">
@@ -132,9 +156,11 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="job-single.html" class="job-item d-block d-md-flex align-items-center  border-bottom fulltime">
+                        <a href="job-single.html"
+                           class="job-item d-block d-md-flex align-items-center  border-bottom fulltime">
                             <div class="company-logo blank-logo text-center text-md-left pl-3">
-                                <img th:src="@{~/images/company_logo_blank.png}" alt="Avatar master" class="img-fluid mx-auto">
+                                <img th:src="@{~/images/company_logo_blank.png}" alt="Avatar master"
+                                     class="img-fluid mx-auto">
                             </div>
                             <div class="job-details h-100">
                                 <div class="p-3 align-self-center">
@@ -161,9 +187,11 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="job-single.html" class="job-item d-block d-md-flex align-items-center  border-bottom fulltime">
+                        <a href="job-single.html"
+                           class="job-item d-block d-md-flex align-items-center  border-bottom fulltime">
                             <div class="company-logo blank-logo text-center text-md-left pl-3">
-                                <img th:src="@{~/images/company_logo_blank.png}" alt="Avatar master" class="img-fluid mx-auto">
+                                <img th:src="@{~/images/company_logo_blank.png}" alt="Avatar master"
+                                     class="img-fluid mx-auto">
                             </div>
                             <div class="job-details h-100">
                                 <div class="p-3 align-self-center">
@@ -193,16 +221,23 @@
                     </div>
 
                     <div class="col-md-12 text-center mt-5">
-                        <a href="#" class="btn btn-primary rounded py-3 px-5">
-                            <span class="icon-plus-circle"></span>
-                            <th:block th:text="#{home.show-more}"> </th:block>
+                        <a href="#" class="btn-svg-UI btn-reset-css fill-green">
+                            <svg>
+                                <rect></rect>
+                            </svg>
+                            <span>
+                                <span class="icon-plus-circle"></span> <span  th:text="#{home.show-more}"></span>
+                            </span>
+
                         </a>
                     </div>
                 </div>
                 <div class="col-md-12 block-16" data-aos="fade-up" data-aos-delay="200">
                     <div class="d-flex mb-0">
                         <h2 class="mb-5 h3 mb-0">Featured Jobs</h2>
-                        <div class="ml-auto mt-1"><a href="#" class="owl-custom-prev">Prev</a> / <a href="#" class="owl-custom-next">Next</a></div>
+                        <div class="ml-auto mt-1"><a href="#" class="owl-custom-prev">Prev</a> / <a href="#"
+                                                                                                    class="owl-custom-next">Next</a>
+                        </div>
                     </div>
 
                     <div class="nonloop-block-16 owl-carousel">
@@ -215,7 +250,9 @@
                                 <span class="d-block"><span class="icon-room"></span> Florida</span>
                                 <span class="d-block"><span class="icon-money mr-1"></span> $55000 &mdash; 70000</span>
                             </p>
-                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi neque fugit tempora, numquam voluptate veritatis odit id, iste eum culpa alias, ut officiis omnis itaque ad, rem sunt doloremque molestias.</p>
+                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi neque fugit
+                                tempora, numquam voluptate veritatis odit id, iste eum culpa alias, ut officiis omnis
+                                itaque ad, rem sunt doloremque molestias.</p>
                         </div>
 
                         <div class="border rounded p-4 bg-white">
@@ -226,7 +263,9 @@
                                 <span class="d-block"><span class="icon-room"></span> Florida</span>
                                 <span class="d-block"><span class="icon-money mr-1"></span> $55000 &mdash; 70000</span>
                             </p>
-                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus accusamus necessitatibus praesentium voluptate natus excepturi rerum, autem. Magnam laboriosam, quam sapiente laudantium iure sit ea! Tenetur, quasi, praesentium. Architecto, eum.</p>
+                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus accusamus
+                                necessitatibus praesentium voluptate natus excepturi rerum, autem. Magnam laboriosam,
+                                quam sapiente laudantium iure sit ea! Tenetur, quasi, praesentium. Architecto, eum.</p>
                         </div>
 
                         <div class="border rounded p-4 bg-white">
@@ -237,7 +276,9 @@
                                 <span class="d-block"><span class="icon-room"></span> Florida</span>
                                 <span class="d-block"><span class="icon-money mr-1"></span> $55000 &mdash; 70000</span>
                             </p>
-                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus esse, quam consectetur ipsum quibusdam ullam ab nesciunt, doloribus voluptatum neque iure perspiciatis vel vero illo consequatur facilis, fuga nobis corporis.</p>
+                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus esse,
+                                quam consectetur ipsum quibusdam ullam ab nesciunt, doloribus voluptatum neque iure
+                                perspiciatis vel vero illo consequatur facilis, fuga nobis corporis.</p>
                         </div>
 
                         <div class="border rounded p-4 bg-white">
@@ -248,7 +289,9 @@
                                 <span class="d-block"><span class="icon-room"></span> Florida</span>
                                 <span class="d-block"><span class="icon-money mr-1"></span> $55000 &mdash; 70000</span>
                             </p>
-                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at ipsum commodi hic, cum esse asperiores libero molestiae, perferendis consectetur assumenda iusto, dolorem nemo maiores magnam illo laborum sit, dicta.</p>
+                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at ipsum
+                                commodi hic, cum esse asperiores libero molestiae, perferendis consectetur assumenda
+                                iusto, dolorem nemo maiores magnam illo laborum sit, dicta.</p>
                         </div>
 
                     </div>
@@ -278,15 +321,18 @@
                         <h2>Đánh giá dịch vụ</h2>
                     </div>
 
-                    <p class="mb-4 h5 font-italic lineheight1-5">&ldquo;Từ khi bắt đầu sử dụng TaskUnite, tôi không cần giành cả cuối tuần để dọn dẹp nhà cửa và mua sắm thực phẩm cho cả tuần nữa.
-                     Tôi đã có thêm thời gian để chăm sóc bản thân và gia đình của tôi. Cảm ơn TaskUnite rất nhiều !&rdquo;</p>
-                    <p>&mdash; <strong class="text-black font-weight-bold">Đào Xuân Hùng</strong>, Chuyên gia công nghệ</p>
+                    <p class="mb-4 h5 font-italic lineheight1-5">&ldquo;Từ khi bắt đầu sử dụng TaskUnite, tôi không cần
+                        giành cả cuối tuần để dọn dẹp nhà cửa và mua sắm thực phẩm cho cả tuần nữa.
+                        Tôi đã có thêm thời gian để chăm sóc bản thân và gia đình của tôi. Cảm ơn TaskUnite rất nhiều !&rdquo;</p>
+                    <p>&mdash; <strong class="text-black font-weight-bold">Đào Xuân Hùng</strong>, Chuyên gia công nghệ
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="site-blocks-cover overlay inner-page" style="background-image: url('/images/hero_1.jpg');" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="site-blocks-cover overlay inner-page" style="background-image: url('/images/hero_1.jpg');"
+         data-aos="fade" data-stellar-background-ratio="0.5">
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-6 text-center" data-aos="fade">
@@ -309,13 +355,15 @@
                 <div class="text-center p-4 item border-right" data-aos="fade">
                     <span class="flaticon-worker display-3 mb-3 d-block text-primary"></span>
                     <h2 class="h4">Mạng lưới Tasker lớn</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos fugit vitae dolorum.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos
+                        fugit vitae dolorum.</p>
                     <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
                 </div>
                 <div class="text-center p-4 item" data-aos="fade">
                     <span class="flaticon-wrench display-3 mb-3 d-block text-primary"></span>
                     <h2 class="h4">Đa dạng công việc</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos fugit vitae dolorum.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos
+                        fugit vitae dolorum.</p>
                     <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
                 </div>
             </div>
@@ -323,13 +371,15 @@
                 <div class="text-center p-4 item border-right" data-aos="fade">
                     <span class="flaticon-stethoscope display-3 mb-3 d-block text-primary"></span>
                     <h2 class="h4">Bảo hiểm đầy đủ</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos fugit vitae dolorum.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos
+                        fugit vitae dolorum.</p>
                     <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
                 </div>
                 <div class="text-center p-4 item" data-aos="fade">
                     <span class="flaticon-calculator display-3 mb-3 d-block text-primary"></span>
                     <h2 class="h4">Thu nhập cao</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos fugit vitae dolorum.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos
+                        fugit vitae dolorum.</p>
                     <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
                 </div>
             </div>
@@ -356,7 +406,8 @@
                     </div>
                     <h2 class="heading mb-0 h5"><a href="#">Dọn dẹp nhà cửa thật đơn giản</a></h2>
                     <span class="mb-3 d-block post-date">January 20, 2018 &bullet; By <a href="#">Josh Holmes</a></span>
-                    <p>Dọn dẹp nhà cửa thật sự rất vất vả và tốn thời gian. Nhờ sự trợ giúp của các Tasker, tôi đã có thêm thời gian cho những sở thích cá nhân</p>
+                    <p>Dọn dẹp nhà cửa thật sự rất vất vả và tốn thời gian. Nhờ sự trợ giúp của các Tasker, tôi đã có
+                        thêm thời gian cho những sở thích cá nhân</p>
                 </div>
 
                 <div class="media-with-text">
@@ -367,7 +418,8 @@
                     </div>
                     <h2 class="heading mb-0 h5"><a href="#">Sửa TV trong vòng vài nốt nhạc</a></h2>
                     <span class="mb-3 d-block post-date">January 20, 2018 &bullet; By <a href="#">Josh Holmes</a></span>
-                    <p>Tôi đang xem đội tuyển Việt Nam đá thì TV bị hỏng. Rất may có một Tasker đã sửa được TV và tôi không bỏ lỡ bàn thắng nào. Cảm ơn TaskUnite</p>
+                    <p>Tôi đang xem đội tuyển Việt Nam đá thì TV bị hỏng. Rất may có một Tasker đã sửa được TV và tôi
+                        không bỏ lỡ bàn thắng nào. Cảm ơn TaskUnite</p>
                 </div>
 
                 <div class="media-with-text">
@@ -379,7 +431,8 @@
                     <h2 class="heading mb-0 h5"><a href="#">Mua sắm thật tiện lợi</a></h2>
                     <span class="mb-3 d-block post-date">January 20, 2018 &bullet; By <a href="#">Josh Holmes</a></span>
                     <p>
-                        Tôi thường làm việc từ sáng đến tối nên không có nhiều thời gian để đi mua sắm. Nhờ có các Tasker đáng tin cậy,
+                        Tôi thường làm việc từ sáng đến tối nên không có nhiều thời gian để đi mua sắm. Nhờ có các
+                        Tasker đáng tin cậy,
                         gia đình tôi luôn có đủ thực phẩm và hàng hóa để sinh hoạt. Yêu TaskUnite !!!
                     </p>
                 </div>
@@ -387,10 +440,9 @@
         </div>
     </div>
 
-    <th:block th:replace="fragment/layout :: footer"> </th:block>
+    <th:block th:replace="fragment/layout :: footer"></th:block>
 </div>
 
-<th:block th:replace="fragment/layout :: javascript"> </th:block>
-
+<th:block th:replace="fragment/layout :: javascript"></th:block>
 </body>
 </html>

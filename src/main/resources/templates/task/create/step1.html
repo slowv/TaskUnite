@@ -3,24 +3,25 @@
 <head>
     <title>Create Task</title>
     <th:block th:include="fragment/layout :: head"> </th:block>
+    <link rel="stylesheet" th:href="@{~/css/task/create.css}">
     <link rel="stylesheet" th:href="@{~/css/responsive/task/create.css}">
 </head>
 <body>
 
 <div class="site-wrap">
     <div class="mt-4 mb-3">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row border-bottom pb-3">
-                <div class="col-md-1 box-logo-step col-xl-12">
+                <div class="col-lg-1 col-md-1 box-logo-step col-xl-1">
                     <a th:href="@{/}">
                         <img alt="TaskUnite" class="logo-step" th:src="@{~/images/favicon.png}">
                     </a>
                 </div>
-                <div class="col-lg-9 col-md-12 offset-lg-2">
+                <div class="col-lg-9 offset-lg-2 col-md-9 offset-md-2 col-xl-9 offset-xl-2">
                     <div class="box-step ">
                         <div class="step active st1">
                             <div class="box-circle">
-                                <div class="circle">1</div>
+                                <div class="circle text-bold">1</div>
                             </div>
                             <div class="box-line">
                                 <div class="line"></div>
@@ -29,16 +30,16 @@
                         </div>
                         <div class="step st2">
                             <div class="box-circle">
-                                <div class="circle">2</div>
+                                <div class="circle text-bold">2</div>
                             </div>
                             <div class="box-line ">
                                 <div class="line"></div>
                             </div>
-                        <div class="name-step" th:text="#{task-create.step2.task-prices}"></div>
+                            <div class="name-step" th:text="#{task-create.step2.task-prices}"></div>
                         </div>
                         <div class="step st3">
                             <div class="box-circle">
-                                <div class="circle">3</div>
+                                <div class="circle text-bold">3</div>
                             </div>
                             <div class="box-line">
                                 <div class="line"></div>
@@ -47,7 +48,7 @@
                         </div>
                         <div class="step st4">
                             <div class="box-circle">
-                                <div class="circle">4</div>
+                                <div class="circle text-bold">4</div>
                             </div>
                             <div class="name-step" th:text="#{task-create.step4.confirm-details}"></div>
                         </div>
@@ -81,10 +82,11 @@
                                     <i class="icon-done text-primary"></i>
                                     <!--                                    <i class="icon-pencil text-primary"></i>-->
                                 </span>
-                                <div class="form-group text-uppercase text-label d-flex">
-                                    <div style="flex: 9" th:text="#{task-create.step1.task-address}"><span class="text-danger error-msg d-none"></span>
+                                <div class="form-group text-uppercase text-label d-flex ">
+                                    <div style="flex: 9" th:class="text-bold" th:text="#{task-create.step1.task-address}">
+                                        <span class="text-danger error-msg d-none"></span>
                                     </div>
-                                    <select name="option-address" style="flex: 1">
+                                    <select name="option-address" class="d-none" style="flex: 1">
                                         <option value="1" selected th:text="#{task-create.step1.task-address1}"></option>
                                         <option value="2" th:text="#{task-create.step1.task-address2}"></option>
                                     </select>
@@ -107,8 +109,11 @@
                                         </div>
                                     </div>
                                     <div class="mt-lg-5 form-group text-center">
-                                        <button class="btn btn-success btn-continue px-4 " data-type="address"
-                                                th:type="button" th:text="#{task-create.next-btn}"></button>
+                                        <button class="btn-reset-css btn-svg-UI btn-continue" data-type="address"
+                                                th:type="button">
+                                            <svg><rect></rect></svg>
+                                            <span th:text="#{task-create.next-btn}"></span>
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="form-group preview-content d-none">
@@ -122,7 +127,8 @@
                                 <span class="status-task-box">
                                     <i class="icon-done text-primary"></i>
                                 </span>
-                                <div class="form-group text-uppercase text-label" th:text="#{task-create.step1.work-name}"><span class="text-danger error-msg d-none"></span>
+                                <div class="form-group text-uppercase text-label text-bold" th:text="#{task-create.step1.work-name}">
+                                    <span class="text-danger error-msg d-none"></span>
                                 </div>
                                 <div class="box-input">
                                     <div class="form-group">
@@ -130,8 +136,10 @@
                                                th:placeholder="#{task-create.step1.placeholder-work-name}">
                                     </div>
                                     <div class="mt-lg-5 form-group text-center">
-                                        <button class="btn btn-success btn-continue px-4" data-type="title"
-                                                th:type="button" th:text="#{task-create.next-btn}">
+                                        <button class="btn-reset-css btn-svg-UI btn-continue" data-type="title"
+                                                th:type="button">
+                                            <svg><rect></rect></svg>
+                                            <span th:text="#{task-create.next-btn}"></span>
                                         </button>
                                     </div>
                                 </div>
@@ -150,7 +158,7 @@
                                 <span class="status-task-box">
                                     <i class="icon-done text-primary"></i>
                                 </span>
-                                <div class="form-group text-uppercase text-label" th:text="#{task-create.step1.work-categories}"><span
+                                <div class="form-group text-uppercase text-label text-bold" th:text="#{task-create.step1.work-categories}"><span
                                     class="text-danger error-msg d-none"></span></div>
                                 <div class="box-input">
                                     <div class="form-group">
@@ -188,8 +196,10 @@
                                         <!--</div>-->
                                     </div>
                                     <div class="mt-lg-5 form-group text-center">
-                                        <button class="btn btn-success btn-continue px-4" data-type="category"
-                                                th:type="button">Tiếp tục
+                                        <button class="btn-reset-css btn-svg-UI btn-continue" data-type="category"
+                                                th:type="button">
+                                            <svg><rect></rect></svg>
+                                            <span th:text="#{task-create.next-btn}"></span>
                                         </button>
                                     </div>
                                 </div>
@@ -207,15 +217,17 @@
                                 <span class="status-task-box">
                                     <i class="icon-done text-primary"></i>
                                 </span>
-                                <div class="form-group text-uppercase text-label" th:text="#{task-create.step1.estimate-time}"><span
+                                <div class="form-group text-uppercase text-label text-bold" th:text="#{task-create.step1.estimate-time}"><span
                                     class="text-danger error-msg d-none"></span></div>
                                 <div class="box-input">
                                     <div class="form-group">
-                                        <input type="number" th:field="*{estimatedTime}"  class="form-control w-25" id="estimated-time">
+                                        <input type="number" step="0.1" th:field="*{estimatedTime}"  class="form-control w-25">
                                     </div>
                                     <div class="mt-lg-5 form-group text-center">
-                                        <button class="btn btn-success btn-continue px-4" data-type="estimated-time"
-                                                th:type="button" th:text="#{task-create.next-btn}">
+                                        <button class="btn-svg-UI btn-reset-css btn-continue" data-type="estimated-time"
+                                                th:type="button">
+                                            <svg><rect></rect></svg>
+                                            <span th:text="#{task-create.next-btn}"></span>
                                         </button>
                                     </div>
                                 </div>
@@ -231,7 +243,7 @@
                                 <span class="status-task-box">
                                     <i class="icon-done text-primary"></i>
                                 </span>
-                                <div class="form-group text-uppercase text-label" th:text="#{task-create.step1.task-description}"><span
+                                <div class="form-group text-uppercase text-label text-bold" th:text="#{task-create.step1.task-description}"><span
                                     class="text-danger error-msg d-none"></span></div>
                                 <div class="box-input">
                                     <div class="form-group">
@@ -240,8 +252,10 @@
                                                   th:placeholder="#{task-create.step1.task-des-placehoder}"></textarea>
                                     </div>
                                     <div class="mt-lg-5 form-group text-center">
-                                        <button class="btn btn-success btn-continue px-4" data-type="description"
-                                                th:type="button" th:text="#{task-create.next-btn}">
+                                        <button class="btn-continue btn-reset-css btn-svg-UI" data-type="description"
+                                                th:type="button">
+                                            <svg><rect></rect></svg>
+                                            <span th:text="#{task-create.next-btn}"></span>
                                         </button>
                                     </div>
                                 </div>
@@ -254,7 +268,10 @@
                         <div class="row form-group">
                             <div class="col-md-12 text-right">
                                 <!--<a href="javascript:void (0)" id="next-step2">-->
-                                    <button type="submit" id="next-step2" class="btn btn-success py-2 px-5" disabled="disabled" th:text="#{task-create.next-btn}"></button>
+                                    <button type="submit" id="next-step2" class="btn-reset-css btn-svg-UI animation-svg-infinite" disabled="disabled">
+                                        <svg><rect></rect></svg>
+                                        Sang bước 2
+                                    </button>
                                 <!--</a>-->
                             </div>
                         </div>

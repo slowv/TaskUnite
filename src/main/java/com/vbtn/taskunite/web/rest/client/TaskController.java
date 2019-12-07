@@ -25,10 +25,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/task")
@@ -64,6 +62,7 @@ public class TaskController {
             Optional<UserInformation> userInfo = customUserInformationService.findOneByUsername(principal.getName());
             if(userInfo.isPresent()){
                 UserInformation userInformation = userInfo.get();
+                if (userInformation.getMaster() == null) return "redirect:/";
                 taskInfo.setMaster(userInformation.getMaster());
             }
         }
@@ -75,9 +74,18 @@ public class TaskController {
     @RequestMapping("/create/step2")
     public String createStep2(HttpSession session, Model model){
         HashMap step1 = (HashMap) session.getAttribute("step1");
+        List<Tasker> taskers = new ArrayList<>();
+        List<Double> prices = new ArrayList<>();
+        for (TaskerCategory t: ((Task) step1.get("taskInfo")).getTaskCategory().getTaskerCategories()) {
+            taskers.add(t.getTasker());
+            prices.add(t.getPrice());
+        }
+        model.addAttribute("taskers", taskers);
+        model.addAttribute("prices", prices);
         if(null == step1){
             return "redirect:/task/create/step1";
         }
+        model.addAttribute("taskInfo", (Task) ((HashMap) session.getAttribute("step1")).get("taskInfo"));
         return "task/create/step2";
     }
 
@@ -103,6 +111,7 @@ public class TaskController {
         if(null == step2){
             return "redirect:/task/create/step1";
         }
+        model.addAttribute("taskInfo", (Task) step2.get("taskInfo"));
         return "task/create/step3";
     }
 
@@ -137,7 +146,14 @@ public class TaskController {
         HashMap step3 = (HashMap) session.getAttribute("step3");
         Task taskInfo = (Task)step3.get("taskInfo");
         taskInfo.setDescription(description);
-        customTaskService.save(taskInfo);
-        return "redirect:/";
+        taskInfo = customTaskService.save(taskInfo);
+        if(null == taskInfo){
+            return "redirect:/";
+        }
+        session.removeAttribute("step1");
+        session.removeAttribute("step2");
+        session.removeAttribute("step3");
+        session.removeAttribute("step4");
+        return "redirect:/room/" + taskInfo.getRoom().getId();
     }
 }

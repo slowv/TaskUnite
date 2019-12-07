@@ -13,11 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 /**
  * Service Implementation for managing {@link TaskerCategory}.
@@ -65,21 +61,6 @@ public class TaskerCategoryServiceImpl implements TaskerCategoryService {
             .map(taskerCategoryMapper::toDto);
     }
 
-
-
-    /**
-    *  Get all the taskerCategories where TaskCategory is {@code null}.
-     *  @return the list of entities.
-     */
-    @Transactional(readOnly = true) 
-    public List<TaskerCategoryDTO> findAllWhereTaskCategoryIsNull() {
-        log.debug("Request to get all taskerCategories where TaskCategory is null");
-        return StreamSupport
-            .stream(taskerCategoryRepository.findAll().spliterator(), false)
-            .filter(taskerCategory -> taskerCategory.getTaskCategory() == null)
-            .map(taskerCategoryMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
-    }
 
     /**
      * Get one taskerCategory by id.

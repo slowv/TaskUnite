@@ -1,6 +1,7 @@
 package com.vbtn.taskunite.web.rest.client.account;
 
 import com.vbtn.taskunite.domain.User;
+import com.vbtn.taskunite.service.LoginService;
 import com.vbtn.taskunite.service.MailService;
 import com.vbtn.taskunite.service.RegisterService;
 import com.vbtn.taskunite.web.rest.client.vm.RegisterVM;
@@ -41,7 +42,8 @@ public class RegisterController {
         }
         User user = registerService.registerUser(managedUserVM, managedUserVM.getPassword());
         mailService.sendActivationEmail(user);
-        return "redirect:/?register=success";
+
+        return "redirect:/";
     }
 
     private static boolean checkPasswordLength(String password) {

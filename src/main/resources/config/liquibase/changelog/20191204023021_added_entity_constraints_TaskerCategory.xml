@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity TaskerCategory.
+    -->
+    <changeSet id="20191204023021-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="task_category_id"
+                                 baseTableName="tasker_category"
+                                 constraintName="fk_tasker_category_task_category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="task_category"/>
+
+        <addForeignKeyConstraint baseColumnNames="tasker_id"
+                                 baseTableName="tasker_category"
+                                 constraintName="fk_tasker_category_tasker_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tasker"/>
+
+    </changeSet>
+</databaseChangeLog>

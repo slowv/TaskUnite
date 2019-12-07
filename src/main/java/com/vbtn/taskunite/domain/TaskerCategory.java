@@ -1,12 +1,10 @@
 package com.vbtn.taskunite.domain;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A TaskerCategory.
@@ -39,13 +37,13 @@ public class TaskerCategory implements Serializable {
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
-    @OneToOne(mappedBy = "taskerCategory")
-    @JsonIgnore
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JsonIgnoreProperties("taskerCategories")
     private TaskCategory taskCategory;
 
-    @ManyToMany(mappedBy = "taskerCategories")
-    @JsonIgnore
-    private Set<Tasker> taskers = new HashSet<>();
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JsonIgnoreProperties("taskerCategories")
+    private Tasker tasker;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -147,29 +145,17 @@ public class TaskerCategory implements Serializable {
         this.taskCategory = taskCategory;
     }
 
-    public Set<Tasker> getTaskers() {
-        return taskers;
+    public Tasker getTasker() {
+        return tasker;
     }
 
-    public TaskerCategory taskers(Set<Tasker> taskers) {
-        this.taskers = taskers;
+    public TaskerCategory tasker(Tasker tasker) {
+        this.tasker = tasker;
         return this;
     }
 
-    public TaskerCategory addTaskers(Tasker tasker) {
-        this.taskers.add(tasker);
-        tasker.getTaskerCategories().add(this);
-        return this;
-    }
-
-    public TaskerCategory removeTaskers(Tasker tasker) {
-        this.taskers.remove(tasker);
-        tasker.getTaskerCategories().remove(this);
-        return this;
-    }
-
-    public void setTaskers(Set<Tasker> taskers) {
-        this.taskers = taskers;
+    public void setTasker(Tasker tasker) {
+        this.tasker = tasker;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

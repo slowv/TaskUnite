@@ -43,6 +43,20 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.taskerCategory.taskCategory" for="field_taskCategory">Task Category</label>
+                    <select class="form-control" id="field_taskCategory" name="taskCategory" formControlName="taskCategoryId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="taskCategoryOption.id" *ngFor="let taskCategoryOption of taskcategories; trackBy: trackTaskCategoryById">{{taskCategoryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.taskerCategory.tasker" for="field_tasker">Tasker</label>
+                    <select class="form-control" id="field_tasker" name="tasker" formControlName="taskerId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="taskerOption.id" *ngFor="let taskerOption of taskers; trackBy: trackTaskerById">{{taskerOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

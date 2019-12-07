@@ -25,6 +25,8 @@
             <th scope="col"  jhiSortBy="createdAt"><span jhiTranslate="taskUniteApp.taskerCategory.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.taskerCategory.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.taskerCategory.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="taskCategoryId"><span jhiTranslate="taskUniteApp.taskerCategory.taskCategory">Task Category</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="taskerId"><span jhiTranslate="taskUniteApp.taskerCategory.tasker">Tasker</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -37,6 +39,16 @@
                 <td>{{taskerCategory.createdAt | date:'medium'}}</td>
                 <td>{{taskerCategory.updatedAt | date:'medium'}}</td>
                 <td>{{taskerCategory.deletedAt | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="taskerCategory.taskCategoryId">
+                        <a [routerLink]="['/task-category', taskerCategory.taskCategoryId , 'view' ]" >{{taskerCategory.taskCategoryId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="taskerCategory.taskerId">
+                        <a [routerLink]="['/tasker', taskerCategory.taskerId , 'view' ]" >{{taskerCategory.taskerId}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

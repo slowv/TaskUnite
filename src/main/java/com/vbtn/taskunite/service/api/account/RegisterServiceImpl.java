@@ -1,11 +1,7 @@
 package com.vbtn.taskunite.service.api.account;
 
-import com.vbtn.taskunite.domain.Authority;
-import com.vbtn.taskunite.domain.User;
-import com.vbtn.taskunite.domain.UserInformation;
-import com.vbtn.taskunite.repository.AuthorityRepository;
-import com.vbtn.taskunite.repository.UserInformationRepository;
-import com.vbtn.taskunite.repository.UserRepository;
+import com.vbtn.taskunite.domain.*;
+import com.vbtn.taskunite.repository.*;
 import com.vbtn.taskunite.security.AuthoritiesConstants;
 import com.vbtn.taskunite.service.EmailAlreadyUsedException;
 import com.vbtn.taskunite.service.RegisterService;
@@ -33,15 +29,21 @@ public class RegisterServiceImpl implements RegisterService {
 
     private final UserInformationRepository userInformationRepository;
 
+    private final PaymentInformationRepository paymentInformationRepository;
+
+    private final StatisticRepository statisticRepository;
+
     private final CacheManager cacheManager;
 
     private final PasswordEncoder passwordEncoder;
 
     private final AuthorityRepository authorityRepository;
 
-    public RegisterServiceImpl(UserRepository userRepository, UserInformationRepository userInformationRepository, CacheManager cacheManager, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository) {
+    public RegisterServiceImpl(UserRepository userRepository, UserInformationRepository userInformationRepository, PaymentInformationRepository paymentInformationRepository, StatisticRepository statisticRepository, CacheManager cacheManager, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository) {
         this.userRepository = userRepository;
         this.userInformationRepository = userInformationRepository;
+        this.paymentInformationRepository = paymentInformationRepository;
+        this.statisticRepository = statisticRepository;
         this.cacheManager = cacheManager;
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
@@ -85,6 +87,22 @@ public class RegisterServiceImpl implements RegisterService {
         userExtend.setStatus(0);
         userExtend.setUser(newUser);
         userInformationRepository.save(userExtend);
+        // payment
+        PaymentInformation paymentInformation = new PaymentInformation();
+        paymentInformation.setBalance(0.0);
+        paymentInformation.setUser(newUser);
+        paymentInformationRepository.save(paymentInformation);
+        //
+        Statistic statistic = new Statistic();
+        statistic.setLevel(1);
+        statistic.setExperience(0);
+        statistic.setCompletedTask(0);
+        statistic.setIncompletedTask(0);
+        statistic.setBonus(0.0);
+        statistic.setRating(-1);
+        statistic.setRanking(-1);
+        statistic.setUser(userExtend);
+        statisticRepository.save(statistic);
 
         this.clearUserCaches(newUser);
         log.debug("Created Information for User: {}", newUser);

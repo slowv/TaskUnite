@@ -29,10 +29,9 @@ public class CustomTaskerService {
     }
 
     @Transactional(readOnly = true)
-    public Page<TaskerDTO> findAll(Pageable pageable) {
+    public Page<Tasker> findAll(Pageable pageable) {
         log.debug("Request to get all Tasker");
-        return customTaskerRepository.findAll(pageable)
-            .map(taskerMapper::toDto);
+        return customTaskerRepository.findAll(pageable);
     }
 
     @Transactional(readOnly = true)

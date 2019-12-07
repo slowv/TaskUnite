@@ -33,7 +33,9 @@ export class TaskerCategoryUpdateComponent implements OnInit {
     status: [],
     createdAt: [],
     updatedAt: [],
-    deletedAt: []
+    deletedAt: [],
+    taskCategoryId: [],
+    taskerId: []
   });
 
   constructor(
@@ -69,7 +71,9 @@ export class TaskerCategoryUpdateComponent implements OnInit {
       status: taskerCategory.status,
       createdAt: taskerCategory.createdAt != null ? taskerCategory.createdAt.format(DATE_TIME_FORMAT) : null,
       updatedAt: taskerCategory.updatedAt != null ? taskerCategory.updatedAt.format(DATE_TIME_FORMAT) : null,
-      deletedAt: taskerCategory.deletedAt != null ? taskerCategory.deletedAt.format(DATE_TIME_FORMAT) : null
+      deletedAt: taskerCategory.deletedAt != null ? taskerCategory.deletedAt.format(DATE_TIME_FORMAT) : null,
+      taskCategoryId: taskerCategory.taskCategoryId,
+      taskerId: taskerCategory.taskerId
     });
   }
 
@@ -99,7 +103,9 @@ export class TaskerCategoryUpdateComponent implements OnInit {
       updatedAt:
         this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
       deletedAt:
-        this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined
+        this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
+      taskCategoryId: this.editForm.get(['taskCategoryId']).value,
+      taskerId: this.editForm.get(['taskerId']).value
     };
   }
 
@@ -125,16 +131,5 @@ export class TaskerCategoryUpdateComponent implements OnInit {
 
   trackTaskerById(index: number, item: ITasker) {
     return item.id;
-  }
-
-  getSelected(selectedVals: any[], option: any) {
-    if (selectedVals) {
-      for (let i = 0; i < selectedVals.length; i++) {
-        if (option.id === selectedVals[i].id) {
-          return selectedVals[i];
-        }
-      }
-    }
-    return option;
   }
 }

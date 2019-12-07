@@ -1,2 +1,4 @@
-id;image;description;status;created_at;updated_at;deleted_at;user_id
-1;;World's best Cleaner!;1;2019-12-03T16:23:49;2019-12-03T08:01:29;;5
+id;description;status;created_at;updated_at;deleted_at;user_id
+1;Lau dọn, quản lý nhà cửa là việc nhỏ!;1;2019-12-03T16:23:49;2019-12-03T08:01:29;;5
+2;Tôi thích những công việc sửa chữa, vận chuyển đồ đạc;1;2019-12-03T16:23:49;2019-12-03T08:01:29;;7
+3;Cần đi mua đồ, giao đò, hãy gọi tôi;1;2019-12-03T16:23:49;2019-12-03T08:01:29;;8

@@ -54,12 +54,10 @@
             "relationshipName": "tasks"
         },
         {
-            "relationshipType": "many-to-many",
+            "relationshipType": "one-to-many",
             "otherEntityName": "taskerCategory",
-            "otherEntityRelationshipName": "taskers",
-            "relationshipName": "taskerCategories",
-            "otherEntityField": "id",
-            "ownerSide": true
+            "otherEntityRelationshipName": "tasker",
+            "relationshipName": "taskerCategories"
         }
     ],
     "changelogDate": "20191128073438",
