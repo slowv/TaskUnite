@@ -43,7 +43,7 @@ public class RegisterController {
         User user = registerService.registerUser(managedUserVM, managedUserVM.getPassword());
         mailService.sendActivationEmail(user);
 
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     private static boolean checkPasswordLength(String password) {

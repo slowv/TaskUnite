@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/intro")
-public class AccountController {
+public class IntroController {
     @Autowired
     IntroService introService;
     @Autowired
@@ -22,7 +22,7 @@ public class AccountController {
 
     @GetMapping("")
     public String intro() {
-        if (userService.getAuthorities().size() > 1) {
+        if (userService.getUserWithAuthorities().get().getAuthorities().size() > 1) {
             return "redirect:/";
         }
         return "account/intro";
@@ -35,7 +35,7 @@ public class AccountController {
     }
 
     @PostMapping("/tasker")
-    public String promoteTasker() {
+    public String saveTasker() {
         registerTaskerService.promoteTasker(userService.getUserWithAuthorities().get());
         return "redirect:/?tasker=success";
     }
