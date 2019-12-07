@@ -4,6 +4,7 @@
     <title>Việc nhà</title>
     <th:block th:include="fragment/layout :: head"> </th:block>
     <link rel="stylesheet" type="text/css" th:href="@{~/css/user-type/center-image.css}">
+    <link rel="stylesheet" th:href="@{~/css/responsive/account/intro.css}">
 </head>
 <body>
 
@@ -15,8 +16,8 @@
 
     <div style="height: 113px;"></div>
 
-    <div class="unit-5 overlay" style="background-image: url('/static/images/hero_1.jpg');">
-        <div class="container text-center">
+    <div class="unit-5 overlay" th:style="'background-image: url(' + @{~/images/hero_1.jpg} + ');'">
+        <div class="container text-center text-banner">
             <h2 class="mb-0">Trở thành thành viên ngay hôm nay</h2>
             <h4 class="mb-0 unit-6">Tận hưởng những giá trị mà TaskUnite mang lại</h4>
         </div>
@@ -25,30 +26,32 @@
 
     <div class="site-section" data-aos="fade">
         <div class="container">
-            <div class="row align-items-center">
-
-                <div class="col-md-6 ml-auto content-right">
-                    <div class="text-center mb-5 section-heading">
-                        <h2>Bạn muốn trở thành Master ?</h2>
+            <div class="row">
+                <div class="col-md-6 ml-auto text-center">
+                    <div class="mb-5 section-heading">
+                        <label class="font-weight-bold">Master ?</label>
                     </div>
-                    <img class="center-image" src="/static/images/client-sign-up-img.png" alt="">
-                    <p class="mb-4 h5 font-italic lineheight1-5 text-center description-text">Đăng ký ngay để nhận sự trợ giúp của cộng đồng hơn 100,000 Tasker chất lượng.</p>
-                    <div class="mt-5 form-group text-center">
-                        <button class="btn btn-success btn-continue px-4 " data-type="address" type="button">Trở thành Master
-                        </button>
+                    <img class="center-image mb-3" th:src="@{~/images/client-sign-up-img.png}" alt="">
+                    <strong>Đăng ký ngay để nhận sự trợ giúp của cộng đồng Tasker chất lượng</strong>
+                    <div class="mt-3">
+                        <a href="/master/step1">
+                            <button class="btn btn-success" type="button">Trở thành Master
+                            </button>
+                        </a>
                     </div>
                 </div>
 
-                <div class="col-md-6 ml-auto">
-                    <div class="text-center mb-5 section-heading">
-                        <h2>Bạn muốn trở thành Tasker ?</h2>
+                <div class="col-md-6 ml-auto text-center">
+                    <div class="mb-5 section-heading">
+                        <label class="font-weight-bold">Tasker ?</label>
                     </div>
-                    <img class="center-image" src="/static/images/become-a-tasker-img.png" alt="">
-                    <p class="mb-4 h5 font-italic lineheight1-5 text-center description-text">Tham gia ngay để kiếm thêm thu nhập từ những công việc đầu tiên.</p>
-                    <p></p>
-                    <div class="mt-5 form-group text-center">
-                        <button class="btn btn-success btn-continue px-4 " data-type="address" type="button">Trở thành Tasker
-                        </button>
+                    <img class="center-image mb-3" th:src="@{~/images/become-a-tasker-img.png}" alt="">
+                    <strong>Tham gia ngay để kiếm thêm thu nhập từ những công việc đầu tiên</strong>
+                    <div class="mt-3">
+                        <a href="/tasker/step1">
+                            <button class="btn btn-success" type="button">Trở thành Tasker
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>

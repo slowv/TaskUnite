@@ -67,7 +67,7 @@ public class Task implements Serializable {
     @JsonIgnoreProperties("tasks")
     private Master master;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JsonIgnoreProperties("tasks")
     private TaskCategory taskCategory;
 

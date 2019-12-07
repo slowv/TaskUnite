@@ -144,11 +144,11 @@ a:hover {
 }
 
 .site-section {
-  padding: 3em 0;
+  padding:3em 0;
 }
 @media (min-width: 768px) {
   .site-section {
-    padding: 7em 0;
+    padding: 3em 0;
   }
 }
 .site-section.site-section-sm {
@@ -184,7 +184,7 @@ a:hover {
 
 .site-footer {
   padding: 4em 0;
-  background: #0d0d0d;
+  background: #000;
   color: rgba(255, 255, 255, 0.5);
 }
 .site-footer .footer-heading {
@@ -1237,4 +1237,63 @@ a:hover {
   background: #28a745;
   color: #fff;
   border: 1px solid transparent;
+}
+
+.box-wave{
+  background: #f7f8f9;
+  height: 200px;
+  position: relative;
+}
+
+.box-wave .wave {
+  background: url(../images/wave.png);
+  position: absolute;
+  width: 100%;
+  height: 143px;
+  bottom: -1px;
+  left: 0;
+  animation: animation-wave 10s linear infinite;
+}
+
+.box-wave .wave::before {
+  content: '';
+  background: url(../images/wave.png);
+  width: 100%;
+  height: 143px;
+  bottom: -1px;
+  left: 0;
+  position: absolute;
+  opacity: .6;
+  animation: animation-wave-reverse 10s linear infinite;
+}
+
+.box-wave .wave::after {
+  background: url(../images/wave.png);
+  content: '';
+  width: 100%;
+  position: absolute;
+  height: 143px;
+  bottom: -1px;
+  left: 0;
+  opacity: .4;
+  animation: animation-wave 20s linear infinite;
+  animation-delay: -5s;
+}
+
+@keyframes animation-wave {
+  0%{
+    background-position: 0px;
+  }
+  100%{
+    background-position: 1360px;
+  }
+}
+
+@keyframes animation-wave-reverse {
+  0%{
+    background-position: 1360px;
+  }
+  100%{
+    background-position: 0px;
+  }
 }

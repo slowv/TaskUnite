@@ -62,6 +62,7 @@ public class TaskController {
             Optional<UserInformation> userInfo = customUserInformationService.findOneByUsername(principal.getName());
             if(userInfo.isPresent()){
                 UserInformation userInformation = userInfo.get();
+                if (userInformation.getMaster() == null) return "redirect:/";
                 taskInfo.setMaster(userInformation.getMaster());
             }
         }
@@ -74,10 +75,13 @@ public class TaskController {
     public String createStep2(HttpSession session, Model model){
         HashMap step1 = (HashMap) session.getAttribute("step1");
         List<Tasker> taskers = new ArrayList<>();
+        List<Double> prices = new ArrayList<>();
         for (TaskerCategory t: ((Task) step1.get("taskInfo")).getTaskCategory().getTaskerCategories()) {
             taskers.add(t.getTasker());
+            prices.add(t.getPrice());
         }
         model.addAttribute("taskers", taskers);
+        model.addAttribute("prices", prices);
         if(null == step1){
             return "redirect:/task/create/step1";
         }
@@ -107,6 +111,7 @@ public class TaskController {
         if(null == step2){
             return "redirect:/task/create/step1";
         }
+        model.addAttribute("taskInfo", (Task) step2.get("taskInfo"));
         return "task/create/step3";
     }
 
@@ -143,7 +148,7 @@ public class TaskController {
         taskInfo.setDescription(description);
         taskInfo = customTaskService.save(taskInfo);
         if(null == taskInfo){
-            // do something;
+            return "redirect:/";
         }
         session.removeAttribute("step1");
         session.removeAttribute("step2");

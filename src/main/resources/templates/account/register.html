@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Register</title>
+    <title>Đăng ký</title>
     <th:block th:include="fragment/layout :: head"> </th:block>
 <!--    <link rel="stylesheet" type="text/css" th:href="@{~/css/account/register.css}">-->
 </head>
@@ -17,14 +17,10 @@
 
     <div class="unit-5 overlay" style="background-image: url('/images/hero_1.jpg');">
         <div class="container text-center">
-            <h2 class="mb-0">Register</h2>
-            <p class="mb-0 unit-6"><a th:href="@{/}">Home</a> <span class="sep">></span> <span>Register</span></p>
+            <h2 class="mb-0">Đăng ký</h2>
+            <p class="mb-0 unit-6"><a th:href="@{/}">Trang chủ</a> <span class="sep">></span> <span>Đăng ký</span></p>
         </div>
     </div>
-
-
-
-
     <div class="site-section bg-light">
         <div class="container">
             <div class="row">
@@ -34,45 +30,50 @@
                     <form th:method="POST" th:action="@{/register}" th:object="${register}" class="p-5 bg-white">
                         <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
-                                <label class="font-weight-bold" for="login">User Name</label>
-                                <input th:field="*{login}" type="text" id="login" class="form-control" placeholder="User Name">
+                                <label class="font-weight-bold" for="login">Tài khoản</label>
+                                <input th:field="*{login}" type="text" id="login" class="form-control" placeholder="Tài khoản">
                             </div>
                         </div>
 
                         <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
-                                <label class="font-weight-bold" for="password">Password</label>
-                                <input th:field="*{password}" type="password" id="password" class="form-control" placeholder="Password">
+                                <label class="font-weight-bold" for="password">Mật khẩu</label>
+                                <input th:field="*{password}" type="password" id="password" class="form-control" placeholder="Mật khẩu">
                             </div>
                         </div>
 
                         <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
-                                <label class="font-weight-bold" for="fname">First Name</label>
-                                <input th:field="*{firstName}" type="text" id="fname" class="form-control" placeholder="First Name">
+                                <label class="font-weight-bold" for="fname">Tên </label>
+                                <input th:field="*{firstName}" type="text" id="fname" class="form-control" placeholder="Tên">
                             </div>
                         </div>
 
                         <div class="row form-group mb-4">
                             <div class="col-md-12 mb-3 mb-md-0">
-                                <label class="font-weight-bold" for="lname">Last Name</label>
-                                <input th:field="*{lastName}" type="text" id="lname" class="form-control" placeholder="Last Name">
+                                <label class="font-weight-bold" for="lname">Họ</label>
+                                <input th:field="*{lastName}" type="text" id="lname" class="form-control" placeholder="Họ">
                             </div>
                         </div>
 
 
                         <div class="row form-group">
                             <div class="col-md-12">
-                                <label class="font-weight-bold">Gender</label>
+                                <label class="font-weight-bold">Giới tính</label>
                             </div>
                             <div class="col-md-12 mb-3 mb-md-0">
                                 <label for="male">
-                                    <input th:field="*{gender}" value="1" type="radio" id="male"> Male
+                                    <input th:field="*{gender}" value="1" type="radio" id="male"> Nam
                                 </label>
                             </div>
                             <div class="col-md-12 mb-3 mb-md-0">
                                 <label for="female">
-                                    <input th:field="*{gender}" value="2" type="radio" id="female"> Female
+                                    <input th:field="*{gender}" value="2" type="radio" id="female"> Nữ
+                                </label>
+                            </div>
+                            <div class="col-md-12 mb-3 mb-md-0">
+                                <label for="other">
+                                    <input th:field="*{gender}" value="0" type="radio" id="other"> Khác
                                 </label>
                             </div>
                         </div>
@@ -86,95 +87,27 @@
 
                         <div class="row form-group mb-4">
                             <div class="col-md-12 mb-3 mb-md-0">
-                                <label class="font-weight-bold" for="address">Address</label>
-                                <input th:field="*{address}" type="text" id="address" class="form-control" placeholder="Address">
+                                <label class="font-weight-bold" for="address">Địa chỉ</label>
+                                <input th:field="*{address}" type="text" id="address" class="form-control" placeholder="Địa chỉ">
                             </div>
                         </div>
 
                         <div class="row form-group mb-4">
                             <div class="col-md-12 mb-3 mb-md-0">
-                                <label class="font-weight-bold" for="phone">Phone number</label>
-                                <input th:field="*{phone}" type="text" id="phone" class="form-control" placeholder="Phone number">
+                                <label class="font-weight-bold" for="phone">Số điện thoại</label>
+                                <input th:field="*{phone}" type="text" id="phone" class="form-control" placeholder="Số điện thoại">
                             </div>
                         </div>
 
                         <div class="row form-group">
                             <div class="col-md-12 text-center">
-                                <input type="submit" value="Register" class="btn btn-primary  py-2 px-5">
+                                <input type="submit" value="Đăng ký" class="btn btn-primary  py-2 px-5">
                             </div>
                         </div>
-
-
                     </form>
                 </div>
 
             </div>
-        </div>
-    </div>
-
-
-
-
-    <div class="site-section">
-        <div class="container">
-            <div class="row justify-content-center text-center mb-5">
-                <div class="col-md-6" data-aos="fade" >
-                    <h2>Frequently Ask Questions</h2>
-                </div>
-            </div>
-
-
-            <div class="row justify-content-center" data-aos="fade" data-aos-delay="100">
-                <div class="col-md-8">
-                    <div class="accordion unit-8" id="accordion">
-                        <div class="accordion-item">
-                            <h3 class="mb-0 heading">
-                                <a class="btn-block" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">What is the name of your company<span class="icon"></span></a>
-                            </h3>
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                <div class="body-text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur quae cumque perspiciatis aperiam accusantium facilis provident aspernatur nisi optio debitis dolorum, est eum eligendi vero aut ad necessitatibus nulla sit labore doloremque magnam! Ex molestiae, dolor tempora, ad fuga minima enim mollitia consequuntur, necessitatibus praesentium eligendi officia recusandae culpa tempore eaque quasi ullam magnam modi quidem in amet. Quod debitis error placeat, tempore quasi aliquid eaque vel facilis culpa voluptate.</p>
-                                </div>
-                            </div>
-                        </div> <!-- .accordion-item -->
-
-                        <div class="accordion-item">
-                            <h3 class="mb-0 heading">
-                                <a class="btn-block" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">How much pay for 3  months?<span class="icon"></span></a>
-                            </h3>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                                <div class="body-text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad laborum expedita. Nostrum iure atque enim quisquam minima distinctio omnis, consequatur aliquam suscipit, quidem, esse aspernatur! Libero, excepturi animi repellendus porro impedit nihil in doloremque a quaerat enim voluptatum, perspiciatis, quas dignissimos maxime ut cum reiciendis eius dolorum voluptatem aliquam!</p>
-                                </div>
-                            </div>
-                        </div> <!-- .accordion-item -->
-
-                        <div class="accordion-item">
-                            <h3 class="mb-0 heading">
-                                <a class="btn-block" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">Do I need to register?  <span class="icon"></span></a>
-                            </h3>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                                <div class="body-text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad laborum expedita. Nostrum iure atque enim quisquam minima distinctio omnis, consequatur aliquam suscipit, quidem, esse aspernatur! Libero, excepturi animi repellendus porro impedit nihil in doloremque a quaerat enim voluptatum, perspiciatis, quas dignissimos maxime ut cum reiciendis eius dolorum voluptatem aliquam!</p>
-                                </div>
-                            </div>
-                        </div> <!-- .accordion-item -->
-
-                        <div class="accordion-item">
-                            <h3 class="mb-0 heading">
-                                <a class="btn-block" data-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseFour">Who should I contact in case of support.<span class="icon"></span></a>
-                            </h3>
-                            <div id="collapseFour" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                                <div class="body-text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad laborum expedita. Nostrum iure atque enim quisquam minima distinctio omnis, consequatur aliquam suscipit, quidem, esse aspernatur! Libero, excepturi animi repellendus porro impedit nihil in doloremque a quaerat enim voluptatum, perspiciatis, quas dignissimos maxime ut cum reiciendis eius dolorum voluptatem aliquam!</p>
-                                </div>
-                            </div>
-                        </div> <!-- .accordion-item -->
-
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 
