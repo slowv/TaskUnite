@@ -2,16 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Đăng ký</title>
-    <th:block th:include="fragment/layout :: head"> </th:block>
-<!--    <link rel="stylesheet" type="text/css" th:href="@{~/css/account/register.css}">-->
+    <th:block th:include="fragment/layout :: head"></th:block>
+    <link rel="stylesheet" type="text/css" th:href="@{~/css/account/register.css}">
 </head>
 <body>
 
 <div class="site-wrap">
 
-    <th:block th:include="fragment/layout :: site-mobile-memu"> </th:block>
+    <th:block th:include="fragment/layout :: site-mobile-memu"></th:block>
 
-    <th:block th:include="fragment/layout :: site-navbar"> </th:block>
+    <th:block th:include="fragment/layout :: site-navbar"></th:block>
 
     <div style="height: 113px;"></div>
 
@@ -27,81 +27,96 @@
 
                 <div class="col-md-12 mb-5">
 
-                    <form th:method="POST" th:action="@{/register}" th:object="${register}" class="p-5 bg-white">
+                    <form th:method="POST" th:action="@{/register}" th:object="${register}"
+                          class="p-5 bg-white form-register">
                         <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
                                 <label class="font-weight-bold" for="login">Tài khoản</label>
-                                <input th:field="*{login}" type="text" id="login" class="form-control" placeholder="Tài khoản">
+                                <input th:field="*{login}" type="text" id="login" class="form-control"
+                                       placeholder="Tài khoản">
                             </div>
                         </div>
 
                         <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
                                 <label class="font-weight-bold" for="password">Mật khẩu</label>
-                                <input th:field="*{password}" type="password" id="password" class="form-control" placeholder="Mật khẩu">
+                                <input th:field="*{password}" type="password" id="password" class="form-control"
+                                       placeholder="Mật khẩu">
                             </div>
                         </div>
 
                         <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
                                 <label class="font-weight-bold" for="fname">Tên </label>
-                                <input th:field="*{firstName}" type="text" id="fname" class="form-control" placeholder="Tên">
+                                <input th:field="*{firstName}" type="text" id="fname" class="form-control"
+                                       placeholder="Tên">
                             </div>
                         </div>
 
                         <div class="row form-group mb-4">
                             <div class="col-md-12 mb-3 mb-md-0">
                                 <label class="font-weight-bold" for="lname">Họ</label>
-                                <input th:field="*{lastName}" type="text" id="lname" class="form-control" placeholder="Họ">
+                                <input th:field="*{lastName}" type="text" id="lname" class="form-control"
+                                       placeholder="Họ">
                             </div>
                         </div>
-
-
                         <div class="row form-group">
-                            <div class="col-md-12">
+                            <div class="col-lg-12">
                                 <label class="font-weight-bold">Giới tính</label>
                             </div>
-                            <div class="col-md-12 mb-3 mb-md-0">
-                                <label for="male">
-                                    <input th:field="*{gender}" value="1" type="radio" id="male"> Nam
-                                </label>
-                            </div>
-                            <div class="col-md-12 mb-3 mb-md-0">
-                                <label for="female">
-                                    <input th:field="*{gender}" value="2" type="radio" id="female"> Nữ
-                                </label>
-                            </div>
-                            <div class="col-md-12 mb-3 mb-md-0">
-                                <label for="other">
-                                    <input th:field="*{gender}" value="0" type="radio" id="other"> Khác
-                                </label>
+                            <div class="col-lg-12">
+                                <div class="form-check form-check-inline">
+                                    <label for="male">
+                                        <input class="form-check-input" th:field="*{gender}" value="1" type="radio" id="male"> Nam
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <label for="female">
+                                        <input class="form-check-input" th:field="*{gender}" value="2" type="radio" id="female"> Nữ
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <label for="other">
+                                        <input class="form-check-input" th:field="*{gender}" value="0" type="radio" id="other"> Khác
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row form-group mb-4">
+                        <div class="form-row mb-4">
                             <div class="col-md-12 mb-3 mb-md-0">
                                 <label class="font-weight-bold" for="email">Email</label>
-                                <input th:field="*{email}" type="text" id="email" class="form-control" placeholder="Email">
+                                <input th:field="*{email}" type="text" id="email" class="form-control"
+                                       placeholder="Email">
                             </div>
                         </div>
 
                         <div class="row form-group mb-4">
                             <div class="col-md-12 mb-3 mb-md-0">
                                 <label class="font-weight-bold" for="address">Địa chỉ</label>
-                                <input th:field="*{address}" type="text" id="address" class="form-control" placeholder="Địa chỉ">
+                                <input th:field="*{address}" type="text" id="address" class="form-control"
+                                       placeholder="Địa chỉ">
                             </div>
                         </div>
 
                         <div class="row form-group mb-4">
                             <div class="col-md-12 mb-3 mb-md-0">
                                 <label class="font-weight-bold" for="phone">Số điện thoại</label>
-                                <input th:field="*{phone}" type="text" id="phone" class="form-control" placeholder="Số điện thoại">
+                                <input th:field="*{phone}" type="text" id="phone" class="form-control"
+                                       placeholder="Số điện thoại">
                             </div>
                         </div>
-
+                        <div class="row form-group">
+                            <div class="col-md-12 mb-3 mb-md-0">
+                                <a th:href="@{/login}" class="hyperlink font-italic" style="font-size: 14px">Bạn đã có tài khoản? Bấm để đăng nhập</a>
+                            </div>
+                        </div>
                         <div class="row form-group">
                             <div class="col-md-12 text-center">
-                                <input type="submit" value="Đăng ký" class="btn btn-primary  py-2 px-5">
+                                <button type="submit"class="btn-reset-css btn-svg-UI fill-green">
+                                    <svg><rect></rect></svg>
+                                    <span>Đăng ký</span>
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -111,8 +126,8 @@
         </div>
     </div>
 
-    <th:block th:include="fragment/layout :: footer"> </th:block>
+    <th:block th:include="fragment/layout :: footer"></th:block>
 </div>
-<th:block th:include="fragment/layout :: javascript"> </th:block>
+<th:block th:include="fragment/layout :: javascript"></th:block>
 </body>
 </html>

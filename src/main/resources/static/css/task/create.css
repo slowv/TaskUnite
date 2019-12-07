@@ -289,7 +289,14 @@
   top: 5px;
 }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.is-selected, .btn-primary:visited:hover, .btn-primary:visited:focus, .btn-primary:visited:active, .btn-primary:visited.is-selected {
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.is-selected,
+.btn-primary:visited:hover,
+.btn-primary:visited:focus,
+.btn-primary:visited:active,
+.btn-primary:visited.is-selected {
   border: 1px solid #4ea530;
   background-color: #4ea530;
 }
@@ -298,7 +305,7 @@
   color: #fff !important;
   border: 1px solid #51af33;
   background-color: #51af33;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .option-date button {
@@ -830,7 +837,7 @@ i.recommendations__badge-info {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   height: auto;
   border-radius: 5px;
   color: #272727;
@@ -1362,23 +1369,23 @@ div.name {
   font-weight: 500;
   color: #818181;
   transition: 0.5s;
-  background: transparent;
+  background: #f9f9f9;
   cursor: pointer;
   line-height: 40px;
 }
 
 .btn-svg-UI:disabled,
 .btn-svg-UI[disabled] {
-  opacity: .6;
+  opacity: 0.6;
   cursor: default;
 }
 
-.btn-svg-UI.fill-green{
+.btn-svg-UI.fill-green {
   background: #51af33;
   color: #fff;
 }
 
-.btn-svg-UI.fill-green svg rect{
+.btn-svg-UI.fill-green svg rect {
   stroke: #51af33;
 }
 
@@ -1390,18 +1397,16 @@ div.name {
   top: 0;
   left: 0;
   fill: transparent;
-
 }
 
 .btn-svg-UI svg rect {
   stroke: #818181;
   stroke-width: 4;
-  transition: 1s;
+  transition: 0.5s;
   stroke-dasharray: 200, 40;
 }
 
-
-.btn-svg-UI:hover{
+.btn-svg-UI:hover {
   background: #51af33;
   color: #fff;
   box-shadow: 0 0 18px 0px rgba(81, 175, 51, 0.59) !important;
@@ -1410,58 +1415,17 @@ div.name {
 .btn-svg-UI:hover svg rect {
   stroke: #fff;
   stroke-dasharray: 40, 200;
-  stroke-dashoffset: 280;
+  stroke-dashoffset: 300;
 }
 
 #form-task input.form-control {
-  transition: .5s;
+  transition: 0.5s;
 }
 
 #form-task input.form-control:hover {
   box-shadow: 1px 2px 12px 5px #e1e1e1 !important;
 }
 
-#form-task input.form-control:hover:focus{
+#form-task input.form-control:hover:focus {
   box-shadow: 0 0 18px 0px rgba(81, 175, 51, 0.59) !important;
 }
-
-.btn-svg-UI.animation-svg-infinite{
-  background: #51af33;
-  color: #fff;
-  box-shadow: 0 0 18px 0px rgba(81, 175, 51, 0.59) !important;
-  height: 45px;
-}
-
-
-.btn-svg-UI.animation-svg-infinite svg rect{
-  animation: animate-svg 2s linear infinite;
-  stroke-dasharray: 120;
-  stroke: #fff;
-  transition: 1.5s;
-}
-
-.btn-svg-UI.animation-svg-infinite:hover svg rect{
-  stroke: #818181;
-  stroke-dasharray: 0;
-  stroke-dashoffset: 0;
-  animation-play-state: paused;
-}
-
-.btn-svg-UI.animation-svg-infinite:hover{
-  background: transparent;
-  color: #818181;
-  box-shadow: none;
-}
-
-@keyframes animate-svg {
-  0%{
-    stroke-dashoffset: 480;
-  }
-  100%{
-    stroke-dashoffset: 0;
-  }
-}
-
-
-
-
