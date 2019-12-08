@@ -18,13 +18,13 @@
         <div class="site-section bg-dark-light">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-5 col-lg-5 p-2">
+                    <div class="col-md-4 col-lg-4 p-2">
                         <div class="panel panel--spaced panel--with-overflow">
                             <div class="row">
-                                <div class="col-lg-2 col-sm-3 col-3">
+                                <div class="col-lg-3 col-sm-3 col-3">
                                     <img th:src="@{~/images/person_1.jpg}" alt="" class="confirm-avatar-tasker">
                                 </div>
-                                <div class="col-lg-10 col-sm-9 col-9">
+                                <div class="col-lg-9 col-sm-9 col-9">
                                     <div class="task-name text-bold text-right mt-1" style="font-size: 18px">
                                         <span th:text="${taskInfo.getTaskCategory().getName()}"></span>
                                     </div>
@@ -40,7 +40,7 @@
                                     <span class="icon-calendar-o mr-lg-3"></span>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <span th:text="${taskInfo.getFrom().toString()}"></span>
+                                    <span th:text="${#dates.format(taskInfo.getFrom(), 'dd-MM-yyyy, HH:mm')}"></span>
                                 </div>
                             </div>
                             <div class="row">
@@ -74,7 +74,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-7 col-lg-7 p-2">
+                    <div class="col-md-8 col-lg-8 p-2">
                         <div class="panel panel--spaced panel--with-overflow">
                             <div class="form-group">
                                 <!--Thả description vào luôn;-->

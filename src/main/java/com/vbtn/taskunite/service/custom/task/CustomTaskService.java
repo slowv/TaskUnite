@@ -43,6 +43,7 @@ public class CustomTaskService {
     }
 
     public Task save(Task task) {
+        task.setStatus(1);
         task = customTaskRepository.save(task);
         return task;
     }
