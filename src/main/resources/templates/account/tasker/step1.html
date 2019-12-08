@@ -41,12 +41,12 @@
                         <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
                                 <label class="font-weight-bold" for="city" th:text="#{register-task.what-work}"></label>
-                                <select class="custom-select  mb-3" th:field="*{city}" id="city">
-                                    <option selected>Thành phố</option>
+                                <select class="custom-select  mb-3" id="city">
+                                    <option value="0" selected>Thành phố</option>
                                     <option th:each="city: ${cities}" th:value="${city.getId()}" th:text="${city.getName()}"></option>
                                 </select>
                                 <select class="custom-select mb-3" id="district" th:field="*{district}">
-                                    <option selected>Quận</option>
+                                    <option value="0" selected>Quận</option>
                                     <option th:each="district: ${districts}" th:value="${district.getId()}" th:text="${district.getName()}"></option>
                                 </select>
                                 <input type="text" th:field="*{address}" class="form-control"

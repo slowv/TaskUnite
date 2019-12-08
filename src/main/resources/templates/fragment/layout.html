@@ -85,10 +85,14 @@
                                         <!--</a>-->
                                         <!--</li>-->
                                         <li sec:authorize="isAuthenticated()" class="has-children">
-                                            <a>
-                                                Admin
+                                            <a th:href="@{/dashboard}">
+                                                <span class="bg-primary text-white py-3 px-4 rounded">
+                                                    <span class="icon-user mr-2" style="margin-top: -2px;"></span>
+                                                    <span>Cá nhân</span>
+                                                </span>
                                             </a>
                                             <ul class="dropdown arrow-top">
+                                                <li><a th:href="@{/dashboard}">Dashboard</a></li>
                                                 <li><a th:href="@{/profile}" th:text="#{home.profile}">Trang cá nhân</a></li>
                                                 <li>
                                                     <form th:action="@{/api/logout}" id="logout" method="post">

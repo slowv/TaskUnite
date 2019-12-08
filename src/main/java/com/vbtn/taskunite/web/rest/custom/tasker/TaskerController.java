@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/tasker")
-public class TaskerController {
+public class  TaskerController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
     @Autowired
     DistrictService districtService;

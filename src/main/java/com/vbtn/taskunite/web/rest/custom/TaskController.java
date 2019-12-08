@@ -79,12 +79,13 @@ public class TaskController {
     }
 
     @PostMapping(value = "/create/step2")
-    public String updateStep2(HttpSession session, @RequestParam("tasker") Long taskerId ){
+    public String updateStep2(HttpSession session, @RequestParam("tasker") Long taskerId, @RequestParam("price") Double price ){
         HashMap step1 = (HashMap) session.getAttribute("step1");
         Task taskInfo = (Task)step1.get("taskInfo");
 
         UserInformation tasker = customUserInformationService.findOne(taskerId);
         taskInfo.setTasker(tasker);
+        taskInfo.setPrice(price);
 
         HashMap<String, Object> step2 = new HashMap<>();
         step2.put("taskInfo", taskInfo);

@@ -9,68 +9,13 @@
 <body>
 
 <div class="site-wrap">
-    <div class="mt-4 mb-3">
-        <div class="container">
-            <div class="row border-bottom pb-3">
-                <div class="col-lg-1 col-md-1 box-logo-step col-xl-1">
-                    <a th:href="@{/}">
-                        <img alt="TaskUnite" class="logo-step" th:src="@{~/images/favicon.png}">
-                    </a>
-                </div>
-                <div class="col-lg-9 offset-lg-2 col-md-9 offset-md-2 col-xl-9 offset-xl-2">
-                    <div class="box-step ">
-                        <div class="step active st1">
-                            <div class="box-circle">
-                                <a th:href="@{/task/create/step1(action='back')}">
-                                    <div class="box-circle">
-                                        <div class="circle"><i class="icon-done"></i></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="box-line">
-                                <div class="line"></div>
-                            </div>
-                            <div class="name-step" th:text="#{task-create.step1.task-infor}"></div>
-                        </div>
-                        <div class="step st2 active">
-                            <div class="box-circle">
-                                <div class="circle text-bold">2</div>
-                            </div>
-                            <div class="box-line ">
-                                <div class="line"></div>
-                            </div>
-                            <div class="name-step" th:text="#{task-create.step2.task-prices}"></div>
-                        </div>
-                        <div class="step st3">
-                            <div class="box-circle">
-                                <div class="circle text-bold">3</div>
-                            </div>
-                            <div class="box-line">
-                                <div class="line"></div>
-                            </div>
-                            <div class="name-step" th:text="#{task-create.step3.choose-date-time}"></div>
-                        </div>
-                        <div class="step st4">
-                            <div class="box-circle">
-                                <div class="circle text-bold">4</div>
-                            </div>
-                            <div class="name-step" th:text="#{task-create.step4.confirm-details}"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 p-0 mt-1">
-                    <div class="build-progress__sub-bar">
-                        <div class="build-progress__sub-bar__container">
-                            <img alt="form" class="build-progress__sub-bar__icon" th:src="@{~/images/user-plus.svg}">
-                            <div class="build-progress__sub-bar__message">
-                                <span th:text="#{task-create.step2.notification-1}"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <th:block th:replace="fragment/layout :: site-mobile-memu"></th:block>
+    <th:block th:replace="fragment/layout :: site-navbar"></th:block>
+    <div style="height: 113px;"></div>
+    <div class="unit-5 overlay" style="background-image: url('/images/hero_1.jpg');">
+        <div class="container text-center">
+            <h2 class="mb-0">Step 2</h2>
+            <p class="mb-0 unit-6"><a th:href="@{/}">Trang chủ</a> <span class="sep">></span> <span>Lựa chọn phục vụ</span></p>
         </div>
     </div>
 
@@ -210,14 +155,9 @@
                                          alt="Tasker">
                                 </div>
                                 <div class="recommendations__result-actions view-pc">
-<!--                                    <a class="recommendations__review-link d-block"-->
-<!--                                       tabindex="0" role="button">-->
-<!--                                        <span th:text="#{task-create.step2.view-profile-reviews}"></span>-->
-<!--                                    </a>-->
                                     <form th:action="@{/task/create/step2}" method="post">
-                                        <!--Temporary set tasker ID = 1 -->
-                                        <!--<input type="text" th:value="*{description}">-->
                                         <input type="hidden" id="tasker" name="tasker" th:value="${tasker.id}">
+                                        <input type="hidden" id="price" name="price" th:value="${prices.get(iter.index)}">
                                         <button type="submit" class="recommendations__hire-btn btn btn-primary btn-block">
                                             <span th:text="#{task-create.step2.select-continue-btn}"></span>
                                         </button>
