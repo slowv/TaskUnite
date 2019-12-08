@@ -19,7 +19,8 @@ export interface IUserInformation {
   updatedAt?: Moment;
   deletedAt?: Moment;
   userId?: number;
-  tasks?: ITask[];
+  tasksAsTaskers?: ITask[];
+  tasksAsMasters?: ITask[];
   reviews?: IReview[];
   notifications?: INotification[];
   taskerCategories?: ITaskerCategory[];
@@ -44,7 +45,8 @@ export class UserInformation implements IUserInformation {
     public updatedAt?: Moment,
     public deletedAt?: Moment,
     public userId?: number,
-    public tasks?: ITask[],
+    public tasksAsTaskers?: ITask[],
+    public tasksAsMasters?: ITask[],
     public reviews?: IReview[],
     public notifications?: INotification[],
     public taskerCategories?: ITaskerCategory[],

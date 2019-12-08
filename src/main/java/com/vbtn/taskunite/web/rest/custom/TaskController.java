@@ -62,11 +62,15 @@ public class TaskController {
         HashMap step1 = (HashMap) session.getAttribute("step1");
         List<UserInformation> taskers = new ArrayList<>();
         List<Double> prices = new ArrayList<>();
+        List<Statistic> stats = new ArrayList<>();
+        List<Review> reviews = new ArrayList<>();
         for (TaskerCategory t: ((Task) step1.get("taskInfo")).getTaskCategory().getTaskerCategories()) {
             taskers.add(t.getUser());
             prices.add(t.getPrice());
+            stats.add(t.getUser().getStatistic());
         }
         model.addAttribute("taskers", taskers);
+        model.addAttribute("stats", stats);
         model.addAttribute("prices", prices);
         if(null == step1){
             return "redirect:/task/create/step1";

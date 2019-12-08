@@ -28,6 +28,12 @@
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "taskerCategory",
+            "relationshipName": "tasks"
+        },
+        {
             "relationshipType": "many-to-one",
             "otherEntityName": "taskCategory",
             "otherEntityRelationshipName": "taskerCategories",

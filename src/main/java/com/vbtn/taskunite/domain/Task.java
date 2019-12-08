@@ -65,12 +65,16 @@ public class Task implements Serializable {
     private Set<AdminProfit> adminProfits = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties("tasks")
-    private UserInformation user;
+    @JsonIgnoreProperties("tasksAsTaskers")
+    private UserInformation tasker;
+
+    @ManyToOne
+    @JsonIgnoreProperties("tasksAsMasters")
+    private UserInformation master;
 
     @ManyToOne
     @JsonIgnoreProperties("tasks")
-    private TaskCategory taskCategory;
+    private TaskerCategory taskerCategory;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -287,30 +291,43 @@ public class Task implements Serializable {
         this.adminProfits = adminProfits;
     }
 
-    public UserInformation getUser() {
-        return user;
+    public UserInformation getTasker() {
+        return tasker;
     }
 
-    public Task user(UserInformation userInformation) {
-        this.user = userInformation;
+    public Task tasker(UserInformation userInformation) {
+        this.tasker = userInformation;
         return this;
     }
 
-    public void setUser(UserInformation userInformation) {
-        this.user = userInformation;
+    public void setTasker(UserInformation userInformation) {
+        this.tasker = userInformation;
     }
 
-    public TaskCategory getTaskCategory() {
-        return taskCategory;
+    public UserInformation getMaster() {
+        return master;
     }
 
-    public Task taskCategory(TaskCategory taskCategory) {
-        this.taskCategory = taskCategory;
+    public Task master(UserInformation userInformation) {
+        this.master = userInformation;
         return this;
     }
 
-    public void setTaskCategory(TaskCategory taskCategory) {
-        this.taskCategory = taskCategory;
+    public void setMaster(UserInformation userInformation) {
+        this.master = userInformation;
+    }
+
+    public TaskerCategory getTaskerCategory() {
+        return taskerCategory;
+    }
+
+    public Task taskerCategory(TaskerCategory taskerCategory) {
+        this.taskerCategory = taskerCategory;
+        return this;
+    }
+
+    public void setTaskerCategory(TaskerCategory taskerCategory) {
+        this.taskerCategory = taskerCategory;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

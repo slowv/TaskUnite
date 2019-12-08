@@ -62,8 +62,14 @@
         {
             "relationshipType": "one-to-many",
             "otherEntityName": "task",
-            "otherEntityRelationshipName": "user",
-            "relationshipName": "tasks"
+            "otherEntityRelationshipName": "tasker",
+            "relationshipName": "tasksAsTasker"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "master",
+            "relationshipName": "tasksAsMaster"
         },
         {
             "relationshipType": "one-to-many",

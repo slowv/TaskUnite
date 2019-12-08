@@ -36,9 +36,11 @@ public class TaskDTO implements Serializable {
     private Instant deletedAt;
 
 
-    private Long userId;
+    private Long taskerId;
 
-    private Long taskCategoryId;
+    private Long masterId;
+
+    private Long taskerCategoryId;
 
     public Long getId() {
         return id;
@@ -144,20 +146,28 @@ public class TaskDTO implements Serializable {
         this.deletedAt = deletedAt;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getTaskerId() {
+        return taskerId;
     }
 
-    public void setUserId(Long userInformationId) {
-        this.userId = userInformationId;
+    public void setTaskerId(Long userInformationId) {
+        this.taskerId = userInformationId;
     }
 
-    public Long getTaskCategoryId() {
-        return taskCategoryId;
+    public Long getMasterId() {
+        return masterId;
     }
 
-    public void setTaskCategoryId(Long taskCategoryId) {
-        this.taskCategoryId = taskCategoryId;
+    public void setMasterId(Long userInformationId) {
+        this.masterId = userInformationId;
+    }
+
+    public Long getTaskerCategoryId() {
+        return taskerCategoryId;
+    }
+
+    public void setTaskerCategoryId(Long taskerCategoryId) {
+        this.taskerCategoryId = taskerCategoryId;
     }
 
     @Override
@@ -197,8 +207,9 @@ public class TaskDTO implements Serializable {
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
-            ", user=" + getUserId() +
-            ", taskCategory=" + getTaskCategoryId() +
+            ", tasker=" + getTaskerId() +
+            ", master=" + getMasterId() +
+            ", taskerCategory=" + getTaskerCategoryId() +
             "}";
     }
 }

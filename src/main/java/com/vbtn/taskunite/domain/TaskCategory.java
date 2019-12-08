@@ -42,9 +42,6 @@ public class TaskCategory implements Serializable {
     private Instant deletedAt;
 
     @OneToMany(mappedBy = "taskCategory")
-    private Set<Task> tasks = new HashSet<>();
-
-    @OneToMany(mappedBy = "taskCategory", fetch = FetchType.EAGER)
     private Set<TaskerCategory> taskerCategories = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -145,31 +142,6 @@ public class TaskCategory implements Serializable {
 
     public void setDeletedAt(Instant deletedAt) {
         this.deletedAt = deletedAt;
-    }
-
-    public Set<Task> getTasks() {
-        return tasks;
-    }
-
-    public TaskCategory tasks(Set<Task> tasks) {
-        this.tasks = tasks;
-        return this;
-    }
-
-    public TaskCategory addTasks(Task task) {
-        this.tasks.add(task);
-        task.setTaskCategory(this);
-        return this;
-    }
-
-    public TaskCategory removeTasks(Task task) {
-        this.tasks.remove(task);
-        task.setTaskCategory(null);
-        return this;
-    }
-
-    public void setTasks(Set<Task> tasks) {
-        this.tasks = tasks;
     }
 
     public Set<TaskerCategory> getTaskerCategories() {

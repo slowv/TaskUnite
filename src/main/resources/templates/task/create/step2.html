@@ -206,7 +206,7 @@
                                          <!--th:src="@{~/images/person_3.jpg}"-->
                                          <!--alt="Tasker">-->
                                     <img class="recommendations__avatar__circular"
-                                         th:src="${tasker.user.imageUrl}"
+                                         th:src="${tasker.getImage()}"
                                          alt="Tasker">
                                 </div>
                                 <div class="recommendations__result-actions view-pc">
@@ -232,7 +232,7 @@
                             </div>
                             <div class="recommendations__result-content">
                                 <div class="recommendations__result-name" tabindex="0" role="button">
-                                    <span th:text="${tasker.user.firstName  + ' ' + tasker.user.lastName}">Trần Hiểu Đông</span>
+                                    <span th:text="${tasker.getUser().getLastName()  + ' ' + tasker.getUser().getFirstName()}"></span>
                                 </div>
                                 <span>
                                 <div class="recommendations__result-price-container priceChange-appear-active">
@@ -247,7 +247,7 @@
                                     </li>
                                 </ul>
                                 <ul class="recommendations__result-info">
-                                    <li><i class="icon-check-circle-o"></i><span>66 Công việc nhà</span></li>
+                                    <li><i class="icon-check-circle-o"></i><span><span th:text="${stats.get(iter.index).getCompletedTask()}"></span> đã hoàn thành</span></li>
                                     <li><i class="icon-star-o"></i>
                                         <span style="margin-left: -5px;">
                                         100% Nhận xét tích cực
@@ -270,18 +270,18 @@
                                 <div class="recommendations__blurb">
                                     <span th:text="${tasker.description}"></span>
                                 </div>
-                                <div class="recommendations__review media--object">
-                                    <div class="media--figure">
-                                        <img class="avatar-new-72" th:src="@{~/images/person_1.jpg}"
-                                             alt="Reviewer">
-                                    </div>
-                                    <div class="media--content">
-                                        <div class="recommendations__review-content">"Công việc tuyệt vời. Đúng giờ, thân
-                                            thiện, nhanh chóng và lành nghề."
-                                        </div>
-                                        <div class="u-muted">Xuân Thứ - 7/11/2019</div>
-                                    </div>
-                                </div>
+<!--                                <div class="recommendations__review media&#45;&#45;object">-->
+<!--                                    <div class="media&#45;&#45;figure">-->
+<!--                                        <img class="avatar-new-72" th:src="@{~/images/person_1.jpg}"-->
+<!--                                             alt="Reviewer">-->
+<!--                                    </div>-->
+<!--                                    <div class="media&#45;&#45;content">-->
+<!--                                        <div class="recommendations__review-content">"Công việc tuyệt vời. Đúng giờ, thân-->
+<!--                                            thiện, nhanh chóng và lành nghề."-->
+<!--                                        </div>-->
+<!--                                        <div class="u-muted">Xuân Thứ - 7/11/2019</div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                                 <div class="recommendations__result-actions view-mobile">
                                     <a class="recommendations__hire-btn btn btn-primary btn-block "
                                        th:href="@{/task/create/step3}">

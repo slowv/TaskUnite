@@ -1,6 +1,8 @@
 package com.vbtn.taskunite.service.custom.task;
 
-import com.vbtn.taskunite.domain.Task;
+import com.vbtn.taskunite.domain.*;
+import com.vbtn.taskunite.repository.PaymentInformationRepository;
+import com.vbtn.taskunite.repository.StatisticRepository;
 import com.vbtn.taskunite.repository.custom.CustomTaskRepository;
 import com.vbtn.taskunite.service.dto.TaskDTO;
 import com.vbtn.taskunite.service.mapper.TaskMapper;
@@ -17,6 +19,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class CustomTaskService {
     @Autowired
     CustomTaskRepository customTaskRepository;
+    @Autowired
+    PaymentInformationRepository paymentInformationRepository;
+    @Autowired
+    StatisticRepository statisticRepository;
 
     private final TaskMapper taskMapper;
 
@@ -39,5 +45,13 @@ public class CustomTaskService {
     public Task save(Task task) {
         task = customTaskRepository.save(task);
         return task;
+    }
+
+    public void saveAll(Task task, PaymentInformation paymentTasker, Statistic statisticTasker, PaymentInformation paymentMaster, Statistic statisticMaster) {
+        customTaskRepository.save(task);
+        paymentInformationRepository.save(paymentMaster);
+        statisticRepository.save(statisticMaster);
+        paymentInformationRepository.save(paymentTasker);
+        statisticRepository.save(statisticTasker);
     }
 }

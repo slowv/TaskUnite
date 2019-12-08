@@ -8,17 +8,23 @@
     -->
     <changeSet id="20191128073441-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="user_id"
+        <addForeignKeyConstraint baseColumnNames="tasker_id"
                                  baseTableName="task"
-                                 constraintName="fk_task_user_id"
+                                 constraintName="fk_task_tasker_id"
                                  referencedColumnNames="id"
                                  referencedTableName="user_information"/>
 
-        <addForeignKeyConstraint baseColumnNames="task_category_id"
+        <addForeignKeyConstraint baseColumnNames="master_id"
                                  baseTableName="task"
-                                 constraintName="fk_task_task_category_id"
+                                 constraintName="fk_task_master_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="task_category"/>
+                                 referencedTableName="user_information"/>
+
+        <addForeignKeyConstraint baseColumnNames="tasker_category_id"
+                                 baseTableName="task"
+                                 constraintName="fk_task_tasker_category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tasker_category"/>
 
     </changeSet>
 </databaseChangeLog>

@@ -76,17 +76,24 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskUniteApp.task.user" for="field_user">User</label>
-                    <select class="form-control" id="field_user" name="user" formControlName="userId">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.task.tasker" for="field_tasker">Tasker</label>
+                    <select class="form-control" id="field_tasker" name="tasker" formControlName="taskerId">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="userInformationOption.id" *ngFor="let userInformationOption of userinformations; trackBy: trackUserInformationById">{{userInformationOption.id}}</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskUniteApp.task.taskCategory" for="field_taskCategory">Task Category</label>
-                    <select class="form-control" id="field_taskCategory" name="taskCategory" formControlName="taskCategoryId">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.task.master" for="field_master">Master</label>
+                    <select class="form-control" id="field_master" name="master" formControlName="masterId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="taskCategoryOption.id" *ngFor="let taskCategoryOption of taskcategories; trackBy: trackTaskCategoryById">{{taskCategoryOption.id}}</option>
+                        <option [ngValue]="userInformationOption.id" *ngFor="let userInformationOption of userinformations; trackBy: trackUserInformationById">{{userInformationOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.task.taskerCategory" for="field_taskerCategory">Tasker Category</label>
+                    <select class="form-control" id="field_taskerCategory" name="taskerCategory" formControlName="taskerCategoryId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="taskerCategoryOption.id" *ngFor="let taskerCategoryOption of taskercategories; trackBy: trackTaskerCategoryById">{{taskerCategoryOption.id}}</option>
                     </select>
                 </div>
             </div>

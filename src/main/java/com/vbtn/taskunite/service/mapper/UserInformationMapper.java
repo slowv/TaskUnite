@@ -16,8 +16,10 @@ public interface UserInformationMapper extends EntityMapper<UserInformationDTO, 
     UserInformationDTO toDto(UserInformation userInformation);
 
     @Mapping(source = "userId", target = "user")
-    @Mapping(target = "tasks", ignore = true)
-    @Mapping(target = "removeTasks", ignore = true)
+    @Mapping(target = "tasksAsTaskers", ignore = true)
+    @Mapping(target = "removeTasksAsTasker", ignore = true)
+    @Mapping(target = "tasksAsMasters", ignore = true)
+    @Mapping(target = "removeTasksAsMaster", ignore = true)
     @Mapping(target = "reviews", ignore = true)
     @Mapping(target = "removeReviews", ignore = true)
     @Mapping(target = "notifications", ignore = true)

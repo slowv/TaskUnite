@@ -18,8 +18,9 @@ export interface ITask {
   deletedAt?: Moment;
   reviews?: IReview[];
   adminProfits?: IAdminProfit[];
-  userId?: number;
-  taskCategoryId?: number;
+  taskerId?: number;
+  masterId?: number;
+  taskerCategoryId?: number;
 }
 
 export class Task implements ITask {
@@ -39,7 +40,8 @@ export class Task implements ITask {
     public deletedAt?: Moment,
     public reviews?: IReview[],
     public adminProfits?: IAdminProfit[],
-    public userId?: number,
-    public taskCategoryId?: number
+    public taskerId?: number,
+    public masterId?: number,
+    public taskerCategoryId?: number
   ) {}
 }

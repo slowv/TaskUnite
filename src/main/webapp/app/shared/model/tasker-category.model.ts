@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { ITask } from 'app/shared/model/task.model';
 
 export interface ITaskerCategory {
   id?: number;
@@ -8,6 +9,7 @@ export interface ITaskerCategory {
   createdAt?: Moment;
   updatedAt?: Moment;
   deletedAt?: Moment;
+  tasks?: ITask[];
   taskCategoryId?: number;
   userId?: number;
 }
@@ -21,6 +23,7 @@ export class TaskerCategory implements ITaskerCategory {
     public createdAt?: Moment,
     public updatedAt?: Moment,
     public deletedAt?: Moment,
+    public tasks?: ITask[],
     public taskCategoryId?: number,
     public userId?: number
   ) {}

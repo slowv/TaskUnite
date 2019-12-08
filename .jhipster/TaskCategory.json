@@ -33,12 +33,6 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
-            "otherEntityName": "task",
-            "otherEntityRelationshipName": "taskCategory",
-            "relationshipName": "tasks"
-        },
-        {
-            "relationshipType": "one-to-many",
             "otherEntityName": "taskerCategory",
             "otherEntityRelationshipName": "taskCategory",
             "relationshipName": "taskerCategories"

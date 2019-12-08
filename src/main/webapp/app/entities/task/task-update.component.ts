@@ -12,8 +12,8 @@ import { ITask, Task } from 'app/shared/model/task.model';
 import { TaskService } from './task.service';
 import { IUserInformation } from 'app/shared/model/user-information.model';
 import { UserInformationService } from 'app/entities/user-information/user-information.service';
-import { ITaskCategory } from 'app/shared/model/task-category.model';
-import { TaskCategoryService } from 'app/entities/task-category/task-category.service';
+import { ITaskerCategory } from 'app/shared/model/tasker-category.model';
+import { TaskerCategoryService } from 'app/entities/tasker-category/tasker-category.service';
 
 @Component({
   selector: 'jhi-task-update',
@@ -24,7 +24,7 @@ export class TaskUpdateComponent implements OnInit {
 
   userinformations: IUserInformation[];
 
-  taskcategories: ITaskCategory[];
+  taskercategories: ITaskerCategory[];
 
   editForm = this.fb.group({
     id: [],
@@ -40,15 +40,16 @@ export class TaskUpdateComponent implements OnInit {
     createdAt: [],
     updatedAt: [],
     deletedAt: [],
-    userId: [],
-    taskCategoryId: []
+    taskerId: [],
+    masterId: [],
+    taskerCategoryId: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected taskService: TaskService,
     protected userInformationService: UserInformationService,
-    protected taskCategoryService: TaskCategoryService,
+    protected taskerCategoryService: TaskerCategoryService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -64,10 +65,10 @@ export class TaskUpdateComponent implements OnInit {
         (res: HttpResponse<IUserInformation[]>) => (this.userinformations = res.body),
         (res: HttpErrorResponse) => this.onError(res.message)
       );
-    this.taskCategoryService
+    this.taskerCategoryService
       .query()
       .subscribe(
-        (res: HttpResponse<ITaskCategory[]>) => (this.taskcategories = res.body),
+        (res: HttpResponse<ITaskerCategory[]>) => (this.taskercategories = res.body),
         (res: HttpErrorResponse) => this.onError(res.message)
       );
   }
@@ -87,8 +88,9 @@ export class TaskUpdateComponent implements OnInit {
       createdAt: task.createdAt != null ? task.createdAt.format(DATE_TIME_FORMAT) : null,
       updatedAt: task.updatedAt != null ? task.updatedAt.format(DATE_TIME_FORMAT) : null,
       deletedAt: task.deletedAt != null ? task.deletedAt.format(DATE_TIME_FORMAT) : null,
-      userId: task.userId,
-      taskCategoryId: task.taskCategoryId
+      taskerId: task.taskerId,
+      masterId: task.masterId,
+      taskerCategoryId: task.taskerCategoryId
     });
   }
 
@@ -125,8 +127,9 @@ export class TaskUpdateComponent implements OnInit {
         this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
       deletedAt:
         this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
-      userId: this.editForm.get(['userId']).value,
-      taskCategoryId: this.editForm.get(['taskCategoryId']).value
+      taskerId: this.editForm.get(['taskerId']).value,
+      masterId: this.editForm.get(['masterId']).value,
+      taskerCategoryId: this.editForm.get(['taskerCategoryId']).value
     };
   }
 
@@ -150,7 +153,7 @@ export class TaskUpdateComponent implements OnInit {
     return item.id;
   }
 
-  trackTaskCategoryById(index: number, item: ITaskCategory) {
+  trackTaskerCategoryById(index: number, item: ITaskerCategory) {
     return item.id;
   }
 }

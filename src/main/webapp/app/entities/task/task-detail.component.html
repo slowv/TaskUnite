@@ -53,16 +53,22 @@
                 <dd>
                     <span>{{task.deletedAt}}</span>
                 </dd>
-                <dt><span jhiTranslate="taskUniteApp.task.user">User</span></dt>
+                <dt><span jhiTranslate="taskUniteApp.task.tasker">Tasker</span></dt>
                 <dd>
-                    <div *ngIf="task.userId">
-                        <a [routerLink]="['/user-information', task.userId, 'view']">{{task.userId}}</a>
+                    <div *ngIf="task.taskerId">
+                        <a [routerLink]="['/user-information', task.taskerId, 'view']">{{task.taskerId}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="taskUniteApp.task.taskCategory">Task Category</span></dt>
+                <dt><span jhiTranslate="taskUniteApp.task.master">Master</span></dt>
                 <dd>
-                    <div *ngIf="task.taskCategoryId">
-                        <a [routerLink]="['/task-category', task.taskCategoryId, 'view']">{{task.taskCategoryId}}</a>
+                    <div *ngIf="task.masterId">
+                        <a [routerLink]="['/user-information', task.masterId, 'view']">{{task.masterId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.task.taskerCategory">Tasker Category</span></dt>
+                <dd>
+                    <div *ngIf="task.taskerCategoryId">
+                        <a [routerLink]="['/tasker-category', task.taskerCategoryId, 'view']">{{task.taskerCategoryId}}</a>
                     </div>
                 </dd>
             </dl>

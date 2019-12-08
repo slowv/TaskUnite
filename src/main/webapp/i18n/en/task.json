@@ -30,8 +30,9 @@
       "deletedAt": "Deleted At",
       "reviews": "Reviews",
       "adminProfits": "Admin Profits",
-      "user": "User",
-      "taskCategory": "Task Category"
+      "tasker": "Tasker",
+      "master": "Master",
+      "taskerCategory": "Tasker Category"
     }
   }
 }

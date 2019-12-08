@@ -66,15 +66,22 @@
         {
             "relationshipType": "many-to-one",
             "otherEntityName": "userInformation",
-            "otherEntityRelationshipName": "tasks",
-            "relationshipName": "user",
+            "otherEntityRelationshipName": "tasksAsTasker",
+            "relationshipName": "tasker",
             "otherEntityField": "id"
         },
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "taskCategory",
+            "otherEntityName": "userInformation",
+            "otherEntityRelationshipName": "tasksAsMaster",
+            "relationshipName": "master",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "taskerCategory",
             "otherEntityRelationshipName": "tasks",
-            "relationshipName": "taskCategory",
+            "relationshipName": "taskerCategory",
             "otherEntityField": "id"
         }
     ],

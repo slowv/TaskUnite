@@ -31,8 +31,9 @@
             <th scope="col"  jhiSortBy="createdAt"><span jhiTranslate="taskUniteApp.task.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.task.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.task.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="userId"><span jhiTranslate="taskUniteApp.task.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="taskCategoryId"><span jhiTranslate="taskUniteApp.task.taskCategory">Task Category</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="taskerId"><span jhiTranslate="taskUniteApp.task.tasker">Tasker</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="masterId"><span jhiTranslate="taskUniteApp.task.master">Master</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="taskerCategoryId"><span jhiTranslate="taskUniteApp.task.taskerCategory">Tasker Category</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -52,13 +53,18 @@
                 <td>{{task.updatedAt | date:'medium'}}</td>
                 <td>{{task.deletedAt | date:'medium'}}</td>
                 <td>
-                    <div *ngIf="task.userId">
-                        <a [routerLink]="['/user-information', task.userId , 'view' ]" >{{task.userId}}</a>
+                    <div *ngIf="task.taskerId">
+                        <a [routerLink]="['/user-information', task.taskerId , 'view' ]" >{{task.taskerId}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="task.taskCategoryId">
-                        <a [routerLink]="['/task-category', task.taskCategoryId , 'view' ]" >{{task.taskCategoryId}}</a>
+                    <div *ngIf="task.masterId">
+                        <a [routerLink]="['/user-information', task.masterId , 'view' ]" >{{task.masterId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="task.taskerCategoryId">
+                        <a [routerLink]="['/tasker-category', task.taskerCategoryId , 'view' ]" >{{task.taskerCategoryId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

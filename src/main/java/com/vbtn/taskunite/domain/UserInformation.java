@@ -62,8 +62,11 @@ public class UserInformation implements Serializable {
     @JoinColumn(unique = true)
     private User user;
 
-    @OneToMany(mappedBy = "user")
-    private Set<Task> tasks = new HashSet<>();
+    @OneToMany(mappedBy = "tasker")
+    private Set<Task> tasksAsTaskers = new HashSet<>();
+
+    @OneToMany(mappedBy = "master")
+    private Set<Task> tasksAsMasters = new HashSet<>();
 
     @OneToMany(mappedBy = "user")
     private Set<Review> reviews = new HashSet<>();
@@ -264,29 +267,54 @@ public class UserInformation implements Serializable {
         this.user = user;
     }
 
-    public Set<Task> getTasks() {
-        return tasks;
+    public Set<Task> getTasksAsTaskers() {
+        return tasksAsTaskers;
     }
 
-    public UserInformation tasks(Set<Task> tasks) {
-        this.tasks = tasks;
+    public UserInformation tasksAsTaskers(Set<Task> tasks) {
+        this.tasksAsTaskers = tasks;
         return this;
     }
 
-    public UserInformation addTasks(Task task) {
-        this.tasks.add(task);
-        task.setUser(this);
+    public UserInformation addTasksAsTasker(Task task) {
+        this.tasksAsTaskers.add(task);
+        task.setTasker(this);
         return this;
     }
 
-    public UserInformation removeTasks(Task task) {
-        this.tasks.remove(task);
-        task.setUser(null);
+    public UserInformation removeTasksAsTasker(Task task) {
+        this.tasksAsTaskers.remove(task);
+        task.setTasker(null);
         return this;
     }
 
-    public void setTasks(Set<Task> tasks) {
-        this.tasks = tasks;
+    public void setTasksAsTaskers(Set<Task> tasks) {
+        this.tasksAsTaskers = tasks;
+    }
+
+    public Set<Task> getTasksAsMasters() {
+        return tasksAsMasters;
+    }
+
+    public UserInformation tasksAsMasters(Set<Task> tasks) {
+        this.tasksAsMasters = tasks;
+        return this;
+    }
+
+    public UserInformation addTasksAsMaster(Task task) {
+        this.tasksAsMasters.add(task);
+        task.setMaster(this);
+        return this;
+    }
+
+    public UserInformation removeTasksAsMaster(Task task) {
+        this.tasksAsMasters.remove(task);
+        task.setMaster(null);
+        return this;
+    }
+
+    public void setTasksAsMasters(Set<Task> tasks) {
+        this.tasksAsMasters = tasks;
     }
 
     public Set<Review> getReviews() {

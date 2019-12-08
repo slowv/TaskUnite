@@ -1,4 +1,4 @@
-package com.vbtn.taskunite.web.rest.api;
+package com.vbtn.taskunite.web.rest.custom.api;
 
 import com.vbtn.taskunite.service.UserService;
 import com.vbtn.taskunite.service.custom.tasker.TaskerService;
