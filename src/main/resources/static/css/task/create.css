@@ -1340,78 +1340,8 @@ div.name {
 /*  color: #c4592b !important;*/
 /*}*/
 
+
 /*Feature#3 Big update UI */
-.btn-reset-css {
-  outline: none;
-  border: none;
-  padding: 0;
-  box-shadow: none;
-  background: none;
-}
-
-.btn-reset-css:focus {
-  outline: none;
-}
-
-.btn-svg-UI {
-  position: relative;
-  height: 40px;
-  width: 200px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 500;
-  color: #818181;
-  transition: 0.5s;
-  background: #f9f9f9;
-  cursor: pointer;
-  line-height: 40px;
-}
-
-.btn-svg-UI:disabled,
-.btn-svg-UI[disabled] {
-  opacity: .6;
-  cursor: default;
-}
-
-.btn-svg-UI.fill-green{
-  background: #51af33;
-  color: #fff;
-}
-
-.btn-svg-UI.fill-green svg rect{
-  stroke: #51af33;
-}
-
-.btn-svg-UI svg,
-.btn-svg-UI svg rect {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  fill: transparent;
-}
-
-.btn-svg-UI svg rect {
-  stroke: #818181;
-  stroke-width: 4;
-  transition: .5s;
-  stroke-dasharray: 200, 40;
-}
-
-
-.btn-svg-UI:hover{
-  background: #51af33;
-  color: #fff;
-  box-shadow: 0 0 18px 0px rgba(81, 175, 51, 0.59) !important;
-}
-
-.btn-svg-UI:hover svg rect {
-  stroke: #fff;
-  stroke-dasharray: 40, 200;
-  stroke-dashoffset: 300;
-}
-
 #form-task input.form-control {
   transition: .5s;
 }
@@ -1423,6 +1353,14 @@ div.name {
 #form-task input.form-control:hover:focus{
   box-shadow: 0 0 18px 0px rgba(81, 175, 51, 0.59) !important;
 }
+
+/*Custom input Number*/
+#form-task input[type=number]::-webkit-inner-spin-button,
+#form-task input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 
 
 
