@@ -23,6 +23,8 @@
         "notification": "Notification",
         "review": "Review",
         "taskerCategory": "Tasker Category",
+        "adminTransaction": "Admin Transaction",
+        "adminProfit": "Admin Profit",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

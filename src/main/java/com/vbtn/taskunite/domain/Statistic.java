@@ -1,8 +1,5 @@
 package com.vbtn.taskunite.domain;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -30,24 +27,13 @@ public class Statistic implements Serializable {
     @Column(name = "completed_task")
     private Integer completedTask;
 
-    @Column(name = "incompleted_task")
-    private Integer incompletedTask;
-
     @Column(name = "rating")
     private Integer rating;
 
-    @Column(name = "ranking")
-    private Integer ranking;
-
-    @Column(name = "bonus")
-    private Double bonus;
-
     @Column(name = "created_at")
-    @CreationTimestamp
     private Instant createdAt;
 
     @Column(name = "updated_at")
-    @UpdateTimestamp
     private Instant updatedAt;
 
     @Column(name = "deleted_at")
@@ -105,19 +91,6 @@ public class Statistic implements Serializable {
         this.completedTask = completedTask;
     }
 
-    public Integer getIncompletedTask() {
-        return incompletedTask;
-    }
-
-    public Statistic incompletedTask(Integer incompletedTask) {
-        this.incompletedTask = incompletedTask;
-        return this;
-    }
-
-    public void setIncompletedTask(Integer incompletedTask) {
-        this.incompletedTask = incompletedTask;
-    }
-
     public Integer getRating() {
         return rating;
     }
@@ -129,32 +102,6 @@ public class Statistic implements Serializable {
 
     public void setRating(Integer rating) {
         this.rating = rating;
-    }
-
-    public Integer getRanking() {
-        return ranking;
-    }
-
-    public Statistic ranking(Integer ranking) {
-        this.ranking = ranking;
-        return this;
-    }
-
-    public void setRanking(Integer ranking) {
-        this.ranking = ranking;
-    }
-
-    public Double getBonus() {
-        return bonus;
-    }
-
-    public Statistic bonus(Double bonus) {
-        this.bonus = bonus;
-        return this;
-    }
-
-    public void setBonus(Double bonus) {
-        this.bonus = bonus;
     }
 
     public Instant getCreatedAt() {
@@ -233,10 +180,7 @@ public class Statistic implements Serializable {
             ", level=" + getLevel() +
             ", experience=" + getExperience() +
             ", completedTask=" + getCompletedTask() +
-            ", incompletedTask=" + getIncompletedTask() +
             ", rating=" + getRating() +
-            ", ranking=" + getRanking() +
-            ", bonus=" + getBonus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +

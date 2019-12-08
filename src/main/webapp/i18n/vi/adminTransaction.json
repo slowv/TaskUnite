@@ -1,0 +1,28 @@
+{
+  "taskUniteApp": {
+    "adminTransaction": {
+      "home": {
+        "title": "Admin Transactions",
+        "createLabel": "Thêm mới một Admin Transaction",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Admin Transaction",
+        "notFound": "No Admin Transactions found"
+      },
+      "created": "Một Admin Transaction mới được tạo với định danh {{ param }}",
+      "updated": "Một Admin Transaction cập nhật với định danh {{ param }}",
+      "deleted": "Một Admin Transaction đã xóa với định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Admin Transaction {{ id }}?"
+      },
+      "detail": {
+        "title": "Admin Transaction"
+      },
+      "amount": "Amount",
+      "type": "Type",
+      "status": "Status",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "deletedAt": "Deleted At",
+      "payment": "Payment"
+    }
+  }
+}

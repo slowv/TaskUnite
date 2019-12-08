@@ -23,7 +23,6 @@ export class TaskCategoryUpdateComponent implements OnInit {
     description: [],
     image: [],
     minPrice: [],
-    status: [],
     createdAt: [],
     updatedAt: [],
     deletedAt: []
@@ -45,7 +44,6 @@ export class TaskCategoryUpdateComponent implements OnInit {
       description: taskCategory.description,
       image: taskCategory.image,
       minPrice: taskCategory.minPrice,
-      status: taskCategory.status,
       createdAt: taskCategory.createdAt != null ? taskCategory.createdAt.format(DATE_TIME_FORMAT) : null,
       updatedAt: taskCategory.updatedAt != null ? taskCategory.updatedAt.format(DATE_TIME_FORMAT) : null,
       deletedAt: taskCategory.deletedAt != null ? taskCategory.deletedAt.format(DATE_TIME_FORMAT) : null
@@ -74,7 +72,6 @@ export class TaskCategoryUpdateComponent implements OnInit {
       description: this.editForm.get(['description']).value,
       image: this.editForm.get(['image']).value,
       minPrice: this.editForm.get(['minPrice']).value,
-      status: this.editForm.get(['status']).value,
       createdAt:
         this.editForm.get(['createdAt']).value != null ? moment(this.editForm.get(['createdAt']).value, DATE_TIME_FORMAT) : undefined,
       updatedAt:

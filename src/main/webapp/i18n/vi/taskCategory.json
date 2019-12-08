@@ -20,12 +20,11 @@
       "description": "Description",
       "image": "Image",
       "minPrice": "Min Price",
-      "status": "Status",
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
-      "taskerCategories": "Tasker Categories",
-      "tasks": "Tasks"
+      "tasks": "Tasks",
+      "taskerCategories": "Tasker Categories"
     }
   }
 }

@@ -30,7 +30,6 @@ export class ReviewUpdateComponent implements OnInit {
     id: [],
     content: [],
     point: [],
-    status: [],
     createdAt: [],
     updatedAt: [],
     deletedAt: [],
@@ -68,7 +67,6 @@ export class ReviewUpdateComponent implements OnInit {
       id: review.id,
       content: review.content,
       point: review.point,
-      status: review.status,
       createdAt: review.createdAt != null ? review.createdAt.format(DATE_TIME_FORMAT) : null,
       updatedAt: review.updatedAt != null ? review.updatedAt.format(DATE_TIME_FORMAT) : null,
       deletedAt: review.deletedAt != null ? review.deletedAt.format(DATE_TIME_FORMAT) : null,
@@ -97,7 +95,6 @@ export class ReviewUpdateComponent implements OnInit {
       id: this.editForm.get(['id']).value,
       content: this.editForm.get(['content']).value,
       point: this.editForm.get(['point']).value,
-      status: this.editForm.get(['status']).value,
       createdAt:
         this.editForm.get(['createdAt']).value != null ? moment(this.editForm.get(['createdAt']).value, DATE_TIME_FORMAT) : undefined,
       updatedAt:

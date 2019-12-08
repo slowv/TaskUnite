@@ -6,10 +6,6 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "status",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "createdAt",
             "fieldType": "Instant"
         },
@@ -25,9 +21,9 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
-            "otherEntityName": "address",
+            "otherEntityName": "userInformation",
             "otherEntityRelationshipName": "district",
-            "relationshipName": "addresses"
+            "relationshipName": "users"
         },
         {
             "relationshipType": "many-to-one",

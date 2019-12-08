@@ -14,8 +14,6 @@ public class ReviewDTO implements Serializable {
 
     private Double point;
 
-    private Integer status;
-
     private Instant createdAt;
 
     private Instant updatedAt;
@@ -49,14 +47,6 @@ public class ReviewDTO implements Serializable {
 
     public void setPoint(Double point) {
         this.point = point;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
     public Instant getCreatedAt() {
@@ -126,7 +116,6 @@ public class ReviewDTO implements Serializable {
             "id=" + getId() +
             ", content='" + getContent() + "'" +
             ", point=" + getPoint() +
-            ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +

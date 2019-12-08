@@ -1,6 +1,6 @@
 import { Moment } from 'moment';
-import { ITaskerCategory } from 'app/shared/model/tasker-category.model';
 import { ITask } from 'app/shared/model/task.model';
+import { ITaskerCategory } from 'app/shared/model/tasker-category.model';
 
 export interface ITaskCategory {
   id?: number;
@@ -8,12 +8,11 @@ export interface ITaskCategory {
   description?: string;
   image?: string;
   minPrice?: number;
-  status?: number;
   createdAt?: Moment;
   updatedAt?: Moment;
   deletedAt?: Moment;
-  taskerCategories?: ITaskerCategory[];
   tasks?: ITask[];
+  taskerCategories?: ITaskerCategory[];
 }
 
 export class TaskCategory implements ITaskCategory {
@@ -23,11 +22,10 @@ export class TaskCategory implements ITaskCategory {
     public description?: string,
     public image?: string,
     public minPrice?: number,
-    public status?: number,
     public createdAt?: Moment,
     public updatedAt?: Moment,
     public deletedAt?: Moment,
-    public taskerCategories?: ITaskerCategory[],
-    public tasks?: ITask[]
+    public tasks?: ITask[],
+    public taskerCategories?: ITaskerCategory[]
   ) {}
 }

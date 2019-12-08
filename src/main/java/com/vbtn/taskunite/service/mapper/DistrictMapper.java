@@ -14,8 +14,8 @@ public interface DistrictMapper extends EntityMapper<DistrictDTO, District> {
     @Mapping(source = "city.id", target = "cityId")
     DistrictDTO toDto(District district);
 
-    @Mapping(target = "addresses", ignore = true)
-    @Mapping(target = "removeAddresses", ignore = true)
+    @Mapping(target = "users", ignore = true)
+    @Mapping(target = "removeUsers", ignore = true)
     @Mapping(source = "cityId", target = "city")
     District toEntity(DistrictDTO districtDTO);
 

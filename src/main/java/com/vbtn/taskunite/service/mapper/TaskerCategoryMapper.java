@@ -8,15 +8,15 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link TaskerCategory} and its DTO {@link TaskerCategoryDTO}.
  */
-@Mapper(componentModel = "spring", uses = {TaskCategoryMapper.class, TaskerMapper.class})
+@Mapper(componentModel = "spring", uses = {TaskCategoryMapper.class, UserInformationMapper.class})
 public interface TaskerCategoryMapper extends EntityMapper<TaskerCategoryDTO, TaskerCategory> {
 
     @Mapping(source = "taskCategory.id", target = "taskCategoryId")
-    @Mapping(source = "tasker.id", target = "taskerId")
+    @Mapping(source = "user.id", target = "userId")
     TaskerCategoryDTO toDto(TaskerCategory taskerCategory);
 
     @Mapping(source = "taskCategoryId", target = "taskCategory")
-    @Mapping(source = "taskerId", target = "tasker")
+    @Mapping(source = "userId", target = "user")
     TaskerCategory toEntity(TaskerCategoryDTO taskerCategoryDTO);
 
     default TaskerCategory fromId(Long id) {

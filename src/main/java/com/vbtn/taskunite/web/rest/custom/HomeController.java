@@ -1,0 +1,29 @@
+package com.vbtn.taskunite.web.rest.custom;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/")
+public class HomeController {
+    @GetMapping
+    public String index() {
+        return "home/index";
+    }
+
+    @GetMapping("contact")
+    public String contact() {
+        return "home/contact";
+    }
+
+    @GetMapping("category")
+    public String category(){
+        return "home/category";
+    }
+
+    @GetMapping("error")
+    public String error() {
+        return "home/error";
+    }
+}

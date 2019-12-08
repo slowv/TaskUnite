@@ -1,5 +1,6 @@
 package com.vbtn.taskunite.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -24,11 +25,26 @@ public class UserInformation implements Serializable {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "bday")
+    private Integer bday;
+
+    @Column(name = "bmonth")
+    private Integer bmonth;
+
+    @Column(name = "byear")
+    private Integer byear;
+
     @Column(name = "gender")
     private Integer gender;
 
     @Column(name = "phone")
     private String phone;
+
+    @Column(name = "image")
+    private String image;
+
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "status")
     private Integer status;
@@ -46,8 +62,11 @@ public class UserInformation implements Serializable {
     @JoinColumn(unique = true)
     private User user;
 
-    @OneToMany(mappedBy = "user")
-    private Set<Address> workingAddresses = new HashSet<>();
+    @OneToMany(mappedBy = "tasker")
+    private Set<Task> tasksAsTaskers = new HashSet<>();
+
+    @OneToMany(mappedBy = "master")
+    private Set<Task> tasksAsMasters = new HashSet<>();
 
     @OneToMany(mappedBy = "user")
     private Set<Review> reviews = new HashSet<>();
@@ -55,17 +74,20 @@ public class UserInformation implements Serializable {
     @OneToMany(mappedBy = "user")
     private Set<Notification> notifications = new HashSet<>();
 
-    @OneToOne(mappedBy = "user")
-    @JsonIgnore
-    private Tasker tasker;
-
-    @OneToOne(mappedBy = "user")
-    @JsonIgnore
-    private Master master;
+    @OneToMany(mappedBy = "user")
+    private Set<TaskerCategory> taskerCategories = new HashSet<>();
 
     @OneToOne(mappedBy = "user")
     @JsonIgnore
     private Statistic statistic;
+
+    @OneToOne(mappedBy = "user")
+    @JsonIgnore
+    private PaymentInformation payment;
+
+    @ManyToOne
+    @JsonIgnoreProperties("users")
+    private District district;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -87,6 +109,45 @@ public class UserInformation implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Integer getBday() {
+        return bday;
+    }
+
+    public UserInformation bday(Integer bday) {
+        this.bday = bday;
+        return this;
+    }
+
+    public void setBday(Integer bday) {
+        this.bday = bday;
+    }
+
+    public Integer getBmonth() {
+        return bmonth;
+    }
+
+    public UserInformation bmonth(Integer bmonth) {
+        this.bmonth = bmonth;
+        return this;
+    }
+
+    public void setBmonth(Integer bmonth) {
+        this.bmonth = bmonth;
+    }
+
+    public Integer getByear() {
+        return byear;
+    }
+
+    public UserInformation byear(Integer byear) {
+        this.byear = byear;
+        return this;
+    }
+
+    public void setByear(Integer byear) {
+        this.byear = byear;
     }
 
     public Integer getGender() {
@@ -113,6 +174,32 @@ public class UserInformation implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public UserInformation image(String image) {
+        this.image = image;
+        return this;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public UserInformation description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getStatus() {
@@ -180,29 +267,54 @@ public class UserInformation implements Serializable {
         this.user = user;
     }
 
-    public Set<Address> getWorkingAddresses() {
-        return workingAddresses;
+    public Set<Task> getTasksAsTaskers() {
+        return tasksAsTaskers;
     }
 
-    public UserInformation workingAddresses(Set<Address> addresses) {
-        this.workingAddresses = addresses;
+    public UserInformation tasksAsTaskers(Set<Task> tasks) {
+        this.tasksAsTaskers = tasks;
         return this;
     }
 
-    public UserInformation addWorkingAddresses(Address address) {
-        this.workingAddresses.add(address);
-        address.setUser(this);
+    public UserInformation addTasksAsTasker(Task task) {
+        this.tasksAsTaskers.add(task);
+        task.setTasker(this);
         return this;
     }
 
-    public UserInformation removeWorkingAddresses(Address address) {
-        this.workingAddresses.remove(address);
-        address.setUser(null);
+    public UserInformation removeTasksAsTasker(Task task) {
+        this.tasksAsTaskers.remove(task);
+        task.setTasker(null);
         return this;
     }
 
-    public void setWorkingAddresses(Set<Address> addresses) {
-        this.workingAddresses = addresses;
+    public void setTasksAsTaskers(Set<Task> tasks) {
+        this.tasksAsTaskers = tasks;
+    }
+
+    public Set<Task> getTasksAsMasters() {
+        return tasksAsMasters;
+    }
+
+    public UserInformation tasksAsMasters(Set<Task> tasks) {
+        this.tasksAsMasters = tasks;
+        return this;
+    }
+
+    public UserInformation addTasksAsMaster(Task task) {
+        this.tasksAsMasters.add(task);
+        task.setMaster(this);
+        return this;
+    }
+
+    public UserInformation removeTasksAsMaster(Task task) {
+        this.tasksAsMasters.remove(task);
+        task.setMaster(null);
+        return this;
+    }
+
+    public void setTasksAsMasters(Set<Task> tasks) {
+        this.tasksAsMasters = tasks;
     }
 
     public Set<Review> getReviews() {
@@ -255,30 +367,29 @@ public class UserInformation implements Serializable {
         this.notifications = notifications;
     }
 
-    public Tasker getTasker() {
-        return tasker;
+    public Set<TaskerCategory> getTaskerCategories() {
+        return taskerCategories;
     }
 
-    public UserInformation tasker(Tasker tasker) {
-        this.tasker = tasker;
+    public UserInformation taskerCategories(Set<TaskerCategory> taskerCategories) {
+        this.taskerCategories = taskerCategories;
         return this;
     }
 
-    public void setTasker(Tasker tasker) {
-        this.tasker = tasker;
-    }
-
-    public Master getMaster() {
-        return master;
-    }
-
-    public UserInformation master(Master master) {
-        this.master = master;
+    public UserInformation addTaskerCategories(TaskerCategory taskerCategory) {
+        this.taskerCategories.add(taskerCategory);
+        taskerCategory.setUser(this);
         return this;
     }
 
-    public void setMaster(Master master) {
-        this.master = master;
+    public UserInformation removeTaskerCategories(TaskerCategory taskerCategory) {
+        this.taskerCategories.remove(taskerCategory);
+        taskerCategory.setUser(null);
+        return this;
+    }
+
+    public void setTaskerCategories(Set<TaskerCategory> taskerCategories) {
+        this.taskerCategories = taskerCategories;
     }
 
     public Statistic getStatistic() {
@@ -292,6 +403,32 @@ public class UserInformation implements Serializable {
 
     public void setStatistic(Statistic statistic) {
         this.statistic = statistic;
+    }
+
+    public PaymentInformation getPayment() {
+        return payment;
+    }
+
+    public UserInformation payment(PaymentInformation paymentInformation) {
+        this.payment = paymentInformation;
+        return this;
+    }
+
+    public void setPayment(PaymentInformation paymentInformation) {
+        this.payment = paymentInformation;
+    }
+
+    public District getDistrict() {
+        return district;
+    }
+
+    public UserInformation district(District district) {
+        this.district = district;
+        return this;
+    }
+
+    public void setDistrict(District district) {
+        this.district = district;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -316,8 +453,13 @@ public class UserInformation implements Serializable {
         return "UserInformation{" +
             "id=" + getId() +
             ", address='" + getAddress() + "'" +
+            ", bday=" + getBday() +
+            ", bmonth=" + getBmonth() +
+            ", byear=" + getByear() +
             ", gender=" + getGender() +
             ", phone='" + getPhone() + "'" +
+            ", image='" + getImage() + "'" +
+            ", description='" + getDescription() + "'" +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +

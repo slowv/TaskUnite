@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="adminTransaction">
+            <h2><span jhiTranslate="taskUniteApp.adminTransaction.detail.title">Admin Transaction</span> {{adminTransaction.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="taskUniteApp.adminTransaction.amount">Amount</span></dt>
+                <dd>
+                    <span>{{adminTransaction.amount}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.adminTransaction.type">Type</span></dt>
+                <dd>
+                    <span>{{adminTransaction.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.adminTransaction.status">Status</span></dt>
+                <dd>
+                    <span>{{adminTransaction.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.adminTransaction.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{adminTransaction.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.adminTransaction.updatedAt">Updated At</span></dt>
+                <dd>
+                    <span>{{adminTransaction.updatedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.adminTransaction.deletedAt">Deleted At</span></dt>
+                <dd>
+                    <span>{{adminTransaction.deletedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="taskUniteApp.adminTransaction.payment">Payment</span></dt>
+                <dd>
+                    <div *ngIf="adminTransaction.paymentId">
+                        <a [routerLink]="['/payment-information', adminTransaction.paymentId, 'view']">{{adminTransaction.paymentId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/admin-transaction', adminTransaction.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

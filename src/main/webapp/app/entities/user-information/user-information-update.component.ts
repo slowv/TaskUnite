@@ -12,12 +12,12 @@ import { IUserInformation, UserInformation } from 'app/shared/model/user-informa
 import { UserInformationService } from './user-information.service';
 import { IUser } from 'app/core/user/user.model';
 import { UserService } from 'app/core/user/user.service';
-import { ITasker } from 'app/shared/model/tasker.model';
-import { TaskerService } from 'app/entities/tasker/tasker.service';
-import { IMaster } from 'app/shared/model/master.model';
-import { MasterService } from 'app/entities/master/master.service';
 import { IStatistic } from 'app/shared/model/statistic.model';
 import { StatisticService } from 'app/entities/statistic/statistic.service';
+import { IPaymentInformation } from 'app/shared/model/payment-information.model';
+import { PaymentInformationService } from 'app/entities/payment-information/payment-information.service';
+import { IDistrict } from 'app/shared/model/district.model';
+import { DistrictService } from 'app/entities/district/district.service';
 
 @Component({
   selector: 'jhi-user-information-update',
@@ -28,31 +28,37 @@ export class UserInformationUpdateComponent implements OnInit {
 
   users: IUser[];
 
-  taskers: ITasker[];
-
-  masters: IMaster[];
-
   statistics: IStatistic[];
+
+  paymentinformations: IPaymentInformation[];
+
+  districts: IDistrict[];
 
   editForm = this.fb.group({
     id: [],
     address: [],
+    bday: [],
+    bmonth: [],
+    byear: [],
     gender: [],
     phone: [],
+    image: [],
+    description: [],
     status: [],
     createdAt: [],
     updatedAt: [],
     deletedAt: [],
-    userId: []
+    userId: [],
+    districtId: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected userInformationService: UserInformationService,
     protected userService: UserService,
-    protected taskerService: TaskerService,
-    protected masterService: MasterService,
     protected statisticService: StatisticService,
+    protected paymentInformationService: PaymentInformationService,
+    protected districtService: DistrictService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -65,28 +71,37 @@ export class UserInformationUpdateComponent implements OnInit {
     this.userService
       .query()
       .subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body), (res: HttpErrorResponse) => this.onError(res.message));
-    this.taskerService
-      .query()
-      .subscribe((res: HttpResponse<ITasker[]>) => (this.taskers = res.body), (res: HttpErrorResponse) => this.onError(res.message));
-    this.masterService
-      .query()
-      .subscribe((res: HttpResponse<IMaster[]>) => (this.masters = res.body), (res: HttpErrorResponse) => this.onError(res.message));
     this.statisticService
       .query()
       .subscribe((res: HttpResponse<IStatistic[]>) => (this.statistics = res.body), (res: HttpErrorResponse) => this.onError(res.message));
+    this.paymentInformationService
+      .query()
+      .subscribe(
+        (res: HttpResponse<IPaymentInformation[]>) => (this.paymentinformations = res.body),
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
+    this.districtService
+      .query()
+      .subscribe((res: HttpResponse<IDistrict[]>) => (this.districts = res.body), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(userInformation: IUserInformation) {
     this.editForm.patchValue({
       id: userInformation.id,
       address: userInformation.address,
+      bday: userInformation.bday,
+      bmonth: userInformation.bmonth,
+      byear: userInformation.byear,
       gender: userInformation.gender,
       phone: userInformation.phone,
+      image: userInformation.image,
+      description: userInformation.description,
       status: userInformation.status,
       createdAt: userInformation.createdAt != null ? userInformation.createdAt.format(DATE_TIME_FORMAT) : null,
       updatedAt: userInformation.updatedAt != null ? userInformation.updatedAt.format(DATE_TIME_FORMAT) : null,
       deletedAt: userInformation.deletedAt != null ? userInformation.deletedAt.format(DATE_TIME_FORMAT) : null,
-      userId: userInformation.userId
+      userId: userInformation.userId,
+      districtId: userInformation.districtId
     });
   }
 
@@ -109,8 +124,13 @@ export class UserInformationUpdateComponent implements OnInit {
       ...new UserInformation(),
       id: this.editForm.get(['id']).value,
       address: this.editForm.get(['address']).value,
+      bday: this.editForm.get(['bday']).value,
+      bmonth: this.editForm.get(['bmonth']).value,
+      byear: this.editForm.get(['byear']).value,
       gender: this.editForm.get(['gender']).value,
       phone: this.editForm.get(['phone']).value,
+      image: this.editForm.get(['image']).value,
+      description: this.editForm.get(['description']).value,
       status: this.editForm.get(['status']).value,
       createdAt:
         this.editForm.get(['createdAt']).value != null ? moment(this.editForm.get(['createdAt']).value, DATE_TIME_FORMAT) : undefined,
@@ -118,7 +138,8 @@ export class UserInformationUpdateComponent implements OnInit {
         this.editForm.get(['updatedAt']).value != null ? moment(this.editForm.get(['updatedAt']).value, DATE_TIME_FORMAT) : undefined,
       deletedAt:
         this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
-      userId: this.editForm.get(['userId']).value
+      userId: this.editForm.get(['userId']).value,
+      districtId: this.editForm.get(['districtId']).value
     };
   }
 
@@ -142,15 +163,15 @@ export class UserInformationUpdateComponent implements OnInit {
     return item.id;
   }
 
-  trackTaskerById(index: number, item: ITasker) {
-    return item.id;
-  }
-
-  trackMasterById(index: number, item: IMaster) {
-    return item.id;
-  }
-
   trackStatisticById(index: number, item: IStatistic) {
+    return item.id;
+  }
+
+  trackPaymentInformationById(index: number, item: IPaymentInformation) {
+    return item.id;
+  }
+
+  trackDistrictById(index: number, item: IDistrict) {
     return item.id;
   }
 }

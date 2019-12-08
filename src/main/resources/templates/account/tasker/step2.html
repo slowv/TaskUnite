@@ -132,9 +132,9 @@
                             <p>FBI WARNING</p>
                             <p>DMCA 2019</p>
                             <input id="csrfuck" type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-                            <button class="btn btn-success" id="completeTasker">
+                            <a th:href="@{/intro/tasker}" class="btn btn-success" id="completeTasker">
                                 Hoàn thành!
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

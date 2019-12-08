@@ -23,6 +23,8 @@ $("#loginForm").on("submit", function(e) {
     data: $(this).serialize()
   }).done((data, statusText, xhr) => {
     console.log(xhr);
-    if (xhr.status === 200) window.location.replace("/");
+    if (xhr.status === 200) window.location.replace("/intro");
+  }).fail(data => {
+    toastr.error('Login failed', 'Error');
   });
 });

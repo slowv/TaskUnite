@@ -68,36 +68,6 @@ public class UserInformationServiceImpl implements UserInformationService {
 
 
     /**
-    *  Get all the userInformations where Tasker is {@code null}.
-     *  @return the list of entities.
-     */
-    @Transactional(readOnly = true) 
-    public List<UserInformationDTO> findAllWhereTaskerIsNull() {
-        log.debug("Request to get all userInformations where Tasker is null");
-        return StreamSupport
-            .stream(userInformationRepository.findAll().spliterator(), false)
-            .filter(userInformation -> userInformation.getTasker() == null)
-            .map(userInformationMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
-    }
-
-
-    /**
-    *  Get all the userInformations where Master is {@code null}.
-     *  @return the list of entities.
-     */
-    @Transactional(readOnly = true) 
-    public List<UserInformationDTO> findAllWhereMasterIsNull() {
-        log.debug("Request to get all userInformations where Master is null");
-        return StreamSupport
-            .stream(userInformationRepository.findAll().spliterator(), false)
-            .filter(userInformation -> userInformation.getMaster() == null)
-            .map(userInformationMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
-    }
-
-
-    /**
     *  Get all the userInformations where Statistic is {@code null}.
      *  @return the list of entities.
      */
@@ -107,6 +77,21 @@ public class UserInformationServiceImpl implements UserInformationService {
         return StreamSupport
             .stream(userInformationRepository.findAll().spliterator(), false)
             .filter(userInformation -> userInformation.getStatistic() == null)
+            .map(userInformationMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+
+    /**
+    *  Get all the userInformations where Payment is {@code null}.
+     *  @return the list of entities.
+     */
+    @Transactional(readOnly = true) 
+    public List<UserInformationDTO> findAllWherePaymentIsNull() {
+        log.debug("Request to get all userInformations where Payment is null");
+        return StreamSupport
+            .stream(userInformationRepository.findAll().spliterator(), false)
+            .filter(userInformation -> userInformation.getPayment() == null)
             .map(userInformationMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }

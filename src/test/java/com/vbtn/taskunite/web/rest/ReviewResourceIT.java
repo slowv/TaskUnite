@@ -44,9 +44,6 @@ public class ReviewResourceIT {
     private static final Double DEFAULT_POINT = 1D;
     private static final Double UPDATED_POINT = 2D;
 
-    private static final Integer DEFAULT_STATUS = 1;
-    private static final Integer UPDATED_STATUS = 2;
-
     private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
@@ -106,7 +103,6 @@ public class ReviewResourceIT {
         Review review = new Review()
             .content(DEFAULT_CONTENT)
             .point(DEFAULT_POINT)
-            .status(DEFAULT_STATUS)
             .createdAt(DEFAULT_CREATED_AT)
             .updatedAt(DEFAULT_UPDATED_AT)
             .deletedAt(DEFAULT_DELETED_AT);
@@ -122,7 +118,6 @@ public class ReviewResourceIT {
         Review review = new Review()
             .content(UPDATED_CONTENT)
             .point(UPDATED_POINT)
-            .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
             .deletedAt(UPDATED_DELETED_AT);
@@ -152,7 +147,6 @@ public class ReviewResourceIT {
         Review testReview = reviewList.get(reviewList.size() - 1);
         assertThat(testReview.getContent()).isEqualTo(DEFAULT_CONTENT);
         assertThat(testReview.getPoint()).isEqualTo(DEFAULT_POINT);
-        assertThat(testReview.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testReview.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testReview.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
         assertThat(testReview.getDeletedAt()).isEqualTo(DEFAULT_DELETED_AT);
@@ -192,7 +186,6 @@ public class ReviewResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(review.getId().intValue())))
             .andExpect(jsonPath("$.[*].content").value(hasItem(DEFAULT_CONTENT)))
             .andExpect(jsonPath("$.[*].point").value(hasItem(DEFAULT_POINT.doubleValue())))
-            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
             .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())));
@@ -211,7 +204,6 @@ public class ReviewResourceIT {
             .andExpect(jsonPath("$.id").value(review.getId().intValue()))
             .andExpect(jsonPath("$.content").value(DEFAULT_CONTENT))
             .andExpect(jsonPath("$.point").value(DEFAULT_POINT.doubleValue()))
-            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
             .andExpect(jsonPath("$.deletedAt").value(DEFAULT_DELETED_AT.toString()));
@@ -240,7 +232,6 @@ public class ReviewResourceIT {
         updatedReview
             .content(UPDATED_CONTENT)
             .point(UPDATED_POINT)
-            .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
             .deletedAt(UPDATED_DELETED_AT);
@@ -257,7 +248,6 @@ public class ReviewResourceIT {
         Review testReview = reviewList.get(reviewList.size() - 1);
         assertThat(testReview.getContent()).isEqualTo(UPDATED_CONTENT);
         assertThat(testReview.getPoint()).isEqualTo(UPDATED_POINT);
-        assertThat(testReview.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testReview.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testReview.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
         assertThat(testReview.getDeletedAt()).isEqualTo(UPDATED_DELETED_AT);

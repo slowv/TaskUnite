@@ -1,1 +1,1 @@
-id;content;point;status;created_at;updated_at;deleted_at
+id;content;point;created_at;updated_at;deleted_at;task_id;user_id

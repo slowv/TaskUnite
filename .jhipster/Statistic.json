@@ -14,20 +14,8 @@
             "fieldType": "Integer"
         },
         {
-            "fieldName": "incompletedTask",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "rating",
             "fieldType": "Integer"
-        },
-        {
-            "fieldName": "ranking",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "bonus",
-            "fieldType": "Double"
         },
         {
             "fieldName": "createdAt",

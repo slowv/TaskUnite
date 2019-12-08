@@ -12,10 +12,10 @@ import org.mapstruct.*;
 public interface TaskCategoryMapper extends EntityMapper<TaskCategoryDTO, TaskCategory> {
 
 
-    @Mapping(target = "taskerCategories", ignore = true)
-    @Mapping(target = "removeTaskerCategories", ignore = true)
     @Mapping(target = "tasks", ignore = true)
     @Mapping(target = "removeTasks", ignore = true)
+    @Mapping(target = "taskerCategories", ignore = true)
+    @Mapping(target = "removeTaskerCategories", ignore = true)
     TaskCategory toEntity(TaskCategoryDTO taskCategoryDTO);
 
     default TaskCategory fromId(Long id) {

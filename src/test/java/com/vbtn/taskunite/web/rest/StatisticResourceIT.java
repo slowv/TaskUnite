@@ -47,17 +47,8 @@ public class StatisticResourceIT {
     private static final Integer DEFAULT_COMPLETED_TASK = 1;
     private static final Integer UPDATED_COMPLETED_TASK = 2;
 
-    private static final Integer DEFAULT_INCOMPLETED_TASK = 1;
-    private static final Integer UPDATED_INCOMPLETED_TASK = 2;
-
     private static final Integer DEFAULT_RATING = 1;
     private static final Integer UPDATED_RATING = 2;
-
-    private static final Integer DEFAULT_RANKING = 1;
-    private static final Integer UPDATED_RANKING = 2;
-
-    private static final Double DEFAULT_BONUS = 1D;
-    private static final Double UPDATED_BONUS = 2D;
 
     private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
@@ -119,10 +110,7 @@ public class StatisticResourceIT {
             .level(DEFAULT_LEVEL)
             .experience(DEFAULT_EXPERIENCE)
             .completedTask(DEFAULT_COMPLETED_TASK)
-            .incompletedTask(DEFAULT_INCOMPLETED_TASK)
             .rating(DEFAULT_RATING)
-            .ranking(DEFAULT_RANKING)
-            .bonus(DEFAULT_BONUS)
             .createdAt(DEFAULT_CREATED_AT)
             .updatedAt(DEFAULT_UPDATED_AT)
             .deletedAt(DEFAULT_DELETED_AT);
@@ -139,10 +127,7 @@ public class StatisticResourceIT {
             .level(UPDATED_LEVEL)
             .experience(UPDATED_EXPERIENCE)
             .completedTask(UPDATED_COMPLETED_TASK)
-            .incompletedTask(UPDATED_INCOMPLETED_TASK)
             .rating(UPDATED_RATING)
-            .ranking(UPDATED_RANKING)
-            .bonus(UPDATED_BONUS)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
             .deletedAt(UPDATED_DELETED_AT);
@@ -173,10 +158,7 @@ public class StatisticResourceIT {
         assertThat(testStatistic.getLevel()).isEqualTo(DEFAULT_LEVEL);
         assertThat(testStatistic.getExperience()).isEqualTo(DEFAULT_EXPERIENCE);
         assertThat(testStatistic.getCompletedTask()).isEqualTo(DEFAULT_COMPLETED_TASK);
-        assertThat(testStatistic.getIncompletedTask()).isEqualTo(DEFAULT_INCOMPLETED_TASK);
         assertThat(testStatistic.getRating()).isEqualTo(DEFAULT_RATING);
-        assertThat(testStatistic.getRanking()).isEqualTo(DEFAULT_RANKING);
-        assertThat(testStatistic.getBonus()).isEqualTo(DEFAULT_BONUS);
         assertThat(testStatistic.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testStatistic.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
         assertThat(testStatistic.getDeletedAt()).isEqualTo(DEFAULT_DELETED_AT);
@@ -217,10 +199,7 @@ public class StatisticResourceIT {
             .andExpect(jsonPath("$.[*].level").value(hasItem(DEFAULT_LEVEL)))
             .andExpect(jsonPath("$.[*].experience").value(hasItem(DEFAULT_EXPERIENCE)))
             .andExpect(jsonPath("$.[*].completedTask").value(hasItem(DEFAULT_COMPLETED_TASK)))
-            .andExpect(jsonPath("$.[*].incompletedTask").value(hasItem(DEFAULT_INCOMPLETED_TASK)))
             .andExpect(jsonPath("$.[*].rating").value(hasItem(DEFAULT_RATING)))
-            .andExpect(jsonPath("$.[*].ranking").value(hasItem(DEFAULT_RANKING)))
-            .andExpect(jsonPath("$.[*].bonus").value(hasItem(DEFAULT_BONUS.doubleValue())))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
             .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())));
@@ -240,10 +219,7 @@ public class StatisticResourceIT {
             .andExpect(jsonPath("$.level").value(DEFAULT_LEVEL))
             .andExpect(jsonPath("$.experience").value(DEFAULT_EXPERIENCE))
             .andExpect(jsonPath("$.completedTask").value(DEFAULT_COMPLETED_TASK))
-            .andExpect(jsonPath("$.incompletedTask").value(DEFAULT_INCOMPLETED_TASK))
             .andExpect(jsonPath("$.rating").value(DEFAULT_RATING))
-            .andExpect(jsonPath("$.ranking").value(DEFAULT_RANKING))
-            .andExpect(jsonPath("$.bonus").value(DEFAULT_BONUS.doubleValue()))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
             .andExpect(jsonPath("$.deletedAt").value(DEFAULT_DELETED_AT.toString()));
@@ -273,10 +249,7 @@ public class StatisticResourceIT {
             .level(UPDATED_LEVEL)
             .experience(UPDATED_EXPERIENCE)
             .completedTask(UPDATED_COMPLETED_TASK)
-            .incompletedTask(UPDATED_INCOMPLETED_TASK)
             .rating(UPDATED_RATING)
-            .ranking(UPDATED_RANKING)
-            .bonus(UPDATED_BONUS)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
             .deletedAt(UPDATED_DELETED_AT);
@@ -294,10 +267,7 @@ public class StatisticResourceIT {
         assertThat(testStatistic.getLevel()).isEqualTo(UPDATED_LEVEL);
         assertThat(testStatistic.getExperience()).isEqualTo(UPDATED_EXPERIENCE);
         assertThat(testStatistic.getCompletedTask()).isEqualTo(UPDATED_COMPLETED_TASK);
-        assertThat(testStatistic.getIncompletedTask()).isEqualTo(UPDATED_INCOMPLETED_TASK);
         assertThat(testStatistic.getRating()).isEqualTo(UPDATED_RATING);
-        assertThat(testStatistic.getRanking()).isEqualTo(UPDATED_RANKING);
-        assertThat(testStatistic.getBonus()).isEqualTo(UPDATED_BONUS);
         assertThat(testStatistic.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testStatistic.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
         assertThat(testStatistic.getDeletedAt()).isEqualTo(UPDATED_DELETED_AT);

@@ -18,10 +18,6 @@
             "fieldType": "Double"
         },
         {
-            "fieldName": "status",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "createdAt",
             "fieldType": "Instant"
         },
@@ -37,15 +33,15 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
-            "otherEntityName": "taskerCategory",
-            "otherEntityRelationshipName": "taskCategory",
-            "relationshipName": "taskerCategories"
-        },
-        {
-            "relationshipType": "one-to-many",
             "otherEntityName": "task",
             "otherEntityRelationshipName": "taskCategory",
             "relationshipName": "tasks"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "taskerCategory",
+            "otherEntityRelationshipName": "taskCategory",
+            "relationshipName": "taskerCategories"
         }
     ],
     "changelogDate": "20191128073445",

@@ -20,7 +20,6 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="name"><span jhiTranslate="taskUniteApp.city.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="status"><span jhiTranslate="taskUniteApp.city.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="createdAt"><span jhiTranslate="taskUniteApp.city.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.city.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.city.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -31,7 +30,6 @@
             <tr *ngFor="let city of cities ;trackBy: trackId">
                 <td><a [routerLink]="['/city', city.id, 'view' ]">{{city.id}}</a></td>
                 <td>{{city.name}}</td>
-                <td>{{city.status}}</td>
                 <td>{{city.createdAt | date:'medium'}}</td>
                 <td>{{city.updatedAt | date:'medium'}}</td>
                 <td>{{city.deletedAt | date:'medium'}}</td>

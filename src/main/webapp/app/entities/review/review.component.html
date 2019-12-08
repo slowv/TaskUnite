@@ -21,7 +21,6 @@
             <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="content"><span jhiTranslate="taskUniteApp.review.content">Content</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="point"><span jhiTranslate="taskUniteApp.review.point">Point</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="status"><span jhiTranslate="taskUniteApp.review.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="createdAt"><span jhiTranslate="taskUniteApp.review.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="updatedAt"><span jhiTranslate="taskUniteApp.review.updatedAt">Updated At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.review.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -35,7 +34,6 @@
                 <td><a [routerLink]="['/review', review.id, 'view' ]">{{review.id}}</a></td>
                 <td>{{review.content}}</td>
                 <td>{{review.point}}</td>
-                <td>{{review.status}}</td>
                 <td>{{review.createdAt | date:'medium'}}</td>
                 <td>{{review.updatedAt | date:'medium'}}</td>
                 <td>{{review.deletedAt | date:'medium'}}</td>

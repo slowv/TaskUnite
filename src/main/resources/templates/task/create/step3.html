@@ -4,84 +4,70 @@
     <title>Create Task</title>
     <th:block th:include="fragment/layout :: head"></th:block>
     <link rel="stylesheet" th:href="@{~/css/task/create.css}">
-<<<<<<< HEAD
     <link rel="stylesheet" th:href="@{~/css/responsive/task/create.css}">
-=======
->>>>>>> e765a2a4ecb9e0f446e2e45473de1f22683aae75
 </head>
 <body>
 
 <div class="site-wrap">
-    <div class="site-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 bg-dark-light step-3-responsive">
-                    <div class="row">
-                        <div class="col-lg-7 modal-choose-date p-4 bg-white">
-                            <a th:href="@{/task/create/step2(action='backStep2')}">
-                                <span class="icon-close2 close"></span>
-                            </a>
-                            <div class="f-w-300 text-center my-2 t-25" th:text="#{task-create.step3.choose-task-date-and-start-time}"></div>
-                            <div class="row mt-2">
-                            <div class="col-lg-7 p-0">
-                                <div class="recommendations__tasker_schedule_modal_tasker">
-                                    <img th:src="${taskInfo.tasker.user.user.imageUrl}"
-                                         alt="Mahendra B.">
-                                    <div><span th:text="${taskInfo.tasker.user.user.firstName  + ' ' + taskInfo.tasker.user.user.lastName}">Trần Hiểu Đông</span></div>
-                                </div>
-                                <div class="border-right box-date">
-                                    <div class="calendar__container">
-                                        <div id="calendar-value"></div>
-                                    </div>
+    <th:block th:replace="fragment/layout :: site-mobile-memu"></th:block>
+    <th:block th:replace="fragment/layout :: site-navbar"></th:block>
+    <div style="height: 113px;"></div>
 
-                                    <div class="exterior__bottom--lg recommendations__tasker_schedule_modal--select">
-                                        <select name="selected-time" style="width: 100%;" id="selected-time">
-                                            <option value="8:30">8:30</option>
-                                            <option value="9:00">9:00</option>
-                                            <option value="9:30">9:30</option>
-                                            <option value="10:00">10:00</option>
-                                            <option value="10:30">10:30</option>
-                                            <option value="11:00">11:00</option>
-                                            <option value="11:30">11:30</option>
-                                            <option value="12:00">12:00</option>
-                                            <option value="12:30">12:30</option>
-                                            <option value="13:00">13:00</option>
-                                            <option value="13:30">13:30</option>
-                                            <option value="14:00">14:00</option>
-                                            <option value="14:30">14:30</option>
-                                            <option value="15:00">15:00</option>
-                                            <option value="15:30">15:30</option>
-                                        </select>
-                                        <div class="recommendations__tasker_schedule_modal_can_chat u-hidden--sm">
-                                            <span th:text="#{task-create.step3.notification-1}"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-5 p-0">
-                                    <div class="box-next-step-4 mt-lg-5 mt-xl-1">
-                                        <div class="t-30 f-w-300" th:text="#{task-create.step3.request-for}"></div>
-                                        <div class="pre-datetime t-25">
-                                            22 - T11, 8:30
-                                        </div>
-                                        <div>
-                                            <form th:action="@{/task/create/step3}" method="post">
-                                                <input type="hidden" id="selected-date" name="selected-date">
-                                                <button type="submit" class="btn-reset-css btn-svg-UI fill-green mt-2" >
-                                                    <svg><rect></rect></svg>
-                                                    <span th:text="#{task-create.step2.select-continue-btn}"></span>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="recommendations__tasker_schedule_modal_next_step">
-                                        <img th:src="@{~/images/confirm.svg}" alt="Confirm">
-                                        <div>
-                                            <span th:text="#{task-create.step3.notification-2}"></span>
-                                        </div>
-                                    </div>
-                                </div>
+    <div class="site-section bg-light">
+        <div class="container">
+            <div class="row modal-choose-date">
+                <div class="col-lg-8 p-2">
+                    <div class="panel panel--spaced">
+                        <div class="calendar__container">
+                            <div id="calendar-value"></div>
+                        </div>
+
+                        <div class="exterior__bottom--lg recommendations__tasker_schedule_modal--select">
+                            <select name="selected-time" style="width: 100%;" id="selected-time">
+                                <option value="8:30">8:30</option>
+                                <option value="9:00">9:00</option>
+                                <option value="9:30">9:30</option>
+                                <option value="10:00">10:00</option>
+                                <option value="10:30">10:30</option>
+                                <option value="11:00">11:00</option>
+                                <option value="11:30">11:30</option>
+                                <option value="12:00">12:00</option>
+                                <option value="12:30">12:30</option>
+                                <option value="13:00">13:00</option>
+                                <option value="13:30">13:30</option>
+                                <option value="14:00">14:00</option>
+                                <option value="14:30">14:30</option>
+                                <option value="15:00">15:00</option>
+                                <option value="15:30">15:30</option>
+                            </select>
+                            <div class="recommendations__tasker_schedule_modal_can_chat u-hidden--sm">
+                                <span th:text="#{task-create.step3.notification-1}"></span>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 p-2">
+
+                    <div class="recommendations__trust-safety__box panel panel--spaced ">
+                        <img class="recommendations__trust-safety__box__icon" th:src="@{~/images/confirm.svg}" alt="Confirm">
+                        <div class="recommendations__trust-safety__box__text">
+                            <span th:text="#{task-create.step3.notification-2}"></span>
+                        </div>
+                    </div>
+                    <div class="panel panel--spaced text-center">
+                        <label class="font-weight-bold" th:text="#{task-create.step3.request-for}"></label>
+                        <div class="pre-datetime t-25">
+
+                        </div>
+                        <form th:action="@{/task/create/step3}" method="post">
+                            <input type="hidden" id="selected-date" name="selected-date">
+                            <button type="submit" class="btn-reset-css btn-svg-UI fill-green mt-2">
+                                <svg>
+                                    <rect></rect>
+                                </svg>
+                                <span>Tiếp tục</span>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

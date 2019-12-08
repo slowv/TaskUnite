@@ -44,8 +44,8 @@ public class TaskerCategoryResourceIT {
     private static final Double DEFAULT_PRICE = 1D;
     private static final Double UPDATED_PRICE = 2D;
 
-    private static final Integer DEFAULT_STATUS = 1;
-    private static final Integer UPDATED_STATUS = 2;
+    private static final Integer DEFAULT_TYPE = 1;
+    private static final Integer UPDATED_TYPE = 2;
 
     private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
@@ -106,7 +106,7 @@ public class TaskerCategoryResourceIT {
         TaskerCategory taskerCategory = new TaskerCategory()
             .description(DEFAULT_DESCRIPTION)
             .price(DEFAULT_PRICE)
-            .status(DEFAULT_STATUS)
+            .type(DEFAULT_TYPE)
             .createdAt(DEFAULT_CREATED_AT)
             .updatedAt(DEFAULT_UPDATED_AT)
             .deletedAt(DEFAULT_DELETED_AT);
@@ -122,7 +122,7 @@ public class TaskerCategoryResourceIT {
         TaskerCategory taskerCategory = new TaskerCategory()
             .description(UPDATED_DESCRIPTION)
             .price(UPDATED_PRICE)
-            .status(UPDATED_STATUS)
+            .type(UPDATED_TYPE)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
             .deletedAt(UPDATED_DELETED_AT);
@@ -152,7 +152,7 @@ public class TaskerCategoryResourceIT {
         TaskerCategory testTaskerCategory = taskerCategoryList.get(taskerCategoryList.size() - 1);
         assertThat(testTaskerCategory.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testTaskerCategory.getPrice()).isEqualTo(DEFAULT_PRICE);
-        assertThat(testTaskerCategory.getStatus()).isEqualTo(DEFAULT_STATUS);
+        assertThat(testTaskerCategory.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testTaskerCategory.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testTaskerCategory.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
         assertThat(testTaskerCategory.getDeletedAt()).isEqualTo(DEFAULT_DELETED_AT);
@@ -192,7 +192,7 @@ public class TaskerCategoryResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(taskerCategory.getId().intValue())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
-            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
+            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
             .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())));
@@ -211,7 +211,7 @@ public class TaskerCategoryResourceIT {
             .andExpect(jsonPath("$.id").value(taskerCategory.getId().intValue()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
-            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
+            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
             .andExpect(jsonPath("$.deletedAt").value(DEFAULT_DELETED_AT.toString()));
@@ -240,7 +240,7 @@ public class TaskerCategoryResourceIT {
         updatedTaskerCategory
             .description(UPDATED_DESCRIPTION)
             .price(UPDATED_PRICE)
-            .status(UPDATED_STATUS)
+            .type(UPDATED_TYPE)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
             .deletedAt(UPDATED_DELETED_AT);
@@ -257,7 +257,7 @@ public class TaskerCategoryResourceIT {
         TaskerCategory testTaskerCategory = taskerCategoryList.get(taskerCategoryList.size() - 1);
         assertThat(testTaskerCategory.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testTaskerCategory.getPrice()).isEqualTo(UPDATED_PRICE);
-        assertThat(testTaskerCategory.getStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testTaskerCategory.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testTaskerCategory.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testTaskerCategory.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
         assertThat(testTaskerCategory.getDeletedAt()).isEqualTo(UPDATED_DELETED_AT);

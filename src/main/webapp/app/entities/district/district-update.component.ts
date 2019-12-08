@@ -25,7 +25,6 @@ export class DistrictUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     name: [],
-    status: [],
     createdAt: [],
     updatedAt: [],
     deletedAt: [],
@@ -54,7 +53,6 @@ export class DistrictUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: district.id,
       name: district.name,
-      status: district.status,
       createdAt: district.createdAt != null ? district.createdAt.format(DATE_TIME_FORMAT) : null,
       updatedAt: district.updatedAt != null ? district.updatedAt.format(DATE_TIME_FORMAT) : null,
       deletedAt: district.deletedAt != null ? district.deletedAt.format(DATE_TIME_FORMAT) : null,
@@ -81,7 +79,6 @@ export class DistrictUpdateComponent implements OnInit {
       ...new District(),
       id: this.editForm.get(['id']).value,
       name: this.editForm.get(['name']).value,
-      status: this.editForm.get(['status']).value,
       createdAt:
         this.editForm.get(['createdAt']).value != null ? moment(this.editForm.get(['createdAt']).value, DATE_TIME_FORMAT) : undefined,
       updatedAt:

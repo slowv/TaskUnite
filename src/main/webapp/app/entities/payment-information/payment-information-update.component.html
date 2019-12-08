@@ -15,6 +15,11 @@
                            formControlName="balance"/>
                 </div>
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.paymentInformation.hold" for="field_hold">Hold</label>
+                    <input type="number" class="form-control" name="hold" id="field_hold"
+                           formControlName="hold"/>
+                </div>
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskUniteApp.paymentInformation.createdAt" for="field_createdAt">Created At</label>
                     <div class="d-flex">
                         <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" formControlName="createdAt" placeholder="YYYY-MM-DD HH:mm"/>
@@ -37,7 +42,7 @@
                     <label class="form-control-label" jhiTranslate="taskUniteApp.paymentInformation.user" for="field_user">User</label>
                     <select class="form-control" id="field_user" name="user" formControlName="userId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+                        <option [ngValue]="userInformationOption.id" *ngFor="let userInformationOption of users; trackBy: trackUserInformationById">{{userInformationOption.id}}</option>
                     </select>
                 </div>
             </div>

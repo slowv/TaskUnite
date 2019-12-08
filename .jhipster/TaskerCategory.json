@@ -1,55 +1,55 @@
 {
-  "name": "TaskerCategory",
-  "fields": [
-    {
-      "fieldName": "description",
-      "fieldType": "String"
-    },
-    {
-      "fieldName": "price",
-      "fieldType": "Double"
-    },
-    {
-      "fieldName": "status",
-      "fieldType": "Integer"
-    },
-    {
-      "fieldName": "createdAt",
-      "fieldType": "Instant"
-    },
-    {
-      "fieldName": "updatedAt",
-      "fieldType": "Instant"
-    },
-    {
-      "fieldName": "deletedAt",
-      "fieldType": "Instant"
-    }
-  ],
-  "relationships": [
-    {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "taskCategory",
-      "otherEntityRelationshipName": "taskerCategories",
-      "relationshipName": "taskCategory",
-      "otherEntityField": "id"
-    },
-    {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "tasker",
-      "otherEntityRelationshipName": "taskerCategories",
-      "relationshipName": "tasker",
-      "otherEntityField": "id"
-    }
-  ],
-  "changelogDate": "20191204023021",
-  "entityTableName": "tasker_category",
-  "dto": "mapstruct",
-  "pagination": "pagination",
-  "service": "serviceImpl",
-  "jpaMetamodelFiltering": false,
-  "fluentMethods": true,
-  "readOnly": false,
-  "clientRootFolder": "",
-  "applications": "*"
+    "name": "TaskerCategory",
+    "fields": [
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "deletedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "taskCategory",
+            "otherEntityRelationshipName": "taskerCategories",
+            "relationshipName": "taskCategory",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "userInformation",
+            "otherEntityRelationshipName": "taskerCategories",
+            "relationshipName": "user",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191204023021",
+    "entityTableName": "tasker_category",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
 }

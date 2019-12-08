@@ -18,12 +18,12 @@
       },
       "description": "Description",
       "price": "Price",
-      "status": "Status",
+      "type": "Type",
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
       "taskCategory": "Task Category",
-      "tasker": "Tasker"
+      "user": "User"
     }
   }
 }

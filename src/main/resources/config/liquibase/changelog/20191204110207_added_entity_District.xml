@@ -19,9 +19,6 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="status" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="created_at" type="datetime">
                 <constraints nullable="true" />
             </column>
@@ -61,7 +58,6 @@
                   tableName="district">
             <column name="id" type="numeric"/>
             <column name="name" type="string"/>
-            <column name="status" type="numeric"/>
             <column name="created_at" type="datetime"/>
             <column name="updated_at" type="datetime"/>
             <column name="deleted_at" type="datetime"/>

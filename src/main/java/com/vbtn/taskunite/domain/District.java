@@ -24,9 +24,6 @@ public class District implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "status")
-    private Integer status;
-
     @Column(name = "created_at")
     private Instant createdAt;
 
@@ -37,7 +34,7 @@ public class District implements Serializable {
     private Instant deletedAt;
 
     @OneToMany(mappedBy = "district")
-    private Set<Address> addresses = new HashSet<>();
+    private Set<UserInformation> users = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties("districts")
@@ -63,19 +60,6 @@ public class District implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public District status(Integer status) {
-        this.status = status;
-        return this;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
     public Instant getCreatedAt() {
@@ -117,29 +101,29 @@ public class District implements Serializable {
         this.deletedAt = deletedAt;
     }
 
-    public Set<Address> getAddresses() {
-        return addresses;
+    public Set<UserInformation> getUsers() {
+        return users;
     }
 
-    public District addresses(Set<Address> addresses) {
-        this.addresses = addresses;
+    public District users(Set<UserInformation> userInformations) {
+        this.users = userInformations;
         return this;
     }
 
-    public District addAddresses(Address address) {
-        this.addresses.add(address);
-        address.setDistrict(this);
+    public District addUsers(UserInformation userInformation) {
+        this.users.add(userInformation);
+        userInformation.setDistrict(this);
         return this;
     }
 
-    public District removeAddresses(Address address) {
-        this.addresses.remove(address);
-        address.setDistrict(null);
+    public District removeUsers(UserInformation userInformation) {
+        this.users.remove(userInformation);
+        userInformation.setDistrict(null);
         return this;
     }
 
-    public void setAddresses(Set<Address> addresses) {
-        this.addresses = addresses;
+    public void setUsers(Set<UserInformation> userInformations) {
+        this.users = userInformations;
     }
 
     public City getCity() {
@@ -177,7 +161,6 @@ public class District implements Serializable {
         return "District{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +

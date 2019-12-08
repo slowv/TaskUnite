@@ -15,6 +15,21 @@
                            formControlName="address"/>
                 </div>
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.userInformation.bday" for="field_bday">Bday</label>
+                    <input type="number" class="form-control" name="bday" id="field_bday"
+                           formControlName="bday"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.userInformation.bmonth" for="field_bmonth">Bmonth</label>
+                    <input type="number" class="form-control" name="bmonth" id="field_bmonth"
+                           formControlName="bmonth"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.userInformation.byear" for="field_byear">Byear</label>
+                    <input type="number" class="form-control" name="byear" id="field_byear"
+                           formControlName="byear"/>
+                </div>
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskUniteApp.userInformation.gender" for="field_gender">Gender</label>
                     <input type="number" class="form-control" name="gender" id="field_gender"
                            formControlName="gender"/>
@@ -23,6 +38,16 @@
                     <label class="form-control-label" jhiTranslate="taskUniteApp.userInformation.phone" for="field_phone">Phone</label>
                     <input type="text" class="form-control" name="phone" id="field_phone"
                            formControlName="phone"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.userInformation.image" for="field_image">Image</label>
+                    <input type="text" class="form-control" name="image" id="field_image"
+                           formControlName="image"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.userInformation.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskUniteApp.userInformation.status" for="field_status">Status</label>
@@ -53,6 +78,13 @@
                     <select class="form-control" id="field_user" name="user" formControlName="userId">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.userInformation.district" for="field_district">District</label>
+                    <select class="form-control" id="field_district" name="district" formControlName="districtId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="districtOption.id" *ngFor="let districtOption of districts; trackBy: trackDistrictById">{{districtOption.id}}</option>
                     </select>
                 </div>
             </div>

@@ -6,11 +6,31 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "bday",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "bmonth",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "byear",
+            "fieldType": "Integer"
+        },
+        {
             "fieldName": "gender",
             "fieldType": "Integer"
         },
         {
             "fieldName": "phone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
             "fieldType": "String"
         },
         {
@@ -34,16 +54,22 @@
         {
             "relationshipType": "one-to-one",
             "otherEntityName": "user",
-            "otherEntityRelationshipName": "userInformation",
+            "otherEntityRelationshipName": "info",
             "relationshipName": "user",
             "otherEntityField": "id",
             "ownerSide": true
         },
         {
             "relationshipType": "one-to-many",
-            "otherEntityName": "address",
-            "otherEntityRelationshipName": "user",
-            "relationshipName": "workingAddresses"
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "tasker",
+            "relationshipName": "tasksAsTasker"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "master",
+            "relationshipName": "tasksAsMaster"
         },
         {
             "relationshipType": "one-to-many",
@@ -58,18 +84,10 @@
             "relationshipName": "notifications"
         },
         {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "tasker",
+            "relationshipType": "one-to-many",
+            "otherEntityName": "taskerCategory",
             "otherEntityRelationshipName": "user",
-            "relationshipName": "tasker",
-            "ownerSide": false
-        },
-        {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "master",
-            "otherEntityRelationshipName": "user",
-            "relationshipName": "master",
-            "ownerSide": false
+            "relationshipName": "taskerCategories"
         },
         {
             "relationshipType": "one-to-one",
@@ -77,6 +95,20 @@
             "otherEntityRelationshipName": "user",
             "relationshipName": "statistic",
             "ownerSide": false
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "paymentInformation",
+            "otherEntityRelationshipName": "user",
+            "relationshipName": "payment",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "district",
+            "otherEntityRelationshipName": "users",
+            "relationshipName": "district",
+            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20191128073437",

@@ -41,9 +41,6 @@ public class DistrictResourceIT {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_STATUS = 1;
-    private static final Integer UPDATED_STATUS = 2;
-
     private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
@@ -102,7 +99,6 @@ public class DistrictResourceIT {
     public static District createEntity(EntityManager em) {
         District district = new District()
             .name(DEFAULT_NAME)
-            .status(DEFAULT_STATUS)
             .createdAt(DEFAULT_CREATED_AT)
             .updatedAt(DEFAULT_UPDATED_AT)
             .deletedAt(DEFAULT_DELETED_AT);
@@ -117,7 +113,6 @@ public class DistrictResourceIT {
     public static District createUpdatedEntity(EntityManager em) {
         District district = new District()
             .name(UPDATED_NAME)
-            .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
             .deletedAt(UPDATED_DELETED_AT);
@@ -146,7 +141,6 @@ public class DistrictResourceIT {
         assertThat(districtList).hasSize(databaseSizeBeforeCreate + 1);
         District testDistrict = districtList.get(districtList.size() - 1);
         assertThat(testDistrict.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testDistrict.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testDistrict.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testDistrict.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
         assertThat(testDistrict.getDeletedAt()).isEqualTo(DEFAULT_DELETED_AT);
@@ -185,7 +179,6 @@ public class DistrictResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(district.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
-            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
             .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())));
@@ -203,7 +196,6 @@ public class DistrictResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(district.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
-            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
             .andExpect(jsonPath("$.deletedAt").value(DEFAULT_DELETED_AT.toString()));
@@ -231,7 +223,6 @@ public class DistrictResourceIT {
         em.detach(updatedDistrict);
         updatedDistrict
             .name(UPDATED_NAME)
-            .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
             .deletedAt(UPDATED_DELETED_AT);
@@ -247,7 +238,6 @@ public class DistrictResourceIT {
         assertThat(districtList).hasSize(databaseSizeBeforeUpdate);
         District testDistrict = districtList.get(districtList.size() - 1);
         assertThat(testDistrict.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testDistrict.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testDistrict.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testDistrict.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
         assertThat(testDistrict.getDeletedAt()).isEqualTo(UPDATED_DELETED_AT);

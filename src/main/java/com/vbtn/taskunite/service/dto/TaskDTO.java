@@ -1,5 +1,6 @@
 package com.vbtn.taskunite.service.dto;
 import java.time.Instant;
+import java.time.Duration;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -12,13 +13,21 @@ public class TaskDTO implements Serializable {
 
     private String address;
 
-    private String title;
+    private String name;
 
     private String description;
 
-    private Double estimatedTime;
-
     private Double price;
+
+    private Double totalPrice;
+
+    private Instant from;
+
+    private Instant to;
+
+    private Duration duration;
+
+    private Integer type;
 
     private Integer status;
 
@@ -28,10 +37,6 @@ public class TaskDTO implements Serializable {
 
     private Instant deletedAt;
 
-
-    private Long roomId;
-
-    private Long scheduleId;
 
     private Long taskerId;
 
@@ -55,12 +60,12 @@ public class TaskDTO implements Serializable {
         this.address = address;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -71,20 +76,52 @@ public class TaskDTO implements Serializable {
         this.description = description;
     }
 
-    public Double getEstimatedTime() {
-        return estimatedTime;
-    }
-
-    public void setEstimatedTime(Double estimatedTime) {
-        this.estimatedTime = estimatedTime;
-    }
-
     public Double getPrice() {
         return price;
     }
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public Instant getFrom() {
+        return from;
+    }
+
+    public void setFrom(Instant from) {
+        this.from = from;
+    }
+
+    public Instant getTo() {
+        return to;
+    }
+
+    public void setTo(Instant to) {
+        this.to = to;
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public Integer getStatus() {
@@ -119,36 +156,20 @@ public class TaskDTO implements Serializable {
         this.deletedAt = deletedAt;
     }
 
-    public Long getRoomId() {
-        return roomId;
-    }
-
-    public void setRoomId(Long roomId) {
-        this.roomId = roomId;
-    }
-
-    public Long getScheduleId() {
-        return scheduleId;
-    }
-
-    public void setScheduleId(Long scheduleId) {
-        this.scheduleId = scheduleId;
-    }
-
     public Long getTaskerId() {
         return taskerId;
     }
 
-    public void setTaskerId(Long taskerId) {
-        this.taskerId = taskerId;
+    public void setTaskerId(Long userInformationId) {
+        this.taskerId = userInformationId;
     }
 
     public Long getMasterId() {
         return masterId;
     }
 
-    public void setMasterId(Long masterId) {
-        this.masterId = masterId;
+    public void setMasterId(Long userInformationId) {
+        this.masterId = userInformationId;
     }
 
     public Long getTaskCategoryId() {
@@ -185,16 +206,18 @@ public class TaskDTO implements Serializable {
         return "TaskDTO{" +
             "id=" + getId() +
             ", address='" + getAddress() + "'" +
-            ", title='" + getTitle() + "'" +
+            ", name='" + getName() + "'" +
             ", description='" + getDescription() + "'" +
-            ", estimatedTime=" + getEstimatedTime() +
             ", price=" + getPrice() +
+            ", totalPrice=" + getTotalPrice() +
+            ", from='" + getFrom() + "'" +
+            ", to='" + getTo() + "'" +
+            ", duration='" + getDuration() + "'" +
+            ", type=" + getType() +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             ", deletedAt='" + getDeletedAt() + "'" +
-            ", room=" + getRoomId() +
-            ", schedule=" + getScheduleId() +
             ", tasker=" + getTaskerId() +
             ", master=" + getMasterId() +
             ", taskCategory=" + getTaskCategoryId() +

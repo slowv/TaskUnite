@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Statistic(0, 0, 0, 0, 0, 0, 0, 0, currentDate, currentDate, currentDate);
+      elemDefault = new Statistic(0, 0, 0, 0, 0, currentDate, currentDate, currentDate);
     });
 
     describe('Service methods', () => {
@@ -80,10 +80,7 @@ describe('Service Tests', () => {
             level: 1,
             experience: 1,
             completedTask: 1,
-            incompletedTask: 1,
             rating: 1,
-            ranking: 1,
-            bonus: 1,
             createdAt: currentDate.format(DATE_TIME_FORMAT),
             updatedAt: currentDate.format(DATE_TIME_FORMAT),
             deletedAt: currentDate.format(DATE_TIME_FORMAT)
@@ -114,10 +111,7 @@ describe('Service Tests', () => {
             level: 1,
             experience: 1,
             completedTask: 1,
-            incompletedTask: 1,
             rating: 1,
-            ranking: 1,
-            bonus: 1,
             createdAt: currentDate.format(DATE_TIME_FORMAT),
             updatedAt: currentDate.format(DATE_TIME_FORMAT),
             deletedAt: currentDate.format(DATE_TIME_FORMAT)

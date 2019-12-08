@@ -1,0 +1,28 @@
+{
+  "taskUniteApp": {
+    "adminProfit": {
+      "home": {
+        "title": "Admin Profits",
+        "createLabel": "Thêm mới một Admin Profit",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Admin Profit",
+        "notFound": "No Admin Profits found"
+      },
+      "created": "Một Admin Profit mới được tạo với định danh {{ param }}",
+      "updated": "Một Admin Profit cập nhật với định danh {{ param }}",
+      "deleted": "Một Admin Profit đã xóa với định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Admin Profit {{ id }}?"
+      },
+      "detail": {
+        "title": "Admin Profit"
+      },
+      "taskerProfit": "Tasker Profit",
+      "masterProfit": "Master Profit",
+      "totalProfit": "Total Profit",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "deletedAt": "Deleted At",
+      "task": "Task"
+    }
+  }
+}

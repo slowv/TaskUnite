@@ -20,7 +20,6 @@ export class CityUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     name: [],
-    status: [],
     createdAt: [],
     updatedAt: [],
     deletedAt: []
@@ -39,7 +38,6 @@ export class CityUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: city.id,
       name: city.name,
-      status: city.status,
       createdAt: city.createdAt != null ? city.createdAt.format(DATE_TIME_FORMAT) : null,
       updatedAt: city.updatedAt != null ? city.updatedAt.format(DATE_TIME_FORMAT) : null,
       deletedAt: city.deletedAt != null ? city.deletedAt.format(DATE_TIME_FORMAT) : null
@@ -65,7 +63,6 @@ export class CityUpdateComponent implements OnInit {
       ...new City(),
       id: this.editForm.get(['id']).value,
       name: this.editForm.get(['name']).value,
-      status: this.editForm.get(['status']).value,
       createdAt:
         this.editForm.get(['createdAt']).value != null ? moment(this.editForm.get(['createdAt']).value, DATE_TIME_FORMAT) : undefined,
       updatedAt:

@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.time.Duration;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,17 +25,29 @@ public class Task implements Serializable {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "title")
-    private String title;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "description")
     private String description;
 
-    @Column(name = "estimated_time")
-    private Double estimatedTime;
-
     @Column(name = "price")
     private Double price;
+
+    @Column(name = "total_price")
+    private Double totalPrice;
+
+    @Column(name = "jhi_from")
+    private Instant from;
+
+    @Column(name = "jhi_to")
+    private Instant to;
+
+    @Column(name = "duration")
+    private Duration duration;
+
+    @Column(name = "type")
+    private Integer type;
 
     @Column(name = "status")
     private Integer status;
@@ -48,26 +61,21 @@ public class Task implements Serializable {
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(unique = true)
-    private Room room;
-
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(unique = true)
-    private Schedule schedule;
-
     @OneToMany(mappedBy = "task")
     private Set<Review> reviews = new HashSet<>();
 
-    @ManyToOne
-    @JsonIgnoreProperties("tasks")
-    private Tasker tasker;
+    @OneToMany(mappedBy = "task")
+    private Set<AdminProfit> adminProfits = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties("tasks")
-    private Master master;
+    @JsonIgnoreProperties("tasksAsTaskers")
+    private UserInformation tasker;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne
+    @JsonIgnoreProperties("tasksAsMasters")
+    private UserInformation master;
+
+    @ManyToOne
     @JsonIgnoreProperties("tasks")
     private TaskCategory taskCategory;
 
@@ -93,17 +101,17 @@ public class Task implements Serializable {
         this.address = address;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public Task title(String title) {
-        this.title = title;
+    public Task name(String name) {
+        this.name = name;
         return this;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -119,19 +127,6 @@ public class Task implements Serializable {
         this.description = description;
     }
 
-    public Double getEstimatedTime() {
-        return estimatedTime;
-    }
-
-    public Task estimatedTime(Double estimatedTime) {
-        this.estimatedTime = estimatedTime;
-        return this;
-    }
-
-    public void setEstimatedTime(Double estimatedTime) {
-        this.estimatedTime = estimatedTime;
-    }
-
     public Double getPrice() {
         return price;
     }
@@ -143,6 +138,71 @@ public class Task implements Serializable {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public Task totalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
+        return this;
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public Instant getFrom() {
+        return from;
+    }
+
+    public Task from(Instant from) {
+        this.from = from;
+        return this;
+    }
+
+    public void setFrom(Instant from) {
+        this.from = from;
+    }
+
+    public Instant getTo() {
+        return to;
+    }
+
+    public Task to(Instant to) {
+        this.to = to;
+        return this;
+    }
+
+    public void setTo(Instant to) {
+        this.to = to;
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public Task duration(Duration duration) {
+        this.duration = duration;
+        return this;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public Task type(Integer type) {
+        this.type = type;
+        return this;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public Integer getStatus() {
@@ -197,32 +257,6 @@ public class Task implements Serializable {
         this.deletedAt = deletedAt;
     }
 
-    public Room getRoom() {
-        return room;
-    }
-
-    public Task room(Room room) {
-        this.room = room;
-        return this;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
-
-    public Schedule getSchedule() {
-        return schedule;
-    }
-
-    public Task schedule(Schedule schedule) {
-        this.schedule = schedule;
-        return this;
-    }
-
-    public void setSchedule(Schedule schedule) {
-        this.schedule = schedule;
-    }
-
     public Set<Review> getReviews() {
         return reviews;
     }
@@ -248,30 +282,55 @@ public class Task implements Serializable {
         this.reviews = reviews;
     }
 
-    public Tasker getTasker() {
+    public Set<AdminProfit> getAdminProfits() {
+        return adminProfits;
+    }
+
+    public Task adminProfits(Set<AdminProfit> adminProfits) {
+        this.adminProfits = adminProfits;
+        return this;
+    }
+
+    public Task addAdminProfits(AdminProfit adminProfit) {
+        this.adminProfits.add(adminProfit);
+        adminProfit.setTask(this);
+        return this;
+    }
+
+    public Task removeAdminProfits(AdminProfit adminProfit) {
+        this.adminProfits.remove(adminProfit);
+        adminProfit.setTask(null);
+        return this;
+    }
+
+    public void setAdminProfits(Set<AdminProfit> adminProfits) {
+        this.adminProfits = adminProfits;
+    }
+
+    public UserInformation getTasker() {
         return tasker;
     }
 
-    public Task tasker(Tasker tasker) {
-        this.tasker = tasker;
+    public Task tasker(UserInformation userInformation) {
+        this.tasker = userInformation;
         return this;
     }
 
-    public void setTasker(Tasker tasker) {
-        this.tasker = tasker;
+    public void setTasker(UserInformation userInformation) {
+        this.tasker = userInformation;
     }
 
-    public Master getMaster() {
+    public UserInformation getMaster() {
         return master;
     }
 
-    public Task master(Master master) {
-        this.master = master;
+    public Task master(UserInformation userInformation) {
+        this.master = userInformation;
         return this;
     }
 
-    public void setMaster(Master master) {
-        this.master = master;
+    public void setMaster(UserInformation userInformation) {
+        this.master = userInformation;
     }
 
     public TaskCategory getTaskCategory() {
@@ -309,10 +368,14 @@ public class Task implements Serializable {
         return "Task{" +
             "id=" + getId() +
             ", address='" + getAddress() + "'" +
-            ", title='" + getTitle() + "'" +
+            ", name='" + getName() + "'" +
             ", description='" + getDescription() + "'" +
-            ", estimatedTime=" + getEstimatedTime() +
             ", price=" + getPrice() +
+            ", totalPrice=" + getTotalPrice() +
+            ", from='" + getFrom() + "'" +
+            ", to='" + getTo() + "'" +
+            ", duration='" + getDuration() + "'" +
+            ", type=" + getType() +
             ", status=" + getStatus() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +

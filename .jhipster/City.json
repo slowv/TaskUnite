@@ -6,10 +6,6 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "status",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "createdAt",
             "fieldType": "Instant"
         },

@@ -19,10 +19,25 @@
             <column name="address" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="bday" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="bmonth" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="byear" type="integer">
+                <constraints nullable="true" />
+            </column>
             <column name="gender" type="integer">
                 <constraints nullable="true" />
             </column>
             <column name="phone" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="image" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="description" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="status" type="integer">
@@ -39,6 +54,9 @@
             </column>
             <column name="user_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_user_information_user_id" />
+            </column>
+            <column name="district_id" type="bigint">
+                <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
@@ -67,8 +85,13 @@
                   tableName="user_information">
             <column name="id" type="numeric"/>
             <column name="address" type="string"/>
+            <column name="bday" type="numeric"/>
+            <column name="bmonth" type="numeric"/>
+            <column name="byear" type="numeric"/>
             <column name="gender" type="numeric"/>
             <column name="phone" type="string"/>
+            <column name="image" type="string"/>
+            <column name="description" type="string"/>
             <column name="status" type="numeric"/>
             <column name="created_at" type="datetime"/>
             <column name="updated_at" type="datetime"/>

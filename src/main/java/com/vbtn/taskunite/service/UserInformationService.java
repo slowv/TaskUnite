@@ -29,23 +29,17 @@ public interface UserInformationService {
      */
     Page<UserInformationDTO> findAll(Pageable pageable);
     /**
-     * Get all the UserInformationDTO where Tasker is {@code null}.
-     *
-     * @return the list of entities.
-     */
-    List<UserInformationDTO> findAllWhereTaskerIsNull();
-    /**
-     * Get all the UserInformationDTO where Master is {@code null}.
-     *
-     * @return the list of entities.
-     */
-    List<UserInformationDTO> findAllWhereMasterIsNull();
-    /**
      * Get all the UserInformationDTO where Statistic is {@code null}.
      *
      * @return the list of entities.
      */
     List<UserInformationDTO> findAllWhereStatisticIsNull();
+    /**
+     * Get all the UserInformationDTO where Payment is {@code null}.
+     *
+     * @return the list of entities.
+     */
+    List<UserInformationDTO> findAllWherePaymentIsNull();
 
 
     /**

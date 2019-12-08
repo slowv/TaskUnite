@@ -289,7 +289,14 @@
   top: 5px;
 }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.is-selected, .btn-primary:visited:hover, .btn-primary:visited:focus, .btn-primary:visited:active, .btn-primary:visited.is-selected {
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.is-selected,
+.btn-primary:visited:hover,
+.btn-primary:visited:focus,
+.btn-primary:visited:active,
+.btn-primary:visited.is-selected {
   border: 1px solid #4ea530;
   background-color: #4ea530;
 }
@@ -298,7 +305,7 @@
   color: #fff !important;
   border: 1px solid #51af33;
   background-color: #51af33;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .option-date button {
@@ -827,11 +834,6 @@ i.recommendations__badge-info {
 }
 
 .modal-choose-date {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  height: auto;
   border-radius: 5px;
   color: #272727;
 }
@@ -1340,17 +1342,17 @@ div.name {
 /*  color: #c4592b !important;*/
 /*}*/
 
-
 /*Feature#3 Big update UI */
+
 #form-task input.form-control {
-  transition: .5s;
+  transition: 0.5s;
 }
 
 #form-task input.form-control:hover {
   box-shadow: 1px 2px 12px 5px #e1e1e1 !important;
 }
 
-#form-task input.form-control:hover:focus{
+#form-task input.form-control:hover:focus {
   box-shadow: 0 0 18px 0px rgba(81, 175, 51, 0.59) !important;
 }
 
@@ -1360,9 +1362,3 @@ div.name {
   -webkit-appearance: none;
   margin: 0;
 }
-
-
-
-
-
-

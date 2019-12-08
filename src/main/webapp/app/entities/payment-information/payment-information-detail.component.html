@@ -9,6 +9,10 @@
                 <dd>
                     <span>{{paymentInformation.balance}}</span>
                 </dd>
+                <dt><span jhiTranslate="taskUniteApp.paymentInformation.hold">Hold</span></dt>
+                <dd>
+                    <span>{{paymentInformation.hold}}</span>
+                </dd>
                 <dt><span jhiTranslate="taskUniteApp.paymentInformation.createdAt">Created At</span></dt>
                 <dd>
                     <span>{{paymentInformation.createdAt}}</span>
@@ -23,7 +27,9 @@
                 </dd>
                 <dt><span jhiTranslate="taskUniteApp.paymentInformation.user">User</span></dt>
                 <dd>
-                    {{paymentInformation.userId}}
+                    <div *ngIf="paymentInformation.userId">
+                        <a [routerLink]="['/user-information', paymentInformation.userId, 'view']">{{paymentInformation.userId}}</a>
+                    </div>
                 </dd>
             </dl>
 

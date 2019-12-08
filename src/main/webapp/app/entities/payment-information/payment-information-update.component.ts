@@ -10,8 +10,8 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { IPaymentInformation, PaymentInformation } from 'app/shared/model/payment-information.model';
 import { PaymentInformationService } from './payment-information.service';
-import { IUser } from 'app/core/user/user.model';
-import { UserService } from 'app/core/user/user.service';
+import { IUserInformation } from 'app/shared/model/user-information.model';
+import { UserInformationService } from 'app/entities/user-information/user-information.service';
 
 @Component({
   selector: 'jhi-payment-information-update',
@@ -20,11 +20,12 @@ import { UserService } from 'app/core/user/user.service';
 export class PaymentInformationUpdateComponent implements OnInit {
   isSaving: boolean;
 
-  users: IUser[];
+  users: IUserInformation[];
 
   editForm = this.fb.group({
     id: [],
     balance: [],
+    hold: [],
     createdAt: [],
     updatedAt: [],
     deletedAt: [],
@@ -34,7 +35,7 @@ export class PaymentInformationUpdateComponent implements OnInit {
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected paymentInformationService: PaymentInformationService,
-    protected userService: UserService,
+    protected userInformationService: UserInformationService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -44,15 +45,28 @@ export class PaymentInformationUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ paymentInformation }) => {
       this.updateForm(paymentInformation);
     });
-    this.userService
-      .query()
-      .subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body), (res: HttpErrorResponse) => this.onError(res.message));
+    this.userInformationService.query({ filter: 'payment-is-null' }).subscribe(
+      (res: HttpResponse<IUserInformation[]>) => {
+        if (!this.editForm.get('userId').value) {
+          this.users = res.body;
+        } else {
+          this.userInformationService
+            .find(this.editForm.get('userId').value)
+            .subscribe(
+              (subRes: HttpResponse<IUserInformation>) => (this.users = [subRes.body].concat(res.body)),
+              (subRes: HttpErrorResponse) => this.onError(subRes.message)
+            );
+        }
+      },
+      (res: HttpErrorResponse) => this.onError(res.message)
+    );
   }
 
   updateForm(paymentInformation: IPaymentInformation) {
     this.editForm.patchValue({
       id: paymentInformation.id,
       balance: paymentInformation.balance,
+      hold: paymentInformation.hold,
       createdAt: paymentInformation.createdAt != null ? paymentInformation.createdAt.format(DATE_TIME_FORMAT) : null,
       updatedAt: paymentInformation.updatedAt != null ? paymentInformation.updatedAt.format(DATE_TIME_FORMAT) : null,
       deletedAt: paymentInformation.deletedAt != null ? paymentInformation.deletedAt.format(DATE_TIME_FORMAT) : null,
@@ -79,6 +93,7 @@ export class PaymentInformationUpdateComponent implements OnInit {
       ...new PaymentInformation(),
       id: this.editForm.get(['id']).value,
       balance: this.editForm.get(['balance']).value,
+      hold: this.editForm.get(['hold']).value,
       createdAt:
         this.editForm.get(['createdAt']).value != null ? moment(this.editForm.get(['createdAt']).value, DATE_TIME_FORMAT) : undefined,
       updatedAt:
@@ -105,7 +120,7 @@ export class PaymentInformationUpdateComponent implements OnInit {
     this.jhiAlertService.error(errorMessage, null, null);
   }
 
-  trackUserById(index: number, item: IUser) {
+  trackUserInformationById(index: number, item: IUserInformation) {
     return item.id;
   }
 }

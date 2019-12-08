@@ -41,15 +41,15 @@
                         <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
                                 <label class="font-weight-bold" for="city" th:text="#{register-task.what-work}"></label>
-                                <select class="custom-select  mb-3" name="city" id="city">
-                                    <option selected>Thành phố</option>
+                                <select class="custom-select  mb-3" id="city">
+                                    <option value="0" selected>Thành phố</option>
                                     <option th:each="city: ${cities}" th:value="${city.getId()}" th:text="${city.getName()}"></option>
                                 </select>
-                                <select class="custom-select mb-3" id="district" name="district">
-                                    <option selected>Quận</option>
+                                <select class="custom-select mb-3" id="district" th:field="*{district}">
+                                    <option value="0" selected>Quận</option>
                                     <option th:each="district: ${districts}" th:value="${district.getId()}" th:text="${district.getName()}"></option>
                                 </select>
-                                <input type="text" name="address" class="form-control"
+                                <input type="text" th:field="*{address}" class="form-control"
                                                   placeholder="Địa chỉ"/>
                             </div>
                         </div>
@@ -66,15 +66,15 @@
                                 <label class="font-weight-bold">Ngày/tháng/năm sinh</label>
                                 <div class="row">
                                     <div class="col-md-4 col-12">
-                                        <input type="text" name="day" id="bday" class="form-control"
+                                        <input type="text" th:field="*{bday}" id="bday" class="form-control"
                                                placeholder="Ngày">
                                     </div>
                                     <div class="col-md-4 col-12">
-                                        <input type="text" name="month" id="bmonth" class="form-control"
+                                        <input type="text" th:field="*{bmonth}" id="bmonth" class="form-control"
                                                placeholder="Tháng">
                                     </div>
                                     <div class="col-md-4 col-12">
-                                        <input type="text" name="year" id="byear" class="form-control"
+                                        <input type="text" th:field="*{byear}" id="byear" class="form-control"
                                                placeholder="Năm">
                                     </div>
                                 </div>

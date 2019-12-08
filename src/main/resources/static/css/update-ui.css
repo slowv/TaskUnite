@@ -28,16 +28,16 @@
 
 .btn-svg-UI:disabled,
 .btn-svg-UI[disabled] {
-  opacity: .6;
+  opacity: 0.6;
   cursor: default;
 }
 
-.btn-svg-UI.fill-green{
+.btn-svg-UI.fill-green {
   background: #51af33;
   color: #fff;
 }
 
-.btn-svg-UI.fill-green svg rect{
+.btn-svg-UI.fill-green svg rect {
   stroke: #51af33;
 }
 
@@ -54,12 +54,11 @@
 .btn-svg-UI svg rect {
   stroke: #818181;
   stroke-width: 4;
-  transition: .5s;
+  transition: 0.5s;
   stroke-dasharray: 200, 40;
 }
 
-
-.btn-svg-UI:hover{
+.btn-svg-UI:hover {
   background: #51af33;
   color: #fff;
   box-shadow: 0 0 18px 0px rgba(81, 175, 51, 0.59) !important;
@@ -71,44 +70,43 @@
   stroke-dashoffset: 300;
 }
 
-.btn-svg-UI.animation-svg-infinite{
+.btn-svg-UI.animation-svg-infinite {
   background: #51af33;
   color: #fff;
   box-shadow: 0 0 18px 0px rgba(81, 175, 51, 0.59) !important;
   height: 45px;
 }
 
-
-.btn-svg-UI.animation-svg-infinite svg rect{
+.btn-svg-UI.animation-svg-infinite svg rect {
   animation: animate-svg 2s linear infinite;
   stroke-dasharray: 120;
   stroke: #fff;
   transition: 1.5s;
 }
 
-.btn-svg-UI.animation-svg-infinite:hover svg rect{
+.btn-svg-UI.animation-svg-infinite:hover svg rect {
   stroke: #818181;
   stroke-dasharray: 0;
   stroke-dashoffset: 0;
   animation-play-state: paused;
 }
 
-.btn-svg-UI.animation-svg-infinite:hover{
+.btn-svg-UI.animation-svg-infinite:hover {
   background: transparent;
   color: #818181;
   box-shadow: none;
 }
 
 @keyframes animate-svg {
-  0%{
+  0% {
     stroke: #818181;
     stroke-dashoffset: 480;
   }
-  50%{
+  50% {
     stroke: #fff;
     stroke-dashoffset: 240;
   }
-  100%{
+  100% {
     stroke: #51af33;
     stroke-dashoffset: 0;
   }
@@ -138,7 +136,7 @@
   bottom: -1px;
   left: 0;
   position: absolute;
-  opacity: .6;
+  opacity: 0.6;
   animation: animation-wave-reverse 10s linear infinite;
 }
 
@@ -150,7 +148,7 @@
   height: 143px;
   bottom: -1px;
   left: 0;
-  opacity: .4;
+  opacity: 0.4;
   animation: animation-wave 20s linear infinite;
   animation-delay: -5s;
 }
@@ -173,7 +171,6 @@
   }
 }
 
-
 html::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.12);
   background-color: #fafafa;
@@ -185,8 +182,8 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar-thumb {
-  background: -webkit-gradient(linear,left top,left bottom,from(#d3e955),to(#51af33));
-  background: linear-gradient(180deg,#d3e955,#51af33);
+  background: -webkit-gradient(linear, left top, left bottom, from(#d3e955), to(#51af33));
+  background: linear-gradient(180deg, #d3e955, #51af33);
   border-radius: 30px;
-  box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25)
+  box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, 0.25), inset -2px -2px 2px rgba(0, 0, 0, 0.25);
 }

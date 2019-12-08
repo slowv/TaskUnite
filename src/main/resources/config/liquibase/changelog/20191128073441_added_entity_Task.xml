@@ -19,16 +19,28 @@
             <column name="address" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="title" type="varchar(255)">
+            <column name="name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="description" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="estimated_time" type="double">
+            <column name="price" type="double">
                 <constraints nullable="true" />
             </column>
-            <column name="price" type="double">
+            <column name="total_price" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="jhi_from" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="jhi_to" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="duration" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="type" type="integer">
                 <constraints nullable="true" />
             </column>
             <column name="status" type="integer">
@@ -43,12 +55,6 @@
             <column name="deleted_at" type="datetime">
                 <constraints nullable="true" />
             </column>
-            <column name="room_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_task_room_id" />
-            </column>
-            <column name="schedule_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_task_schedule_id" />
-            </column>
             <column name="tasker_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -60,6 +66,8 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="task" columnName="jhi_from" columnDataType="datetime"/>
+        <dropDefaultValue tableName="task" columnName="jhi_to" columnDataType="datetime"/>
         <dropDefaultValue tableName="task" columnName="created_at" columnDataType="datetime"/>
         <dropDefaultValue tableName="task" columnName="updated_at" columnDataType="datetime"/>
         <dropDefaultValue tableName="task" columnName="deleted_at" columnDataType="datetime"/>
@@ -85,10 +93,14 @@
                   tableName="task">
             <column name="id" type="numeric"/>
             <column name="address" type="string"/>
-            <column name="title" type="string"/>
+            <column name="name" type="string"/>
             <column name="description" type="string"/>
-            <column name="estimated_time" type="numeric"/>
             <column name="price" type="numeric"/>
+            <column name="total_price" type="numeric"/>
+            <column name="jhi_from" type="datetime"/>
+            <column name="jhi_to" type="datetime"/>
+            <column name="duration" type="numeric"/>
+            <column name="type" type="numeric"/>
             <column name="status" type="numeric"/>
             <column name="created_at" type="datetime"/>
             <column name="updated_at" type="datetime"/>

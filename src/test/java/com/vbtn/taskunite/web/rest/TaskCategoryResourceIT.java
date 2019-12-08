@@ -50,9 +50,6 @@ public class TaskCategoryResourceIT {
     private static final Double DEFAULT_MIN_PRICE = 1D;
     private static final Double UPDATED_MIN_PRICE = 2D;
 
-    private static final Integer DEFAULT_STATUS = 1;
-    private static final Integer UPDATED_STATUS = 2;
-
     private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
@@ -114,7 +111,6 @@ public class TaskCategoryResourceIT {
             .description(DEFAULT_DESCRIPTION)
             .image(DEFAULT_IMAGE)
             .minPrice(DEFAULT_MIN_PRICE)
-            .status(DEFAULT_STATUS)
             .createdAt(DEFAULT_CREATED_AT)
             .updatedAt(DEFAULT_UPDATED_AT)
             .deletedAt(DEFAULT_DELETED_AT);
@@ -132,7 +128,6 @@ public class TaskCategoryResourceIT {
             .description(UPDATED_DESCRIPTION)
             .image(UPDATED_IMAGE)
             .minPrice(UPDATED_MIN_PRICE)
-            .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
             .deletedAt(UPDATED_DELETED_AT);
@@ -164,7 +159,6 @@ public class TaskCategoryResourceIT {
         assertThat(testTaskCategory.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testTaskCategory.getImage()).isEqualTo(DEFAULT_IMAGE);
         assertThat(testTaskCategory.getMinPrice()).isEqualTo(DEFAULT_MIN_PRICE);
-        assertThat(testTaskCategory.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testTaskCategory.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testTaskCategory.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
         assertThat(testTaskCategory.getDeletedAt()).isEqualTo(DEFAULT_DELETED_AT);
@@ -206,7 +200,6 @@ public class TaskCategoryResourceIT {
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].image").value(hasItem(DEFAULT_IMAGE)))
             .andExpect(jsonPath("$.[*].minPrice").value(hasItem(DEFAULT_MIN_PRICE.doubleValue())))
-            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())))
             .andExpect(jsonPath("$.[*].deletedAt").value(hasItem(DEFAULT_DELETED_AT.toString())));
@@ -227,7 +220,6 @@ public class TaskCategoryResourceIT {
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.image").value(DEFAULT_IMAGE))
             .andExpect(jsonPath("$.minPrice").value(DEFAULT_MIN_PRICE.doubleValue()))
-            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()))
             .andExpect(jsonPath("$.deletedAt").value(DEFAULT_DELETED_AT.toString()));
@@ -258,7 +250,6 @@ public class TaskCategoryResourceIT {
             .description(UPDATED_DESCRIPTION)
             .image(UPDATED_IMAGE)
             .minPrice(UPDATED_MIN_PRICE)
-            .status(UPDATED_STATUS)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT)
             .deletedAt(UPDATED_DELETED_AT);
@@ -277,7 +268,6 @@ public class TaskCategoryResourceIT {
         assertThat(testTaskCategory.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testTaskCategory.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testTaskCategory.getMinPrice()).isEqualTo(UPDATED_MIN_PRICE);
-        assertThat(testTaskCategory.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testTaskCategory.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testTaskCategory.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
         assertThat(testTaskCategory.getDeletedAt()).isEqualTo(UPDATED_DELETED_AT);

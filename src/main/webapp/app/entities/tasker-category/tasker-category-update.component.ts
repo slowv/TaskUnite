@@ -12,8 +12,8 @@ import { ITaskerCategory, TaskerCategory } from 'app/shared/model/tasker-categor
 import { TaskerCategoryService } from './tasker-category.service';
 import { ITaskCategory } from 'app/shared/model/task-category.model';
 import { TaskCategoryService } from 'app/entities/task-category/task-category.service';
-import { ITasker } from 'app/shared/model/tasker.model';
-import { TaskerService } from 'app/entities/tasker/tasker.service';
+import { IUserInformation } from 'app/shared/model/user-information.model';
+import { UserInformationService } from 'app/entities/user-information/user-information.service';
 
 @Component({
   selector: 'jhi-tasker-category-update',
@@ -24,25 +24,25 @@ export class TaskerCategoryUpdateComponent implements OnInit {
 
   taskcategories: ITaskCategory[];
 
-  taskers: ITasker[];
+  userinformations: IUserInformation[];
 
   editForm = this.fb.group({
     id: [],
     description: [],
     price: [],
-    status: [],
+    type: [],
     createdAt: [],
     updatedAt: [],
     deletedAt: [],
     taskCategoryId: [],
-    taskerId: []
+    userId: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected taskerCategoryService: TaskerCategoryService,
     protected taskCategoryService: TaskCategoryService,
-    protected taskerService: TaskerService,
+    protected userInformationService: UserInformationService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -58,9 +58,12 @@ export class TaskerCategoryUpdateComponent implements OnInit {
         (res: HttpResponse<ITaskCategory[]>) => (this.taskcategories = res.body),
         (res: HttpErrorResponse) => this.onError(res.message)
       );
-    this.taskerService
+    this.userInformationService
       .query()
-      .subscribe((res: HttpResponse<ITasker[]>) => (this.taskers = res.body), (res: HttpErrorResponse) => this.onError(res.message));
+      .subscribe(
+        (res: HttpResponse<IUserInformation[]>) => (this.userinformations = res.body),
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
   }
 
   updateForm(taskerCategory: ITaskerCategory) {
@@ -68,12 +71,12 @@ export class TaskerCategoryUpdateComponent implements OnInit {
       id: taskerCategory.id,
       description: taskerCategory.description,
       price: taskerCategory.price,
-      status: taskerCategory.status,
+      type: taskerCategory.type,
       createdAt: taskerCategory.createdAt != null ? taskerCategory.createdAt.format(DATE_TIME_FORMAT) : null,
       updatedAt: taskerCategory.updatedAt != null ? taskerCategory.updatedAt.format(DATE_TIME_FORMAT) : null,
       deletedAt: taskerCategory.deletedAt != null ? taskerCategory.deletedAt.format(DATE_TIME_FORMAT) : null,
       taskCategoryId: taskerCategory.taskCategoryId,
-      taskerId: taskerCategory.taskerId
+      userId: taskerCategory.userId
     });
   }
 
@@ -97,7 +100,7 @@ export class TaskerCategoryUpdateComponent implements OnInit {
       id: this.editForm.get(['id']).value,
       description: this.editForm.get(['description']).value,
       price: this.editForm.get(['price']).value,
-      status: this.editForm.get(['status']).value,
+      type: this.editForm.get(['type']).value,
       createdAt:
         this.editForm.get(['createdAt']).value != null ? moment(this.editForm.get(['createdAt']).value, DATE_TIME_FORMAT) : undefined,
       updatedAt:
@@ -105,7 +108,7 @@ export class TaskerCategoryUpdateComponent implements OnInit {
       deletedAt:
         this.editForm.get(['deletedAt']).value != null ? moment(this.editForm.get(['deletedAt']).value, DATE_TIME_FORMAT) : undefined,
       taskCategoryId: this.editForm.get(['taskCategoryId']).value,
-      taskerId: this.editForm.get(['taskerId']).value
+      userId: this.editForm.get(['userId']).value
     };
   }
 
@@ -129,7 +132,7 @@ export class TaskerCategoryUpdateComponent implements OnInit {
     return item.id;
   }
 
-  trackTaskerById(index: number, item: ITasker) {
+  trackUserInformationById(index: number, item: IUserInformation) {
     return item.id;
   }
 }

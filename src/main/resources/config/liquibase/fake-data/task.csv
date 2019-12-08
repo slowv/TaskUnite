@@ -1,1 +1,1 @@
-id;description;estimated_time;price;status;created_at;updated_at;deleted_at
+id;address;name;description;jhi_from;jhi_to;duration;price;total_price;type;status;created_at;updated_at;deleted_at;tasker_id;master_id;task_category_id

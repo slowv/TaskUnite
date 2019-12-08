@@ -15,9 +15,9 @@
                            formControlName="address"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskUniteApp.task.title" for="field_title">Title</label>
-                    <input type="text" class="form-control" name="title" id="field_title"
-                           formControlName="title"/>
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.task.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskUniteApp.task.description" for="field_description">Description</label>
@@ -25,14 +25,36 @@
                            formControlName="description"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskUniteApp.task.estimatedTime" for="field_estimatedTime">Estimated Time</label>
-                    <input type="number" class="form-control" name="estimatedTime" id="field_estimatedTime"
-                           formControlName="estimatedTime"/>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskUniteApp.task.price" for="field_price">Price</label>
                     <input type="number" class="form-control" name="price" id="field_price"
                            formControlName="price"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.task.totalPrice" for="field_totalPrice">Total Price</label>
+                    <input type="number" class="form-control" name="totalPrice" id="field_totalPrice"
+                           formControlName="totalPrice"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.task.from" for="field_from">From</label>
+                    <div class="d-flex">
+                        <input id="field_from" type="datetime-local" class="form-control" name="from" formControlName="from" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.task.to" for="field_to">To</label>
+                    <div class="d-flex">
+                        <input id="field_to" type="datetime-local" class="form-control" name="to" formControlName="to" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.task.duration" for="field_duration">Duration</label>
+                    <input type="number" class="form-control" name="duration" id="field_duration"
+                           formControlName="duration"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taskUniteApp.task.type" for="field_type">Type</label>
+                    <input type="number" class="form-control" name="type" id="field_type"
+                           formControlName="type"/>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskUniteApp.task.status" for="field_status">Status</label>
@@ -59,31 +81,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskUniteApp.task.room" for="field_room">Room</label>
-                    <select class="form-control" id="field_room" name="room" formControlName="roomId">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="roomOption.id" *ngFor="let roomOption of rooms; trackBy: trackRoomById">{{roomOption.id}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="taskUniteApp.task.schedule" for="field_schedule">Schedule</label>
-                    <select class="form-control" id="field_schedule" name="schedule" formControlName="scheduleId">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="scheduleOption.id" *ngFor="let scheduleOption of schedules; trackBy: trackScheduleById">{{scheduleOption.id}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskUniteApp.task.tasker" for="field_tasker">Tasker</label>
                     <select class="form-control" id="field_tasker" name="tasker" formControlName="taskerId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="taskerOption.id" *ngFor="let taskerOption of taskers; trackBy: trackTaskerById">{{taskerOption.id}}</option>
+                        <option [ngValue]="userInformationOption.id" *ngFor="let userInformationOption of userinformations; trackBy: trackUserInformationById">{{userInformationOption.id}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="taskUniteApp.task.master" for="field_master">Master</label>
                     <select class="form-control" id="field_master" name="master" formControlName="masterId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="masterOption.id" *ngFor="let masterOption of masters; trackBy: trackMasterById">{{masterOption.id}}</option>
+                        <option [ngValue]="userInformationOption.id" *ngFor="let userInformationOption of userinformations; trackBy: trackUserInformationById">{{userInformationOption.id}}</option>
                     </select>
                 </div>
                 <div class="form-group">

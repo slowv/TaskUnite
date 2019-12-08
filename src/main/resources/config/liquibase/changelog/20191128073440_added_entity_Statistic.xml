@@ -25,16 +25,7 @@
             <column name="completed_task" type="integer">
                 <constraints nullable="true" />
             </column>
-            <column name="incompleted_task" type="integer">
-                <constraints nullable="true" />
-            </column>
             <column name="rating" type="integer">
-                <constraints nullable="true" />
-            </column>
-            <column name="ranking" type="integer">
-                <constraints nullable="true" />
-            </column>
-            <column name="bonus" type="double">
                 <constraints nullable="true" />
             </column>
             <column name="created_at" type="datetime">
@@ -78,10 +69,7 @@
             <column name="level" type="numeric"/>
             <column name="experience" type="numeric"/>
             <column name="completed_task" type="numeric"/>
-            <column name="incompleted_task" type="numeric"/>
             <column name="rating" type="numeric"/>
-            <column name="ranking" type="numeric"/>
-            <column name="bonus" type="numeric"/>
             <column name="created_at" type="datetime"/>
             <column name="updated_at" type="datetime"/>
             <column name="deleted_at" type="datetime"/>
