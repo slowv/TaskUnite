@@ -48,6 +48,9 @@ public class TaskResourceIT {
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
+    private static final Double DEFAULT_PRICE = 1D;
+    private static final Double UPDATED_PRICE = 2D;
+
     private static final Double DEFAULT_TOTAL_PRICE = 1D;
     private static final Double UPDATED_TOTAL_PRICE = 2D;
 
@@ -126,6 +129,7 @@ public class TaskResourceIT {
             .address(DEFAULT_ADDRESS)
             .name(DEFAULT_NAME)
             .description(DEFAULT_DESCRIPTION)
+            .price(DEFAULT_PRICE)
             .totalPrice(DEFAULT_TOTAL_PRICE)
             .from(DEFAULT_FROM)
             .to(DEFAULT_TO)
@@ -148,6 +152,7 @@ public class TaskResourceIT {
             .address(UPDATED_ADDRESS)
             .name(UPDATED_NAME)
             .description(UPDATED_DESCRIPTION)
+            .price(UPDATED_PRICE)
             .totalPrice(UPDATED_TOTAL_PRICE)
             .from(UPDATED_FROM)
             .to(UPDATED_TO)
@@ -184,6 +189,7 @@ public class TaskResourceIT {
         assertThat(testTask.getAddress()).isEqualTo(DEFAULT_ADDRESS);
         assertThat(testTask.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testTask.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testTask.getPrice()).isEqualTo(DEFAULT_PRICE);
         assertThat(testTask.getTotalPrice()).isEqualTo(DEFAULT_TOTAL_PRICE);
         assertThat(testTask.getFrom()).isEqualTo(DEFAULT_FROM);
         assertThat(testTask.getTo()).isEqualTo(DEFAULT_TO);
@@ -230,6 +236,7 @@ public class TaskResourceIT {
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS)))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
             .andExpect(jsonPath("$.[*].totalPrice").value(hasItem(DEFAULT_TOTAL_PRICE.doubleValue())))
             .andExpect(jsonPath("$.[*].from").value(hasItem(DEFAULT_FROM.toString())))
             .andExpect(jsonPath("$.[*].to").value(hasItem(DEFAULT_TO.toString())))
@@ -255,6 +262,7 @@ public class TaskResourceIT {
             .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
+            .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
             .andExpect(jsonPath("$.totalPrice").value(DEFAULT_TOTAL_PRICE.doubleValue()))
             .andExpect(jsonPath("$.from").value(DEFAULT_FROM.toString()))
             .andExpect(jsonPath("$.to").value(DEFAULT_TO.toString()))
@@ -290,6 +298,7 @@ public class TaskResourceIT {
             .address(UPDATED_ADDRESS)
             .name(UPDATED_NAME)
             .description(UPDATED_DESCRIPTION)
+            .price(UPDATED_PRICE)
             .totalPrice(UPDATED_TOTAL_PRICE)
             .from(UPDATED_FROM)
             .to(UPDATED_TO)
@@ -313,6 +322,7 @@ public class TaskResourceIT {
         assertThat(testTask.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testTask.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testTask.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testTask.getPrice()).isEqualTo(UPDATED_PRICE);
         assertThat(testTask.getTotalPrice()).isEqualTo(UPDATED_TOTAL_PRICE);
         assertThat(testTask.getFrom()).isEqualTo(UPDATED_FROM);
         assertThat(testTask.getTo()).isEqualTo(UPDATED_TO);

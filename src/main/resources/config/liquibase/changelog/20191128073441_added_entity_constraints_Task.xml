@@ -20,11 +20,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="user_information"/>
 
-        <addForeignKeyConstraint baseColumnNames="tasker_category_id"
+        <addForeignKeyConstraint baseColumnNames="task_category_id"
                                  baseTableName="task"
-                                 constraintName="fk_task_tasker_category_id"
+                                 constraintName="fk_task_task_category_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="tasker_category"/>
+                                 referencedTableName="task_category"/>
 
     </changeSet>
 </databaseChangeLog>

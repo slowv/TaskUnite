@@ -23,6 +23,7 @@
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
+      "tasks": "Tasks",
       "taskerCategories": "Tasker Categories"
     }
   }

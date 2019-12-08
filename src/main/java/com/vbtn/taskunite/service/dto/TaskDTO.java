@@ -17,6 +17,8 @@ public class TaskDTO implements Serializable {
 
     private String description;
 
+    private Double price;
+
     private Double totalPrice;
 
     private Instant from;
@@ -40,7 +42,7 @@ public class TaskDTO implements Serializable {
 
     private Long masterId;
 
-    private Long taskerCategoryId;
+    private Long taskCategoryId;
 
     public Long getId() {
         return id;
@@ -72,6 +74,14 @@ public class TaskDTO implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public Double getTotalPrice() {
@@ -162,12 +172,12 @@ public class TaskDTO implements Serializable {
         this.masterId = userInformationId;
     }
 
-    public Long getTaskerCategoryId() {
-        return taskerCategoryId;
+    public Long getTaskCategoryId() {
+        return taskCategoryId;
     }
 
-    public void setTaskerCategoryId(Long taskerCategoryId) {
-        this.taskerCategoryId = taskerCategoryId;
+    public void setTaskCategoryId(Long taskCategoryId) {
+        this.taskCategoryId = taskCategoryId;
     }
 
     @Override
@@ -198,6 +208,7 @@ public class TaskDTO implements Serializable {
             ", address='" + getAddress() + "'" +
             ", name='" + getName() + "'" +
             ", description='" + getDescription() + "'" +
+            ", price=" + getPrice() +
             ", totalPrice=" + getTotalPrice() +
             ", from='" + getFrom() + "'" +
             ", to='" + getTo() + "'" +
@@ -209,7 +220,7 @@ public class TaskDTO implements Serializable {
             ", deletedAt='" + getDeletedAt() + "'" +
             ", tasker=" + getTaskerId() +
             ", master=" + getMasterId() +
-            ", taskerCategory=" + getTaskerCategoryId() +
+            ", taskCategory=" + getTaskCategoryId() +
             "}";
     }
 }

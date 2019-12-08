@@ -7,6 +7,7 @@ export interface ITask {
   address?: string;
   name?: string;
   description?: string;
+  price?: number;
   totalPrice?: number;
   from?: Moment;
   to?: Moment;
@@ -20,7 +21,7 @@ export interface ITask {
   adminProfits?: IAdminProfit[];
   taskerId?: number;
   masterId?: number;
-  taskerCategoryId?: number;
+  taskCategoryId?: number;
 }
 
 export class Task implements ITask {
@@ -29,6 +30,7 @@ export class Task implements ITask {
     public address?: string,
     public name?: string,
     public description?: string,
+    public price?: number,
     public totalPrice?: number,
     public from?: Moment,
     public to?: Moment,
@@ -42,6 +44,6 @@ export class Task implements ITask {
     public adminProfits?: IAdminProfit[],
     public taskerId?: number,
     public masterId?: number,
-    public taskerCategoryId?: number
+    public taskCategoryId?: number
   ) {}
 }

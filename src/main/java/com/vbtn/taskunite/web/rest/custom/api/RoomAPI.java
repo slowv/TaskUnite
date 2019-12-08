@@ -28,7 +28,7 @@ public class RoomAPI {
         Duration d = Duration.of((long) (duration * 60), ChronoUnit.MINUTES);
         task.setDuration(d);
         task.setTo(task.getFrom().plus(d));
-        task.setTotalPrice(task.getTaskerCategory().getPrice() * duration);
+        task.setTotalPrice(task.getPrice() * duration);
         task.setStatus(2);
 
         customTaskService.save(task);

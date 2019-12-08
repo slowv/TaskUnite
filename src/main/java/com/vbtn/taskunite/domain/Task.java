@@ -31,6 +31,9 @@ public class Task implements Serializable {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "price")
+    private Double price;
+
     @Column(name = "total_price")
     private Double totalPrice;
 
@@ -74,7 +77,7 @@ public class Task implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("tasks")
-    private TaskerCategory taskerCategory;
+    private TaskCategory taskCategory;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -122,6 +125,19 @@ public class Task implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public Task price(Double price) {
+        this.price = price;
+        return this;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public Double getTotalPrice() {
@@ -317,17 +333,17 @@ public class Task implements Serializable {
         this.master = userInformation;
     }
 
-    public TaskerCategory getTaskerCategory() {
-        return taskerCategory;
+    public TaskCategory getTaskCategory() {
+        return taskCategory;
     }
 
-    public Task taskerCategory(TaskerCategory taskerCategory) {
-        this.taskerCategory = taskerCategory;
+    public Task taskCategory(TaskCategory taskCategory) {
+        this.taskCategory = taskCategory;
         return this;
     }
 
-    public void setTaskerCategory(TaskerCategory taskerCategory) {
-        this.taskerCategory = taskerCategory;
+    public void setTaskCategory(TaskCategory taskCategory) {
+        this.taskCategory = taskCategory;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -354,6 +370,7 @@ public class Task implements Serializable {
             ", address='" + getAddress() + "'" +
             ", name='" + getName() + "'" +
             ", description='" + getDescription() + "'" +
+            ", price=" + getPrice() +
             ", totalPrice=" + getTotalPrice() +
             ", from='" + getFrom() + "'" +
             ", to='" + getTo() + "'" +

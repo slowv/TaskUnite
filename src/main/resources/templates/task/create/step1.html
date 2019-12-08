@@ -112,9 +112,9 @@
                                     <div class="form-group">
                                         <th:block th:each="category: ${taskCategories}">
                                             <div class="custom-control custom-control-inline">
-                                                <input type="radio" name="taskCategories" class="custom-control-input" th:id="'cateId-' + ${category.id}"
-                                                       th:value="${category.id}" th:field="*{taskCategory}">
-                                                <label class="custom-control-label d-inline" th:for="'cateId-' + ${category.id}" th:text="${category.name}"></label>
+                                                <input type="radio" name="taskCategory" class="custom-control-input" th:id="'cateId-' + ${category.getId()}"
+                                                       th:value="${category.getId()}" th:field="*{taskCategory}">
+                                                <label class="custom-control-label d-inline" th:for="'cateId-' + ${category.getId()}" th:text="${category.getName()}"></label>
                                             </div>
                                         </th:block>
                                     </div>

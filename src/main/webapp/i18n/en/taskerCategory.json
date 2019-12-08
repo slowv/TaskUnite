@@ -22,7 +22,6 @@
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "deletedAt": "Deleted At",
-      "tasks": "Tasks",
       "taskCategory": "Task Category",
       "user": "User"
     }

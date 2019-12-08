@@ -49,7 +49,7 @@ public class TaskController {
         HashMap<String, Object> step1 = new HashMap<>();
 
         UserInformation userInformation = customUserInformationService.findOne(userService.getUserWithAuthorities().get().getId());
-        taskInfo.setUser(userInformation);
+        taskInfo.setMaster(userInformation);
         customTaskService.save(taskInfo);
 
         step1.put("taskInfo", taskInfo);
@@ -63,7 +63,6 @@ public class TaskController {
         List<UserInformation> taskers = new ArrayList<>();
         List<Double> prices = new ArrayList<>();
         List<Statistic> stats = new ArrayList<>();
-        List<Review> reviews = new ArrayList<>();
         for (TaskerCategory t: ((Task) step1.get("taskInfo")).getTaskCategory().getTaskerCategories()) {
             taskers.add(t.getUser());
             prices.add(t.getPrice());
@@ -85,7 +84,7 @@ public class TaskController {
         Task taskInfo = (Task)step1.get("taskInfo");
 
         UserInformation tasker = customUserInformationService.findOne(taskerId);
-        taskInfo.setUser(tasker);
+        taskInfo.setTasker(tasker);
 
         HashMap<String, Object> step2 = new HashMap<>();
         step2.put("taskInfo", taskInfo);

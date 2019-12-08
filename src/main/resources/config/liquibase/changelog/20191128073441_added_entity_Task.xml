@@ -25,6 +25,9 @@
             <column name="description" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="price" type="double">
+                <constraints nullable="true" />
+            </column>
             <column name="total_price" type="double">
                 <constraints nullable="true" />
             </column>
@@ -58,7 +61,7 @@
             <column name="master_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="tasker_category_id" type="bigint">
+            <column name="task_category_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
@@ -92,6 +95,7 @@
             <column name="address" type="string"/>
             <column name="name" type="string"/>
             <column name="description" type="string"/>
+            <column name="price" type="numeric"/>
             <column name="total_price" type="numeric"/>
             <column name="jhi_from" type="datetime"/>
             <column name="jhi_to" type="datetime"/>

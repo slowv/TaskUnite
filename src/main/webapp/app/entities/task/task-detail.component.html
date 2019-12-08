@@ -17,6 +17,10 @@
                 <dd>
                     <span>{{task.description}}</span>
                 </dd>
+                <dt><span jhiTranslate="taskUniteApp.task.price">Price</span></dt>
+                <dd>
+                    <span>{{task.price}}</span>
+                </dd>
                 <dt><span jhiTranslate="taskUniteApp.task.totalPrice">Total Price</span></dt>
                 <dd>
                     <span>{{task.totalPrice}}</span>
@@ -65,10 +69,10 @@
                         <a [routerLink]="['/user-information', task.masterId, 'view']">{{task.masterId}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="taskUniteApp.task.taskerCategory">Tasker Category</span></dt>
+                <dt><span jhiTranslate="taskUniteApp.task.taskCategory">Task Category</span></dt>
                 <dd>
-                    <div *ngIf="task.taskerCategoryId">
-                        <a [routerLink]="['/tasker-category', task.taskerCategoryId, 'view']">{{task.taskerCategoryId}}</a>
+                    <div *ngIf="task.taskCategoryId">
+                        <a [routerLink]="['/task-category', task.taskCategoryId, 'view']">{{task.taskCategoryId}}</a>
                     </div>
                 </dd>
             </dl>

@@ -8,12 +8,12 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Task} and its DTO {@link TaskDTO}.
  */
-@Mapper(componentModel = "spring", uses = {UserInformationMapper.class, TaskerCategoryMapper.class})
+@Mapper(componentModel = "spring", uses = {UserInformationMapper.class, TaskCategoryMapper.class})
 public interface TaskMapper extends EntityMapper<TaskDTO, Task> {
 
     @Mapping(source = "tasker.id", target = "taskerId")
     @Mapping(source = "master.id", target = "masterId")
-    @Mapping(source = "taskerCategory.id", target = "taskerCategoryId")
+    @Mapping(source = "taskCategory.id", target = "taskCategoryId")
     TaskDTO toDto(Task task);
 
     @Mapping(target = "reviews", ignore = true)
@@ -22,7 +22,7 @@ public interface TaskMapper extends EntityMapper<TaskDTO, Task> {
     @Mapping(target = "removeAdminProfits", ignore = true)
     @Mapping(source = "taskerId", target = "tasker")
     @Mapping(source = "masterId", target = "master")
-    @Mapping(source = "taskerCategoryId", target = "taskerCategory")
+    @Mapping(source = "taskCategoryId", target = "taskCategory")
     Task toEntity(TaskDTO taskDTO);
 
     default Task fromId(Long id) {

@@ -22,6 +22,7 @@
             <th scope="col"  jhiSortBy="address"><span jhiTranslate="taskUniteApp.task.address">Address</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="name"><span jhiTranslate="taskUniteApp.task.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="description"><span jhiTranslate="taskUniteApp.task.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="price"><span jhiTranslate="taskUniteApp.task.price">Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="totalPrice"><span jhiTranslate="taskUniteApp.task.totalPrice">Total Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="from"><span jhiTranslate="taskUniteApp.task.from">From</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="to"><span jhiTranslate="taskUniteApp.task.to">To</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -33,7 +34,7 @@
             <th scope="col"  jhiSortBy="deletedAt"><span jhiTranslate="taskUniteApp.task.deletedAt">Deleted At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="taskerId"><span jhiTranslate="taskUniteApp.task.tasker">Tasker</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="masterId"><span jhiTranslate="taskUniteApp.task.master">Master</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="taskerCategoryId"><span jhiTranslate="taskUniteApp.task.taskerCategory">Tasker Category</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="taskCategoryId"><span jhiTranslate="taskUniteApp.task.taskCategory">Task Category</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -43,6 +44,7 @@
                 <td>{{task.address}}</td>
                 <td>{{task.name}}</td>
                 <td>{{task.description}}</td>
+                <td>{{task.price}}</td>
                 <td>{{task.totalPrice}}</td>
                 <td>{{task.from | date:'medium'}}</td>
                 <td>{{task.to | date:'medium'}}</td>
@@ -63,8 +65,8 @@
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="task.taskerCategoryId">
-                        <a [routerLink]="['/tasker-category', task.taskerCategoryId , 'view' ]" >{{task.taskerCategoryId}}</a>
+                    <div *ngIf="task.taskCategoryId">
+                        <a [routerLink]="['/task-category', task.taskCategoryId , 'view' ]" >{{task.taskCategoryId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

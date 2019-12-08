@@ -5,8 +5,6 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A TaskerCategory.
@@ -38,9 +36,6 @@ public class TaskerCategory implements Serializable {
 
     @Column(name = "deleted_at")
     private Instant deletedAt;
-
-    @OneToMany(mappedBy = "taskerCategory")
-    private Set<Task> tasks = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties("taskerCategories")
@@ -135,31 +130,6 @@ public class TaskerCategory implements Serializable {
 
     public void setDeletedAt(Instant deletedAt) {
         this.deletedAt = deletedAt;
-    }
-
-    public Set<Task> getTasks() {
-        return tasks;
-    }
-
-    public TaskerCategory tasks(Set<Task> tasks) {
-        this.tasks = tasks;
-        return this;
-    }
-
-    public TaskerCategory addTasks(Task task) {
-        this.tasks.add(task);
-        task.setTaskerCategory(this);
-        return this;
-    }
-
-    public TaskerCategory removeTasks(Task task) {
-        this.tasks.remove(task);
-        task.setTaskerCategory(null);
-        return this;
-    }
-
-    public void setTasks(Set<Task> tasks) {
-        this.tasks = tasks;
     }
 
     public TaskCategory getTaskCategory() {

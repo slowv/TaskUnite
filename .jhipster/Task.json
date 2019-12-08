@@ -14,6 +14,10 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "price",
+            "fieldType": "Double"
+        },
+        {
             "fieldName": "totalPrice",
             "fieldType": "Double"
         },
@@ -79,9 +83,9 @@
         },
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "taskerCategory",
+            "otherEntityName": "taskCategory",
             "otherEntityRelationshipName": "tasks",
-            "relationshipName": "taskerCategory",
+            "relationshipName": "taskCategory",
             "otherEntityField": "id"
         }
     ],

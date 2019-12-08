@@ -15,8 +15,6 @@ public interface TaskerCategoryMapper extends EntityMapper<TaskerCategoryDTO, Ta
     @Mapping(source = "user.id", target = "userId")
     TaskerCategoryDTO toDto(TaskerCategory taskerCategory);
 
-    @Mapping(target = "tasks", ignore = true)
-    @Mapping(target = "removeTasks", ignore = true)
     @Mapping(source = "taskCategoryId", target = "taskCategory")
     @Mapping(source = "userId", target = "user")
     TaskerCategory toEntity(TaskerCategoryDTO taskerCategoryDTO);

@@ -19,6 +19,7 @@
       "address": "Address",
       "name": "Name",
       "description": "Description",
+      "price": "Price",
       "totalPrice": "Total Price",
       "from": "From",
       "to": "To",
@@ -32,7 +33,7 @@
       "adminProfits": "Admin Profits",
       "tasker": "Tasker",
       "master": "Master",
-      "taskerCategory": "Tasker Category"
+      "taskCategory": "Task Category"
     }
   }
 }
