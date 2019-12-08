@@ -9,82 +9,14 @@
 <body>
 
 <div class="site-wrap">
+    <th:block th:replace="fragment/layout :: site-mobile-memu"></th:block>
+    <th:block th:replace="fragment/layout :: site-navbar"></th:block>
+    <div style="height: 113px;"></div>
+
     <form th:action="@{/task/create/step4}" th:object="${taskInfo}" method="post">
-        <div class="mt-4 mb-3">
-            <div class="container">
-                <div class="row border-bottom pb-3">
-                    <div class="col-lg-1 col-md-1 box-logo-step col-xl-1">
-                        <a th:href="@{/}">
-                            <img alt="TaskUnite" class="logo-step" th:src="@{~/images/favicon.png}">
-                        </a>
-                    </div>
-                    <div class="col-lg-9 offset-lg-2 col-md-9 offset-md-2 col-xl-9 offset-xl-2">
-                        <div class="box-step ">
-                            <div class="step active st1">
-                                <div class="box-circle">
-                                    <a th:href="@{/task/create/step1(action='back')}">
-                                        <div class="box-circle">
-                                            <div class="circle"><i class="icon-done"></i></div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="box-line">
-                                    <div class="line"></div>
-                                </div>
-                                <div class="name-step" th:text="#{task-create.step1.task-infor}"></div>
-                            </div>
-                            <div class="step st2">
-                                <div class="box-circle">
-                                    <a th:href="@{/task/create/step2(action='back')}">
-                                        <div class="box-circle">
-                                            <div class="circle"><i class="icon-done"></i></div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="box-line ">
-                                    <div class="line"></div>
-                                </div>
-                                <div class="name-step" th:text="#{task-create.step2.task-prices}"></div>
-                            </div>
-                            <div class="step st3">
-                                <div class="box-circle">
-                                    <a th:href="@{/task/create/step3(action='back')}">
-                                        <div class="box-circle">
-                                            <div class="circle"><i class="icon-done"></i></div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="box-line">
-                                    <div class="line"></div>
-                                </div>
-                                <div class="name-step" th:text="#{task-create.step3.choose-date-time}"></div>
-                            </div>
-                            <div class="step st4">
-                                <div class="box-circle">
-                                    <div class="circle">4</div>
-                                </div>
-                                <div class="name-step" th:text="#{task-create.step4.confirm-details}"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 p-0 mt-1">
-                        <div class="build-progress__sub-bar">
-                            <div class="build-progress__sub-bar__container">
-                                <img alt="form" class="build-progress__sub-bar__icon" th:src="@{~/images/confirm.svg}">
-                                <div class="build-progress__sub-bar__message">
-                                    <span th:text="#{task-create.step4.notification-1}"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="site-section bg-dark-light">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="row">
                     <div class="col-md-5 col-lg-5 p-2">
                         <div class="panel panel--spaced panel--with-overflow">
@@ -93,33 +25,40 @@
                                     <img th:src="@{~/images/person_1.jpg}" alt="" class="confirm-avatar-tasker">
                                 </div>
                                 <div class="col-lg-10 col-sm-9 col-9">
-                                    <div class="task-name text-bold" style="font-size: 18px">
+                                    <div class="task-name text-bold text-right mt-1" style="font-size: 18px">
                                         <span th:text="${taskInfo.getTaskCategory().getName()}"></span>
                                     </div>
-                                    <div class="tasker-name mt-1">
-                                        <span th:text="${taskInfo.getTasker().getUser().getLastName() + ' ' + taskInfo.getTasker().getUser().getFirstName()}"></span>
+                                    <div class="tasker-name mt-1 text-right">
+                                        <span
+                                            th:text="${taskInfo.getTasker().getUser().getLastName() + ' ' + taskInfo.getTasker().getUser().getFirstName()}"></span>
                                     </div>
                                 </div>
                             </div>
                             <div style="height: 1px;background: #dadada" class="my-3"></div>
                             <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-md-6">
                                     <span class="icon-calendar-o mr-lg-3"></span>
+                                </div>
+                                <div class="col-md-6 text-right">
                                     <span th:text="${taskInfo.getFrom().toString()}"></span>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-md-6">
                                     <span class="icon-room mr-lg-3"></span>
+                                </div>
+                                <div class="col-md-6 text-right">
                                     <span th:text="${taskInfo.getAddress()}"></span>
                                 </div>
                             </div>
                             <div style="height: 1px;background: #dadada" class="my-3"></div>
                             <div class="row">
-                                <div class="col-lg-7 col-md-12 text-bold t-20"
-                                     th:text="#{task-create.step4.price-vnd-hour}"></div>
-                                <div class="col-lg-5 col-md-12 t-20 t-green">
-                                     <span th:text="${taskInfo.getPrice()}"></span>
+                                <div class="col-lg-6 col-md-12 text-bold t-20">
+                                    <span>Giá tiền</span>
+                                </div>
+                                <div class="col-lg-6 col-md-12 t-20 t-green text-right">
+                                    <span
+                                        th:text="${#numbers.formatDecimal(taskInfo.getPrice().intValue(), 0, 'COMMA', 0, 'POINT')}"></span>
                                 </div>
                             </div>
                             <div class="my-3 t-14">
@@ -139,37 +78,29 @@
                         <div class="panel panel--spaced panel--with-overflow">
                             <div class="form-group">
                                 <!--Thả description vào luôn;-->
-                                <label class="d-block">
-                                    <div class="mb-3 text-bold"><span
-                                        th:text="#{task-create.step4.review-task-description}"></span></div>
-                                    <textarea th:text="${taskInfo.description}" rows="5" name="description"
-                                              id="description" class="form-control"
-                                              style="width: 100%; height: 185px;"></textarea>
+                                <label class="font-weight-bold mb-3">
+                                <span th:text="#{task-create.step4.review-task-description}"></span>
                                 </label>
-
+                                <textarea th:text="${taskInfo.description}" rows="5" name="description" id="description" class="form-control" style="width: 100%; height: 185px;"></textarea>
                             </div>
-                            <div class="form-group my-4" style="height: 1px; background: #d0d0d0"></div>
-                            <div class="form-group mb-4" style="margin-top: -10px;"
-                                 th:text="#{task-create.step4.notification-2}"></div>
                             <div class="form-group">
-                                <label class="d-block">
-                                    <div class="mb-3 text-bold">
-                                        <span th:text="#{task-create.step4.phone-number}"></span>
-                                    </div>
-                                    <input id="phone" name="phone" th:value="${taskInfo.master.user.phone}" type="text"
-                                           class="form-control iPhoneNumber w-50"
-                                           th:placeholder="#{task-create.step4.phone-number-placeholder}">
-                                </label>
+                                <div class="mb-3 text-bold">
+                                    <span th:text="#{task-create.step4.phone-number}"></span>
+                                </div>
+                                <h3 class="mb-3" th:text="${taskInfo.getMaster().getPhone()}"></h3>
+                            </div>
+                            <div style="font-size: 13px;"
+                                 th:text="#{task-create.step4.notification-3}"></div>
+                            <div class="text-center my-3 col-lg-12">
+                                <button type="submit" class="btn-reset-css btn-svg-UI fill-green mt-2">
+                                    <svg>
+                                        <rect></rect>
+                                    </svg>
+                                    <span>Xác nhận</span>
+                                </button>
                             </div>
                         </div>
-                        <div class="px-3" style="font-size: 13px;letter-spacing: 1px;"
-                             th:text="#{task-create.step4.notification-3}"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="text-center my-3 col-lg-12">
-                        <button type="submit" class="btn btn-primary py-3 px-5"
-                                th:text="#{task-create.step4.confirm-chat}"></button>
+
                     </div>
                 </div>
             </div>

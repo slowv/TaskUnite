@@ -12,14 +12,8 @@
     <th:block th:replace="fragment/layout :: site-mobile-memu"></th:block>
     <th:block th:replace="fragment/layout :: site-navbar"></th:block>
     <div style="height: 113px;"></div>
-    <div class="unit-5 overlay" style="background-image: url('/images/hero_1.jpg');">
-        <div class="container text-center">
-            <h2 class="mb-0">Step 2</h2>
-            <p class="mb-0 unit-6"><a th:href="@{/}">Trang chủ</a> <span class="sep">></span> <span>Lựa chọn phục vụ</span></p>
-        </div>
-    </div>
 
-    <div class="site-section bg-dark-light">
+    <div class="site-section bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-lg-4 p-2 box-filter">
@@ -147,9 +141,6 @@
                         <div class="recommendations__result panel panel--spaced ">
                             <div class="recommendations__result-figure">
                                 <div>
-                                    <!--<img class="recommendations__avatar__circular"-->
-                                         <!--th:src="@{~/images/person_3.jpg}"-->
-                                         <!--alt="Tasker">-->
                                     <img class="recommendations__avatar__circular"
                                          th:src="${tasker.getImage()}"
                                          alt="Tasker">
@@ -158,8 +149,12 @@
                                     <form th:action="@{/task/create/step2}" method="post">
                                         <input type="hidden" id="tasker" name="tasker" th:value="${tasker.id}">
                                         <input type="hidden" id="price" name="price" th:value="${prices.get(iter.index)}">
-                                        <button type="submit" class="recommendations__hire-btn btn btn-primary btn-block">
-                                            <span th:text="#{task-create.step2.select-continue-btn}"></span>
+
+                                        <button type="submit" class="btn-reset-css btn-svg-UI fill-green mt-2">
+                                            <svg>
+                                                <rect></rect>
+                                            </svg>
+                                            <span>Chọn</span>
                                         </button>
                                     </form>
 
