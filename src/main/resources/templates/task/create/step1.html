@@ -20,160 +20,158 @@
 
     <div class="site-section bg-light">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-lg-12 mb-5">
-                    <form th:action="@{/task/create/step1}" th:object="${taskInfo}" id="form-task" method="post">
-                        <div class="row form-group">
-                            <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=true
-                                 data-state="summary">
-                                <span class="status-task-box">
-                                    <i class="icon-done text-primary"></i>
-                                    <!--                                    <i class="icon-pencil text-primary"></i>-->
-                                </span>
-                                <div class="form-group text-uppercase text-label d-flex ">
-                                    <div style="flex: 9" th:class="text-bold" th:text="#{task-create.step1.task-address}">
-                                        <span class="text-danger error-msg d-none"></span>
-                                    </div>
-                                    <select name="option-address" class="d-none" style="flex: 1">
-                                        <option value="1" selected th:text="#{task-create.step1.task-address1}"></option>
-                                        <option value="2" th:text="#{task-create.step1.task-address2}"></option>
-                                    </select>
-                                </div>
-                                <div class="box-input">
-                                    <div class="form-group box-input-address-single">
-                                        <input type="text" class="form-control" id="address" th:field="*{address}"
-                                               th:placeholder="#{task-create.step1.placeholder-address}">
-                                    </div>
-                                    <div class="box-input-address-multi d-none">
-                                        <div class="form-group">
-                                            <label th:text="#{task-create.step1.start-address}"></label>
-                                            <input type="text" class="form-control" id="addressStart"
-                                                   th:placeholder="#{task-create.step1.placeholder-start-address}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label th:text="#{task-create.step1.end-address}"></label>
-                                            <input type="text" class="form-control" id="addressEnd"
-                                                   th:placeholder="#{task-create.step1.placeholder-end-address}">
-                                        </div>
-                                    </div>
-                                    <div class="mt-lg-5 form-group text-center">
-                                        <button class="btn-reset-css btn-svg-UI btn-continue" data-type="address"
-                                                th:type="button">
-                                            <svg><rect></rect></svg>
-                                            <span th:text="#{task-create.next-btn}"></span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="form-group preview-content d-none">
-                                    <i class="icon-room text-pink mr-1"></i> <span class="content"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=false
-                                 data-state="empty">
-                                <span class="status-task-box">
-                                    <i class="icon-done text-primary"></i>
-                                </span>
-                                <div class="form-group text-uppercase text-label text-bold" th:text="#{task-create.step1.work-name}">
+            <div class="p-5 bg-white">
+                <form th:action="@{/task/create/step1}" th:object="${taskInfo}" id="form-task" method="post">
+                    <div class="row form-group">
+                        <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=true
+                             data-state="summary">
+                            <span class="status-task-box">
+                                <i class="icon-done text-primary"></i>
+                                <!--<i class="icon-pencil text-primary"></i>-->
+                            </span>
+                            <div class="form-group text-uppercase text-label d-flex ">
+                                <div style="flex: 9" th:class="text-bold" th:text="#{task-create.step1.task-address}">
                                     <span class="text-danger error-msg d-none"></span>
                                 </div>
-                                <div class="box-input">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="title-task" th:field="*{name}"
-                                               th:placeholder="#{task-create.step1.placeholder-work-name}">
-                                    </div>
-                                    <div class="mt-lg-5 form-group text-center">
-                                        <button class="btn-reset-css btn-svg-UI btn-continue" data-type="title"
-                                                th:type="button">
-                                            <svg><rect></rect></svg>
-                                            <span th:text="#{task-create.next-btn}"></span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="form-group preview-content d-none">
-                                    <i class="icon-title text-purple mr-1"></i>
-                                    <span class="content">
-
-                                    </span>
-                                </div>
+                                <select name="option-address" class="d-none" style="flex: 1">
+                                    <option value="1" selected th:text="#{task-create.step1.task-address1}"></option>
+                                    <option value="2" th:text="#{task-create.step1.task-address2}"></option>
+                                </select>
                             </div>
-                        </div>
-
-                        <div class="row form-group">
-                            <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=false
-                                 data-state="empty">
-                                <span class="status-task-box">
-                                    <i class="icon-done text-primary"></i>
-                                </span>
-                                <div class="form-group text-uppercase text-label text-bold" th:text="#{task-create.step1.work-categories}"><span
-                                    class="text-danger error-msg d-none"></span></div>
-                                <div class="box-input">
+                            <div class="box-input">
+                                <div class="form-group box-input-address-single">
+                                    <input type="text" class="form-control" id="address" th:field="*{address}"
+                                           th:placeholder="#{task-create.step1.placeholder-address}">
+                                </div>
+                                <div class="box-input-address-multi d-none">
                                     <div class="form-group">
-                                        <th:block th:each="category: ${taskCategories}">
-                                            <div class="custom-control custom-control-inline">
-                                                <input type="radio" name="taskCategory" class="custom-control-input" th:id="'cateId-' + ${category.getId()}"
-                                                       th:value="${category.getId()}" th:field="*{taskCategory}">
-                                                <label class="custom-control-label d-inline" th:for="'cateId-' + ${category.getId()}" th:text="${category.getName()}"></label>
-                                            </div>
-                                        </th:block>
+                                        <label th:text="#{task-create.step1.start-address}"></label>
+                                        <input type="text" class="form-control" id="addressStart"
+                                               th:placeholder="#{task-create.step1.placeholder-start-address}">
                                     </div>
-                                    <div class="mt-lg-5 form-group text-center">
-                                        <button class="btn-reset-css btn-svg-UI btn-continue" data-type="category"
-                                                th:type="button">
-                                            <svg><rect></rect></svg>
-                                            <span th:text="#{task-create.next-btn}"></span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="form-group preview-content d-none">
-                                    <i class="icon-book text-orange mr-1"></i>
-                                    <span class="content">
-
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=false
-                                 data-state="empty">
-                                <span class="status-task-box">
-                                    <i class="icon-done text-primary"></i>
-                                </span>
-                                <div class="form-group text-uppercase text-label text-bold" th:text="#{task-create.step1.task-description}"><span
-                                    class="text-danger error-msg d-none"></span></div>
-                                <div class="box-input">
                                     <div class="form-group">
-                                        <textarea th:field="*{description}" class="form-control" style="min-height: 150px"
-                                                  name="description"
-                                                  th:placeholder="#{task-create.step1.task-des-placehoder}"></textarea>
-                                    </div>
-                                    <div class="mt-lg-5 form-group text-center">
-                                        <button class="btn-continue btn-reset-css btn-svg-UI" data-type="description"
-                                                th:type="button">
-                                            <svg><rect></rect></svg>
-                                            <span th:text="#{task-create.next-btn}"></span>
-                                        </button>
+                                        <label th:text="#{task-create.step1.end-address}"></label>
+                                        <input type="text" class="form-control" id="addressEnd"
+                                               th:placeholder="#{task-create.step1.placeholder-end-address}">
                                     </div>
                                 </div>
-                                <div class="form-group preview-content d-none">
-                                    <i class="icon-book text-purple mr-1"></i>
-                                    <span class="content"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col-md-12 text-right">
-                                <!--<a href="javascript:void (0)" id="next-step2">-->
-                                    <button type="submit" id="next-step2" class="btn-reset-css btn-svg-UI animation-svg-infinite" disabled="disabled">
+                                <div class="mt-lg-5 form-group text-center">
+                                    <button class="btn-reset-css btn-svg-UI btn-continue" data-type="address"
+                                            th:type="button">
                                         <svg><rect></rect></svg>
-                                        Tiếp tục
+                                        <span th:text="#{task-create.next-btn}"></span>
                                     </button>
-                                <!--</a>-->
+                                </div>
+                            </div>
+                            <div class="form-group preview-content d-none">
+                                <i class="icon-room text-pink mr-1"></i> <span class="content"></span>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=false
+                             data-state="empty">
+                            <span class="status-task-box">
+                                <i class="icon-done text-primary"></i>
+                            </span>
+                            <div class="form-group text-uppercase text-label text-bold" th:text="#{task-create.step1.work-name}">
+                                <span class="text-danger error-msg d-none"></span>
+                            </div>
+                            <div class="box-input">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="title-task" th:field="*{name}"
+                                           th:placeholder="#{task-create.step1.placeholder-work-name}">
+                                </div>
+                                <div class="mt-lg-5 form-group text-center">
+                                    <button class="btn-reset-css btn-svg-UI btn-continue" data-type="title"
+                                            th:type="button">
+                                        <svg><rect></rect></svg>
+                                        <span th:text="#{task-create.next-btn}"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group preview-content d-none">
+                                <i class="icon-title text-purple mr-1"></i>
+                                <span class="content">
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=false
+                             data-state="empty">
+                            <span class="status-task-box">
+                                <i class="icon-done text-primary"></i>
+                            </span>
+                            <div class="form-group text-uppercase text-label text-bold" th:text="#{task-create.step1.work-categories}"><span
+                                class="text-danger error-msg d-none"></span></div>
+                            <div class="box-input">
+                                <div class="form-group">
+                                    <th:block th:each="category: ${taskCategories}">
+                                        <div class="custom-control custom-control-inline">
+                                            <input type="radio" name="taskCategory" class="custom-control-input" th:id="'cateId-' + ${category.getId()}"
+                                                   th:value="${category.getId()}" th:field="*{taskCategory}">
+                                            <label class="custom-control-label d-inline" th:for="'cateId-' + ${category.getId()}" th:text="${category.getName()}"></label>
+                                        </div>
+                                    </th:block>
+                                </div>
+                                <div class="mt-lg-5 form-group text-center">
+                                    <button class="btn-reset-css btn-svg-UI btn-continue" data-type="category"
+                                            th:type="button">
+                                        <svg><rect></rect></svg>
+                                        <span th:text="#{task-create.next-btn}"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group preview-content d-none">
+                                <i class="icon-book text-orange mr-1"></i>
+                                <span class="content">
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12 mb-lg-3 mb-md-0 mb-xl-1 task-box bg-white border" data-editing=false
+                             data-state="empty">
+                            <span class="status-task-box">
+                                <i class="icon-done text-primary"></i>
+                            </span>
+                            <div class="form-group text-uppercase text-label text-bold" th:text="#{task-create.step1.task-description}"><span
+                                class="text-danger error-msg d-none"></span></div>
+                            <div class="box-input">
+                                <div class="form-group">
+                                    <textarea th:field="*{description}" class="form-control" style="min-height: 150px"
+                                              name="description"
+                                              th:placeholder="#{task-create.step1.task-des-placehoder}"></textarea>
+                                </div>
+                                <div class="mt-lg-5 form-group text-center">
+                                    <button class="btn-continue btn-reset-css btn-svg-UI" data-type="description"
+                                            th:type="button">
+                                        <svg><rect></rect></svg>
+                                        <span th:text="#{task-create.next-btn}"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group preview-content d-none">
+                                <i class="icon-book text-purple mr-1"></i>
+                                <span class="content"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12 text-right">
+                            <!--<a href="javascript:void (0)" id="next-step2">-->
+                                <button type="submit" id="next-step2" class="btn-reset-css btn-svg-UI animation-svg-infinite" disabled="disabled">
+                                    <svg><rect></rect></svg>
+                                    Tiếp tục
+                                </button>
+                            <!--</a>-->
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
