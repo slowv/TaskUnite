@@ -9,7 +9,7 @@ $(document).ready(function() {
       stagePadding: 0,
       autoplay: false,
       margin: 20,
-      nav: false,
+      nav: true,
       dots: true,
       autoHeight: true,
       navText: ['<span class="icon-arrow_back">', '<span class="icon-arrow_forward">'],
