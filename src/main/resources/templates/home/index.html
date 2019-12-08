@@ -22,10 +22,8 @@
             <div class="row align-items-center">
                 <div class="col-12 text-center" data-aos="fade">
                     <h1 class="mb-5">Không cần tự tay hoàn thành công việc</h1>
-                    <a th:href="@{/task/create/step1}">
-                        <span class="bg-primary text-white py-4 px-4 rounded">
-                            <span>Yêu cầu việc ngay!</span>
-                        </span>
+                    <a href="/intro/" class="bg-primary text-white py-4 px-4 rounded text-uppercase">
+                        Hoàn thành đăng ký
                     </a>
                 </div>
             </div>
@@ -123,7 +121,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mb-5 mb-md-0" data-aos="fade-up" data-aos-delay="100">
-                    <h2 class="mb-5 h3" th:text="#{home.recent-job}">Recent Jobs</h2>
+                    <h2 class="mb-5 h3" th:text="#{home.recent-job}">Công Việc Mới</h2>
                     <div class="rounded border jobs-wrap">
                         <a href="job-single.html"
                            class="job-item d-block d-md-flex align-items-center  border-bottom fulltime">
@@ -133,7 +131,7 @@
                             </div>
                             <div class="job-details h-100">
                                 <div class="p-3 align-self-center">
-                                    <h3>Nhân viên chạy văn phòng</h3>
+                                    <h3>Chuyển nhà sinh viên</h3>
                                     <div class="d-block d-lg-flex">
                                         <div class="mr-3">
                                             <span class="icon-user mr-1 text-purple"></span> Ng. Công
@@ -145,7 +143,7 @@
                                         <div class="job-des-preview"
                                              th:title="'Công việc nhẹ nhàng! Lương ko phải nghĩ!'">
                                             <span class="icon-file-text mr-1 text-secondary"></span>
-                                            Công việc nhẹ nhàng! Lương ko phải nghĩ!
+                                            Dọn đồ, chuyển đồ đến nơi mới Xuân Thuỷ, Cầu Giấy.
                                         </div>
                                     </div>
                                 </div>
@@ -164,19 +162,19 @@
                             </div>
                             <div class="job-details h-100">
                                 <div class="p-3 align-self-center">
-                                    <h3>Nhân viên chạy văn phòng</h3>
+                                    <h3>Chuyển văn thư</h3>
                                     <div class="d-block d-lg-flex">
                                         <div class="mr-3">
-                                            <span class="icon-user mr-1 text-purple"></span> Ng. Công
+                                            <span class="icon-user mr-1 text-purple"></span> Ms. Thu
                                         </div>
                                         <div class="mr-3">
                                             <span class="icon-room mr-1 text-pink"></span>
-                                            Phúc Diễn, Từ Liêm, Hà Nội
+                                            Hoàn Kiếm, Hà Nội.
                                         </div>
                                         <div class="job-des-preview"
                                              th:title="'Công việc nhẹ nhàng! Lương ko phải nghĩ!'">
                                             <span class="icon-file-text mr-1 text-secondary"></span>
-                                            Công việc nhẹ nhàng! Lương ko phải nghĩ!
+                                            Chuyển 2 thư qua Hai Bà Trưng, Hà Nội.
                                         </div>
                                     </div>
                                 </div>
@@ -195,19 +193,19 @@
                             </div>
                             <div class="job-details h-100">
                                 <div class="p-3 align-self-center">
-                                    <h3>Nhân viên chạy văn phòng</h3>
+                                    <h3>Dọn nhà Riêng</h3>
                                     <div class="d-block d-lg-flex">
                                         <div class="mr-3">
-                                            <span class="icon-user mr-1 text-purple"></span> Ng. Công
+                                            <span class="icon-user mr-1 text-purple"></span> Mr. Cương
                                         </div>
                                         <div class="mr-3">
                                             <span class="icon-room mr-1 text-pink"></span>
-                                            Phúc Diễn, Từ Liêm, Hà Nội
+                                            Ba Đình, Hà Nội
                                         </div>
                                         <div class="job-des-preview"
                                              th:title="'Công việc nhẹ nhàng! Lương ko phải nghĩ!'">
                                             <span class="icon-file-text mr-1 text-secondary"></span>
-                                            Công việc nhẹ nhàng! Lương ko phải nghĩ!
+                                            Dọn dẹp lau sàn nhà 3 tầng, lau của kính 4 phòng.
                                         </div>
                                     </div>
                                 </div>
@@ -219,7 +217,6 @@
                             </div>
                         </a>
                     </div>
-
                     <div class="col-md-12 text-center mt-5">
                         <a href="#" class="btn-svg-UI btn-reset-css fill-green">
                             <svg>
@@ -228,74 +225,8 @@
                             <span>
                                 <span class="icon-plus-circle"></span> <span  th:text="#{home.show-more}"></span>
                             </span>
-
                         </a>
                     </div>
-                </div>
-                <div class="col-md-12 block-16" data-aos="fade-up" data-aos-delay="200">
-                    <div class="d-flex mb-0">
-                        <h2 class="mb-5 h3 mb-0">Featured Jobs</h2>
-                        <div class="ml-auto mt-1"><a href="#" class="owl-custom-prev">Prev</a> / <a href="#"
-                                                                                                    class="owl-custom-next">Next</a>
-                        </div>
-                    </div>
-
-                    <div class="nonloop-block-16 owl-carousel">
-
-                        <div class="border rounded p-4 bg-white">
-                            <h2 class="h5">Restaurant Crew</h2>
-                            <p><span class="border border-warning rounded p-1 px-2 text-warning">Freelance</span></p>
-                            <p>
-                                <span class="d-block"><span class="icon-suitcase"></span> Resto Bar</span>
-                                <span class="d-block"><span class="icon-room"></span> Florida</span>
-                                <span class="d-block"><span class="icon-money mr-1"></span> $55000 &mdash; 70000</span>
-                            </p>
-                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi neque fugit
-                                tempora, numquam voluptate veritatis odit id, iste eum culpa alias, ut officiis omnis
-                                itaque ad, rem sunt doloremque molestias.</p>
-                        </div>
-
-                        <div class="border rounded p-4 bg-white">
-                            <h2 class="h5">Javascript Fullstack Developer</h2>
-                            <p><span class="border border-warning rounded p-1 px-2 text-warning">Freelance</span></p>
-                            <p>
-                                <span class="d-block"><span class="icon-suitcase"></span> Resto Bar</span>
-                                <span class="d-block"><span class="icon-room"></span> Florida</span>
-                                <span class="d-block"><span class="icon-money mr-1"></span> $55000 &mdash; 70000</span>
-                            </p>
-                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus accusamus
-                                necessitatibus praesentium voluptate natus excepturi rerum, autem. Magnam laboriosam,
-                                quam sapiente laudantium iure sit ea! Tenetur, quasi, praesentium. Architecto, eum.</p>
-                        </div>
-
-                        <div class="border rounded p-4 bg-white">
-                            <h2 class="h5">Assistant Brooker, Real Estate</h2>
-                            <p><span class="border border-warning rounded p-1 px-2 text-warning">Freelance</span></p>
-                            <p>
-                                <span class="d-block"><span class="icon-suitcase"></span> Resto Bar</span>
-                                <span class="d-block"><span class="icon-room"></span> Florida</span>
-                                <span class="d-block"><span class="icon-money mr-1"></span> $55000 &mdash; 70000</span>
-                            </p>
-                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus esse,
-                                quam consectetur ipsum quibusdam ullam ab nesciunt, doloribus voluptatum neque iure
-                                perspiciatis vel vero illo consequatur facilis, fuga nobis corporis.</p>
-                        </div>
-
-                        <div class="border rounded p-4 bg-white">
-                            <h2 class="h5">Telecommunication Manager</h2>
-                            <p><span class="border border-warning rounded p-1 px-2 text-warning">Freelance</span></p>
-                            <p>
-                                <span class="d-block"><span class="icon-suitcase"></span> Resto Bar</span>
-                                <span class="d-block"><span class="icon-room"></span> Florida</span>
-                                <span class="d-block"><span class="icon-money mr-1"></span> $55000 &mdash; 70000</span>
-                            </p>
-                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at ipsum
-                                commodi hic, cum esse asperiores libero molestiae, perferendis consectetur assumenda
-                                iusto, dolorem nemo maiores magnam illo laborum sit, dicta.</p>
-                        </div>
-
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -320,12 +251,9 @@
                     <div class="text-left mb-5 section-heading">
                         <h2>Đánh giá dịch vụ</h2>
                     </div>
-
-                    <p class="mb-4 h5 font-italic lineheight1-5">&ldquo;Từ khi bắt đầu sử dụng TaskUnite, tôi không cần
-                        giành cả cuối tuần để dọn dẹp nhà cửa và mua sắm thực phẩm cho cả tuần nữa.
-                        Tôi đã có thêm thời gian để chăm sóc bản thân và gia đình của tôi. Cảm ơn TaskUnite rất nhiều !&rdquo;</p>
-                    <p>&mdash; <strong class="text-black font-weight-bold">Đào Xuân Hùng</strong>, Chuyên gia công nghệ
-                    </p>
+                    <p class="mb-4 h5 font-italic lineheight1-5">&ldquo;Từ khi bắt đầu sử dụng TaskUnite, tôi không cần giành cả cuối tuần để dọn dẹp nhà cửa và mua sắm thực phẩm cho cả tuần nữa.
+                     Tôi đã có thêm thời gian để chăm sóc bản thân và gia đình của tôi. Cảm ơn TaskUnite rất nhiều !&rdquo;</p>
+                    <p>&mdash; <strong class="text-black font-weight-bold">Đào Xuân Hùng</strong>, Chuyên gia công nghệ</p>
                 </div>
             </div>
         </div>
@@ -336,68 +264,71 @@
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-6 text-center" data-aos="fade">
-                    <h2 class="h1 mb-0" style="color: whitesmoke">Kiếm thêm thu nhập với những công việc đơn giản</h2>
-                    <p><a href="#" class="btn btn-warning py-3 px-4">Trở thành Tasker</a></p>
-
+                    <h2 class="mb-4 text-white">Kiếm thêm thu nhập với những công việc đơn giản</h2>
+                    <a href="#" class="bg-warning text-white py-3 px-4 rounded text-uppercase">
+                        Trở thành Tasker
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="site-section site-block-feature bg-light">
+    <div class="site-section site-block-feature">
         <div class="container">
 
             <div class="text-center mb-5 section-heading">
                 <h2>Tại sao bạn nên chọn TaskUnite</h2>
             </div>
 
-            <div class="d-block d-md-flex border-bottom">
-                <div class="text-center p-4 item border-right" data-aos="fade">
-                    <span class="flaticon-worker display-3 mb-3 d-block text-primary"></span>
-                    <h2 class="h4">Mạng lưới Tasker lớn</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos
-                        fugit vitae dolorum.</p>
-                    <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
-                </div>
-                <div class="text-center p-4 item" data-aos="fade">
-                    <span class="flaticon-wrench display-3 mb-3 d-block text-primary"></span>
-                    <h2 class="h4">Đa dạng công việc</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos
-                        fugit vitae dolorum.</p>
-                    <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
+            <div class="border-bottom">
+                <div class="row no-gutters">
+                    <div class="col-md-6">
+                        <div class="text-center p-4 item border-right" data-aos="fade">
+                            <span class="flaticon-worker display-3 mb-3 d-block text-primary"></span>
+                            <h2 class="h4">Mạng lưới Tasker lớn</h2>
+                            <p>TaskUnite có lượng nhân sự lớn, được phân bổ đều trên các Quận Huyện Thành Phố Hà Nội.</p>
+                            <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
+                        </div>        
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-center p-4 item" data-aos="fade">
+                            <span class="flaticon-wrench display-3 mb-3 d-block text-primary"></span>
+                            <h2 class="h4">Đa dạng công việc</h2>
+                            <p>TaskUnite cung cấp các dịch vụ như Sửa chữa , lắp đặt, dọn dẹp..., các công việc gần gũi nhất với cuộc sống.</p>
+                            <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="d-block d-md-flex">
-                <div class="text-center p-4 item border-right" data-aos="fade">
-                    <span class="flaticon-stethoscope display-3 mb-3 d-block text-primary"></span>
-                    <h2 class="h4">Bảo hiểm đầy đủ</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos
-                        fugit vitae dolorum.</p>
-                    <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
+            <div class="row no-gutters">
+                <div class="col-md-6">
+                    <div class="text-center p-4 item border-right" data-aos="fade">
+                        <span class="flaticon-stethoscope display-3 mb-3 d-block text-primary"></span>
+                        <h2 class="h4">Bảo hiểm đầy đủ</h2>
+                        <p>Bạn giao việc không cần phải lo lắng về chất lượng dịch vụ cũng như giá cả .</p>
+                        <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
+                    </div>
                 </div>
-                <div class="text-center p-4 item" data-aos="fade">
-                    <span class="flaticon-calculator display-3 mb-3 d-block text-primary"></span>
-                    <h2 class="h4">Thu nhập cao</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos
-                        fugit vitae dolorum.</p>
-                    <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
+                <div class="col-md-6">
+                    <div class="text-center p-4 item" data-aos="fade">
+                        <span class="flaticon-calculator display-3 mb-3 d-block text-primary"></span>
+                        <h2 class="h4">Thu nhập cao</h2>
+                        <p>Tasker được tiếp cận nguồn công việc, tối ưu được thời gian làm việc tăng thu nhập cao.</p>
+                        <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="site-section block-15">
+    <div class="site-section block-15 bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mx-auto text-center mb-5 section-heading">
                     <h2>Recent Blog</h2>
                 </div>
             </div>
-
-
             <div class="nonloop-block-15 owl-carousel">
-
-
                 <div class="media-with-text">
                     <div class="img-border-sm mb-4">
                         <a href="#" class="image-play">
@@ -406,10 +337,8 @@
                     </div>
                     <h2 class="heading mb-0 h5"><a href="#">Dọn dẹp nhà cửa thật đơn giản</a></h2>
                     <span class="mb-3 d-block post-date">January 20, 2018 &bullet; By <a href="#">Josh Holmes</a></span>
-                    <p>Dọn dẹp nhà cửa thật sự rất vất vả và tốn thời gian. Nhờ sự trợ giúp của các Tasker, tôi đã có
-                        thêm thời gian cho những sở thích cá nhân</p>
+                    <p>Dọn dẹp nhà cửa thật sự rất vất vả và tốn thời gian. Nhờ sự trợ giúp của các Tasker, tôi đã có thêm thời gian cho những sở thích cá nhân</p>
                 </div>
-
                 <div class="media-with-text">
                     <div class="img-border-sm mb-4">
                         <a href="#" class="image-play">
@@ -418,10 +347,8 @@
                     </div>
                     <h2 class="heading mb-0 h5"><a href="#">Sửa TV trong vòng vài nốt nhạc</a></h2>
                     <span class="mb-3 d-block post-date">January 20, 2018 &bullet; By <a href="#">Josh Holmes</a></span>
-                    <p>Tôi đang xem đội tuyển Việt Nam đá thì TV bị hỏng. Rất may có một Tasker đã sửa được TV và tôi
-                        không bỏ lỡ bàn thắng nào. Cảm ơn TaskUnite</p>
+                    <p>Tôi đang xem đội tuyển Việt Nam đá thì TV bị hỏng. Rất may có một Tasker đã sửa được TV và tôi không bỏ lỡ bàn thắng nào. Cảm ơn TaskUnite</p>
                 </div>
-
                 <div class="media-with-text">
                     <div class="img-border-sm mb-4">
                         <a href="#" class="image-play">
@@ -439,7 +366,6 @@
             </div>
         </div>
     </div>
-
     <th:block th:replace="fragment/layout :: footer"></th:block>
 </div>
 <th:block th:replace="fragment/layout :: javascript"> </th:block>
