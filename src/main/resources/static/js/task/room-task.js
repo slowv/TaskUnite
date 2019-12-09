@@ -42,4 +42,30 @@ function onClick(){
     $('#valueStarRating').val(parseInt(indexStar) + 1);
     // console.log($('#valueStarRating').val());
   })
+
+  $('#saveReviewBtn').on('click', function () {
+    if($('#valueStarRating').val() == ''){
+      $('#valueStarRating').val(0);
+    }
+
+    var data = {
+      content: $('#reviewContent').val(),
+      point: parseInt($('#valueStarRating').val()),
+      // taskId: parseInt($('#taskId').val())
+    };
+
+    // $.ajax({
+    //   type: "POST",
+    //   url: "/review/create",
+    //   data: JSON.stringify(data),
+    //   contentType:"application/json; charset=utf-8",
+    //   dataType: "json",
+    //   success: function(response){
+    //     console.log("success")
+    //   },
+    //   error: function(req, response){
+    //     alert("Error:" + response);
+    //   }
+    // });
+  })
 }
