@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
 @RestController
@@ -22,32 +23,41 @@ public class RoomAPI {
     UserService userService;
 
     @PostMapping("/{id}/complete")
-    public String complete(@PathVariable("id") Long id, @RequestParam("duration") Double duration) {
+    public String complete(@PathVariable("id") Long id) {
         Task task = customTaskService.findOne(id);
         if (task == null) return null;
-        Duration d = Duration.of((long) (duration * 60), ChronoUnit.MINUTES);
-        task.setDuration(d);
-        task.setTo(task.getFrom().plus(d));
-        task.setTotalPrice(task.getPrice() * duration);
-        task.setStatus(2);
 
-        customTaskService.save(task);
 
-        UserInformation tasker = task.getTasker();
-        UserInformation master = task.getMaster();
-        PaymentInformation paymentTasker = tasker.getPayment();
-        PaymentInformation paymentMaster = master.getPayment();
-        Statistic statisticTasker = tasker.getStatistic();
-        Statistic statisticMaster = master.getStatistic();
+        if (task.getStatus() == 1) {
+            task.setTo(Instant.now());
+            Duration d = Duration.between(task.getFrom(), Instant.now());
+            task.setDuration(d);
+            task.setTotalPrice(task.getPrice() * d.get(ChronoUnit.HOURS));
+            task.setStatus(2);
 
-        paymentMaster.setBalance(paymentMaster.getBalance() - (11-statisticMaster.getLevel())/100*task.getTotalPrice());
-        paymentTasker.setBalance(paymentTasker.getBalance() + (89+statisticTasker.getLevel())/100*task.getTotalPrice());
-        statisticMaster.setExperience(statisticMaster.getExperience() + 20);
-        statisticMaster.setExperience(statisticMaster.getCompletedTask() + 1);
-        statisticTasker.setExperience(statisticTasker.getExperience() + 20);
-        statisticTasker.setExperience(statisticTasker.getCompletedTask() + 1);
+            customTaskService.save(task);
+        } else {
+            task.setStatus(3);
 
-        customTaskService.saveAll(task, paymentTasker, statisticTasker, paymentMaster, statisticMaster);
+            customTaskService.save(task);
+
+
+            UserInformation tasker = task.getTasker();
+            UserInformation master = task.getMaster();
+            PaymentInformation paymentTasker = tasker.getPayment();
+            PaymentInformation paymentMaster = master.getPayment();
+            Statistic statisticTasker = tasker.getStatistic();
+            Statistic statisticMaster = master.getStatistic();
+
+            paymentMaster.setBalance(paymentMaster.getBalance() - (11 - statisticMaster.getLevel()) / 100 * task.getTotalPrice());
+            paymentTasker.setBalance(paymentTasker.getBalance() + (89 + statisticTasker.getLevel()) / 100 * task.getTotalPrice());
+            statisticMaster.setExperience(statisticMaster.getExperience() + 20);
+            statisticMaster.setExperience(statisticMaster.getCompletedTask() + 1);
+            statisticTasker.setExperience(statisticTasker.getExperience() + 20);
+            statisticTasker.setExperience(statisticTasker.getCompletedTask() + 1);
+
+            customTaskService.saveAll(task, paymentTasker, statisticTasker, paymentMaster, statisticMaster);
+        }
         return "true";
     }
 
