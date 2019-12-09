@@ -51,21 +51,35 @@ function onClick(){
     var data = {
       content: $('#reviewContent').val(),
       point: parseInt($('#valueStarRating').val()),
-      // taskId: parseInt($('#taskId').val())
+      _csrf: $("#_csrfToken").val()
     };
 
-    // $.ajax({
-    //   type: "POST",
-    //   url: "/review/create",
-    //   data: JSON.stringify(data),
-    //   contentType:"application/json; charset=utf-8",
-    //   dataType: "json",
-    //   success: function(response){
-    //     console.log("success")
-    //   },
-    //   error: function(req, response){
-    //     alert("Error:" + response);
-    //   }
-    // });
+    $.ajax({
+      type: "POST",
+      url: "/room/" + parseInt($('#taskId').val()) + "/review",
+      data: data,
+      // contentType:"application/json; charset=utf-8",
+      // dataType: "json",
+      success: function(response){
+        console.log(response)
+      },
+      error: function(req, response){
+        console.log("Error: " + response);
+      }
+    });
+
+    $.ajax({
+      type: "POST",
+      url: "/room/" + parseInt($('#taskId').val()) + "/complete",
+      data: {
+        _csrf: $("#_csrfToken").val()
+      },
+      success: function(response){
+        toastr.success("Thành công");
+      },
+      error: function(req, response){
+        console.log("Error: " + response);
+      }
+    });
   })
 }

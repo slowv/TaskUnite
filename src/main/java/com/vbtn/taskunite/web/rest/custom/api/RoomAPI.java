@@ -35,7 +35,7 @@ public class RoomAPI {
             task.setTo(Instant.now());
             Duration d = Duration.between(task.getFrom(), Instant.now());
             task.setDuration(d);
-            task.setTotalPrice(task.getPrice() * d.get(ChronoUnit.HOURS));
+            task.setTotalPrice(task.getPrice() * d.toHours());
             task.setStatus(2);
 
             customTaskService.save(task);

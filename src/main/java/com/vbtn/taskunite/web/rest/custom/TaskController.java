@@ -50,7 +50,6 @@ public class TaskController {
 
         UserInformation userInformation = customUserInformationService.findOne(userService.getUserWithAuthorities().get().getId());
         taskInfo.setMaster(userInformation);
-        customTaskService.save(taskInfo);
 
         step1.put("taskInfo", taskInfo);
         session.setAttribute("step1", step1);

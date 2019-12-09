@@ -160,6 +160,11 @@
                         </div>
                         <input type="hidden" id="valueStarRating">
                         <input type="hidden" id="taskId" th:value="${task.id}">
+                        <input
+                            id="_csrfToken"
+                        type="hidden"
+                        th:name="${_csrf.parameterName}"
+                        th:value="${_csrf.token}" />
                         <div class="form-group w-100 text-right mt-2">
                             <button class="btn btn-primary mx-2 w-25 text-uppercase" id="saveReviewBtn">Gửi</button>
                             <button class="btn btn-warning w-25 text-white text-uppercase" data-dismiss="modal">Bỏ qua</button>
