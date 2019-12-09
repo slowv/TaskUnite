@@ -1,6 +1,7 @@
 package com.vbtn.taskunite.web.rest.custom.api;
 
 import com.vbtn.taskunite.domain.*;
+import com.vbtn.taskunite.repository.AdminProfitRepository;
 import com.vbtn.taskunite.repository.ReviewRepository;
 import com.vbtn.taskunite.service.UserService;
 import com.vbtn.taskunite.service.custom.task.CustomTaskService;
@@ -21,6 +22,8 @@ public class RoomAPI {
     ReviewRepository reviewRepository;
     @Autowired
     UserService userService;
+    @Autowired
+    AdminProfitRepository adminProfitRepository;
 
     @PostMapping("/{id}/complete")
     public String complete(@PathVariable("id") Long id) {
@@ -49,8 +52,17 @@ public class RoomAPI {
             Statistic statisticTasker = tasker.getStatistic();
             Statistic statisticMaster = master.getStatistic();
 
-            paymentMaster.setBalance(paymentMaster.getBalance() - (11 - statisticMaster.getLevel()) / 100 * task.getTotalPrice());
-            paymentTasker.setBalance(paymentTasker.getBalance() + (89 + statisticTasker.getLevel()) / 100 * task.getTotalPrice());
+            paymentMaster.setBalance(paymentMaster.getBalance() - task.getTotalPrice() - (20 - statisticMaster.getLevel()) / 100 * task.getTotalPrice());
+            paymentTasker.setBalance(paymentTasker.getBalance() + task.getTotalPrice() - (20 - statisticTasker.getLevel()) / 100 * task.getTotalPrice());
+
+            AdminProfit profit = new AdminProfit();
+            profit.setMasterProfit((20 - statisticMaster.getLevel()) / 100 * task.getTotalPrice());
+            profit.setTaskerProfit((20 - statisticTasker.getLevel()) / 100 * task.getTotalPrice());
+            profit.setTotalProfit((20 - statisticMaster.getLevel()) / 100 * task.getTotalPrice() + (20 - statisticTasker.getLevel()) / 100 * task.getTotalPrice());
+            profit.setTask(task);
+
+            adminProfitRepository.save(profit);
+
             statisticMaster.setExperience(statisticMaster.getExperience() + 20);
             statisticMaster.setExperience(statisticMaster.getCompletedTask() + 1);
             statisticTasker.setExperience(statisticTasker.getExperience() + 20);
