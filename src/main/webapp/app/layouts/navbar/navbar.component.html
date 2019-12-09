@@ -102,6 +102,14 @@
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </ul>
             </li>
+            <li class="nav-item" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="/revenue" id="revenue-menu">
+                    <span>
+                        <fa-icon icon="tachometer-alt"></fa-icon>
+                        <span jhiTranslate="global.menu.revenue">Revenue</span>
+                    </span>
+                </a>
+            </li>
             <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu">
                     <span>

@@ -5,6 +5,7 @@ import { navbarRoute } from './layouts/navbar/navbar.route';
 import { DEBUG_INFO_ENABLED } from 'app/app.constants';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
+import { RevenueComponent } from 'app/revenue/revenue.component';
 
 const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
 
@@ -23,6 +24,10 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
         {
           path: 'account',
           loadChildren: () => import('./account/account.module').then(m => m.TaskUniteAccountModule)
+        },
+        {
+          path: 'revenue',
+          component: RevenueComponent
         },
         ...LAYOUT_ROUTES
       ],

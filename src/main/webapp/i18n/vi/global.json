@@ -49,6 +49,7 @@
         "database": "Cơ sở dữ liệu",
         "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
       },
+      "revenue": "Doanh thu",
       "language": "Ngôn ngữ"
     },
     "form": {

@@ -14,6 +14,9 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
+import { RevenueComponent } from './revenue/revenue.component';
+import { RevenueLineChartComponent } from './revenue/revenue-line-chart/revenue-line-chart.component';
+import { RevenueSecondLineChartComponent } from './revenue/revenue-second-line-chart/revenue-second-line-chart.component';
 
 @NgModule({
   imports: [
@@ -25,7 +28,17 @@ import { ErrorComponent } from './layouts/error/error.component';
     TaskUniteEntityModule,
     TaskUniteAppRoutingModule
   ],
-  declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
+  declarations: [
+    JhiMainComponent,
+    NavbarComponent,
+    ErrorComponent,
+    PageRibbonComponent,
+    ActiveMenuDirective,
+    FooterComponent,
+    RevenueComponent,
+    RevenueLineChartComponent,
+    RevenueSecondLineChartComponent
+  ],
   bootstrap: [JhiMainComponent]
 })
 export class TaskUniteAppModule {}
