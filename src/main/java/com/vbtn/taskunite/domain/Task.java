@@ -1,5 +1,7 @@
 package com.vbtn.taskunite.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 
@@ -53,10 +55,12 @@ public class Task implements Serializable {
     private Integer status;
 
     @Column(name = "created_at")
-    private Instant createdAt;
+@CreationTimestamp
+private Instant createdAt;
 
     @Column(name = "updated_at")
-    private Instant updatedAt;
+@UpdateTimestamp
+private Instant updatedAt;
 
     @Column(name = "deleted_at")
     private Instant deletedAt;

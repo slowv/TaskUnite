@@ -6,7 +6,8 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
-
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 /**
  * A PaymentInformation.
  */
@@ -27,10 +28,12 @@ public class PaymentInformation implements Serializable {
     private Double hold;
 
     @Column(name = "created_at")
-    private Instant createdAt;
+@CreationTimestamp
+private Instant createdAt;
 
     @Column(name = "updated_at")
-    private Instant updatedAt;
+@UpdateTimestamp
+private Instant updatedAt;
 
     @Column(name = "deleted_at")
     private Instant deletedAt;

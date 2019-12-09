@@ -5,7 +5,8 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
-
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 /**
  * A AdminTransaction.
  */
@@ -29,10 +30,12 @@ public class AdminTransaction implements Serializable {
     private Integer status;
 
     @Column(name = "created_at")
-    private Instant createdAt;
+@CreationTimestamp
+private Instant createdAt;
 
     @Column(name = "updated_at")
-    private Instant updatedAt;
+@UpdateTimestamp
+private Instant updatedAt;
 
     @Column(name = "deleted_at")
     private Instant deletedAt;
