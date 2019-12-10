@@ -9,5 +9,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CustomTaskRepository extends JpaRepository<Task, Long> {
-    List<Task> findAllByStatusEquals1();
+    List<Task> findAllByStatusEquals(int status);
 }

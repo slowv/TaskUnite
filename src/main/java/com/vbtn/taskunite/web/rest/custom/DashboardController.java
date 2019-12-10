@@ -35,7 +35,7 @@ public class DashboardController {
     public String dashboard(Model model) {
         final Optional<User> user = userService.getUserWithAuthorities();
         if (user.isPresent()) {
-            model.addAttribute("tasks", taskService.findAllWithStatus1(user.get().getId()));
+            model.addAttribute("tasks", taskService.findAllWithStatus(user.get().getId(), 1));
             model.addAttribute("authorities", user.get().getAuthorities());
             model.addAttribute("user", user.get());
             model.addAttribute("userInformation", userInformationService.findOne(user.get().getId()).get());

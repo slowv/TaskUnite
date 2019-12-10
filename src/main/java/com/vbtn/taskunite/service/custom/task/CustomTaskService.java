@@ -41,8 +41,8 @@ public class CustomTaskService {
             .map(taskMapper::toDto);
     }
 
-    public List<Task> findAllWithStatus1(Long id) {
-        List<Task> tasks = customTaskRepository.findAllByStatusEquals1();
+    public List<Task> findAllWithStatus(Long id, int status) {
+        List<Task> tasks = customTaskRepository.findAllByStatusEquals(status);
         return tasks.stream().filter(task -> task.getTasker().getId() == id || task.getMaster().getId() == id).collect(Collectors.toList());
     }
 

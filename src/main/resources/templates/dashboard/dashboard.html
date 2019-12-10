@@ -25,10 +25,10 @@
         <div class="container-fluid">
             <div class="card text-center">
                 <div class="card-body row">
-                    <div class="col-md-6">
-                        <label class="font-weight-bold">Tasker #01</label>
+                    <div class="col-md-6 p-3">
+                        <label class="font-weight-bold" th:text="${user.getLastName() + ' ' + user.getFirstName()}"></label>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 p-3">
                         <label class="font-weight-bold">LVL <span th:text="${statistic.getLevel()}"></span></label>
                         <div class="progress">
                             <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:0%"></div>
@@ -46,8 +46,11 @@
             </div>
         </div>
         <div class="container">
-            <div class="panel panel--spaced" th:each="task: ${tasks}">
-                <label class="font-weight-bold"><span th:text="${task.getName()}" </label>
+            <label class="font-weight-bold p-3">Task đang chờ</label>
+            <div class="panel panel--spaced mt-3" th:each="task: ${tasks}">
+                <a th:href="'/room/' + ${task.getId()}">
+                <label class="font-weight-bold"><span th:text="${task.getName()}"></span> </label>
+                </a>
             </div>
         </div>
     </div>
