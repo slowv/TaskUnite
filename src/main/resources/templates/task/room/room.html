@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'"/>
     <title>Thông tin công việc</title>
     <th:block th:include="fragment/layout :: head"></th:block>
     <link rel="stylesheet" th:href="@{~/css/task/create.css}">
-    <link rel="stylesheet" th:href="@{~/css/responsive/room/room.css}">
+    <link rel="stylesheet" th:href="@{~/css/responsive/room/room-task.css}">
 </head>
 <body>
 
@@ -21,7 +23,7 @@
                     <div class="panel panel--spaced panel--with-overflow">
                         <div class="row">
                             <div class="col-lg-12">
-                                <div id="chat">
+                                <div id="chat" style="width: 100%; height: 400px;">
 
                                 </div>
                             </div>
@@ -31,10 +33,9 @@
                 <div class="col-md-12 col-lg-5">
                     <div class="panel panel--spaced panel--with-overflow">
                         <div class="row">
-                            <div class="col-lg-3 col-sm-3 col-12 box-img-tasker">
-                                <!--                                <img th:src="@{~/images/person_1.jpg}" alt="" class="confirm-avatar-tasker">-->
+                            <div class="col-lg-6 col-12 box-img-tasker">
                             </div>
-                            <div class="col-lg-9 col-12 col-sm-9">
+                            <div class="col-lg-6 col-12 text-right">
                                 <div class="task-name text-bold" style="font-size: 18px">
                                     <div th:title="'Công việc nhà'" class="name" th:text="${task.getName()}"></div>
                                 </div>
@@ -64,37 +65,24 @@
                         <div class="row">
                             <div class="col-12">
                                 <span class="icon-chevron-down iconSlideUp roomTask"></span>
-                                <span class="text-bold">Chi tiết công việc</span>
-                                <div class="box-option mt-3">
-<!--                                    <div class="row">-->
-<!--                                        <div class="col-12">-->
-<!--                                            <i class="icon-book t-green mr-lg-1"></i>-->
-<!--                                            <label class="font-weight-bold">Danh mục</label>-->
-<!--                                            <div class="mt-1">-->
-<!--                                                <span th:text="${task.getTaskCategory().getName()}"></span>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <i class="icon-phone t-green mr-lg-1"></i>
-                                            <label class="font-weight-bold">Số điện thoại</label>
-                                            <div class="mt-1 row">
-                                                <div class="col-lg-6">Tasker:</div>
-                                                <div class="col-lg-6 text-right">
-                                                    <span th:text="${task.getTasker().getPhone()}"></span>
-                                                </div>
+                                <label class="font-weight-bold">Chi tiết công việc</label>
+                                <div class="box-option mt-3 row">
+                                    <div class="col-12">
+                                        <i class="icon-phone t-green mr-lg-1"></i>
+                                        <label class="font-weight-bold">Số điện thoại</label>
+                                        <div class="mt-1 row">
+                                            <div class="col-lg-6">Tasker:</div>
+                                            <div class="col-lg-6 text-right">
+                                                <span th:text="${task.getTasker().getPhone()}"></span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <i class="icon-details t-green mr-lg-1"></i>
-                                            <label class="font-weight-bold">Mô tả</label>
-                                            <div class="mt-1">
+                                    <div class="col-12">
+                                        <i class="icon-details t-green mr-lg-1"></i>
+                                        <label class="font-weight-bold">Mô tả</label>
+                                        <div class="mt-1">
                                             <span th:text="${task.description}">
                                             </span>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -102,8 +90,8 @@
                         </div>
                         <div style="height: 1px;background: #dadada" class="my-3"></div>
                         <div class="row">
-                            <div class="col-lg-6 text-bold t-20">
-                                Giá tiền (vnđ/giờ):
+                            <div class="col-lg-6">
+                                <label class="font-weight-bold">Giá tiền (vnđ/giờ):</label>
                             </div>
                             <div class="col-lg-6 text-right t-20 t-green">
                                 <span
@@ -111,23 +99,24 @@
                             </div>
                         </div>
                         <div style="height: 1px;background: #dadada" class="my-3"></div>
-                        <div class="row">
+                        <div class="row mb-3">
                             <div class="col-12 text-center">
                                 <span
                                     class="ml-lg-3 badge badge-info text-white text-bold p-2"
                                     th:text="${task.getStatus()}"></span>
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-12 text-center my-4">
+                                <button type="button" class="btn-task-done btn-primary btn px-5 py-3 text-uppercase">
+                                    Hoàn thành công việc
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12 text-center my-4">
-                    <button type="button" class="btn-task-done btn-primary btn px-5 py-3 text-uppercase">
-                        Hoàn thành công việc
-                    </button>
-                </div>
-            </div>
+
         </div>
     </div>
     <th:block th:include="fragment/layout :: footer"></th:block>
@@ -143,32 +132,33 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                        <div class="form-group">
-                            <label class="col-form-label text-bold">Nhận xét</label>
-                            <textarea id="reviewContent" class="form-control" rows="4"
-                                      placeholder="Đôi lời nhận xét về nhân viên của bạn..."></textarea>
+                    <div class="form-group">
+                        <label class="col-form-label text-bold">Nhận xét</label>
+                        <textarea id="reviewContent" class="form-control" rows="4"
+                                  placeholder="Đôi lời nhận xét về nhân viên của bạn..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label text-bold ">Đánh giá</label>
+                        <div class="box-star my-2">
+                            <span class="icon-star-o mx-1 starRating" data-index="0"></span>
+                            <span class="icon-star-o mx-1 starRating" data-index="1"></span>
+                            <span class="icon-star-o mx-1 starRating" data-index="2"></span>
+                            <span class="icon-star-o mx-1 starRating" data-index="3"></span>
+                            <span class="icon-star-o mx-1 starRating" data-index="4"></span>
                         </div>
-                        <div class="form-group">
-                            <label class="col-form-label text-bold ">Đánh giá</label>
-                            <div class="box-star my-2">
-                                <span class="icon-star-o mx-1 starRating" data-index="0"></span>
-                                <span class="icon-star-o mx-1 starRating" data-index="1"></span>
-                                <span class="icon-star-o mx-1 starRating" data-index="2"></span>
-                                <span class="icon-star-o mx-1 starRating" data-index="3"></span>
-                                <span class="icon-star-o mx-1 starRating" data-index="4"></span>
-                            </div>
-                        </div>
-                        <input type="hidden" id="valueStarRating">
-                        <input type="hidden" id="taskId" th:value="${task.id}">
-                        <input
-                            id="_csrfToken"
+                    </div>
+                    <input type="hidden" id="valueStarRating">
+                    <input type="hidden" id="taskId" th:value="${task.id}">
+                    <input
+                        id="_csrfToken"
                         type="hidden"
                         th:name="${_csrf.parameterName}"
-                        th:value="${_csrf.token}" />
-                        <div class="form-group w-100 text-right mt-2">
-                            <button class="btn btn-primary mx-2 w-25 text-uppercase" id="saveReviewBtn">Gửi</button>
-                            <button class="btn btn-warning w-25 text-white text-uppercase" data-dismiss="modal">Bỏ qua</button>
-                        </div>
+                        th:value="${_csrf.token}"/>
+                    <div class="form-group w-100 text-right mt-2">
+                        <button class="btn btn-primary mx-2 w-25 text-uppercase" id="saveReviewBtn">Gửi</button>
+                        <button class="btn btn-warning w-25 text-white text-uppercase" data-dismiss="modal">Bỏ qua
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -177,5 +167,20 @@
 </div>
 <th:block th:include="fragment/layout :: javascript"></th:block>
 <script th:src="@{~/js/task/room-task.js}"></script>
+<script src="https://static.chatwee-api.com/v2/script.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        var chatId = "5def507abd616d5751ed3002";
+        chatweeManager = new ChatweeLib.ChatweeManager(chatId);
+        chatweeManager.SetLocalPrefix("demo6-");
+        chatweeManager.SetChatProperty("desktopLayout", "tabbed");
+        chatweeManager.SetChatProperty("communityEnabled", false);
+        chatweeManager.SetChatProperty("groupChatsEnabled", false);
+
+        chatweeManager.Run();
+
+        //chatweeManager.TriggerConversation("1");
+    });
+</script>
 </body>
 </html>

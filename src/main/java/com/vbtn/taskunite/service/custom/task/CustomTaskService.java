@@ -14,6 +14,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @Transactional
 public class CustomTaskService {
@@ -36,6 +39,11 @@ public class CustomTaskService {
     public Page<TaskDTO> findAll(Pageable pageable) {
         return customTaskRepository.findAll(pageable)
             .map(taskMapper::toDto);
+    }
+
+    public List<Task> findAllWithStatus1(Long id) {
+        List<Task> tasks = customTaskRepository.findAllByStatusEquals1();
+        return tasks.stream().filter(task -> task.getTasker().getId() == id || task.getMaster().getId() == id).collect(Collectors.toList());
     }
 
     public Task findOne(Long id){

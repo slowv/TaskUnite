@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard</title>
+
+    <th:block th:include="fragment/layout :: head"> </th:block>
+    <link rel="stylesheet" th:href="@{~/css/task/create.css}"/>
+</head>
+<body>
+
+<div class="site-wrap border-bottom">
+    <div class="mt-4 mb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <h2 class="site-logo text-center">
+                        <img th:src="@{~/images/logo.png}" alt="TaskUnite" height="50">
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="site-section bg-light">
+        <div class="container-fluid">
+            <div class="card text-center">
+                <div class="card-body row">
+                    <div class="col-md-6">
+                        <label class="font-weight-bold">Tasker #01</label>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="font-weight-bold">LVL <span th:text="${statistic.getLevel()}"></span></label>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:0%"></div>
+                        </div>
+                        <label class="font-weight-bold mt-3">EXP <span th:text="${statistic.getExperience()}"></span></label>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:style="'width: ' + ${statistic.getExperience()} + '%'"></div>
+                        </div>
+                        <label class="font-weight-bold mt-3">Đã hoàn thành <span th:text="${statistic.getCompletedTask()}"></span> việc</label>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:style="'width:'+ ${statistic.getCompletedTask()} + '%'"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="panel panel--spaced" th:each="task: ${tasks}">
+                <label class="font-weight-bold"><span th:text="${task.getName()}" </label>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="fragment/layout :: footer"> </th:block>
+</div>
+<th:block th:include="fragment/layout :: javascript"> </th:block>
+</body>
+</html>
