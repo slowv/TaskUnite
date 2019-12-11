@@ -37,7 +37,11 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
             ignored: /node_modules/
         },
         https: options.tls,
-        historyApiFallback: true
+        historyApiFallback: true,
+        allowedHosts: [
+          'taskunite.works',
+          'vbtn.wtf'
+        ]
     },
     entry: {
         polyfills: './src/main/webapp/app/polyfills',
