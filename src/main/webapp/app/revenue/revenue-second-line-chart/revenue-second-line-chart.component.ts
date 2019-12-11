@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
+import { ResponseDTO } from 'app/revenue/revenue-line-chart/revenue-line-chart.component';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'jhi-revenue-second-line-chart',
   templateUrl: './revenue-second-line-chart.component.html',
@@ -7,46 +9,48 @@ import { Chart } from 'chart.js';
 })
 export class RevenueSecondLineChartComponent implements OnInit {
   Linechart = [];
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.Linechart = new Chart('revenueSecondLineChart', {
-      type: 'line',
-      data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [
-          {
-            data: [100, 200, 300, 75, 77, 75],
-            label: 'Crude oil prices',
-            borderColor: 'green',
-            backgroundColor: 'red'
-          }
-        ]
-      },
-      options: {
-        title: {
-          display: true,
-          text: 'Bảng doanh thu theo tháng',
-          position: 'bottom'
-        },
-        legend: {
-          display: false
-        },
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          xAxes: [
+    this.http.get<ResponseDTO>('http://localhost:8080/profit/m').subscribe(response => {
+      this.Linechart = new Chart('revenueSecondLineChart', {
+        type: 'line',
+        data: {
+          labels: response.dates,
+          datasets: [
             {
-              display: true
-            }
-          ],
-          yAxes: [
-            {
-              display: true
+              data: response.profit.map(p => p.totalProfit),
+              label: 'Doanh thu',
+              borderColor: 'green',
+              backgroundColor: 'red'
             }
           ]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Bảng doanh thu 30 ngày gần nhất',
+            position: 'bottom'
+          },
+          legend: {
+            display: false
+          },
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            xAxes: [
+              {
+                display: true
+              }
+            ],
+            yAxes: [
+              {
+                display: true
+              }
+            ]
+          }
         }
-      }
+      });
     });
   }
 }

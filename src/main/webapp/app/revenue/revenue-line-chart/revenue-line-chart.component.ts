@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'jhi-revenue-line-chart',
   templateUrl: './revenue-line-chart.component.html',
@@ -7,46 +8,57 @@ import { Chart } from 'chart.js';
 })
 export class RevenueLineChartComponent implements OnInit {
   Linechart = [];
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.Linechart = new Chart('revenueLineChart', {
-      type: 'line',
-      data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [
-          {
-            data: [85, 72, 78, 75, 77, 75],
-            label: 'Crude oil prices',
-            borderColor: '#3cb371',
-            backgroundColor: '#0000FF'
-          }
-        ]
-      },
-      options: {
-        title: {
-          display: true,
-          text: 'Bảng doanh thu theo tháng',
-          position: 'bottom'
-        },
-        legend: {
-          display: false
-        },
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          xAxes: [
+    this.http.get<ResponseDTO>('http://localhost:8080/profit/w').subscribe(response => {
+      this.Linechart = new Chart('revenueLineChart', {
+        type: 'line',
+        data: {
+          labels: response.dates,
+          datasets: [
             {
-              display: true
-            }
-          ],
-          yAxes: [
-            {
-              display: true
+              data: response.profit.map(p => p.totalProfit),
+              label: 'Doanh thu',
+              borderColor: '#3cb371',
+              backgroundColor: '#0000FF'
             }
           ]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Bảng doanh thu 7 ngày gần nhất',
+            position: 'bottom'
+          },
+          legend: {
+            display: false
+          },
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            xAxes: [
+              {
+                display: true
+              }
+            ],
+            yAxes: [
+              {
+                display: true
+              }
+            ]
+          }
         }
-      }
+      });
     });
   }
+}
+
+export class ResponseDTO {
+  dates: [];
+  profit: ProfitDto[];
+}
+
+export class ProfitDto {
+  totalProfit: number;
 }
