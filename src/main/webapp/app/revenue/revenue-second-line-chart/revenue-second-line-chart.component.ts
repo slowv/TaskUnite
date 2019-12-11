@@ -24,9 +24,16 @@ export class RevenueSecondLineChartComponent implements OnInit {
         ]
       },
       options: {
+        title: {
+          display: true,
+          text: 'Bảng doanh thu theo tháng',
+          position: 'bottom'
+        },
         legend: {
           display: false
         },
+        responsive: true,
+        maintainAspectRatio: false,
         scales: {
           xAxes: [
             {

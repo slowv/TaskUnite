@@ -27,7 +27,11 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
         },
         {
           path: 'revenue',
-          component: RevenueComponent
+          canActivate: [UserRouteAccessService],
+          component: RevenueComponent,
+          data: {
+            pageTitle: 'global.menu.revenue'
+          }
         },
         ...LAYOUT_ROUTES
       ],

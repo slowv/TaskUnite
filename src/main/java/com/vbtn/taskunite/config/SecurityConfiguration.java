@@ -115,7 +115,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers("/login", "/register").permitAll()
             .antMatchers("/intro", "/room/**", "/profile", "/dashboard").hasAuthority(AuthoritiesConstants.USER)
-            .antMatchers("/task/**").hasAuthority(AuthoritiesConstants.MASTER)
+            .antMatchers("/task/**").hasAuthority(AuthoritiesConstants.USER)
             .antMatchers("/api/authenticate").permitAll()
             .antMatchers("/api/register").permitAll()
             .antMatchers("/api/activate").permitAll()

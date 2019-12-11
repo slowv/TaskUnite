@@ -22,7 +22,7 @@
                         <div class="panel panel--spaced panel--with-overflow">
                             <div class="row">
                                 <div class="col-lg-3 col-sm-3 col-3">
-                                    <img th:src="@{~/images/person_1.jpg}" alt="" class="confirm-avatar-tasker">
+                                    <img th:src="${taskInfo.getTasker().getImage()}" alt="" class="confirm-avatar-tasker">
                                 </div>
                                 <div class="col-lg-9 col-sm-9 col-9">
                                     <div class="task-name text-bold text-right mt-1" style="font-size: 18px">
