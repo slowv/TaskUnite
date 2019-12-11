@@ -50,8 +50,7 @@ function onClick(){
 
     var data = {
       content: $('#reviewContent').val(),
-      point: parseInt($('#valueStarRating').val()),
-      _csrf: $("#_csrfToken").val()
+      point: parseInt($('#valueStarRating').val())
     };
 
     $.ajax({
@@ -70,10 +69,7 @@ function onClick(){
 
     $.ajax({
       type: "POST",
-      url: "/room/" + parseInt($('#taskId').val()) + "/complete",
-      data: {
-        _csrf: $("#_csrfToken").val()
-      },
+      url: "/room/" + parseInt($('#taskId').val()) + "/complete",,
       success: function(response){
         toastr.success("Thành công");
       },
