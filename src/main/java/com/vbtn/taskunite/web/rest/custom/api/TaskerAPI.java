@@ -14,7 +14,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/tasker")
-public class RegisterTaskerAPI {
+public class TaskerAPI {
     private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
     @Autowired
