@@ -69,7 +69,7 @@ function onClick(){
 
     $.ajax({
       type: "POST",
-      url: "/room/" + parseInt($('#taskId').val()) + "/complete",,
+      url: "/room/" + parseInt($('#taskId').val()) + "/complete",
       success: function(response){
         toastr.success("Thành công");
       },
