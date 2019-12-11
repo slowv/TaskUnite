@@ -33,7 +33,8 @@
                 <div class="col-md-12 col-lg-5">
                     <div class="panel panel--spaced panel--with-overflow">
                         <div class="row">
-                            <div class="col-lg-6 col-12 box-img-tasker">
+                            <div class="col-lg-6 col-12">
+                                <img th:src="${task.getTasker().getImage()}" alt="" style="width: 60px; height: 60px; object-fit: cover; position: absolute; ">
                             </div>
                             <div class="col-lg-6 col-12 text-right">
                                 <div class="task-name text-bold" style="font-size: 18px">
@@ -43,9 +44,6 @@
                                      th:text="${task.getTasker().getUser().getLastName() + ' ' + task.getTasker().getUser().getFirstName()}">
                                     Trần Hiểu Đông
                                 </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <img th:src="${task.getTasker().getImage()}" alt="" class="confirm-avatar-tasker">
                             </div>
                         </div>
                         <div style="height: 1px;background: #dadada" class="my-3"></div>
