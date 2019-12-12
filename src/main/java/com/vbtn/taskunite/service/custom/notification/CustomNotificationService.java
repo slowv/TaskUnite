@@ -14,7 +14,7 @@ public class CustomNotificationService {
     MailService mailService;
 
     public Notification save(Notification n) {
-        mailService.sendEmailFromTemplate(n.getUser().getUser(), "mail/notify", "email.task.notify");
+        mailService.sendEmailFromTemplate(n.getUser().getUser(), "mail/notifyEmail", "email.task.notify");
         notificationRepository.save(n);
         return n;
     }
