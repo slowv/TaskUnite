@@ -30,7 +30,7 @@ public class RegisterController {
     @PostMapping
     public String registerAccount(@Valid RegisterVM managedUserVM) {
         User user = registerService.registerUser(managedUserVM, managedUserVM.getPassword());
-        mailService.sendActivationEmail(user);
+        mailService.sendCreationEmail(user);
 
         return "redirect:/login";
     }

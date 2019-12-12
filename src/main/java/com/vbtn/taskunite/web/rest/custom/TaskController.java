@@ -3,6 +3,7 @@ package com.vbtn.taskunite.web.rest.custom;
 import com.vbtn.taskunite.domain.*;
 import com.vbtn.taskunite.service.UserService;
 import com.vbtn.taskunite.service.custom.CustomUserInformationService;
+import com.vbtn.taskunite.service.custom.notification.CustomNotificationService;
 import com.vbtn.taskunite.service.custom.task.CustomTaskCategoryService;
 import com.vbtn.taskunite.service.custom.task.CustomTaskService;
 import com.vbtn.taskunite.service.dto.TaskCategoryDTO;
@@ -28,6 +29,8 @@ public class TaskController {
     CustomTaskService customTaskService;
     @Autowired
     UserService userService;
+    @Autowired
+    CustomNotificationService notificationService;
 
     Logger logger = LoggerFactory.getLogger(TaskController.class);
 
@@ -131,8 +134,22 @@ public class TaskController {
         HashMap step3 = (HashMap) session.getAttribute("step3");
         Task taskInfo = (Task)step3.get("taskInfo");
         taskInfo.setDescription(description);
-        taskInfo.setStatus(0);
+        taskInfo.setStatus(1);
         taskInfo = customTaskService.save(taskInfo);
+
+        Notification n = new Notification();
+        n.setUser(taskInfo.getMaster());
+        n.setContent("Task " + taskInfo.getId() + " đã được tạo!");
+        n.setStatus(1);
+        notificationService.save(n);
+
+        Notification n2 = new Notification();
+        n.setUser(taskInfo.getTasker());
+        n.setContent("Task " + taskInfo.getId() + " đã được tạo!");
+        n.setStatus(1);
+        notificationService.save(n2);
+
+
         if(null == taskInfo){
             return "redirect:/";
         }
