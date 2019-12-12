@@ -43,7 +43,7 @@ public class CustomTaskService {
 
     public List<Task> findAllWithStatus(Long id, int status) {
         List<Task> tasks = customTaskRepository.findAllByStatusEquals(status);
-        return tasks.stream().filter(task -> task.getTasker().getId() == id || task.getMaster().getId() == id).collect(Collectors.toList());
+        return tasks.stream().filter(task -> task.getTasker().getId().equals(id) || task.getMaster().getId().equals(id)).collect(Collectors.toList());
     }
 
     public Task findOne(Long id){
@@ -51,7 +51,6 @@ public class CustomTaskService {
     }
 
     public Task save(Task task) {
-        task.setStatus(1);
         task = customTaskRepository.save(task);
         return task;
     }

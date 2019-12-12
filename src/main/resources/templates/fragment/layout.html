@@ -60,30 +60,19 @@
                                         </a>
                                     </div>
                                     <ul class="site-menu js-clone-nav d-none d-lg-block">
-                                        <li>
-                                            <a th:href="@{/category}" th:text="#{home.category}"></a>
-                                        </li>
-                                        <li><a th:href="@{/contact}" th:text="#{home.contact}">Contact</a></li>
+                                        <li><a th:href="@{/contact}" th:text="#{home.contact}">Liên hệ</a></li>
                                         <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}"
-                                                                                  th:text="#{home.sign-in}">Sign in</a>
+                                                                                  th:text="#{home.sign-in}">Đăng nhập</a>
                                         </li>
                                         <!--<li sec:authorize="!isAuthenticated()"><a th:href="@{/account/register}" th:text="#{home.register}" >Register</a></li>-->
                                         <li sec:authorize="!isAuthenticated()">
                                             <a th:href="@{/register}">
                                                 <span class="bg-primary text-white py-3 px-4 rounded">
                                                     <span class="icon-plus mr-2" style="margin-top: -2px;"></span>
-                                                    <th:block th:text="#{home.register}">Register </th:block>
+                                                    <th:block th:text="#{home.register}">Đăng ký</th:block>
                                                 </span>
                                             </a>
                                         </li>
-                                        <!--<li sec:authorize="isAuthenticated()">-->
-                                        <!--<a th:href="@{/task/create/step1}">-->
-                                        <!--<span class="bg-primary text-white py-3 px-4 rounded">-->
-                                        <!--<span class="icon-plus mr-2" style="margin-top: -2px;"></span>-->
-                                        <!--<th:block th:text="#{home.post-new-job}"> </th:block>-->
-                                        <!--</span>-->
-                                        <!--</a>-->
-                                        <!--</li>-->
                                         <li sec:authorize="isAuthenticated()" class="has-children">
                                             <a th:href="@{/dashboard}">
                                                 <span class="bg-primary text-white py-3 px-4 rounded">
@@ -92,7 +81,7 @@
                                                 </span>
                                             </a>
                                             <ul class="dropdown arrow-top">
-                                                <li><a th:href="@{/dashboard}">Dashboard</a></li>
+                                                <li><a th:href="@{/dashboard}">Bảng điều khiển</a></li>
                                                 <li><a th:href="@{/profile}" th:text="#{home.profile}">Trang cá nhân</a></li>
                                                 <li>
                                                     <form th:action="@{/api/logout}" id="logout" method="post">
@@ -125,18 +114,16 @@
                     <h3 class="footer-heading mb-4 text-white">Về chúng tôi</h3>
                     <p>TaskUnite giúp kết nối những người có yêu cầu việc và những người có nhu cầu làm việc một cách
                         nhanh chóng và đáng tin cậy.</p>
-                    <p><a href="#" class="btn btn-primary pill text-white px-4">Read More</a></p>
                 </div>
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-6">
                             <h3 class="footer-heading mb-4 text-white">Thao tác nhanh</h3>
                             <ul class="list-unstyled">
-                                <li><a href="#">Đăng ký</a></li>
-                                <li><a href="#">Đăng nhập</a></li>
-                                <li><a href="#">Tạo Task</a></li>
-                                <li><a href="#">Danh mục công việc</a></li>
-                                <li><a href="#">Thông báo</a></li>
+                                <li><a th:href="@{/register}">Đăng ký</a></li>
+                                <li><a th:href="@{/login}">Đăng nhập</a></li>
+                                <li><a href="#">Điều khoản</a></li>
+                                <li><a href="#">Chính sách miễn trừ</a></li>
                                 <li><a href="#">Tuyển dụng</a></li>
                             </ul>
                         </div>

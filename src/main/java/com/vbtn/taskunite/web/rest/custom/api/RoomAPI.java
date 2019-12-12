@@ -2,9 +2,12 @@ package com.vbtn.taskunite.web.rest.custom.api;
 
 import com.vbtn.taskunite.domain.*;
 import com.vbtn.taskunite.repository.AdminProfitRepository;
+import com.vbtn.taskunite.repository.MessageRepository;
 import com.vbtn.taskunite.repository.ReviewRepository;
+import com.vbtn.taskunite.repository.UserInformationRepository;
 import com.vbtn.taskunite.service.UserService;
 import com.vbtn.taskunite.service.custom.task.CustomTaskService;
+import com.vbtn.taskunite.web.rest.custom.vm.MessageVM;
 import com.vbtn.taskunite.web.rest.custom.vm.ReviewVM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/room")
@@ -21,9 +26,25 @@ public class RoomAPI {
     @Autowired
     ReviewRepository reviewRepository;
     @Autowired
+    MessageRepository messageRepository;
+    @Autowired
     UserService userService;
     @Autowired
+    UserInformationRepository userInformationRepository;
+    @Autowired
     AdminProfitRepository adminProfitRepository;
+
+    @GetMapping("/{id}/confirm")
+    public String confirm(@PathVariable("id") Long id) {
+        Task task = customTaskService.findOne(id);
+        if (task == null) return null;
+
+        if (task.getStatus() == 0) {
+            task.setStatus(1);
+            customTaskService.save(task);
+        }
+        return "true";
+    }
 
     @PostMapping("/{id}/complete")
     public String complete(@PathVariable("id") Long id) {
@@ -64,9 +85,9 @@ public class RoomAPI {
             adminProfitRepository.save(profit);
 
             statisticMaster.setExperience(statisticMaster.getExperience() + 20);
-            statisticMaster.setExperience(statisticMaster.getCompletedTask() + 1);
+            statisticMaster.setCompletedTask(statisticMaster.getCompletedTask() + 1);
             statisticTasker.setExperience(statisticTasker.getExperience() + 20);
-            statisticTasker.setExperience(statisticTasker.getCompletedTask() + 1);
+            statisticTasker.setCompletedTask(statisticTasker.getCompletedTask() + 1);
 
             customTaskService.saveAll(task, paymentTasker, statisticTasker, paymentMaster, statisticMaster);
         }
@@ -88,5 +109,29 @@ public class RoomAPI {
 
         reviewRepository.save(review);
         return "true";
+    }
+
+    @PostMapping("/{id}/messages")
+    public String message(@PathVariable("id") Long id, MessageVM request) {
+        Task task = customTaskService.findOne(id);
+        if (task == null || !userService.getUserWithAuthorities().isPresent()) return null;
+
+        User u = userService.getUserWithAuthorities().get();
+        UserInformation userInformation = userInformationRepository.getOne(u.getId());
+        Message message = new Message();
+        message.setContent(request.getContent());
+        message.setUser(userInformation);
+        message.setTask(task);
+
+        messageRepository.save(message);
+        return "true";
+    }
+
+    @GetMapping("/{id}/messages")
+    public List<Message> getMessages(@PathVariable("id") Long id) {
+        Task task = customTaskService.findOne(id);
+        if (task == null || !userService.getUserWithAuthorities().isPresent()) return null;
+
+        return new ArrayList<>(task.getMessages());
     }
 }

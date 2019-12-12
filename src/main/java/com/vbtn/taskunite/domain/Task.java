@@ -55,18 +55,21 @@ public class Task implements Serializable {
     private Integer status;
 
     @Column(name = "created_at")
-@CreationTimestamp
-private Instant createdAt;
+    @CreationTimestamp
+    private Instant createdAt;
 
     @Column(name = "updated_at")
-@UpdateTimestamp
-private Instant updatedAt;
+    @UpdateTimestamp
+    private Instant updatedAt;
 
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
     @OneToMany(mappedBy = "task")
     private Set<Review> reviews = new HashSet<>();
+
+    @OneToMany(mappedBy = "task", fetch = FetchType.EAGER)
+    private Set<Message> messages = new HashSet<>();
 
     @OneToMany(mappedBy = "task")
     private Set<AdminProfit> adminProfits = new HashSet<>();
@@ -284,6 +287,31 @@ private Instant updatedAt;
 
     public void setReviews(Set<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public Set<Message> getMessages() {
+        return messages;
+    }
+
+    public Task messages(Set<Message> messages) {
+        this.messages = messages;
+        return this;
+    }
+
+    public Task addMessages(Message message) {
+        this.messages.add(message);
+        message.setTask(this);
+        return this;
+    }
+
+    public Task removeMessages(Message message) {
+        this.messages.remove(message);
+        message.setTask(null);
+        return this;
+    }
+
+    public void setMessages(Set<Message> messages) {
+        this.messages = messages;
     }
 
     public Set<AdminProfit> getAdminProfits() {

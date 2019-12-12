@@ -51,6 +51,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'admin-profit',
         loadChildren: () => import('./admin-profit/admin-profit.module').then(m => m.TaskUniteAdminProfitModule)
+      },
+      {
+        path: 'message',
+        loadChildren: () => import('./message/message.module').then(m => m.TaskUniteMessageModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

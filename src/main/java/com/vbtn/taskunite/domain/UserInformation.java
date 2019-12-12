@@ -1,6 +1,8 @@
 package com.vbtn.taskunite.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 
@@ -8,8 +10,7 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+
 /**
  * A UserInformation.
  */
@@ -51,12 +52,12 @@ public class UserInformation implements Serializable {
     private Integer status;
 
     @Column(name = "created_at")
-@CreationTimestamp
-private Instant createdAt;
+    @CreationTimestamp
+    private Instant createdAt;
 
     @Column(name = "updated_at")
-@UpdateTimestamp
-private Instant updatedAt;
+    @UpdateTimestamp
+    private Instant updatedAt;
 
     @Column(name = "deleted_at")
     private Instant deletedAt;
@@ -64,6 +65,9 @@ private Instant updatedAt;
     @OneToOne
     @JoinColumn(unique = true)
     private User user;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Message> messages = new HashSet<>();
 
     @OneToMany(mappedBy = "tasker")
     private Set<Task> tasksAsTaskers = new HashSet<>();
@@ -268,6 +272,31 @@ private Instant updatedAt;
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<Message> getMessages() {
+        return messages;
+    }
+
+    public UserInformation messages(Set<Message> messages) {
+        this.messages = messages;
+        return this;
+    }
+
+    public UserInformation addMessages(Message message) {
+        this.messages.add(message);
+        message.setUser(this);
+        return this;
+    }
+
+    public UserInformation removeMessages(Message message) {
+        this.messages.remove(message);
+        message.setUser(null);
+        return this;
+    }
+
+    public void setMessages(Set<Message> messages) {
+        this.messages = messages;
     }
 
     public Set<Task> getTasksAsTaskers() {

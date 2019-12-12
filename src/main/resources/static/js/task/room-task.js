@@ -60,18 +60,19 @@ function onClick(){
       // contentType:"application/json; charset=utf-8",
       // dataType: "json",
       success: function(response){
-        console.log(response)
-      },
-      error: function(req, response){
-        console.log("Error: " + response);
-      }
-    });
-
-    $.ajax({
-      type: "POST",
-      url: "/room/" + parseInt($('#taskId').val()) + "/complete",
-      success: function(response){
-        toastr.success("Thành công");
+        console.log(response);
+        $.ajax({
+          type: "POST",
+          url: "/room/" + parseInt($('#taskId').val()) + "/complete",
+          success: function(response){
+            toastr.success("Thành công");
+            window.location.reload();
+          },
+          error: function(req, response){
+            toastr.error("Có lỗi xảy ra!");
+            window.location.reload();
+          }
+        });
       },
       error: function(req, response){
         console.log("Error: " + response);

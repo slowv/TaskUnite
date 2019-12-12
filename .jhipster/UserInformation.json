@@ -61,6 +61,12 @@
         },
         {
             "relationshipType": "one-to-many",
+            "otherEntityName": "message",
+            "otherEntityRelationshipName": "user",
+            "relationshipName": "messages"
+        },
+        {
+            "relationshipType": "one-to-many",
             "otherEntityName": "task",
             "otherEntityRelationshipName": "tasker",
             "relationshipName": "tasksAsTasker"

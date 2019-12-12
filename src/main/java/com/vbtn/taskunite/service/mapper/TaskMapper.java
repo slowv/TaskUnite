@@ -18,6 +18,8 @@ public interface TaskMapper extends EntityMapper<TaskDTO, Task> {
 
     @Mapping(target = "reviews", ignore = true)
     @Mapping(target = "removeReviews", ignore = true)
+    @Mapping(target = "messages", ignore = true)
+    @Mapping(target = "removeMessages", ignore = true)
     @Mapping(target = "adminProfits", ignore = true)
     @Mapping(target = "removeAdminProfits", ignore = true)
     @Mapping(source = "taskerId", target = "tasker")

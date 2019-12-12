@@ -14,7 +14,9 @@
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <h2 class="site-logo text-center">
+                        <a th:href="@{/}">
                         <img th:src="@{~/images/logo.png}" alt="TaskUnite" height="50">
+                        </a>
                     </h2>
                 </div>
             </div>
@@ -26,12 +28,15 @@
             <div class="card text-center">
                 <div class="card-body row">
                     <div class="col-md-6 p-3">
-                        <label class="font-weight-bold" th:text="${user.getLastName() + ' ' + user.getFirstName()}"></label>
+                        <label class="font-weight-bold t-20" th:text="${user.getLastName() + ' ' + user.getFirstName()}"></label>
+                        <div>
+                        <img th:src="${user.getImageUrl()}" style="width: 150px; height: 150px;"/>
+                        </div>
                     </div>
                     <div class="col-md-6 p-3">
                         <label class="font-weight-bold">LVL <span th:text="${statistic.getLevel()}"></span></label>
                         <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:0%"></div>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" th:style="'width:' + ${statistic.getLevel()*10} + '%'"></div>
                         </div>
                         <label class="font-weight-bold mt-3">EXP <span th:text="${statistic.getExperience()}"></span></label>
                         <div class="progress">

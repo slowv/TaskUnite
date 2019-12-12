@@ -63,6 +63,12 @@
         },
         {
             "relationshipType": "one-to-many",
+            "otherEntityName": "message",
+            "otherEntityRelationshipName": "task",
+            "relationshipName": "messages"
+        },
+        {
+            "relationshipType": "one-to-many",
             "otherEntityName": "adminProfit",
             "otherEntityRelationshipName": "task",
             "relationshipName": "adminProfits"

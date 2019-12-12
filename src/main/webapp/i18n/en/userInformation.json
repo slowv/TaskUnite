@@ -3,15 +3,15 @@
     "userInformation": {
       "home": {
         "title": "User Informations",
-        "createLabel": "Thêm mới một User Information",
-        "createOrEditLabel": "Thêm mới hoặc cập nhật User Information",
+        "createLabel": "Create a new User Information",
+        "createOrEditLabel": "Create or edit a User Information",
         "notFound": "No User Informations found"
       },
-      "created": "Một User Information mới được tạo với định danh {{ param }}",
-      "updated": "Một User Information cập nhật với định danh {{ param }}",
-      "deleted": "Một User Information đã xóa với định danh {{ param }}",
+      "created": "A new User Information is created with identifier {{ param }}",
+      "updated": "A User Information is updated with identifier {{ param }}",
+      "deleted": "A User Information is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Bạn có chắc là muốn xóa User Information {{ id }}?"
+        "question": "Are you sure you want to delete User Information {{ id }}?"
       },
       "detail": {
         "title": "User Information"

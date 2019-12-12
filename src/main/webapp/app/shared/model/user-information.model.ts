@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IMessage } from 'app/shared/model/message.model';
 import { ITask } from 'app/shared/model/task.model';
 import { IReview } from 'app/shared/model/review.model';
 import { INotification } from 'app/shared/model/notification.model';
@@ -19,6 +20,7 @@ export interface IUserInformation {
   updatedAt?: Moment;
   deletedAt?: Moment;
   userId?: number;
+  messages?: IMessage[];
   tasksAsTaskers?: ITask[];
   tasksAsMasters?: ITask[];
   reviews?: IReview[];
@@ -45,6 +47,7 @@ export class UserInformation implements IUserInformation {
     public updatedAt?: Moment,
     public deletedAt?: Moment,
     public userId?: number,
+    public messages?: IMessage[],
     public tasksAsTaskers?: ITask[],
     public tasksAsMasters?: ITask[],
     public reviews?: IReview[],

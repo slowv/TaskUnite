@@ -25,6 +25,7 @@
         "taskerCategory": "Tasker Category",
         "adminTransaction": "Admin Transaction",
         "adminProfit": "Admin Profit",
+        "message": "Message",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

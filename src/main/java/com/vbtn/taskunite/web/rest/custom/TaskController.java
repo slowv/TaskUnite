@@ -131,6 +131,7 @@ public class TaskController {
         HashMap step3 = (HashMap) session.getAttribute("step3");
         Task taskInfo = (Task)step3.get("taskInfo");
         taskInfo.setDescription(description);
+        taskInfo.setStatus(0);
         taskInfo = customTaskService.save(taskInfo);
         if(null == taskInfo){
             return "redirect:/";

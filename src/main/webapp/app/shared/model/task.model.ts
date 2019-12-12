@@ -1,5 +1,6 @@
 import { Moment } from 'moment';
 import { IReview } from 'app/shared/model/review.model';
+import { IMessage } from 'app/shared/model/message.model';
 import { IAdminProfit } from 'app/shared/model/admin-profit.model';
 
 export interface ITask {
@@ -18,6 +19,7 @@ export interface ITask {
   updatedAt?: Moment;
   deletedAt?: Moment;
   reviews?: IReview[];
+  messages?: IMessage[];
   adminProfits?: IAdminProfit[];
   taskerId?: number;
   masterId?: number;
@@ -41,6 +43,7 @@ export class Task implements ITask {
     public updatedAt?: Moment,
     public deletedAt?: Moment,
     public reviews?: IReview[],
+    public messages?: IMessage[],
     public adminProfits?: IAdminProfit[],
     public taskerId?: number,
     public masterId?: number,

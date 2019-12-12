@@ -41,7 +41,7 @@
                     <div class="panel panel--spaced panel--with-overflow" style="margin: 0;">
                         <div class="row" style="height: 150px;">
                             <div class="col-12 text-center">
-                                <img src="/images/person_1.jpg" style="height: 150px; width: 150px" alt=""
+                                <img th:src="${user.getImageUrl()}" style="height: 150px; width: 150px" alt=""
                                      class="confirm-avatar-tasker">
                             </div>
                         </div>
@@ -53,8 +53,9 @@
                         </div>
                         <div style="height: 1px;background: #dadada" class="my-3"></div>
                         <div class="row">
-                            <div class="col-12 text-center">
-                                <strong th:each="authority: ${authorities}" th:text="${authority.getName()}"></strong>
+                            <div class="col-12 text-center" th:each="authority: ${authorities}" th:switch="${authority.getName()}">
+                                <span class="badge badge-info p-3 t-16" th:case="ROLE_MASTER">Master</span>
+                                <span class="badge badge-info p-3 t-16" th:case="ROLE_TASKER">Tasker</span>
                             </div>
                         </div>
                         <div style="height: 1px;background: #dadada" class="my-3"></div>
@@ -93,8 +94,7 @@
 
                         <div class="border rounded p-4 bg-white">
                             <label class="font-weight-bold">Đánh giá</label>
-                            <span class="border border-warning rounded p-1 px-2 text-warning">Beta</span>
-                            <h3 class="mb-5"><span class="icon-star"></span> <span>6</span> </h3>
+                            <h3 class="mb-5"><span class="icon-star text-warning"></span> <span>5</span> </h3>
                             <p class="mb-0">Bạn đang làm rất tốt!</p>
                         </div>
 
@@ -102,7 +102,7 @@
                             <label class="font-weight-bold">Tiến độ</label>
                             <h3 class="mb-5">LVL <span th:text="${statistic.getLevel()}"></span></h3>
                             <div class="progress">
-                                <div class="progress-bar" th:style="'width:' + ${statistic.getExperience()} + '%'"></div>
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" th:style="'width:' + ${statistic.getLevel()*10} + '%'"></div>
                             </div>
                             <p class="mb-3">Còn <span th:text="${100 - statistic.getExperience()}"></span> tới cấp tiếp theo</p>
                             <label class="font-weight-bold">Quyền lợi</label>&nbsp;&nbsp;<small>Cấp càng cao, bạn
@@ -191,7 +191,7 @@
                                                     <label class="font-weight-bold" for="notifyEmail">Thông báo qua email</label>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="checkbox" class="check-box" id="notifyEmail" />
+                                                    <input type="checkbox" class="check-box" id="notifyEmail" checked />
                                                 </div>
                                             </div>
                                         </div>
@@ -212,7 +212,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <select class="select form-control" id="lang">
-                                                        <option value="vi">Việt Nam</option>
+                                                        <option value="vi" selected>Việt Nam</option>
                                                         <option value="en">English</option>
                                                     </select>
                                                 </div>
