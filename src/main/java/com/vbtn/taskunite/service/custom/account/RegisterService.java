@@ -62,7 +62,7 @@ public class RegisterService {
         newUser.setLastName(userDTO.getLastName());
         newUser.setEmail(userDTO.getEmail().toLowerCase());
         newUser.setImageUrl(userDTO.getImageUrl());
-        newUser.setLangKey(userDTO.getLangKey());
+        newUser.setLangKey("vi");
         // new user is activated automatically
         newUser.setActivated(true);
         // new user gets registration key
